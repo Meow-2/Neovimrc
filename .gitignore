@@ -1,6 +1,6 @@
 /node_modules/
 /plugged/
 /tmp/
+/_machine_specific.vim
 /package-lock.json
 /package.json
-

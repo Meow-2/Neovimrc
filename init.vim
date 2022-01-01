@@ -5,12 +5,21 @@ if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
+endif
 
 " if empty(glob($HOME.'/.config/nvim/plugged/wildfire.vim/autoload/wildfire.vim'))
 "	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 "endif
 
+" ===
+" === Create a _machine_specific.vim file to adjust machine specific stuff, like python interpreter location
+" ===
+let has_machine_specific_file = 1
+if empty(glob($HOME.'/.config/nvim/_machine_specific.vim'))
+	let has_machine_specific_file = 0
+	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
+endif
+source $HOME/.config/nvim/_machine_specific.vim
 
 " help remember
 " gf                 go to cursor's file
@@ -18,12 +27,12 @@ if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
 " <c-i>              cancel <c-o>
 " :w !sudo tee %     save file with sudo, ! means using a shell command
 
-" machine specific
-let g:python_host_prog='/usr/bin/python'
-let g:python3_host_prog='/usr/bin/python'
-let g:mkdp_browser = 'microsoft-edge-stable'
-let g:mkdp_browserfunc = 'open '
-let g:barbaric_ime = 'fcitx5'
+" " machine specific
+" let g:python_host_prog='/usr/bin/python'
+" let g:python3_host_prog='/usr/bin/python'
+" let g:mkdp_browser = 'microsoft-edge-stable'
+" let g:mkdp_browserfunc = 'open '
+" let g:barbaric_ime = 'fcitx5'
 
 
 " base 

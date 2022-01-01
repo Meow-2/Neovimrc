@@ -15,7 +15,7 @@ endif
 " === Create a _machine_specific.vim file to adjust machine specific stuff, like python interpreter location
 " ===
 let has_machine_specific_file = 1
-if empty(glob($HOME.'/.config/nvim/_machine_specific.vim'))
+if empty(glob('~/.config/nvim/_machine_specific.vim'))
 	let has_machine_specific_file = 0
 	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
 endif
@@ -223,6 +223,7 @@ Plug 'mg979/vim-xtabline'
 Plug 'theniceboy/nvim-deus'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
+Plug 'mhinz/vim-startify'
 
 " Editor Enhancement
 Plug 'mg979/vim-visual-multi'
@@ -294,6 +295,19 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 color deus
 hi NonText ctermfg=gray guifg=grey10
 " hi CursorLine guibg=#444444
+
+" ===
+" === vim-startify
+" ===
+ let g:startify_custom_header = startify#pad(split(system('figlet -f slant -w 100 N E O V I M '), '\n'))
+" redir => test
+"   " silent echo 'one'
+"   " silent echo 'two'
+"   " silent echo 'three'
+" redir END
+"
+" let g:startify_custom_header =
+"     \ map(split(test), 'repeat(" ", 10) . v:val')
 
 " ===
 " === tcomment_vim
@@ -528,3 +542,9 @@ nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
 " auto comment disabled
 autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Open the _machine_specific.vim file if it has just been created
+if has_machine_specific_file == 0
+	exec "e ~/.config/nvim/_machine_specific.vim"
+endif
+

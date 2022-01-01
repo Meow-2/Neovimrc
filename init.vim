@@ -117,6 +117,7 @@ inoremap <esc> <esc>l
 
 
 " fold code
+noremap <silent> <LEADER>i zf%
 noremap <silent> <LEADER>o za
 
 " select from cursor to the end of line 

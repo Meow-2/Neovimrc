@@ -56,7 +56,7 @@
     "diagnostic.virtualTextPrefix": " ❯❯❯ ",
     "diagnostic.virtualText": false,
     "codeLens.enable": true,
-    "explorer.width": 38,
+    "explorer.width": 30,
     "explorer.quitOnOpen": true,
     "explorer.sources": [
         {

@@ -1,6 +1,6 @@
-" ===
+" === 
 " === Auto load for first time uses
-" ===
+" === 
 if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -41,7 +41,7 @@ let &t_ut=''
 syntax on
 set hidden
 set shortmess+=c
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 set number
 set relativenumber
 set wrap                       " show one line in two lines when out of range
@@ -55,6 +55,7 @@ set scrolloff=4                " 4 line remain
 set lazyredraw
 set ttyfast
 set showtabline=2
+set mouse=a
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif                  " record cursor when exit
 " save the history
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
@@ -95,14 +96,14 @@ noremap N Nzz
 noremap <LEADER><CR> :nohlsearch<CR>
 
 " move
-noremap H b
+noremap H 0
 noremap J 5j
 noremap K 5k
-noremap L w
-noremap <C-h> 0
-noremap <C-l> $
+noremap L $
+" noremap <C-h> 0
+" noremap <C-l> $
 " inoremap <C-h> <esc>I
-inoremap <C-l> <esc>A
+" inoremap <C-l> <esc>A
 
 " control
 inoremap <C-h> <esc>I
@@ -113,6 +114,22 @@ inoremap <C-z> <esc>ua
 inoremap <C-y> <esc><C-r>a
 inoremap jj <esc>l
 inoremap <esc> <esc>l
+
+
+" fold code
+noremap <silent> <LEADER>o za
+
+" select from cursor to the end of line 
+noremap <silent> \v v$h
+
+
+" copy and paste
+" visual copy to system clipboard ,it can avoid system polluted by ciw
+vnoremap y "+y
+nnoremap Y y$
+" p in the font of cursor
+" noremap p hp
+
 
 " placeholde
 map <LEADER><LEADER> <esc>/<ZK><CR>:nohlsearch<CR>c4l
@@ -129,13 +146,13 @@ map <LEADER>j <C-w>j
 map <LEADER>k <C-w>k
 map <LEADER>l <C-w>l
 map <LEADER>c <C-w>c
-
+ 
 map <LEADER><left> :vertical resize+5<CR>
 map <LEADER><down> :res -5<CR>
 map <LEADER><up> :res +5<CR>
 map <LEADER><right> :vertical resize-5<CR>
 map <LEADER>= <C-w>=
-
+  
 " tag
 noremap tn :tabe<CR>
 noremap th :-tabnext<CR>
@@ -143,16 +160,16 @@ noremap tl :+tabnext<CR>
 noremap tc :tabclose<CR>
 noremap tmh :-tabmove<CR>
 noremap tml :+tabmove<CR>
-
+  
 " save
 map s <nop>
 map S :w<CR>
 map Q :q<CR>
 map R :source $HOME/.config/nvim/init.vim<CR>
 map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
-
-" visual-block
-noremap <LEADER>v <C-v>
+ 
+" visual-block can use <C-q>
+" noremap <LEADER>v <C-v>
 
 " run
 noremap <F5> :call CompileRunGcc()<CR>
@@ -310,14 +327,25 @@ hi NonText ctermfg=gray guifg=grey10
 "     \ map(split(test), 'repeat(" ", 10) . v:val')
 
 " ===
+" === vim-visual-multi
+" ===
+let g:VM_maps = {}
+let g:VM_maps['Find Under']='<C-l>'
+let g:VM_maps['Find Subword Under']='<C-l>'
+let g:VM_maps["Add Cursor Down"]='<C-j>'
+let g:VM_maps["Add Cursor Up"]='<C-k>'  
+
+" ===
 " === tcomment_vim
 " ===
 " nnoremap ci cl
-let g:tcomment_textobject_inlinecomment = ''
-nmap <LEADER>/ g>c
-vmap <LEADER>/ g>
-nmap <LEADER>. g<c
-vmap <LEADER>. g<
+" let g:tcomment_textobject_inlinecomment = ''
+let g:tcomment_mapleader1=''
+nmap  gcc
+vmap  gcc
+" vmap <LEADER>/ g>
+" nmap <LEADER>. g<c
+" vmap <LEADER>. g<
 
 " ===
 " === tabular
@@ -331,7 +359,7 @@ vmap ga :Tabularize /
 nnoremap <c-p> :Leaderf file<CR>
 " noremap <silent> <C-p> :Files<CR>
 noremap <silent> <C-f> :Rg<CR>
-" noremap <silent> <C-h> :History<CR>
+noremap <silent> <C-h> :History<CR>
 " noremap <C-t> :BTags<CR>
 " noremap <silent> <C-l> :Lines<CR>
 noremap <silent> <C-b> :Buffers<CR>
@@ -423,7 +451,7 @@ let g:rnvimr_presets = [{'width': 0.7, 'height': 0.7}]
 " ===
 " === Vista.vim
 " ===
-noremap <LEADER>s :Vista!!<CR>
+noremap <LEADER>v :Vista!!<CR>
 noremap <c-t> :silent! Vista finder coc<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'coc'
@@ -461,6 +489,7 @@ let g:coc_global_extensions = [
         \ 'coc-clang-format-style-options',
         \ 'coc-cmake',
         \ 'coc-explorer',
+        \ 'coc-yank',
         \ 'coc-snippets']
 
 inoremap <silent><expr> <TAB>
@@ -520,6 +549,11 @@ omap ac <Plug>(coc-classobj-a)
 " === coc-explorer
 " ===
 nmap tt :CocCommand explorer<CR>
+
+" ===
+" === coc-yank
+" ===
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
 " ===
 " === coc-snippets

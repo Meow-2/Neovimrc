@@ -54,7 +54,7 @@
     "diagnostic.refreshOnInsertMode": false,
     "diagnostic.checkCurrentLine": true,
     "diagnostic.virtualTextPrefix": " ❯❯❯ ",
-    "diagnostic.virtualText": false,
+    "diagnostic.virtualText": true,
     "codeLens.enable": true,
     "explorer.width": 30,
     "explorer.quitOnOpen": true,
@@ -72,5 +72,6 @@
     "explorer.file.showHiddenFiles": true,
     "explorer.icon.enableNerdfont": true,
     "explorer.buffer.showHiddenBuffers": false,
-    "explorer.openAction.strategy": "tab"
+    "explorer.openAction.strategy": "tab",
+    "yank.enableCompletion": false
 }

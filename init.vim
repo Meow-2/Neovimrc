@@ -129,8 +129,7 @@ noremap <silent> \v v$h
 vnoremap y "+y
 nnoremap Y y$
 " p in the font of cursor
-" noremap p hp
-
+" noremap ,p h"0p
 
 " placeholde
 map <LEADER><LEADER> <esc>/<ZK><CR>:nohlsearch<CR>c4l
@@ -343,7 +342,7 @@ let g:VM_maps["Add Cursor Up"]='<C-k>'
 " let g:tcomment_textobject_inlinecomment = ''
 let g:tcomment_mapleader1=''
 nmap  gcc
-vmap  gcc
+vmap  gc
 " vmap <LEADER>/ g>
 " nmap <LEADER>. g<c
 " vmap <LEADER>. g<
@@ -555,6 +554,7 @@ nmap tt :CocCommand explorer<CR>
 " === coc-yank
 " ===
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+inoremap <silent> <leader>y  <esc>:<C-u>CocList -A --normal yank<cr>
 
 " ===
 " === coc-snippets

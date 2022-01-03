@@ -1,5 +1,4 @@
-" === 
-" === Auto load for first time uses
+
 " === 
 if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs
@@ -56,6 +55,7 @@ set lazyredraw
 set ttyfast
 set showtabline=2
 set mouse=a
+set whichwrap+=<,>,[,],h,l
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif                  " record cursor when exit
 " save the history
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
@@ -67,6 +67,11 @@ if has('persistent_undo')
 	set undofile
 	set undodir=$HOME/.config/nvim/tmp/undo,.
 endif
+set ttimeoutlen=0
+set notimeout
+set updatetime=100
+set virtualedit=block
+
 
 " terminal behaviors
 let g:neoterm_autoscroll = 1
@@ -111,7 +116,7 @@ inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-l> <esc>A
 inoremap <C-z> <esc>ua
-inoremap <C-y> <esc><C-r>a
+" inoremap <C-y> <esc><C-r>a
 inoremap jj <esc>l
 inoremap <esc> <esc>l
 
@@ -270,6 +275,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " run 
 Plug 'skywind3000/asyncrun.vim'
+
+" markdown
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
+Plug 'dkarter/bullets.vim'
+
 
 call plug#end()
 
@@ -477,7 +489,6 @@ let g:far#mapping = {
 		\ "replace_undo" : ["l"],
 		\ }
 
-
 " ===
 " === coc.nvim
 " ===
@@ -553,8 +564,8 @@ nmap tt :CocCommand explorer<CR>
 " ===
 " === coc-yank
 " ===
-nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
-inoremap <silent> <leader>y  <esc>:<C-u>CocList -A --normal yank<cr>
+nnoremap <silent> <C-y>  :<C-u>CocList -A --normal yank<cr>
+inoremap <silent> <C-y>  <esc>:<C-u>CocList -A --normal yank<cr>
 
 " ===
 " === coc-snippets
@@ -583,3 +594,40 @@ if has_machine_specific_file == 0
 	exec "e ~/.config/nvim/_machine_specific.vim"
 endif
 
+
+" == 
+" == vim-instant-markdown 
+" == 
+filetype plugin on
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_autoscroll = 1
+
+
+" ===
+" === vim-table-mode
+" ===
+noremap tm :TableModeToggle<CR>
+"let g:table_mode_disable_mappings = 1
+let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+
+" ===
+" === vim-markdown-toc
+" ===
+"let g:vmt_auto_update_on_save = 0
+"let g:vmt_dont_insert_fence = 1
+let g:vmt_cycle_list_item_markers = 1
+let g:vmt_fence_text = 'TOC'
+let g:vmt_fence_closing_text = '/TOC'
+
+
+" ===
+" === bullets.vim
+" ===
+" let g:bullets_set_mappings = 0
+let g:bullets_enabled_file_types = [
+			\ 'markdown',
+			\ 'text',
+			\ 'gitcommit',
+			\ 'scratch'
+			\]

@@ -177,7 +177,7 @@ map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
 " noremap <LEADER>v <C-v>
 
 " run
-noremap <F5> :call CompileRunGcc()<CR>
+nnoremap <F5> :call compile#CompileRunGcc()<CR>
 
 " plug
 call plug#begin('$HOME/.config/nvim/plugged')

@@ -1,4 +1,4 @@
-func! CompileRunGcc()
+func! compile#CompileRunGcc()
 	exec "w"
 	if &filetype == 'c'
 		exec "!g++ % -o %<"

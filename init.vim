@@ -170,7 +170,7 @@ noremap tml :+tabmove<CR>
 map s <nop>
 map S :w<CR>
 map Q :q<CR>
-map R :source $HOME/.config/nvim/init.vim<CR>
+" map R :source $HOME/.config/nvim/init.vim<CR>
 map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
  
 " visual-block can use <C-q>
@@ -178,55 +178,6 @@ map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
 
 " run
 noremap <F5> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'cpp'
-        exec "silent !rm -rf build;mkdir build;"
-        :AsyncRun -cwd=$(VIM_FILEDIR)/build clang++ -std=c++17 -g -Wall -pthread  -o "$(VIM_FILEDIR)/build/$(VIM_FILENOEXT)" "$(VIM_FILEPATH)" && ./$(VIM_FILENOEXT) 
-		" set splitbelow
-        " :sp
-        " :res -5
-        " :term rm -rf build > /dev/null && mkdir -p build && cd build && clang++ -std=c++17 -g -Wall -pthread  -o ./%< ../% && ./%< 
-	elseif &filetype == 'cs'
-		set splitbelow
-		silent! exec "!mcs %"
-		:sp
-		:res -5
-		:term mono %<.exe
-	elseif &filetype == 'java'
-		set splitbelow
-		:sp
-		:res -5
-		:term javac % && time java %<
-	elseif &filetype == 'sh'
-		:!time bash %
-	elseif &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python3 %
-	elseif &filetype == 'html'
-		silent! exec "!".g:mkdp_browser." % &"
-	elseif &filetype == 'markdown'
-		exec "InstantMarkdownPreview"
-	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
-	elseif &filetype == 'dart'
-		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
-		silent! exec "CocCommand flutter.dev.openDevLog"
-	elseif &filetype == 'javascript'
-		set splitbelow
-		:sp
-		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
-	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run .
-	endif
-endfunc
 
 " plug
 call plug#begin('$HOME/.config/nvim/plugged')
@@ -277,7 +228,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'skywind3000/asyncrun.vim'
 
 " markdown
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
@@ -435,7 +386,7 @@ let g:rnvimr_pick_enable = 1
 let g:rnvimr_draw_border = 1
 " let g:rnvimr_bw_enable = 1
 highlight link RnvimrNormal CursorLine
-nnoremap <silent> <leader>e :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
             \ '<C-t>': 'NvimEdit tabedit',
             \ '<C-x>': 'NvimEdit split',
@@ -593,16 +544,6 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatop
 if has_machine_specific_file == 0
 	exec "e ~/.config/nvim/_machine_specific.vim"
 endif
-
-
-" == 
-" == vim-instant-markdown 
-" == 
-filetype plugin on
-let g:instant_markdown_slow = 1
-let g:instant_markdown_autostart = 0
-let g:instant_markdown_autoscroll = 1
-
 
 " ===
 " === vim-table-mode

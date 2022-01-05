@@ -1,5 +1,6 @@
-
-" === 
+" ===
+" === Auto load for first time uses
+" ===
 if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -75,7 +76,7 @@ set virtualedit=block
 
 " terminal behaviors
 let g:neoterm_autoscroll = 1
-autocmd TermOpen term://* startinsert
+" autocmd TermOpen term://* startinsert
 noremap <LEADER>t :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>
 tnoremap <C-N> <C-\><C-N>
 tnoremap <C-O> <C-\><C-N><C-O>
@@ -98,7 +99,7 @@ set smartcase
 
 noremap n nzz
 noremap N Nzz
-noremap <LEADER><CR> :nohlsearch<CR>
+" noremap <LEADER><CR> :nohlsearch<CR>
 
 " move
 noremap H 0
@@ -111,15 +112,15 @@ noremap L $
 " inoremap <C-l> <esc>A
 
 " control
-inoremap <C-h> <esc>I
+" inoremap <C-h> <esc>I
 inoremap <C-j> <down>
 inoremap <C-k> <up>
-inoremap <C-l> <esc>A
+" inoremap <C-l> <esc>A
 inoremap <C-z> <esc>ua
 " inoremap <C-y> <esc><C-r>a
 inoremap jj <esc>l
-inoremap <esc> <esc>l
-
+inoremap <silent> <esc> <esc>l:nohlsearch<cr>
+noremap <silent> <esc> <esc>:nohlsearch<cr>
 
 " fold code
 noremap <silent> <LEADER>i zf%
@@ -137,7 +138,7 @@ nnoremap Y y$
 " noremap ,p h"0p
 
 " placeholde
-map <LEADER><LEADER> <esc>/<ZK><CR>:nohlsearch<CR>c4l
+map <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 
 " split
 exec "set splitbelow"
@@ -169,15 +170,14 @@ noremap tml :+tabmove<CR>
 " save
 map s <nop>
 map S :w<CR>
-map Q :q<CR>
+noremap Q q
+noremap q :q!<CR>
 " map R :source $HOME/.config/nvim/init.vim<CR>
 map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
  
 " visual-block can use <C-q>
 " noremap <LEADER>v <C-v>
 
-" run
-nnoremap <F5> :call compile#CompileRunGcc()<CR>
 
 " plug
 call plug#begin('$HOME/.config/nvim/plugged')
@@ -207,6 +207,7 @@ Plug 'tpope/vim-surround'          " type yskw' to wrap the word with '' or type
 Plug 'godlygeek/tabular'           " ga, or :Tabularize <regex> to align
 Plug 'lambdalisue/suda.vim'
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} .p
+Plug 'lilydjwg/fcitx.vim' " auto chinese to english
 
 " File navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -226,13 +227,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " run 
 Plug 'skywind3000/asyncrun.vim'
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enable-python '}
 
 " markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
-
 
 call plug#end()
 
@@ -435,10 +436,10 @@ let g:scrollstatus_size = 15
 " ===
 " === Far.vim
 " ===
-noremap <LEADER>f :F  **/*<left><left><left><left><left>
-let g:far#mapping = {
-		\ "replace_undo" : ["l"],
-		\ }
+" noremap <LEADER>f :F  **/*<left><left><left><left><left>
+" let g:far#mapping = {
+" 		\ "replace_undo" : ["l"],
+" 		\ }
 
 " ===
 " === coc.nvim
@@ -459,7 +460,9 @@ inoremap <silent><expr> <TAB>
 	\ <SID>check_back_space() ? "\<TAB>" :
 	\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
@@ -475,7 +478,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>q  <Plug>(coc-fix-current)
+nmap <leader>f  <Plug>(coc-fix-current)
 
 nnoremap <silent> <LEADER>p :call <SID>show_documentation()<CR>
 
@@ -512,6 +515,7 @@ omap ac <Plug>(coc-classobj-a)
 " ===
 nmap tt :CocCommand explorer<CR>
 
+
 " ===
 " === coc-yank
 " ===
@@ -521,13 +525,13 @@ inoremap <silent> <C-y>  <esc>:<C-u>CocList -A --normal yank<cr>
 " ===
 " === coc-snippets
 " ===
-" imap <C-l> <Plug>(coc-snippets-expand)
-" vmap <C-j> <Plug>(coc-snippets-select)
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
-" imap <C-j> <Plug>(coc-snippets-expand-jump)
-" let g:snips_author = 'David Chen'
-" autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+let g:snips_author = 'David Chen'
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 
 " ===
@@ -535,15 +539,43 @@ let g:coc_snippet_prev = '<S-TAB>'
 " ===
 let g:asyncrun_open = 12
 let g:asyncrun_bell = 1
-nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <F1> :call compile#CompileRunGcc()<CR>
+nnoremap <F2> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <leader><F1> :call compile#CompileGcc()<CR> 
 
-" auto comment disabled
-autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" ===
+" === vimspector
+" ===
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+nnoremap <F3> :tabclose<CR>
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+function! s:read_template_into_buffer(template)
+	" has to be a function to avoid the extra space fzf#run insers otherwise
+	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+endfunction
+command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
+			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+			\   'down': 20,
+			\   'sink': function('<sid>read_template_into_buffer')
+			\ })
+noremap <leader>db :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
+sign define vimspectorBP text=☛ texthl=Normal
+sign define vimspectorBPDisabled text=☞ texthl=Normal
+sign define vimspectorPC text=▶ texthl=SpellBad
 
-" Open the _machine_specific.vim file if it has just been created
-if has_machine_specific_file == 0
-	exec "e ~/.config/nvim/_machine_specific.vim"
-endif
+" ===
+" === Markdown Settings
+" ===
+" Snippets
+source $HOME/.config/nvim/md-snippets.vim
+
+" ===
+" === markdown-preview.nvim
+" ===
 
 " ===
 " === vim-table-mode
@@ -555,6 +587,7 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " ===
 " === vim-markdown-toc
 " ===
+
 "let g:vmt_auto_update_on_save = 0
 "let g:vmt_dont_insert_fence = 1
 let g:vmt_cycle_list_item_markers = 1
@@ -572,3 +605,11 @@ let g:bullets_enabled_file_types = [
 			\ 'gitcommit',
 			\ 'scratch'
 			\]
+
+" auto comment disabled
+autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Open the _machine_specific.vim file if it has just been created
+if has_machine_specific_file == 0
+	exec "e ~/.config/nvim/_machine_specific.vim"
+endif

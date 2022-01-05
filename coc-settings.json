@@ -17,7 +17,9 @@
     "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.extensionUpdateCheck": "daily",
     "coc.preferences.formatOnSaveFiletypes": ["json", "cpp"],
+    "coc.preferences.snippetStatusText": "Ⓢ ",
     "suggest.noselect": true,
+    "suggest.snippetIndicator": "",
     "suggest.enablePreselect": false,
     "suggest.completionItemKindLabels": {
         "class": "\uf0e8",
@@ -73,5 +75,23 @@
     "explorer.icon.enableNerdfont": true,
     "explorer.buffer.showHiddenBuffers": false,
     "explorer.openAction.strategy": "tab",
-    "yank.enableCompletion": false
+    "explorer.keyMappings.global": {
+        "yp": "copyFilepath",
+        "yn": "copyFilename",
+        "yy": "copyFile",
+        "dd": "cutFile",
+        "pp": "pasteFile",
+        "dD": "delete",
+        "V": "addFile",
+        "M": "addDirectory",
+        "R": "refresh",
+        "cw": "rename",
+        "zh": "toggleHidden",
+        "q": "quit",
+        "f": "search",
+        "[": "sourcePrev",
+        "]": "sourceNext"
+    },
+    "yank.enableCompletion": false,
+    "snippets.ultisnips.directories": ["$HOME/.config/nvim/Ultisnips/"]
 }

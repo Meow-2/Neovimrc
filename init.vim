@@ -144,7 +144,7 @@ map <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 exec "set splitbelow"
 map SH :set nosplitright<CR>:vsplit<CR>
 map SJ :set splitbelow<CR>:split<CR>
-s
+map SK :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
 map SL :set splitright<CR>:vsplit<CR>
 
 map <LEADER>h <C-w>h

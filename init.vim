@@ -142,10 +142,10 @@ map <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 
 " split
 exec "set splitbelow"
-map sh :set nosplitright<CR>:vsplit<CR>
-map sj :set splitbelow<CR>:split<CR>
-map sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-map sl :set splitright<CR>:vsplit<CR>
+map Sh :set nosplitright<CR>:vsplit<CR>
+map Sj :set splitbelow<CR>:split<CR>
+map Sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+map Sl :set splitright<CR>:vsplit<CR>
 
 map <LEADER>h <C-w>h
 map <LEADER>j <C-w>j
@@ -168,8 +168,8 @@ noremap tmh :-tabmove<CR>
 noremap tml :+tabmove<CR>
   
 " save
-map s <nop>
-map S :w<CR>
+" map s <nop>
+map s :w<CR>
 noremap Q q
 noremap q :q!<CR>
 " map R :source $HOME/.config/nvim/init.vim<CR>

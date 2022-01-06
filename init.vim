@@ -56,7 +56,7 @@ set lazyredraw
 set ttyfast
 set showtabline=2
 set mouse=a
-set whichwrap+=<,>,[,],h,l
+" set whichwrap+=<,>,[,],h,l   " alow h to last line
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif                  " record cursor when exit
 " save the history
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
@@ -77,7 +77,7 @@ set virtualedit=block
 " terminal behaviors
 let g:neoterm_autoscroll = 1
 " autocmd TermOpen term://* startinsert
-noremap <LEADER>t :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>
+noremap <LEADER>t :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>i
 tnoremap <C-N> <C-\><C-N>
 tnoremap <C-O> <C-\><C-N><C-O>
 
@@ -118,7 +118,7 @@ inoremap <C-k> <up>
 " inoremap <C-l> <esc>A
 inoremap <C-z> <esc>ua
 " inoremap <C-y> <esc><C-r>a
-inoremap jj <esc>l
+" inoremap jj <esc>l
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
 
@@ -227,6 +227,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " run 
 Plug 'skywind3000/asyncrun.vim'
+Plug 'skywind3000/asynctasks.vim'
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enable-python '}
 
 " markdown
@@ -539,16 +540,24 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 " ===
 let g:asyncrun_open = 12
 let g:asyncrun_bell = 1
-nnoremap <F1> :call compile#CompileRunGcc()<CR>
-nnoremap <F2> :call asyncrun#quickfix_toggle(6)<cr>
-nnoremap <leader><F1> :call compile#CompileGcc()<CR> 
+" nnoremap <F1> :call compile#CompileRunGcc()<CR>
+" nnoremap <F2> :call asyncrun#quickfix_toggle(6)<cr>
+" nnoremap <leader><F1> :call compile#CompileGcc()<CR> 
+
+" ===
+" === asynctasks.vim
+" ===
+nnoremap <silent><F1> :call f1map#source_vimrc_and_file_build()<cr>
+nnoremap <silent><F2> :AsyncTask file-run<cr>
+nnoremap <silent><F3> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <silent><F4> :tabclose<cr>
 
 " ===
 " === vimspector
 " ===
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
-nnoremap <F3> :tabclose<CR>
+" nnoremap <F3> :tabclose<CR>
 " for normal mode - the word under the cursor
 nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
@@ -565,7 +574,7 @@ command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
 noremap <leader>db :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
 sign define vimspectorBP text=☛ texthl=Normal
 sign define vimspectorBPDisabled text=☞ texthl=Normal
-sign define vimspectorPC text=▶ texthl=SpellBad
+sign define vimspectorPC text=🔶 texthl=SpellBad
 
 " ===
 " === Markdown Settings

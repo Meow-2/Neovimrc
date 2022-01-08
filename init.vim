@@ -74,13 +74,6 @@ set updatetime=100
 set virtualedit=block
 
 
-" terminal behaviors
-let g:neoterm_autoscroll = 1
-" autocmd TermOpen term://* startinsert
-noremap <LEADER>t :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>i
-tnoremap <C-N> <C-\><C-N>
-tnoremap <C-O> <C-\><C-N><C-O>
-
 " tab
 set tw=0
 set expandtab
@@ -216,6 +209,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 Plug 'kevinhwang91/rnvimr'
+Plug 'voldikss/vim-floaterm'
+
 
 " taglist
 Plug 'liuchengxu/vista.vim'        
@@ -412,6 +407,19 @@ let g:rnvimr_action = {
 "             \ 'style': 'minimal'
 "             \ }
 let g:rnvimr_presets = [{'width': 0.7, 'height': 0.7}]
+
+" ===
+" === vim-floaterm
+" ===
+" terminal behaviors
+let g:neoterm_autoscroll = 1
+" autocmd TermOpen term://* startinsert
+" noremap T :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>i
+nnoremap T :FloatermNew --height=0.75 --width=0.7<cr>
+tnoremap <esc> <C-\><C-N>:q!<cr>
+" tnoremap <C-O> <C-\><C-N><C-O>
+
+
 
 
 " ===

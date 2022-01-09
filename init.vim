@@ -419,9 +419,6 @@ nnoremap T :FloatermNew --height=0.75 --width=0.7<cr>
 tnoremap <esc> <C-\><C-N>:q!<cr>
 " tnoremap <C-O> <C-\><C-N><C-O>
 
-
-
-
 " ===
 " === Vista.vim
 " ===

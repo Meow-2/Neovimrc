@@ -106,12 +106,13 @@ noremap L $
 
 " control
 " inoremap <C-h> <esc>I
-inoremap <C-j> <down>
-inoremap <C-k> <up>
+" inoremap <C-j> <down>
+" inoremap <C-k> <up>
 " inoremap <C-l> <esc>A
-inoremap <C-z> <esc>ua
+" inoremap <C-z> <esc>ua
 " inoremap <C-y> <esc><C-r>a
 " inoremap jj <esc>l
+nnoremap <C-a> ggVG
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
 

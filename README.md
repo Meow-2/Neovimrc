@@ -30,6 +30,10 @@
 | normal   | gr                 | <Plug\>(coc-references)                                     |
 | normal   | \v                 | v$h                                                         |
 | normal   | \p                 | :echo expand('%:p')<CR\>                                    |
+| normal   | m                  | init_selection(treesitter)                                  |
+| normal   | m                  | node_incremental(treesitter)                                |
+| normal   | ,                  | node_decremental(treesitter)                                |
+| normal   | <CR>              | scope_incremental(treesitter)                               |
 | normal   | <esc\>             | <esc\>:nohlsearch<cr\>                                      |
 | normal   | <C-y\>             | :<C-u\>CocList -A --normal yank<cr\>                        |
 | normal   | <C-f\>             | :Rg<CR\>                                                    |
@@ -40,10 +44,10 @@
 | normal   | <C-p\>             | :Leaderf file<CR\>                                          |
 | normal   | <C-]\>             | find tags by LeaderF                                        |
 | normal   | <C-/\>             | gcc                                                         |
-| normal   | <c-l\>             | 'Find Under' visual-multi                                   |
-| normal   | <c-l\>             | 'Find Subword Under' visual-multi                           |
-| normal   | <c-j\>             | 'Add Cursor Down' visual-multi                              |
-| normal   | <c-k\>             | 'Add Cursor Up' visual-multi                                |
+| normal   | <C-l\>             | 'Find Under' visual-multi                                   |
+| normal   | <C-l\>             | 'Find Subword Under' visual-multi                           |
+| normal   | <C-j\>             | 'Add Cursor Down' visual-multi                              |
+| normal   | <C-k\>             | 'Add Cursor Up' visual-multi                                |
 | normal   | \\q                | 'Cancel the last Selected Cursor ' visual-multi             |
 | normal   | <F1\>              | :call f1map#source_vimrc_and_file_build()<cr\>              |
 | normal   | <F2\>              | :AsyncTask file-run<cr\>                                    |
@@ -79,7 +83,7 @@
 | insert   | <C-l\>             | <Plug\>(coc-snippets-expand)                                |
 | insert   | <C-j\>             | <Plug\>(coc-snippets-expand-jump)                           |
 | insert   | <C-y\>             | <esc\>:<C-u\>CocList -A --normal yank<cr\>                  |
-| insert   | <c-space\>         | coc#refresh()                                               |
+| insert   | <C-space\>         | coc#refresh()                                               |
 | visual   | <C-j\>             | <Plug\>(coc-snippets-select)                                |
 | visual   | <C-/\>             | gc                                                          |
 | visual   | ga                 | :Tabularize /                                               |

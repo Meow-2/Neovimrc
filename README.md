@@ -1,6 +1,6 @@
 # This is my shortcut in nvim
 
-| Mode     | Key                | Map/effect                                                  |
+| Mode     | Key                | Map                                                         |
 |----------|--------------------|-------------------------------------------------------------|
 | normal   | s                  | :w<CR\>                                                     |
 | normal   | q                  | :q!<CR\>                                                    |

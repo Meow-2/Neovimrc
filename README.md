@@ -31,7 +31,6 @@
 | normal   | \v                 | v$h                                                         |
 | normal   | \p                 | :echo expand('%:p')<CR\>                                    |
 | normal   | <esc\>             | <esc\>:nohlsearch<cr\>                                      |
-| normal   | <C-a\>             | ggVG                                                        |
 | normal   | <C-y\>             | :<C-u\>CocList -A --normal yank<cr\>                        |
 | normal   | <C-f\>             | :Rg<CR\>                                                    |
 | normal   | <C-h\>             | :History<CR\>                                               |
@@ -76,6 +75,7 @@
 | normal   | <LEADER\><up\>     | :res +5<CR\>                                                |
 | normal   | <LEADER\><right\>  | :vertical resize-5<CR\>                                     |
 | normal   | <LEADER\><LEADER\> | <esc\>/<++\><CR\>:nohlsearch<CR\>c4l                        |
+| insert   | <C-a\>             | <esc>ggVG                                                   |
 | insert   | <C-l\>             | <Plug\>(coc-snippets-expand)                                |
 | insert   | <C-j\>             | <Plug\>(coc-snippets-expand-jump)                           |
 | insert   | <C-y\>             | <esc\>:<C-u\>CocList -A --normal yank<cr\>                  |

@@ -112,7 +112,7 @@ noremap L $
 " inoremap <C-z> <esc>ua
 " inoremap <C-y> <esc><C-r>a
 " inoremap jj <esc>l
-nnoremap <C-a> ggVG
+inoremap <C-a> <esc>ggVG
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
 

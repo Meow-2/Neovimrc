@@ -201,7 +201,8 @@ Plug 'theniceboy/antovim'          " gs to switch false and true
 Plug 'tpope/vim-surround'          " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'godlygeek/tabular'           " ga, or :Tabularize <regex> to align
 Plug 'lambdalisue/suda.vim'
-Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} .p
+" Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} .p
+Plug 'wellle/targets.vim'
 Plug 'lilydjwg/fcitx.vim' " auto chinese to english
 
 " File navigation
@@ -246,6 +247,15 @@ require'nvim-treesitter.configs'.setup {
     enable = true,              -- false will disable the whole extension
     disable = { },  -- list of language that will be disabled
   },
+  incremental_selection ={
+  enable = true,
+    keymaps = {
+      init_selection = 'm',
+      node_incremental = 'm',
+      scope_incremental = '<TAB>',
+      node_decremental = ',',
+    }
+  }
 }
 EOF
 
@@ -314,6 +324,11 @@ vmap  gc
 " === tabular
 " ===
 vmap ga :Tabularize /
+
+
+" ===
+" === targets.vim
+" ===
 
 
 " ===

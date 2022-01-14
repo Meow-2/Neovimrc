@@ -1,3 +1,6 @@
+if exists('g:vscode')
+    source ~/.config/nvim/vscode.vim
+else
 " ===
 " === Auto load for first time uses
 " ===
@@ -120,6 +123,9 @@ noremap <silent> <esc> <esc>:nohlsearch<cr>
 noremap <silent> <LEADER>i zf%
 noremap <silent> <LEADER>o za
 
+" make mark
+noremap M m
+
 " select from cursor to the end of line 
 noremap <silent> \v v$h
 
@@ -137,10 +143,10 @@ map <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 " split
 exec "set splitbelow"
 map S <nop>
-map SH :set nosplitright<CR>:vsplit<CR>
-map SJ :set splitbelow<CR>:split<CR>
-map SK :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-map SL :set splitright<CR>:vsplit<CR>
+map Sh :set nosplitright<CR>:vsplit<CR>
+map Sj :set splitbelow<CR>:split<CR>
+map Sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+map Sl :set splitright<CR>:vsplit<CR>
 
 map <LEADER>h <C-w>h
 map <LEADER>j <C-w>j
@@ -284,7 +290,8 @@ set termguicolors " enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 color deus
 hi NonText ctermfg=gray guifg=grey10
-" hi CursorLine guibg=#444444
+" Transparent and Gaussian blur for bg
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
 
 " ===
 " === vim-startify
@@ -669,4 +676,7 @@ endif
 
 
 " alacritty cursor to beam
+
 autocmd VimLeave * set guicursor=a:ver25-iCursor
+
+endif

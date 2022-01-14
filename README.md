@@ -13,10 +13,10 @@
 | normal   | R                  | :RnvimrToggle<CR\><C-\\><C-n\>:RnvimrResize 0<CR\>          |
 | normal   | T                  | :FloatermNew --height=0.75 --width=0.7<cr\>                 |
 | normal   | S                  | <nop\>                                                      |
-| normal   | SH                 | :set nosplitright<CR\>:vsplit<CR\>                          |
-| normal   | SJ                 | :set splitbelow<CR\>:split<CR\>                             |
-| normal   | SK                 | :set nosplitbelow<CR\>:split<CR\>:set splitbelow<CR\>       |
-| normal   | SL                 | :set splitright<CR\>:vsplit<CR\>                            |
+| normal   | Sh                 | :set nosplitright<CR\>:vsplit<CR\>                          |
+| normal   | Sj                 | :set splitbelow<CR\>:split<CR\>                             |
+| normal   | Sk                 | :set nosplitbelow<CR\>:split<CR\>:set splitbelow<CR\>       |
+| normal   | Sl                 | :set splitright<CR\>:vsplit<CR\>                            |
 | normal   | tt                 | :CocCommand explorer<CR\>                                   |
 | normal   | to                 | :XTabMode<CR\>                                              |
 | normal   | tn                 | :tabe<CR\>                                                  |
@@ -30,10 +30,11 @@
 | normal   | gr                 | <Plug\>(coc-references)                                     |
 | normal   | \v                 | v$h                                                         |
 | normal   | \p                 | :echo expand('%:p')<CR\>                                    |
+| normal   | M                  | make mark                                                   |
 | normal   | m                  | init_selection(treesitter)                                  |
 | normal   | m                  | node_incremental(treesitter)                                |
 | normal   | ,                  | node_decremental(treesitter)                                |
-| normal   | <CR>              | scope_incremental(treesitter)                               |
+| normal   | <CR>               | scope_incremental(treesitter)                               |
 | normal   | <esc\>             | <esc\>:nohlsearch<cr\>                                      |
 | normal   | <C-y\>             | :<C-u\>CocList -A --normal yank<cr\>                        |
 | normal   | <C-f\>             | :Rg<CR\>                                                    |
@@ -99,7 +100,6 @@
 | xmap     | <LEADER\>a         | <Plug\>(coc-codeaction-selected)                            |
 | xmap     | <LEADER\>di        | <Plug\>VimspectorBalloonEval                                |
 | terminal | <esc\>             | <C-\\><C-N\>:q!<cr\>                                        |
-
 
 
 

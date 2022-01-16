@@ -128,12 +128,13 @@ noremap M m
 
 " select from cursor to the end of line 
 noremap <silent> \v v$h
-
+noremap v viw
 
 " copy and paste
-" visual copy to system clipboard ,it can avoid system polluted by ciw
-vnoremap y "+y
-nnoremap Y y$
+" copy to system clipboard ,it can avoid system polluted by ciw
+noremap y "+y
+noremap yy "+yy
+nnoremap Y "+y$
 " p in the font of cursor
 " noremap ,p h"0p
 

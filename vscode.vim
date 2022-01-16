@@ -27,8 +27,10 @@ inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
 noremap M m
 noremap <silent> \v v$h
-vnoremap y "+y
-nnoremap Y y$
+noremap y "+y
+noremap yy "+y
+nnoremap Y "+y$
+noremap v viw
 map <LEADER>rc :e $HOME/.config/nvim/vscode.vim<CR>
 map <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 exec "set splitbelow"
@@ -42,7 +44,7 @@ map th :tabp<CR>
 map tl :tabn<CR>
 map tc :tabclose<CR>
 nnoremap tt <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>
-nnoremap <C-w>gd <Cmd>call VSCodeNotify('editor.action.revealDefinitionAside')<CR>
+" nnoremap T <Cmd>call VSCodeNotify('workbench.action.terminal.focus')<CR>
 
 map <LEADER>h <C-w>h
 map <LEADER>j <C-w>j
@@ -141,4 +143,7 @@ let g:vmt_fence_closing_text = '/TOC'
 " 			\ 'scratch'
 " 			\]
 
+" auto comment disabled
+autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif                  " record cursor when exit

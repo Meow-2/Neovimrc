@@ -128,7 +128,6 @@ noremap M m
 
 " select from cursor to the end of line 
 noremap <silent> \v v$h
-noremap v viw
 
 " copy and paste
 " copy to system clipboard ,it can avoid system polluted by ciw

@@ -23,6 +23,8 @@ noremap H 0
 noremap J 5j
 noremap K 5k
 noremap L $
+" nnoremap <c-h> 0
+" nnoremap <c-l> $
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
 noremap M m
@@ -30,7 +32,6 @@ noremap <silent> \v v$h
 noremap y "+y
 noremap yy "+y
 nnoremap Y "+y$
-noremap v viw
 map <LEADER>rc :e $HOME/.config/nvim/vscode.vim<CR>
 map <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 exec "set splitbelow"
@@ -57,7 +58,7 @@ noremap Q q
 
 call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'mg979/vim-visual-multi'
+" Plug 'mg979/vim-visual-multi'
 Plug 'tomtom/tcomment_vim'         " in <space>cn to comment a line
 Plug 'theniceboy/antovim'          " gs to switch false and true
 Plug 'tpope/vim-surround'          " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`

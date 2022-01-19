@@ -39,6 +39,7 @@ source $HOME/.config/nvim/_machine_specific.vim
 
 
 " base 
+language en_US.utf-8
 let mapleader=" "
 let &t_ut=''
 syntax on

@@ -30,7 +30,7 @@ noremap <silent> <esc> <esc>:nohlsearch<cr>
 noremap M m
 noremap <silent> \v v$h
 noremap y "+y
-noremap yy "+y
+noremap yy "+yy
 nnoremap Y "+y$
 map <LEADER>rc :e $HOME/.config/nvim/vscode.vim<CR>
 map <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l

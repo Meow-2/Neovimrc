@@ -116,7 +116,11 @@ noremap L $
 " inoremap <C-z> <esc>ua
 " inoremap <C-y> <esc><C-r>a
 " inoremap jj <esc>l
-inoremap <C-a> <esc>ggVG
+nnoremap <c-j> <c-v>
+vnoremap <c-j> j            
+nnoremap <c-k> <c-v>k       
+vnoremap <c-k> k            
+inoremap <C-a> <esc>ggVG    
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
 
@@ -313,8 +317,8 @@ hi NonText ctermfg=gray guifg=grey10
 let g:VM_maps = {}
 let g:VM_maps['Find Under']='<C-l>'
 let g:VM_maps['Find Subword Under']='<C-l>'
-let g:VM_maps["Add Cursor Down"]='<C-j>'
-let g:VM_maps["Add Cursor Up"]='<C-k>'  
+" let g:VM_maps["Add Cursor Down"]='<C-j>'
+" let g:VM_maps["Add Cursor Up"]='<C-k>'  
 
 " ===
 " === tcomment_vim
@@ -559,7 +563,7 @@ inoremap <silent> <C-y>  <esc>:<C-u>CocList -A --normal yank<cr>
 " === coc-snippets
 " ===
 imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-j> <Plug>(coc-snippets-select)
+" vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)

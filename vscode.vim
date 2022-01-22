@@ -32,6 +32,8 @@ noremap <silent> \v v$h
 noremap y "+y
 noremap yy "+yy
 nnoremap Y "+y$
+nnoremap <c-j> <c-v>j
+nnoremap <c-k> <c-v>k
 map <LEADER>rc :e $HOME/.config/nvim/vscode.vim<CR>
 map <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 exec "set splitbelow"

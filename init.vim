@@ -137,7 +137,7 @@ noremap <silent> \v v$h
 " copy and paste
 " copy to system clipboard ,it can avoid system polluted by ciw
 noremap y "+y
-noremap yy "+yy
+nnoremap yy "+yy
 nnoremap Y "+y$
 " p in the font of cursor
 " noremap ,p h"0p

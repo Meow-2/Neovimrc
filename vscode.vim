@@ -30,7 +30,7 @@ noremap <silent> <esc> <esc>:nohlsearch<cr>
 noremap M m
 noremap <silent> \v v$h
 noremap y "+y
-noremap yy "+yy
+nnoremap yy "+yy
 nnoremap Y "+y$
 nnoremap <c-j> <c-v>j
 nnoremap <c-k> <c-v>k

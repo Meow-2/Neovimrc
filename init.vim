@@ -194,15 +194,20 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 
 " Status line
-Plug 'theniceboy/eleline.vim'
-Plug 'ojroques/vim-scrollstatus'
-Plug 'mg979/vim-xtabline'
+" Plug 'theniceboy/eleline.vim'
+" Plug 'ojroques/vim-scrollstatus'
+" Plug 'mg979/vim-xtabline'
+Plug 'glepnir/spaceline.vim'
+Plug 'akinsho/bufferline.nvim'
 
 " themes
 Plug 'theniceboy/nvim-deus'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
+" Plug 'glepnir/dashboard-nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
 
 " Editor Enhancement
 Plug 'mg979/vim-visual-multi'
@@ -271,20 +276,32 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " ===
-" === xtabline
+" === bufferline.nvim
 " ===
-let g:xtabline_settings = {}
-let g:xtabline_settings.enable_mappings = 0
-let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-let g:xtabline_settings.enable_persistance = 0
-let g:xtabline_settings.last_open_first = 1
-noremap to :XTabMode<CR>
-noremap \p :echo expand('%:p')<CR>
+set termguicolors
+lua << EOF
+require("bufferline").setup{
+options = {
+    diagnostics = "coc"
+    }
+}
+EOF
+
+" " ===
+" " === xtabline
+" " ===
+" let g:xtabline_settings = {}
+" let g:xtabline_settings.enable_mappings = 0
+" let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+" let g:xtabline_settings.enable_persistance = 0
+" let g:xtabline_settings.last_open_first = 1
+" noremap to :XTabMode<CR>
+" noremap \p :echo expand('%:p')<CR>
 
 " ===
 " === eleline.vim
 " ===
-let g:airline_powerline_fonts = 0
+" let g:airline_powerline_fonts = 0
 
 
 " ===
@@ -301,7 +318,7 @@ hi NonText ctermfg=gray guifg=grey10
 " ===
 " === vim-startify
 " ===
- let g:startify_custom_header = startify#pad(split(system('figlet -f slant -w 100 N E O V I M '), '\n'))
+let g:startify_custom_header = startify#pad(split(system('figlet -f slant -w 100 N E O V I M '), '\n'))
 " redir => test
 "   " silent echo 'one'
 "   " silent echo 'two'

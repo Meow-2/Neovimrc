@@ -120,7 +120,7 @@ nnoremap <c-j> <c-v>
 vnoremap <c-j> j            
 nnoremap <c-k> <c-v>k       
 vnoremap <c-k> k            
-inoremap <C-a> <esc>ggVG    
+" inoremap <C-a> <esc>ggVG    
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
 
@@ -250,6 +250,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
+Plug 'ferrine/md-img-paste.vim'
 
 call plug#end()
 
@@ -687,6 +688,13 @@ let g:bullets_enabled_file_types = [
 			\ 'gitcommit',
 			\ 'scratch'
 			\]
+
+" ===
+" === md-img-paste.vim
+" ===
+let g:mdip_imgdir = 'pic' 
+"设置默认图片名称。当图片名称没有给出时，使用默认图片名称
+let g:mdip_imgname = 'image'
 
 " auto comment disabled
 autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

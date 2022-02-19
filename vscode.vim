@@ -60,7 +60,7 @@ noremap Q q
 
 call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter'
-" Plug 'mg979/vim-visual-multi'
+Plug 'mg979/vim-visual-multi'
 Plug 'tomtom/tcomment_vim'         " in <space>cn to comment a line
 Plug 'theniceboy/antovim'          " gs to switch false and true
 Plug 'tpope/vim-surround'          " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`

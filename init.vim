@@ -196,9 +196,9 @@ Plug 'nvim-treesitter/playground'
 " Status line
 " Plug 'theniceboy/eleline.vim'
 " Plug 'ojroques/vim-scrollstatus'
-" Plug 'mg979/vim-xtabline'
+Plug 'mg979/vim-xtabline'
 Plug 'glepnir/spaceline.vim'
-Plug 'akinsho/bufferline.nvim'
+" Plug 'akinsho/bufferline.nvim'
 
 " themes
 Plug 'theniceboy/nvim-deus'
@@ -276,28 +276,50 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-" ===
-" === bufferline.nvim
-" ===
-set termguicolors
-lua << EOF
-require("bufferline").setup{
-options = {
-    diagnostics = "coc"
-    }
-}
-EOF
+" " ===
+" " === bufferline.nvim
+" " ===
+" set termguicolors
+" lua << EOF
+" require("bufferline").setup{
+" options = {
+"     diagnostics = "coc"
+"     }
+" }
+" EOF
 
-" " ===
-" " === xtabline
-" " ===
-" let g:xtabline_settings = {}
-" let g:xtabline_settings.enable_mappings = 0
-" let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-" let g:xtabline_settings.enable_persistance = 0
-" let g:xtabline_settings.last_open_first = 1
-" noremap to :XTabMode<CR>
-" noremap \p :echo expand('%:p')<CR>
+" ===
+" === xtabline
+" ===
+let g:xtabline_settings = {}
+let g:xtabline_settings.enable_mappings = 0
+let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+let g:xtabline_settings.enable_persistance = 0
+let g:xtabline_settings.last_open_first = 1
+" let g:xtabline_settings.indicators = {
+"         \ 'modified': '[+]',
+"         \ 'pinned': '[📌]',
+"         \}
+let g:xtabline_settings.icons = {
+        \'pin': '📌',
+        \'star': '★',
+        \'book': '📖',
+        \'lock': '🔒',
+        \'hammer': '🔨',
+        \'tick': '✔',
+        \'cross': '✖',
+        \'warning': '⚠',
+        \'menu': '☰',
+        \'apple': '🍎',
+        \'linux': '🐧',
+        \'windows': '⌘',
+        \'git': '',
+        \'palette': '🎨',
+        \'lens': '🔍',
+        \'flag': '',
+        \}
+noremap to :XTabMode<CR>
+noremap \p :echo expand('%:p')<CR>
 
 " ===
 " === eleline.vim

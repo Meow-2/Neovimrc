@@ -30,11 +30,11 @@
 | normal   | gr                 | <Plug\>(coc-references)                                     |
 | normal   | \v                 | v$h                                                         |
 | normal   | \p                 | :echo expand('%:p')<CR\>                                    |
-| normal   | M                  | make mark                                                   |
-| normal   | m                  | init_selection(treesitter)                                  |
-| normal   | m                  | node_incremental(treesitter)                                |
-| normal   | ,                  | node_decremental(treesitter)                                |
-| normal   | <CR>               | scope_incremental(treesitter)                               |
+| normal   | m                  | make mark                                                   |
+| normal   | <CR>               | init_selection(treesitter)                                  |
+| normal   | <CR>               | node_incremental(treesitter)                                |
+| normal   | <BS>               | node_decremental(treesitter)                                |
+| normal   | <BS>               | scope_incremental(treesitter)                               |
 | normal   | <esc\>             | <esc\>:nohlsearch<cr\>                                      |
 | normal   | <C-y\>             | :<C-u\>CocList -A --normal yank<cr\>                        |
 | normal   | <C-f\>             | :Rg<CR\>                                                    |

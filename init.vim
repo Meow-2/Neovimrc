@@ -129,7 +129,7 @@ noremap <silent> <LEADER>i zf%
 noremap <silent> <LEADER>o za
 
 " make mark
-noremap M m
+" noremap M m
 
 " select from cursor to the end of line 
 noremap <silent> \v v$h
@@ -267,10 +267,10 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection ={
   enable = true,
     keymaps = {
-      init_selection = 'm',
-      node_incremental = 'm',
-      scope_incremental = '<CR>',
-      node_decremental = ',',
+      init_selection = '<CR>',
+      node_incremental = '<CR>',
+      scope_incremental = '<BS>',
+      node_decremental = '<BS>',
     }
   }
 }

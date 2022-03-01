@@ -252,7 +252,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
-Plug 'ferrine/md-img-paste.vim'
+" Plug 'ferrine/md-img-paste.vim'
 
 call plug#end()
 
@@ -344,6 +344,8 @@ nnoremap <silent>tmh :BufferLineMovePrev<CR>
 " ===
 " let g:airline_powerline_fonts = 0
 
+
+" ===
 
 " " ===
 " " === oceanic-material
@@ -478,10 +480,10 @@ noremap <LEADER>gi :FzfGitignore<CR>
 " ===
 " === rnvimr
 " ===
-let g:rnvimr_ex_enable = 1
+" let g:rnvimr_ex_enable = 1
 let g:rnvimr_pick_enable = 1
 let g:rnvimr_draw_border = 1
-" let g:rnvimr_bw_enable = 1
+let g:rnvimr_enable_bw = 0
 highlight link RnvimrNormal CursorLine
 nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
@@ -747,12 +749,12 @@ let g:bullets_enabled_file_types = [
 			\ 'scratch'
 			\]
 
-" ===
-" === md-img-paste.vim
-" ===
-let g:mdip_imgdir = 'pic' 
-"设置默认图片名称。当图片名称没有给出时，使用默认图片名称
-let g:mdip_imgname = 'image'
+" " ===
+" " === md-img-paste.vim
+" " ===
+" let g:mdip_imgdir = 'pic' 
+" "设置默认图片名称。当图片名称没有给出时，使用默认图片名称
+" let g:mdip_imgname = 'image'
 
 " auto comment disabled
 autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

@@ -177,7 +177,19 @@ map <LEADER>= <C-w>=
 " map s <nop>
 map s :w<CR>
 noremap Q q
-noremap q :q!<CR>
+
+" noremap q :q!<CR>
+" close window when the count of buffer = 1, else close buffer
+fu! QuitTheBuffer()
+    let b = len(getbufinfo({'buflisted':1}))
+    if b == 1
+        exec ":q!"
+    else
+        exec ":bd"
+    endif
+endfunction
+noremap <silent> q :call QuitTheBuffer()<CR>
+
 " map R :source $HOME/.config/nvim/init.vim<CR>
 map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
  

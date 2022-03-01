@@ -34,7 +34,6 @@
 | normal   | <CR>               | init_selection(treesitter)                                  |
 | normal   | <CR>               | node_incremental(treesitter)                                |
 | normal   | <BS>               | node_decremental(treesitter)                                |
-| normal   | <BS>               | scope_incremental(treesitter)                               |
 | normal   | <esc\>             | <esc\>:nohlsearch<cr\>                                      |
 | normal   | <C-y\>             | :<C-u\>CocList -A --normal yank<cr\>                        |
 | normal   | <C-f\>             | :Rg<CR\>                                                    |

@@ -74,7 +74,7 @@
     "explorer.file.showHiddenFiles": true,
     "explorer.icon.enableNerdfont": true,
     "explorer.buffer.showHiddenBuffers": false,
-    "explorer.openAction.strategy": "tab",
+    "explorer.openAction.strategy": "previousBuffer",
     "explorer.keyMappings.global": {
         "yp": "copyFilepath",
         "yn": "copyFilename",

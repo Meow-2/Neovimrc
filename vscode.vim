@@ -60,7 +60,7 @@ noremap Q q
 
 call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'mg979/vim-visual-multi'
+" Plug 'mg979/vim-visual-multi'
 Plug 'tomtom/tcomment_vim'         " in <space>cn to comment a line
 Plug 'theniceboy/antovim'          " gs to switch false and true
 Plug 'tpope/vim-surround'          " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
@@ -83,24 +83,24 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection ={
   enable = true,
     keymaps = {
-      init_selection = 'm',
-      node_incremental = 'm',
-      scope_incremental = '<CR>',
-      node_decremental = ',',
+      init_selection = '<CR>',
+      node_incremental = '<CR>',
+      scope_incremental = '<BS>',
+      node_decremental = '<BS>',
     }
   }
 }
 EOF
 
 
-" ===
-" === vim-visual-multi
-" ===
-let g:VM_maps = {}
-let g:VM_maps['Find Under']='<C-l>'
-let g:VM_maps['Find Subword Under']='<C-l>'
-let g:VM_maps["Add Cursor Down"]='<C-j>'
-let g:VM_maps["Add Cursor Up"]='<C-k>'  
+" " ===
+" " === vim-visual-multi
+" " ===
+" let g:VM_maps = {}
+" let g:VM_maps['Find Under']='<C-l>'
+" let g:VM_maps['Find Subword Under']='<C-l>'
+" let g:VM_maps["Add Cursor Down"]='<C-j>'
+" let g:VM_maps["Add Cursor Up"]='<C-k>'  
 
 
 " ===

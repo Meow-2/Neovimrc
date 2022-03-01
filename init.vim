@@ -165,13 +165,13 @@ map <LEADER><up> :res +5<CR>
 map <LEADER><right> :vertical resize-5<CR>
 map <LEADER>= <C-w>=
   
-" tag
-noremap tn :tabe<CR>
-noremap th :-tabnext<CR>
-noremap tl :+tabnext<CR>
-noremap tc :tabclose<CR>
-noremap tmh :-tabmove<CR>
-noremap tml :+tabmove<CR>
+" " tag
+" noremap tn :tabe<CR>
+" noremap th :-tabnext<CR>
+" noremap tl :+tabnext<CR>
+" noremap tc :tabclose<CR>
+" noremap tmh :-tabmove<CR>
+" noremap tml :+tabmove<CR>
   
 " save
 " map s <nop>
@@ -196,12 +196,14 @@ Plug 'nvim-treesitter/playground'
 " Status line
 " Plug 'theniceboy/eleline.vim'
 " Plug 'ojroques/vim-scrollstatus'
-Plug 'mg979/vim-xtabline'
+" Plug 'mg979/vim-xtabline'
 Plug 'glepnir/spaceline.vim'
-" Plug 'akinsho/bufferline.nvim'
+Plug 'akinsho/bufferline.nvim'
 
 " themes
-Plug 'theniceboy/nvim-deus'
+" Plug 'glepnir/oceanic-material'
+" Plug 'theniceboy/nvim-deus'
+Plug 'cpea2506/one_monokai.nvim'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
@@ -269,58 +271,73 @@ require'nvim-treesitter.configs'.setup {
     keymaps = {
       init_selection = '<CR>',
       node_incremental = '<CR>',
-      scope_incremental = '<BS>',
       node_decremental = '<BS>',
     }
   }
 }
 EOF
 
-" " ===
-" " === bufferline.nvim
-" " ===
-" set termguicolors
-" lua << EOF
-" require("bufferline").setup{
-" options = {
-"     diagnostics = "coc"
-"     }
-" }
-" EOF
+" ===
+" === spaceline
+" ===
+let g:spaceline_seperate_style = 'none'
+
 
 " ===
-" === xtabline
+" === bufferline.nvim
 " ===
-let g:xtabline_settings = {}
-let g:xtabline_settings.enable_mappings = 0
-let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-let g:xtabline_settings.enable_persistance = 0
-let g:xtabline_settings.last_open_first = 1
-let g:xtabline_settings.theme = 'codedark'
-let g:xtabline_settings.indicators = {
-        \ 'modified': '[+]',
-        \ 'pinned': '[📌]',
-        \}
-let g:xtabline_settings.icons = {
-        \'pin': '📌',
-        \'star': '★',
-        \'book': '📖',
-        \'lock': '🔒',
-        \'hammer': '🔨',
-        \'tick': '✔',
-        \'cross': '✖',
-        \'warning': '⚠',
-        \'menu': '☰',
-        \'apple': '🍎',
-        \'linux': '🐧',
-        \'windows': '⌘',
-        \'git': '',
-        \'palette': '🎨',
-        \'lens': '🔍',
-        \'flag': '',
-        \}
-noremap to :XTabMode<CR>
-noremap \p :echo expand('%:p')<CR>
+set termguicolors
+lua << EOF
+require("bufferline").setup{
+options = {
+    diagnostics = "coc",
+    -- separator_style = "slant" 
+    separator_style = "thin" 
+    }
+}
+EOF
+nnoremap <silent>tl :BufferLineCycleNext<CR>
+nnoremap <silent>th :BufferLineCyclePrev<CR>
+nnoremap <silent>tc :BufferLinePickClose<CR>
+nnoremap <silent>gb :BufferLinePick<CR>
+" These commands will move the current buffer backwards or forwards in the bufferline
+nnoremap <silent>tml :BufferLineMoveNext<CR>
+nnoremap <silent>tmh :BufferLineMovePrev<CR>
+
+
+" " ===
+" " === xtabline
+" " ===
+" let g:xtabline_settings = {}
+" let g:xtabline_settings.enable_mappings = 0
+" let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+" let g:xtabline_settings.enable_persistance = 0
+" let g:xtabline_settings.last_open_first = 1
+" let g:xtabline_settings.theme = 'codedark'
+" let g:xtabline_settings.indicators = {
+"         \ 'modified': '[+]',
+"         \ 'pinned': '[📌]',
+"         \}
+" let g:xtabline_settings.icons = {
+"         \'pin': '📌',
+"         \'star': '★',
+"         \'book': '📖',
+"         \'lock': '🔒',
+"         \'hammer': '🔨',
+"         \'tick': '✔',
+"         \'cross': '✖',
+"         \'warning': '⚠',
+"         \'menu': '☰',
+"         \'apple': '🍎',
+"         \'linux': '🐧',
+"         \'windows': '⌘',
+"         \'git': '',
+"         \'palette': '🎨',
+"         \'lens': '🔍',
+"         \'flag': '',
+"         \}
+" noremap to :XTabMode<CR>
+" noremap \p :echo expand('%:p')<CR>
 
 " ===
 " === eleline.vim
@@ -328,16 +345,28 @@ noremap \p :echo expand('%:p')<CR>
 " let g:airline_powerline_fonts = 0
 
 
+" " ===
+" " === oceanic-material
+" " ===
+" set background=dark
+" colorscheme oceanic_material
+
 " ===
-" === deus 
+" === onemonoka.nvim
 " ===
-set cursorline 
-set termguicolors " enable true colors support
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-color deus
-hi NonText ctermfg=gray guifg=grey10
-" Transparent and Gaussian blur for bg
-" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
+colorscheme one_monokai
+
+
+" " ===
+" " === deus 
+" " ===
+" set cursorline 
+" set termguicolors " enable true colors support
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" color deus
+" hi NonText ctermfg=gray guifg=grey10
+" " Transparent and Gaussian blur for bg
+" " autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
 
 " ===
 " === vim-startify
@@ -531,6 +560,7 @@ let g:coc_global_extensions = [
         \ 'coc-explorer',
         \ 'coc-yank',
         \ 'coc-omnisharp',
+        \ 'coc-picgo',
         \ 'coc-snippets']
 
 inoremap <silent><expr> <TAB>
@@ -610,6 +640,11 @@ let g:coc_snippet_prev = '<S-TAB>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = 'David Chen'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+
+" ===
+" === coc-picgo
+" ===
+inoremap <silent> <c-u> <esc>:CocCommand picgo.uploadImageFromClipboard<CR>
 
 " ===
 " === omnisharp-vim

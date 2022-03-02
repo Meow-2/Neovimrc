@@ -34,6 +34,7 @@
 | normal   | <CR>               | init_selection(treesitter)                                  |
 | normal   | <CR>               | node_incremental(treesitter)                                |
 | normal   | <BS>               | node_decremental(treesitter)                                |
+| normal   | <BS>               | scope_incremental(treesitter)                               |
 | normal   | <esc\>             | <esc\>:nohlsearch<cr\>                                      |
 | normal   | <C-y\>             | :<C-u\>CocList -A --normal yank<cr\>                        |
 | normal   | <C-f\>             | :Rg<CR\>                                                    |
@@ -99,15 +100,4 @@
 | xmap     | <LEADER\>a         | <Plug\>(coc-codeaction-selected)                            |
 | xmap     | <LEADER\>di        | <Plug\>VimspectorBalloonEval                                |
 | terminal | <esc\>             | <C-\\><C-N\>:q!<cr\>                                        |
-
-
-
-
-
-
-
-
-
-
-
 

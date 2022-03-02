@@ -147,6 +147,7 @@ map <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 
 " split
 exec "set splitbelow"
+exec "set splitright"
 map S <nop>
 map Sh :set nosplitright<CR>:vsplit<CR>
 map Sj :set splitbelow<CR>:split<CR>
@@ -178,17 +179,19 @@ map <LEADER>= <C-w>=
 map s :w<CR>
 noremap Q q
 
-" noremap q :q!<CR>
 " close window when the count of buffer = 1, else close buffer
-fu! QuitTheBuffer()
-    let b = len(getbufinfo({'buflisted':1}))
-    if b == 1
-        exec ":q!"
-    else
-        exec ":bd"
-    endif
-endfunction
-noremap <silent> q :call QuitTheBuffer()<CR>
+" fu! QuitTheBuffer()
+"     let b = len(getbufinfo({'buflisted':1}))
+"     if b == 1
+"         exec ":q!"
+"     else
+"         exec ":bd"
+"     endif
+" endfunction
+" noremap <silent> q :call QuitTheBuffer()<CR>
+noremap <silent><expr> q 
+    \ len(getbufinfo({'buflisted':1})) == 1 ? ":q!<cr>" :
+    \ ":bd<cr>"
 
 " map R :source $HOME/.config/nvim/init.vim<CR>
 map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
@@ -263,7 +266,7 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enab
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
-Plug 'dkarter/bullets.vim'
+Plug 'Meow-2/bullets.vim'
 " Plug 'ferrine/md-img-paste.vim'
 
 call plug#end()
@@ -303,7 +306,6 @@ lua << EOF
 require("bufferline").setup{
 options = {
     diagnostics = "coc",
-    -- separator_style = "slant" 
     separator_style = "thin" 
     }
 }
@@ -405,6 +407,11 @@ let g:VM_maps['Find Subword Under']='<C-l>'
 " let g:VM_maps["Add Cursor Up"]='<C-k>'  
 
 " ===
+" === auto-pairs
+" ===
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''" , '<':'>'}
+
+" ===
 " === tcomment_vim
 " ===
 " nnoremap ci cl
@@ -500,8 +507,7 @@ highlight link RnvimrNormal CursorLine
 nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
             \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
+            \ '<C-x>': 'NvimEdit vsplit',
             \ 'gw': 'JumpNvimCwd',
             \ 'yw': 'EmitRangerCwd'
             \ }
@@ -579,12 +585,16 @@ let g:coc_global_extensions = [
 
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? "\<C-n>" :
+    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 	\ <SID>check_back_space() ? "\<TAB>" :
 	\ coc#refresh()
+
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
-      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+inoremap <silent><expr> <cr>
+    \ pumvisible() ? coc#_select_confirm() :
+    \ "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
+
 function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
@@ -648,12 +658,12 @@ inoremap <silent> <C-y>  <esc>:<C-u>CocList -A --normal yank<cr>
 " === coc-snippets
 " ===
 imap <C-l> <Plug>(coc-snippets-expand)
-" vmap <C-j> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<TAB>'
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<S-TAB>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-let g:snips_author = 'David Chen'
-autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+" let g:snips_author = 'David Chen'
+" autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 " ===
 " === coc-picgo
@@ -749,10 +759,10 @@ let g:vmt_cycle_list_item_markers = 1
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 
-
 " ===
 " === bullets.vim
 " ===
+let g:bullets_use_cr_with_coc_complete = 1
 " let g:bullets_set_mappings = 0
 let g:bullets_enabled_file_types = [
 			\ 'markdown',

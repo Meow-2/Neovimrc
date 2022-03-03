@@ -237,6 +237,7 @@ Plug 'lambdalisue/suda.vim'
 " Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} .p
 Plug 'wellle/targets.vim'
 Plug 'lilydjwg/fcitx.vim' " auto chinese to english
+Plug 'kshenoy/vim-signature'
 
 " File navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -409,7 +410,6 @@ let g:VM_maps['Find Subword Under']='<C-l>'
 " ===
 " === auto-pairs
 " ===
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''" , '<':'>'}
 
 " ===
 " === tcomment_vim
@@ -571,25 +571,40 @@ let g:scrollstatus_size = 15
 " === coc.nvim
 " ===
 let g:coc_global_extensions = [
-        \ 'coc-json',
-        \ 'coc-vimlsp',
-        \ 'coc-prettier',
-        \ 'coc-clangd',
-        \ 'coc-clang-format-style-options',
-        \ 'coc-cmake',
-        \ 'coc-explorer',
-        \ 'coc-yank',
-        \ 'coc-omnisharp',
-        \ 'coc-picgo',
-        \ 'coc-snippets']
+    \ 'coc-json',
+    \ 'coc-vimlsp',
+    \ 'coc-prettier',
+    \ 'coc-clangd',
+    \ 'coc-clang-format-style-options',
+    \ 'coc-cmake',
+    \ 'coc-explorer',
+    \ 'coc-yank',
+    \ 'coc-omnisharp',
+    \ 'coc-picgo',
+    \ 'coc-snippets']
 
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? "\<C-n>" :
     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ HavePair() ? "<esc>la" :
 	\ <SID>check_back_space() ? "\<TAB>" :
 	\ coc#refresh()
 
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+func HavePair()  
+    if getline('.')[col('.') - 1] == ')' 
+    \ || getline('.')[col('.') - 1] == ']' 
+    \ || getline('.')[col('.') - 1] == '"' 
+    \ || getline('.')[col('.') - 1] == "'" 
+    \ || getline('.')[col('.') - 1] == '}' 
+    \ || getline('.')[col('.') - 1] == '>'
+        return 1  
+    else  
+        return 0
+    endif  
+endfunc
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" :
+    \ "\<C-h>"
 
 inoremap <silent><expr> <cr>
     \ pumvisible() ? coc#_select_confirm() :
@@ -660,7 +675,7 @@ inoremap <silent> <C-y>  <esc>:<C-u>CocList -A --normal yank<cr>
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<S-TAB>'
+let g:coc_snippet_prev = '<s-tab>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 " let g:snips_author = 'David Chen'
 " autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
@@ -696,6 +711,23 @@ inoremap <silent> <c-u> <esc>:CocCommand picgo.uploadImageFromClipboard<CR>
 " ===
 let g:asyncrun_open = 12
 let g:asyncrun_bell = 1
+
+function! s:my_runner(opts)
+    if !executable('alacritty')
+        return asyncrun#utils#errmsg('alacritty executable not find !')
+    endif
+	let cmds = []
+	let cmds += ['cd ' . shellescape(getcwd()) ]
+	let cmds += [a:opts.cmd]
+	let cmds += ['echo ""']
+	let cmds += ['read -n1 -rsp "press any key to continue ..."']
+	let text = shellescape(join(cmds, ";"))
+	let command = 'alacritty -e bash -c ' . text
+	call system(command . ' &')
+endfunction
+
+let g:asyncrun_runner = get(g:, 'asyncrun_runner', {})
+let g:asyncrun_runner.alacritty = function('s:my_runner')
 " nnoremap <F1> :call compile#CompileRunGcc()<CR>
 " nnoremap <F2> :call asyncrun#quickfix_toggle(6)<cr>
 " nnoremap <leader><F1> :call compile#CompileGcc()<CR> 
@@ -703,9 +735,11 @@ let g:asyncrun_bell = 1
 " ===
 " === asynctasks.vim
 " ===
+let g:asynctasks_term_rows = '12'
+let g:asynctasks_term_pos = 'bottom'
 nnoremap <silent><F1> :call f1map#source_vimrc_and_file_build()<cr>
-nnoremap <silent><F2> :AsyncTask file-run<cr>
-nnoremap <silent><F3> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <silent><F2> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <silent><F3> :AsyncTask file-run<cr>
 nnoremap <silent><F4> :tabclose<cr>
 
 " ===

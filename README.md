@@ -51,8 +51,8 @@
 | normal   | <C-k\>             | 'Add Cursor Up' visual-multi                                |
 | normal   | \\q                | 'Cancel the last Selected Cursor ' visual-multi             |
 | normal   | <F1\>              | :call f1map#source_vimrc_and_file_build()<cr\>              |
-| normal   | <F2\>              | :AsyncTask file-run<cr\>                                    |
-| normal   | <F3\>              | :call asyncrun#quickfix_toggle(6)<cr\>                      |
+| normal   | <F2\>              | :call asyncrun#quickfix_toggle(6)<cr\>                      |
+| normal   | <F3\>              | :AsyncTask file-run<cr\>                                    |
 | normal   | <F4\>              | :tabclose<cr\>                                              |
 | normal   | <LEADER\>i         | zf%                                                         |
 | normal   | <LEADER\>o         | za                                                          |

@@ -70,7 +70,7 @@
 | normal   | <LEADER\>-         | <Plug\>(coc-diagnostic-prev)                                |
 | normal   | <LEADER\>=         | <Plug\>(coc-diagnostic-next)                                |
 | normal   | <LEADER\>rn        | <Plug\>(coc-rename)                                         |
-| normal   | <LEADER\>f         | <Plug\>(coc-fix-current)                                    |
+| normal   | <LEADER\>.         | <Plug\>(coc-fix-current)                                    |
 | normal   | <LEADER\>aw        | <Plug\>(coc-codeaction-selected)w                           |
 | normal   | <LEADER\>di        | <Plug\>VimspectorBalloonEval                                |
 | normal   | <LEADER\>db        | :tabe .vimspector.json<CR\>:LoadVimSpectorJsonTemplate<CR\> |
@@ -100,5 +100,13 @@
 | xmap     | <LEADER\>a         | <Plug\>(coc-codeaction-selected)                            |
 | xmap     | <LEADER\>di        | <Plug\>VimspectorBalloonEval                                |
 | terminal | <esc\>             | <C-\\><C-N\>:q!<cr\>                                        |
-
+| normal   | <F5\>              | When debugging, continue. Otherwise start debugging.        |
+| normal   | <Shift F5\>        | Stop debugging.                                             |
+| normal   | <Ctrl Shift F5\>   | Restart debugging with the same configuration.              |
+| normal   | <F6\>              | Pause debuggee.                                             |
+| normal   | <F9\>              | Toggle line breakpoint on the current line.                 |
+| normal   | <Shift F9\>        | Add a function breakpoint for the expression under cursor   |
+| normal   | <F10\>             | Step Over                                                   |
+| normal   | <F11\>             | Step Into                                                   |
+| normal   | <Shift F11\>       | Step out of current function scope                          |
 

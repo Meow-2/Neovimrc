@@ -189,7 +189,8 @@ noremap Q q
 "     endif
 " endfunction
 " noremap <silent> q :call QuitTheBuffer()<CR>
-noremap <silent><expr> q 
+noremap <silent><expr> q
+    \ &filetype == 'dashboard' ? ":q!<cr>" :
     \ len(getbufinfo({'buflisted':1})) == 1 ? ":q!<cr>" :
     \ ":bd<cr>"
 
@@ -221,8 +222,8 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'cpea2506/one_monokai.nvim'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
-Plug 'mhinz/vim-startify'
-" Plug 'glepnir/dashboard-nvim'
+" Plug 'mhinz/vim-startify'
+Plug 'glepnir/dashboard-nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
 
@@ -237,7 +238,6 @@ Plug 'lambdalisue/suda.vim'
 " Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} .p
 Plug 'wellle/targets.vim'
 Plug 'lilydjwg/fcitx.vim' " auto chinese to english
-Plug 'kshenoy/vim-signature'
 
 " File navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -267,7 +267,7 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enab
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
-Plug 'Meow-2/bullets.vim'
+Plug 'Meow-2/bullets.vim', { 'branch': 'solve_CR_conflict_with_coc' }
 " Plug 'ferrine/md-img-paste.vim'
 
 call plug#end()
@@ -327,7 +327,7 @@ nnoremap <silent>tmh :BufferLineMovePrev<CR>
 " let g:xtabline_settings.enable_mappings = 0
 " let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
 " let g:xtabline_settings.enable_persistance = 0
-" let g:xtabline_settings.last_open_first = 1
+" let g:xtabline_settings.lrst_open_first = 1
 " let g:xtabline_settings.theme = 'codedark'
 " let g:xtabline_settings.indicators = {
 "         \ 'modified': '[+]',
@@ -388,7 +388,7 @@ colorscheme one_monokai
 " ===
 " === vim-startify
 " ===
-let g:startify_custom_header = startify#pad(split(system('figlet -f slant -w 100 N E O V I M '), '\n'))
+" let g:startify_custom_header = startify#pad(split(system('figlet -f slant -w 100 N E O V I M '), '\n'))
 " redir => test
 "   " silent echo 'one'
 "   " silent echo 'two'
@@ -397,6 +397,45 @@ let g:startify_custom_header = startify#pad(split(system('figlet -f slant -w 100
 "
 " let g:startify_custom_header =
 "     \ map(split(test), 'repeat(" ", 10) . v:val')
+
+" ===
+" === dashboard
+" ===
+let g:mapleader="\<Space>"
+let g:dashboard_default_executive ='fzf'
+nmap <Leader>ss :mksession! ~/.cache/nvim/last_session.vim<CR>
+nmap <Leader>sl :source ~/.cache/nvim/last_session.vim<CR>
+nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>nf :DashboardNewFile<CR>
+let g:dashboard_custom_shortcut={
+            \ 'last_session'       : 'SPC s l',
+            \ 'find_history'       : 'SPC f h',
+            \ 'find_file'          : 'SPC f f',
+            \ 'new_file'           : 'SPC n f',
+            \ 'change_colorscheme' : 'SPC t c',
+            \ 'find_word'          : 'SPC f a',
+            \ 'book_marks'         : 'SPC f b',
+            \ }
+let g:dashboard_custom_header = [
+            \ '                                                       ',
+            \ '                                                       ',
+            \ '                                                       ',
+            \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+            \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+            \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+            \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+            \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+            \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+            \ '                                                       ',
+            \ '                                                       ',
+            \ '                                                       ',
+            \]
+
+
 
 " ===
 " === vim-visual-multi
@@ -625,7 +664,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>f  <Plug>(coc-fix-current)
+nmap <leader>.  <Plug>(coc-fix-current)
 
 nnoremap <silent> <LEADER>p :call <SID>show_documentation()<CR>
 

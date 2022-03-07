@@ -99,7 +99,7 @@ noremap N Nzz
 " noremap <LEADER><CR> :nohlsearch<CR>
 
 " move
-noremap H 0
+noremap H ^
 noremap J 5j
 noremap K 5k
 noremap L $
@@ -166,7 +166,7 @@ map <LEADER><up> :res +5<CR>
 map <LEADER><right> :vertical resize-5<CR>
 map <LEADER>= <C-w>=
   
-" " tag
+" " tab
 " noremap tn :tabe<CR>
 " noremap th :-tabnext<CR>
 " noremap tl :+tabnext<CR>
@@ -192,7 +192,7 @@ noremap Q q
 noremap <silent><expr> q
     \ &filetype == 'dashboard' ? ":q!<cr>" :
     \ len(getbufinfo({'buflisted':1})) == 1 ? ":q!<cr>" :
-    \ ":bd<cr>"
+    \ ":bd!<cr>"
 
 " map R :source $HOME/.config/nvim/init.vim<CR>
 map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
@@ -777,6 +777,7 @@ let g:asyncrun_runner.alacritty = function('s:my_runner')
 let g:asynctasks_term_rows = '12'
 let g:asynctasks_term_pos = 'bottom'
 nnoremap <silent><F1> :call f1map#source_vimrc_and_file_build()<cr>
+nnoremap <silent><S-F1> :AsyncTask file-buildrun<cr>
 nnoremap <silent><F2> :call asyncrun#quickfix_toggle(6)<cr>
 nnoremap <silent><F3> :AsyncTask file-run<cr>
 nnoremap <silent><F4> :tabclose<cr>
@@ -785,6 +786,9 @@ nnoremap <silent><F4> :tabclose<cr>
 " === vimspector
 " ===
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+nmap <F17> <S-F5>
+nmap <F21> <S-F9>
+nmap <F23> <S-F11>
 " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
 " nnoremap <F3> :tabclose<CR>
 " for normal mode - the word under the cursor

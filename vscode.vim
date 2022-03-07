@@ -19,7 +19,7 @@ set showcmd
 let mapleader=" "
 noremap n nzz
 noremap N Nzz
-noremap H 0
+noremap H ^
 noremap J 5j
 noremap K 5k
 noremap L $

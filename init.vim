@@ -213,7 +213,8 @@ Plug 'nvim-treesitter/playground'
 " Plug 'theniceboy/eleline.vim'
 " Plug 'ojroques/vim-scrollstatus'
 " Plug 'mg979/vim-xtabline'
-Plug 'glepnir/spaceline.vim'
+Plug 'itchyny/lightline.vim'
+" Plug 'glepnir/spaceline.vim'
 Plug 'akinsho/bufferline.nvim'
 
 " themes
@@ -294,9 +295,35 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " ===
+" === lightline
+" ===
+if !has('gui_running')
+  set t_Co=256
+endif
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch','readonly', 'filename' ] ],
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \   'gitbranch': 'FugitiveHead',
+      \ },
+      \ }
+
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
+
+" ===
 " === spaceline
 " ===
-let g:spaceline_seperate_style = 'none'
+" let g:spaceline_seperate_style = 'none'
+" let g:spaceline_colorscheme = 'space'
 
 
 " ===
@@ -374,16 +401,16 @@ nnoremap <silent>tmh :BufferLineMovePrev<CR>
 colorscheme one_monokai
 
 
-" " ===
-" " === deus 
-" " ===
+" ===
+" === deus 
+" ===
 " set cursorline 
 " set termguicolors " enable true colors support
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " color deus
 " hi NonText ctermfg=gray guifg=grey10
-" " Transparent and Gaussian blur for bg
-" " autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
+" Transparent and Gaussian blur for bg
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
 
 " ===
 " === vim-startify
@@ -780,12 +807,12 @@ nnoremap <silent><F1> :call f1map#source_vimrc_and_file_build()<cr>
 nnoremap <silent><S-F1> :AsyncTask file-buildrun<cr>
 nnoremap <silent><F2> :call asyncrun#quickfix_toggle(6)<cr>
 nnoremap <silent><F3> :AsyncTask file-run<cr>
-nnoremap <silent><F4> :tabclose<cr>
 
 " ===
 " === vimspector
 " ===
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+nmap <F4> :VimspectorReset<CR><CR>
 nmap <F17> <S-F5>
 nmap <F21> <S-F9>
 nmap <F23> <S-F11>

@@ -14,6 +14,7 @@
         "--header-insertion=iwyu",
         "--pch-storage=memory"
     ],
+    "clangd.fallbackFlags": ["-std=c++17"],
     "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.extensionUpdateCheck": "daily",
     "coc.preferences.formatOnSaveFiletypes": ["json", "cpp"],

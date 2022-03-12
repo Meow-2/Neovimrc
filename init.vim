@@ -213,6 +213,7 @@ Plug 'nvim-treesitter/playground'
 " Plug 'theniceboy/eleline.vim'
 " Plug 'ojroques/vim-scrollstatus'
 " Plug 'mg979/vim-xtabline'
+" Plug 'NTBBloodbath/galaxyline.nvim'
 Plug 'itchyny/lightline.vim'
 " Plug 'glepnir/spaceline.vim'
 Plug 'akinsho/bufferline.nvim'
@@ -227,6 +228,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'glepnir/dashboard-nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
+" git
+Plug 'tpope/vim-fugitive'
 
 " Editor Enhancement
 Plug 'mg979/vim-visual-multi'
@@ -253,7 +256,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vista.vim'        
 
 " find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+" Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
 " auto complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -293,7 +296,6 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
-
 " ===
 " === lightline
 " ===
@@ -302,17 +304,16 @@ if !has('gui_running')
 endif
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'selenized_black',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch','readonly', 'filename' ] ],
       \ },
       \ 'component_function': {
-      \   'filename': 'LightlineFilename',
       \   'gitbranch': 'FugitiveHead',
+      \   'filename': 'LightlineFilename',
       \ },
       \ }
-
 function! LightlineFilename()
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' +' : ''
@@ -347,39 +348,39 @@ nnoremap <silent>tml :BufferLineMoveNext<CR>
 nnoremap <silent>tmh :BufferLineMovePrev<CR>
 
 
-" " ===
-" " === xtabline
-" " ===
-" let g:xtabline_settings = {}
-" let g:xtabline_settings.enable_mappings = 0
-" let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-" let g:xtabline_settings.enable_persistance = 0
-" let g:xtabline_settings.lrst_open_first = 1
-" let g:xtabline_settings.theme = 'codedark'
-" let g:xtabline_settings.indicators = {
-"         \ 'modified': '[+]',
-"         \ 'pinned': '[📌]',
-"         \}
-" let g:xtabline_settings.icons = {
-"         \'pin': '📌',
-"         \'star': '★',
-"         \'book': '📖',
-"         \'lock': '🔒',
-"         \'hammer': '🔨',
-"         \'tick': '✔',
-"         \'cross': '✖',
-"         \'warning': '⚠',
-"         \'menu': '☰',
-"         \'apple': '🍎',
-"         \'linux': '🐧',
-"         \'windows': '⌘',
-"         \'git': '',
-"         \'palette': '🎨',
-"         \'lens': '🔍',
-"         \'flag': '',
-"         \}
-" noremap to :XTabMode<CR>
-" noremap \p :echo expand('%:p')<CR>
+" ===
+" === xtabline
+" ===
+let g:xtabline_settings = {}
+let g:xtabline_settings.enable_mappings = 0
+let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+let g:xtabline_settings.enable_persistance = 0
+let g:xtabline_settings.lrst_open_first = 1
+let g:xtabline_settings.theme = 'codedark'
+let g:xtabline_settings.indicators = {
+        \ 'modified': '[+]',
+        \ 'pinned': '[📌]',
+        \}
+let g:xtabline_settings.icons = {
+        \'pin': '📌',
+        \'star': '★',
+        \'book': '📖',
+        \'lock': '🔒',
+        \'hammer': '🔨',
+        \'tick': '✔',
+        \'cross': '✖',
+        \'warning': '⚠',
+        \'menu': '☰',
+        \'apple': '🍎',
+        \'linux': '🐧',
+        \'windows': '⌘',
+        \'git': '',
+        \'palette': '🎨',
+        \'lens': '🔍',
+        \'flag': '',
+        \}
+noremap to :XTabMode<CR>
+noremap \p :echo expand('%:p')<CR>
 
 " ===
 " === eleline.vim
@@ -600,7 +601,9 @@ let g:rnvimr_presets = [{'width': 0.7, 'height': 0.7}]
 let g:neoterm_autoscroll = 1
 " autocmd TermOpen term://* startinsert
 " noremap T :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>i
-nnoremap T :FloatermNew --height=0.75 --width=0.7<cr>
+nnoremap T :FloatermNew --height=0.75 --width=0.7 --cwd=<buffer><cr>
+" nnoremap T :FloatermToggle --height=0.75 --width=0.7 --cwd=<buffer><cr>
+" tnoremap <esc> <C-\><C-N>:FloatermToggle --height=0.75 --width=0.7 --cwd=<buffer><cr>
 tnoremap <esc> <C-\><C-N>:q!<cr>
 " tnoremap <C-O> <C-\><C-N><C-O>
 

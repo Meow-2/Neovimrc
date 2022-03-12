@@ -77,6 +77,10 @@
     "explorer.buffer.showHiddenBuffers": false,
     "explorer.openAction.strategy": "previousBuffer",
     "explorer.keyMappings.global": {
+        "s": false,
+        "E": false,
+        "Sj": "open:split",
+        "Sl": "open:vsplit",
         "yp": "copyFilepath",
         "yn": "copyFilename",
         "yy": "copyFile",

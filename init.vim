@@ -160,10 +160,10 @@ map <LEADER>k <C-w>k
 map <LEADER>l <C-w>l
 map <LEADER>c <C-w>c
  
-map <LEADER><left> :vertical resize+5<CR>
-map <LEADER><down> :res -5<CR>
-map <LEADER><up> :res +5<CR>
-map <LEADER><right> :vertical resize-5<CR>
+map <LEADER><left> :vertical resize-5<CR>
+map <LEADER><down> :res +5<CR>
+map <LEADER><up> :res -5<CR>
+map <LEADER><right> :vertical resize+5<CR>
 map <LEADER>= <C-w>=
   
 " " tab
@@ -504,14 +504,14 @@ vmap ga :Tabularize /
 " ===
 " === FZF
 " ===
-nnoremap <c-p> :Leaderf file<CR>
+nnoremap <silent> <c-p> :Leaderf file<CR>
 " noremap <silent> <C-p> :Files<CR>
 noremap <silent> <C-f> :Rg<CR>
 noremap <silent> <C-h> :History<CR>
 " noremap <C-t> :BTags<CR>
 " noremap <silent> <C-l> :Lines<CR>
 noremap <silent> <C-b> :Buffers<CR>
-noremap <leader>; :History:<CR>
+noremap <silent> <leader>; :History:<CR>
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -560,7 +560,7 @@ let g:Lf_UseCache = 0
 " ===
 " === fzf-gitignore
 " ===
-noremap <LEADER>gi :FzfGitignore<CR>
+noremap <silent> <LEADER>gi :FzfGitignore<CR>
 
 
 " ===
@@ -601,17 +601,19 @@ let g:rnvimr_presets = [{'width': 0.7, 'height': 0.7}]
 let g:neoterm_autoscroll = 1
 " autocmd TermOpen term://* startinsert
 " noremap T :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>i
-nnoremap T :FloatermNew --height=0.75 --width=0.7 --cwd=<buffer><cr>
-" nnoremap T :FloatermToggle --height=0.75 --width=0.7 --cwd=<buffer><cr>
-" tnoremap <esc> <C-\><C-N>:FloatermToggle --height=0.75 --width=0.7 --cwd=<buffer><cr>
-tnoremap <esc> <C-\><C-N>:q!<cr>
+" nnoremap <C-t> :set splitright<CR>:vsplit<CR>:term<CR>i
+
+" nnoremap T :FloatermNew --height=0.75 --width=0.7 --cwd=<buffer><cr>
+nnoremap <silent> <c-t> :FloatermToggle --height=0.75 --width=0.7 --cwd=<buffer><cr>
+tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle --height=0.75 --width=0.7 --cwd=<buffer><cr>
+tnoremap <silent> <esc> <C-\><C-N>:q!<cr>
 " tnoremap <C-O> <C-\><C-N><C-O>
 
 " ===
 " === Vista.vim
 " ===
-noremap <LEADER>v :Vista!!<CR>
-noremap <c-t> :silent! Vista finder coc<CR>
+noremap <silent> <LEADER>v :Vista!!<CR>
+noremap <silent> T :silent! Vista finder coc<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']

@@ -263,6 +263,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'OmniSharp/omnisharp-vim'
 
 " run 
+" Plug 'cjrh/vim-conda'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enable-python '}
@@ -272,7 +273,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'Meow-2/bullets.vim', { 'branch': 'solve_CR_conflict_with_coc' }
-" Plug 'ferrine/md-img-paste.vim'
+Plug 'ferrine/md-img-paste.vim'
 
 call plug#end()
 
@@ -296,6 +297,7 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
+
 " ===
 " === lightline
 " ===
@@ -651,6 +653,7 @@ let g:coc_global_extensions = [
     \ 'coc-explorer',
     \ 'coc-yank',
     \ 'coc-omnisharp',
+    \ 'coc-pyright',
     \ 'coc-picgo',
     \ 'coc-snippets']
 
@@ -793,7 +796,7 @@ function! s:my_runner(opts)
 	let cmds += ['echo ""']
 	let cmds += ['read -n1 -rsp "press any key to continue ..."']
 	let text = shellescape(join(cmds, ";"))
-	let command = 'alacritty -e bash -c ' . text
+	let command = 'alacritty -e zsh -c ' . text
 	call system(command . ' &')
 endfunction
 
@@ -880,12 +883,13 @@ let g:bullets_enabled_file_types = [
 			\ 'scratch'
 			\]
 
-" " ===
-" " === md-img-paste.vim
-" " ===
-" let g:mdip_imgdir = 'pic' 
-" "设置默认图片名称。当图片名称没有给出时，使用默认图片名称
-" let g:mdip_imgname = 'image'
+" ===
+" === md-img-paste.vim
+" ===
+let g:mdip_imgdir = 'pic' 
+"设置默认图片名称。当图片名称没有给出时，使用默认图片名称
+let g:mdip_imgname = 'image'
+autocmd FileType markdown inoremap <silent> <C-p> <esc>:call mdip#MarkdownClipboardImage()<CR>
 
 " auto comment disabled
 autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

@@ -84,6 +84,8 @@
 | insert     | <C-l\>               | <Plug\>(coc-snippets-expand)                                   |
 | insert     | <C-j\>               | <Plug\>(coc-snippets-expand-jump)                              |
 | insert     | <C-y\>               | <esc\>:<C-u\>CocList -A --normal yank<cr\>                     |
+| insert     | <c-u>                | <esc>:CocCommand picgo.uploadImageFromClipboard<CR>            |
+| insert     | <c-p>                | <esc>:call mdip#MarkdownClipboardImage()<CR>                   |
 | insert     | <C-space\>           | coc#refresh()                                                  |
 | visual     | <C-j\>               | <Plug\>(coc-snippets-select)                                   |
 | visual     | <C-/\>               | gc                                                             |

@@ -15,6 +15,7 @@
         "--pch-storage=memory"
     ],
     "clangd.fallbackFlags": ["-std=c++17"],
+    "clangd.path": "/usr/bin/clangd",
     "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.extensionUpdateCheck": "daily",
     "coc.preferences.formatOnSaveFiletypes": ["json", "cpp"],

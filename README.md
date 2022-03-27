@@ -75,6 +75,9 @@
 | normal     | <LEADER\>di          | <Plug\>VimspectorBalloonEval                                   |
 | normal     | <LEADER\>db          | :tabe .vimspector.json<CR\>:LoadVimSpectorJsonTemplate<CR\>    |
 | normal     | <LEADER\>tm          | :TableModeToggle<CR\>                                          |
+| normal     | <LEADER\>ss          | :SessionManager! save_current_session<CR>                      |
+| normal     | <LEADER\>sl          | :SessionManager! load_session<CR>                              |
+| normal     | <LEADER\>sd          | :SessionManager! delete_session<CR>                            |
 | normal     | <LEADER\><left\>     | :vertical resize+5<CR\>                                        |
 | normal     | <LEADER\><down\>     | :res -5<CR\>                                                   |
 | normal     | <LEADER\><up\>       | :res +5<CR\>                                                   |

@@ -99,10 +99,15 @@ noremap N Nzz
 " noremap <LEADER><CR> :nohlsearch<CR>
 
 " move
-noremap H ^
+" noremap H ^
+noremap 9 ^
+noremap H b
 noremap J 5j
 noremap K 5k
-noremap L $
+" noremap L $
+noremap L e
+noremap 0 $
+
 " noremap <C-h> 0
 " noremap <C-l> $
 " inoremap <C-h> <esc>I
@@ -118,7 +123,7 @@ noremap L $
 " inoremap jj <esc>l
 nnoremap <c-j> <c-v>
 vnoremap <c-j> j            
-nnoremap <c-k> <c-v>k       
+nnoremap <c-k> <c-v>       
 vnoremap <c-k> k            
 " inoremap <C-a> <esc>ggVG    
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>
@@ -231,6 +236,11 @@ Plug 'kyazdani42/nvim-web-devicons'
 " git
 Plug 'tpope/vim-fugitive'
 
+" development
+Plug 'nvim-lua/plenary.nvim'
+Plug 'Shatur/neovim-session-manager'
+Plug 'babaybus/DoxygenToolkit.vim'
+
 " Editor Enhancement
 Plug 'mg979/vim-visual-multi'
 Plug 'jiangmiao/auto-pairs'        " auto ( [ { <
@@ -242,6 +252,7 @@ Plug 'lambdalisue/suda.vim'
 " Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} .p
 Plug 'wellle/targets.vim'
 Plug 'lilydjwg/fcitx.vim' " auto chinese to english
+Plug 'itchyny/vim-cursorword' " highlight the same word
 
 " File navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -433,8 +444,10 @@ colorscheme one_monokai
 " ===
 let g:mapleader="\<Space>"
 let g:dashboard_default_executive ='fzf'
-nmap <Leader>ss :mksession! ~/.cache/nvim/last_session.vim<CR>
-nmap <Leader>sl :source ~/.cache/nvim/last_session.vim<CR>
+" nmap <Leader>ss :mksession! ~/.cache/nvim/last_session.vim<CR>
+nmap <Leader>ss :SessionManager! save_current_session<CR>
+nmap <Leader>sl :SessionManager! load_session<CR>
+nmap <Leader>sd :SessionManager! delete_session<CR>
 nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
 nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
 nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
@@ -466,6 +479,37 @@ let g:dashboard_custom_header = [
             \]
 
 
+
+" ===
+" === DoxygenToolkit.vim
+" ===
+let g:DoxygenToolkit_commentType = "C++"
+let g:DoxygenToolkit_briefTag_pre="@Synopsis  "
+let g:DoxygenToolkit_paramTag_pre="@Param "
+let g:DoxygenToolkit_returnTag="@Returns   "
+let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
+let g:DoxygenToolkit_authorName="Meow-2"
+
+" ===
+" === neovim-session-manager 
+" ===
+lua <<EOF
+local Path = require('plenary.path')
+require('session_manager').setup({
+  sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'), -- The directory where the session files will be saved.
+  path_replacer = '__', -- The character to which the path separator will be replaced for session files.
+  colon_replacer = '++', -- The character to which the colon symbol will be replaced for session files.
+  autoload_mode = require('session_manager.config').AutoloadMode.Disabled, -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
+  autosave_last_session = true, -- Automatically save last session on exit and on session switch.
+  autosave_ignore_not_normal = true, -- Plugin will not save a session when no buffers are opened, or all of them aren't writable or listed.
+  autosave_ignore_filetypes = { -- All buffers of these file types will be closed before the session is saved.
+    'gitcommit',
+  }, 
+  autosave_only_in_session = false, -- Always autosaves session. If true, only autosaves after a session is active.
+  max_path_length = 80,  -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
+})
+EOF
 
 " ===
 " === vim-visual-multi
@@ -502,6 +546,10 @@ vmap ga :Tabularize /
 " === targets.vim
 " ===
 
+" ===
+" === vim-cursorword
+" ===
+let g:cursorword_delay = 0
 
 " ===
 " === FZF

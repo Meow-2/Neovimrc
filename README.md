@@ -1,9 +1,9 @@
-# This is my shortcut in nvim
+# My shortcut of nvim
 
 | Mode       | Key                  | Map                                                            |
 | ---------- | -------------------- | -------------------------------------------------------------  |
 | normal     | s                    | :w<CR\>                                                        |
-| normal     | q                    | :q!<CR\>                                                       |
+| normal     | q                    | quit buffer and tab                                            |
 | normal     | Q                    | q                                                              |
 | normal     | H                    | 0                                                              |
 | normal     | J                    | 5j                                                             |

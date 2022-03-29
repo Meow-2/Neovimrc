@@ -4,7 +4,8 @@
 | ---------- | -------------------- | -------------------------------------------------------------  |
 | normal     | s                    | :w<CR\>                                                        |
 | normal     | q                    | quit buffer and tab                                            |
-| normal     | Q                    | q                                                              |
+| normal     | Q                    | q1                                                             |
+| normal     | @                    | @1                                                             |
 | normal     | H                    | 0                                                              |
 | normal     | J                    | 5j                                                             |
 | normal     | K                    | 5k                                                             |
@@ -41,14 +42,14 @@
 | normal     | <C-h\>               | :History<CR\>                                                  |
 | normal     | <C-b\>               | :Buffers<CR\>                                                  |
 | normal     | <C-d\>               | :BD<CR\>                                                       |
-| normal     | <C-t>                | :FloatermToggle --height=0.75 --width=0.7 --cmd=<buffer\><cr\> |
+| normal     | <C-t>                | :FloatermToggle<cr\>                                           |
 | normal     | <C-p\>               | :Leaderf file<CR\>                                             |
 | normal     | <C-]\>               | find tags by LeaderF                                           |
 | normal     | <C-/\>               | gcc                                                            |
 | normal     | <C-l\>               | 'Find Under' visual-multi                                      |
 | normal     | <C-l\>               | 'Find Subword Under' visual-multi                              |
-| normal     | <C-j\>               | 'Add Cursor Down' visual-multi                                 |
-| normal     | <C-k\>               | 'Add Cursor Up' visual-multi                                   |
+| normal     | <C-j\>               | <c-v>                                                          |
+| normal     | <C-k\>               | <c-v>                                                          |
 | normal     | \\q                  | 'Cancel the last Selected Cursor ' visual-multi                |
 | normal     | <F1\>                | :call f1map#source_vimrc_and_file_build()<cr\>                 |
 | normal     | <F2\>                | :call asyncrun#quickfix_toggle(6)<cr\>                         |
@@ -90,7 +91,8 @@
 | insert     | <c-u>                | <esc>:CocCommand picgo.uploadImageFromClipboard<CR>            |
 | insert     | <c-p>                | <esc>:call mdip#MarkdownClipboardImage()<CR>                   |
 | insert     | <C-space\>           | coc#refresh()                                                  |
-| visual     | <C-j\>               | <Plug\>(coc-snippets-select)                                   |
+| visual     | <C-j\>               | <Plug\>(coc-snippets-select) / j                               |
+| visual     | <C-k\>               | k                                                              |
 | visual     | <C-/\>               | gc                                                             |
 | visual     | ga                   | :Tabularize /                                                  |
 | visual     | y                    | "+y                                                            |

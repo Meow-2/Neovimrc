@@ -124,7 +124,7 @@ noremap 0 $
 " inoremap jj <esc>l
 nnoremap <c-j> <c-v>
 vnoremap <c-j> j            
-nnoremap <c-k> <c-v>       
+nnoremap <c-k> <c-v>
 vnoremap <c-k> k            
 " inoremap <C-a> <esc>ggVG    
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>

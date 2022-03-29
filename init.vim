@@ -182,8 +182,8 @@ map <LEADER>= <C-w>=
 " save
 " map s <nop>
 map s :w<CR>
-noremap Q q
-
+noremap Q q1
+noremap @ @1
 " close window when the count of buffer = 1, else close buffer
 " fu! QuitTheBuffer()
 "     let b = len(getbufinfo({'buflisted':1}))
@@ -237,7 +237,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tpope/vim-fugitive'
 
 " development
-Plug 'nvim-lua/plenary.nvim'
+Plug 'stevearc/dressing.nvim'      " select menu
+Plug 'nvim-lua/plenary.nvim'       " dependency of neovim-session-manager
 Plug 'Shatur/neovim-session-manager'
 Plug 'babaybus/DoxygenToolkit.vim'
 
@@ -478,18 +479,54 @@ let g:dashboard_custom_header = [
             \ '                                                       ',
             \]
 
-
-
 " ===
-" === DoxygenToolkit.vim
+" === dressing.nvim
 " ===
-let g:DoxygenToolkit_commentType = "C++"
-let g:DoxygenToolkit_briefTag_pre="@Synopsis  "
-let g:DoxygenToolkit_paramTag_pre="@Param "
-let g:DoxygenToolkit_returnTag="@Returns   "
-let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
-let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
-let g:DoxygenToolkit_authorName="Meow-2"
+lua<<EOF
+require('dressing').setup({
+    select = {
+        backend = {"builtin"},
+        nui = {
+          position = "50%",
+          size = nil,
+          relative = "editor",
+          border = {
+            style = "rounded",
+          },
+          max_width = 180,
+          max_height = 140,
+        },
+        builtin = {
+         -- These are passed to nvim_open_win
+         anchor = "NW",
+         border = "rounded",
+         -- 'editor' and 'win' will default to being centered
+         relative = "editor",
+         
+         -- Window transparency (0-100)
+         winblend = 10,
+         -- Change default highlight groups (see :help winhl)
+         winhighlight = "",
+         
+         -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+         -- the min_ and max_ options can be a list of mixed types.
+         -- max_width = {140, 0.8} means "the lesser of 140 columns or 80% of total"
+         width = nil,
+         max_width = { 140, 0.8 },
+         min_width = { 80, 0.3 },
+         height = nil,
+         max_height = 0.9,
+         min_height = { 25, 0.2 },
+         
+         override = function(conf)
+           -- This is the config that will be passed to nvim_open_win.
+           -- Change values here to customize the layout
+           return conf
+         end,
+    },
+    }
+})
+EOF
 
 " ===
 " === neovim-session-manager 
@@ -510,6 +547,17 @@ require('session_manager').setup({
   max_path_length = 80,  -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
 })
 EOF
+
+" ===
+" === DoxygenToolkit.vim
+" ===
+let g:DoxygenToolkit_commentType = "C++"
+let g:DoxygenToolkit_briefTag_pre="@Synopsis  "
+let g:DoxygenToolkit_paramTag_pre="@Param "
+let g:DoxygenToolkit_returnTag="@Returns   "
+let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
+let g:DoxygenToolkit_authorName="Meow-2"
 
 " ===
 " === vim-visual-multi
@@ -664,7 +712,9 @@ tnoremap <silent> <esc> <C-\><C-N>:q!<cr>
 " ===
 noremap <silent> <LEADER>v :Vista!!<CR>
 noremap <silent> T :silent! Vista finder coc<CR>
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" let g:vista_icon_indent = ["└─ ", "├─ "]
+let g:vista_icon_indent = ["└─▸ ", "├─▸ "]
 let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
@@ -739,8 +789,8 @@ endfunction
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
-nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
-nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
+nmap <silent> - <Plug>(coc-diagnostic-prev)
+nmap <silent> = <Plug>(coc-diagnostic-next)
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)

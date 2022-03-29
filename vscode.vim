@@ -19,10 +19,13 @@ set showcmd
 let mapleader=" "
 noremap n nzz
 noremap N Nzz
-noremap H ^
+noremap 9 ^
+noremap H b
 noremap J 5j
 noremap K 5k
-noremap L $
+" noremap L $
+noremap L e
+noremap 0 $
 " nnoremap <c-h> 0
 " nnoremap <c-l> $
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>

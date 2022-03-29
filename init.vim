@@ -115,6 +115,7 @@ noremap 0 $
 
 " control
 " inoremap <C-h> <esc>I
+" fu! QuitTheBuffer()
 " inoremap <C-j> <down>
 " inoremap <C-k> <up>
 " inoremap <C-l> <esc>A
@@ -200,7 +201,7 @@ noremap <silent><expr> q
     \ ":bd!<cr>"
 
 " map R :source $HOME/.config/nvim/init.vim<CR>
-map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
+" map <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
  
 " visual-block can use <C-q>
 " noremap <LEADER>v <C-v>
@@ -238,6 +239,7 @@ Plug 'tpope/vim-fugitive'
 
 " development
 Plug 'stevearc/dressing.nvim'      " select menu
+" Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'nvim-lua/plenary.nvim'       " dependency of neovim-session-manager
 Plug 'Shatur/neovim-session-manager'
 Plug 'babaybus/DoxygenToolkit.vim'
@@ -702,9 +704,15 @@ let g:neoterm_autoscroll = 1
 " nnoremap <C-t> :set splitright<CR>:vsplit<CR>:term<CR>i
 
 " nnoremap T :FloatermNew --height=0.75 --width=0.7 --cwd=<buffer><cr>
-nnoremap <silent> <c-t> :FloatermToggle --height=0.75 --width=0.7 --cwd=<buffer><cr>
-tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle --height=0.75 --width=0.7 --cwd=<buffer><cr>
-tnoremap <silent> <esc> <C-\><C-N>:q!<cr>
+let g:floaterm_width = 0.5
+" let g:floaterm_height = 0.75 
+let g:floaterm_wintype = 'vsplit'
+let g:floaterm_position = 'belowright'
+let g:floaterm_rootmarkers = ['build/CMakeFiles','.project', '.git', '.hg', '.svn', '.root']
+
+nnoremap <silent> <c-t> :FloatermToggle<cr>
+tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle<cr>
+" tnoremap <silent> <esc> <C-\><C-N>:q!<cr>
 " tnoremap <C-O> <C-\><C-N><C-O>
 
 " ===

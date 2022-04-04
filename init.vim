@@ -10,6 +10,11 @@ if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+if exists('g:nvui')
+  " Configure nvui
+  set guifont=Hack:h14
+endif
+
 " if empty(glob($HOME.'/.config/nvim/plugged/wildfire.vim/autoload/wildfire.vim'))
 "	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 "endif

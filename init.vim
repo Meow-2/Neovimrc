@@ -171,12 +171,17 @@ map <LEADER>k <C-w>k
 map <LEADER>l <C-w>l
 map <LEADER>c <C-w>c
  
-map <LEADER><left> :vertical resize-5<CR>
-map <LEADER><down> :res +5<CR>
-map <LEADER><up> :res -5<CR>
-map <LEADER><right> :vertical resize+5<CR>
+map <leader><LEFT> :vertical resize+5<CR>
+map <leader><Down> :res -5<CR>
+map <leader><UP> :res +5<CR>
+map <leader><RIGHT> :vertical resize-5<CR>
 map <LEADER>= <C-w>=
-  
+" map <C-LEFT> :vertical resize+5<CR>
+" map <C-Down> :res -5<CR>
+" map <C-UP> :res +5<CR>
+" map <C-RIGHT> :vertical resize-5<CR>
+" map <LEADER>= <C-w>=
+"   
 " " tab
 " noremap tn :tabe<CR>
 " noremap th :-tabnext<CR>
@@ -375,36 +380,36 @@ nnoremap <silent>tmh :BufferLineMovePrev<CR>
 " ===
 " === xtabline
 " ===
-let g:xtabline_settings = {}
-let g:xtabline_settings.enable_mappings = 0
-let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-let g:xtabline_settings.enable_persistance = 0
-let g:xtabline_settings.lrst_open_first = 1
-let g:xtabline_settings.theme = 'codedark'
-let g:xtabline_settings.indicators = {
-        \ 'modified': '[+]',
-        \ 'pinned': '[📌]',
-        \}
-let g:xtabline_settings.icons = {
-        \'pin': '📌',
-        \'star': '★',
-        \'book': '📖',
-        \'lock': '🔒',
-        \'hammer': '🔨',
-        \'tick': '✔',
-        \'cross': '✖',
-        \'warning': '⚠',
-        \'menu': '☰',
-        \'apple': '🍎',
-        \'linux': '🐧',
-        \'windows': '⌘',
-        \'git': '',
-        \'palette': '🎨',
-        \'lens': '🔍',
-        \'flag': '',
-        \}
-noremap to :XTabMode<CR>
-noremap \p :echo expand('%:p')<CR>
+" let g:xtabline_settings = {}
+" let g:xtabline_settings.enable_mappings = 0
+" let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+" let g:xtabline_settings.enable_persistance = 0
+" let g:xtabline_settings.lrst_open_first = 1
+" let g:xtabline_settings.theme = 'codedark'
+" let g:xtabline_settings.indicators = {
+"         \ 'modified': '[+]',
+"         \ 'pinned': '[📌]',
+"         \}
+" let g:xtabline_settings.icons = {
+"         \'pin': '📌',
+"         \'star': '★',
+"         \'book': '📖',
+"         \'lock': '🔒',
+"         \'hammer': '🔨',
+"         \'tick': '✔',
+"         \'cross': '✖',
+"         \'warning': '⚠',
+"         \'menu': '☰',
+"         \'apple': '🍎',
+"         \'linux': '🐧',
+"         \'windows': '⌘',
+"         \'git': '',
+"         \'palette': '🎨',
+"         \'lens': '🔍',
+"         \'flag': '',
+"         \}
+" noremap to :XTabMode<CR>
+" noremap \p :echo expand('%:p')<CR>
 
 " ===
 " === eleline.vim
@@ -557,7 +562,6 @@ require('session_manager').setup({
   max_path_length = 80,  -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
 })
 EOF
-
 " ===
 " === DoxygenToolkit.vim
 " ===
@@ -602,7 +606,7 @@ vmap  gc
 " ===
 " === tabular
 " ===
-vmap ga :Tabularize /
+" vmap ga :Tabularize /
 
 
 " ===
@@ -615,7 +619,7 @@ vmap ga :Tabularize /
 let g:cursorword_delay = 0
 
 " ===
-" === FZF
+" === fzf
 " ===
 nnoremap <silent> <c-p> :Leaderf file<CR>
 " noremap <silent> <C-p> :Files<CR>

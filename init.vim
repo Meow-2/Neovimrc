@@ -1013,14 +1013,13 @@ autocmd FileType markdown inoremap <silent> <C-p> <esc>:call mdip#MarkdownClipbo
 " auto comment disabled
 autocmd BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Open the _machine_specific.vim file if it has just been created
-if has_machine_specific_file == 0
-	exec "e ~/.config/nvim/_machine_specific.vim"
-endif
-
-
 " alacritty cursor to beam
 
 autocmd VimLeave * set guicursor=a:ver25-iCursor
+" Open the _machine_specific.vim file if it has just been created
+
+if has_machine_specific_file == 0
+	exec "e ~/.config/nvim/_machine_specific.vim"
+endif
 
 endif

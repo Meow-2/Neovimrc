@@ -249,6 +249,8 @@ Plug 'stevearc/dressing.nvim'      " select menu
 Plug 'nvim-lua/plenary.nvim'       " dependency of neovim-session-manager
 Plug 'Shatur/neovim-session-manager'
 Plug 'babaybus/DoxygenToolkit.vim'
+Plug 'ojroques/vim-oscyank'
+
 
 " Editor Enhancement
 Plug 'mg979/vim-visual-multi'
@@ -566,6 +568,11 @@ let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
 let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
 let g:DoxygenToolkit_authorName="Meow-2"
+
+" ===
+" === vim-oscyank
+" ===
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
 
 " ===
 " === vim-visual-multi

@@ -90,8 +90,10 @@ Plug 'nvim-treesitter/playground'
 " ------------------------------------------
 "            session-manager
 " ------------------------------------------
-Plug 'nvim-lua/plenary.nvim'        " dependency of neovim-session-manager
+Plug 'nvim-lua/plenary.nvim'        " dependency of neovim-session-manager and telescope
 Plug 'Shatur/neovim-session-manager'
+" Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+" Plug 'nvim-telescope/telescope.nvim'
 Plug 'stevearc/dressing.nvim'       " select menu
 " Plug 'nvim-telescope/telescope-ui-select.nvim'
 
@@ -105,10 +107,12 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enab
 " ------------------------------------------
 "             File navigation
 " ------------------------------------------
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 Plug 'kevinhwang91/rnvimr'
 Plug 'voldikss/vim-floaterm'
 
@@ -123,9 +127,13 @@ source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
 source $HOME/.config/nvim/init/plugconf/dashboard.vim
 source $HOME/.config/nvim/init/plugconf/DoxygenToolkit.vim
 source $HOME/.config/nvim/init/plugconf/dressing-nvim.vim
-source $HOME/.config/nvim/init/plugconf/fzf-gitignore.vim
-source $HOME/.config/nvim/init/plugconf/fzf.vim
-source $HOME/.config/nvim/init/plugconf/Leaderf.vim
+" source $HOME/.config/nvim/init/plugconf/telescope-nvim.vim
+" source $HOME/.config/nvim/init/plugconf/telescope-ui-select-nvim.vim
+" source $HOME/.config/nvim/init/plugconf/guihua-lua.vim
+" source $HOME/.config/nvim/init/plugconf/fzf-gitignore.vim
+" source $HOME/.config/nvim/init/plugconf/fzf.vim
+source $HOME/.config/nvim/init/plugconf/fzf-lua.vim
+" source $HOME/.config/nvim/init/plugconf/Leaderf.vim
 source $HOME/.config/nvim/init/plugconf/lightline.vim
 source $HOME/.config/nvim/init/plugconf/md-img-paste-vim.vim
 source $HOME/.config/nvim/init/plugconf/neovim-session-manager.vim

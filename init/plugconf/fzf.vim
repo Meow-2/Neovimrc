@@ -1,16 +1,16 @@
 " ===
 " === FZF
 " ===
-nnoremap <silent> <c-p> :Leaderf file<CR>
+nnoremap <silent> <c-f> :<CR>
 " noremap <silent> <C-p> :Files<CR>
-noremap <silent> <C-f> :Rg<CR>
+noremap <silent> <C-p> :Rg<CR>
 noremap <silent> <C-h> :History<CR>
 " noremap <C-t> :BTags<CR>
 " noremap <silent> <C-l> :Lines<CR>
 noremap <silent> <C-b> :Buffers<CR>
 noremap <silent> <leader>; :History:<CR>
 
-let g:fzf_preview_window = 'right:60%'
+let g:fzf_preview_window = 'right:40%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 function! s:list_buffers()

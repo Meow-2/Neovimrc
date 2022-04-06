@@ -23,4 +23,3 @@ let g:asyncrun_runner.alacritty = function('s:my_runner')
 " nnoremap <F1> :call compile#CompileRunGcc()<CR>
 " nnoremap <F2> :call asyncrun#quickfix_toggle(6)<cr>
 " nnoremap <leader><F1> :call compile#CompileGcc()<CR> 
-

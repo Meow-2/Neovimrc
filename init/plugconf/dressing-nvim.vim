@@ -4,17 +4,7 @@
 lua<<EOF
 require('dressing').setup({
     select = {
-        backend = {"builtin"},
-        nui = {
-          position = "50%",
-          size = nil,
-          relative = "editor",
-          border = {
-            style = "rounded",
-          },
-          max_width = 180,
-          max_height = 140,
-        },
+        backend = {"fzf_lua"},
         builtin = {
          -- These are passed to nvim_open_win
          anchor = "NW",

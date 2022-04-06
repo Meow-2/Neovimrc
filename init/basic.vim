@@ -10,11 +10,14 @@
 "                            start exec
 "----------------------------------------------------------------------
 " Auto load for first time uses
+let g:nvim_plugins_installation_completed=1
 if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
+    let g:nvim_plugins_installation_completed=0
 	silent !curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
 exec "nohlsearch"
 exec "set splitbelow"
 exec "set splitright"

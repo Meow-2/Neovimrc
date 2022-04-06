@@ -127,6 +127,8 @@ Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
+if g:nvim_plugins_installation_completed == 1
+
 source $HOME/.config/nvim/init/plugconf/vim-table-mode.vim
 source $HOME/.config/nvim/init/plugconf/asyncrun-vim.vim
 source $HOME/.config/nvim/init/plugconf/asynctasks-vim.vim
@@ -157,6 +159,8 @@ source $HOME/.config/nvim/init/plugconf/vim-oscyank.vim
 source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
 source $HOME/.config/nvim/init/plugconf/vimspector.vim
 source $HOME/.config/nvim/init/plugconf/Vista-vim.vim
+
+endif
 
 " auto comment disabled
 au BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

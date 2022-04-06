@@ -1,4 +1,5 @@
 call plug#begin('$HOME/.config/nvim/plugged')
+
 Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'mg979/vim-visual-multi'
 Plug 'tomtom/tcomment_vim'         " in <space>cn to comment a line

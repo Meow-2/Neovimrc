@@ -1,24 +1,31 @@
+
 call plug#begin('$HOME/.config/nvim/plugged')
-" ==========================================
-"                  lsp
-" ==========================================
+"+--------------------------------------------------------------------+
+"|                                                                    |
+"|                                LSP                                 |
+"|                                                                    |
+"+--------------------------------------------------------------------+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'OmniSharp/omnisharp-vim'
 
 
-" ==========================================
-"                markdown
-" ==========================================
+"+--------------------------------------------------------------------+
+"|                                                                    |
+"|                              MARKDOWM                              |
+"|                                                                    |
+"+--------------------------------------------------------------------+
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'Meow-2/bullets.vim', { 'branch': 'solve_CR_conflict_with_coc' }
 Plug 'ferrine/md-img-paste.vim'
+ 
 
-
-" ==========================================
-"           editor enhancement
-" ==========================================
+"+--------------------------------------------------------------------+
+"|                                                                    |
+"|                        EDITOR ENHANCEMENT                          |
+"|                                                                    |
+"+--------------------------------------------------------------------+
 Plug 'luochen1990/rainbow'
 Plug 'mg979/vim-visual-multi'
 Plug 'jiangmiao/auto-pairs'
@@ -33,31 +40,32 @@ Plug 'ojroques/vim-oscyank'
 " Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 
 
-" ==========================================
-"               dressing up
-" ==========================================
-
+"+--------------------------------------------------------------------+
+"|                                                                    |
+"|                            DRESSING UP                             |
+"|                                                                    |
+"+--------------------------------------------------------------------+
 " ------------------------------------------
-" start buffer
+"               start buffer
 " ------------------------------------------
 Plug 'glepnir/dashboard-nvim'
 " Plug 'mhinz/vim-startify'
 
 " ------------------------------------------
-" icons
+"                 icons
 " ------------------------------------------
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
 " ------------------------------------------
-" color themes
+"              color themes
 " ------------------------------------------
 Plug 'cpea2506/one_monokai.nvim'
 " Plug 'theniceboy/nvim-deus'
 " Plug 'glepnir/oceanic-material'
 
 " ------------------------------------------
-" status line
+"              status line
 " ------------------------------------------
 Plug 'akinsho/bufferline.nvim'
 Plug 'itchyny/lightline.vim'
@@ -66,10 +74,11 @@ Plug 'itchyny/lightline.vim'
 " Plug 'glepnir/spaceline.vim'
 
 
-" ==========================================
-"          development tools
-" ==========================================
-
+"+--------------------------------------------------------------------+
+"|                                                                    |
+"|                         DDEVELOPMENT TOOL                          |
+"|                                                                    |
+"+--------------------------------------------------------------------+
 " ------------------------------------------
 "              taglist
 " ------------------------------------------
@@ -81,7 +90,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'babaybus/DoxygenToolkit.vim'
 
 " ------------------------------------------
-"              treesitter
+"             treesitter
 " ------------------------------------------
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'

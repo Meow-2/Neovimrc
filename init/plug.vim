@@ -101,9 +101,9 @@ Plug 'nvim-treesitter/playground'
 " ------------------------------------------
 Plug 'nvim-lua/plenary.nvim'        " dependency of neovim-session-manager and telescope
 Plug 'Shatur/neovim-session-manager'
+Plug 'stevearc/dressing.nvim'       " select menu
 " Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 " Plug 'nvim-telescope/telescope.nvim'
-Plug 'stevearc/dressing.nvim'       " select menu
 " Plug 'nvim-telescope/telescope-ui-select.nvim'
 
 " ------------------------------------------
@@ -119,11 +119,11 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enab
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'junegunn/fzf.vim'
+Plug 'kevinhwang91/rnvimr'
+Plug 'voldikss/vim-floaterm'
 " Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 " Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
-Plug 'kevinhwang91/rnvimr'
-Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 

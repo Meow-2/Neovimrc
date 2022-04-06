@@ -100,6 +100,10 @@ endif
 " ------------------------------------------
 "               autocmd
 " ------------------------------------------
+" markdown
+au Filetype markdown vnoremap <buffer> <c-b> c****<esc>hhp
+au Filetype markdown vnoremap <buffer> <c-i> c**<esc>hp
+au Filetype markdown vnoremap <buffer> <c-s> c~~~~<esc>hhp
 " record cursor when exit
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " alacritty cursor to beam

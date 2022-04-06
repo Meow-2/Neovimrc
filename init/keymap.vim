@@ -100,8 +100,8 @@ nnoremap @ @1
 "                fold code
 " ------------------------------------------
 
-nnoremap <silent> <LEADER>i zf%
-nnoremap <silent> <LEADER>o za
+noremap <silent> <LEADER>i zf%
+noremap <silent> <LEADER>o za
 
 
 " ------------------------------------------

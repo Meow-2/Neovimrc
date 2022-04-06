@@ -111,4 +111,35 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 Plug 'kevinhwang91/rnvimr'
 Plug 'voldikss/vim-floaterm'
+
 call plug#end()
+
+source $HOME/.config/nvim/init/plugconf/vim-table-mode.vim
+source $HOME/.config/nvim/init/plugconf/asyncrun-vim.vim
+source $HOME/.config/nvim/init/plugconf/asynctasks-vim.vim
+source $HOME/.config/nvim/init/plugconf/bufferline-nvim.vim
+source $HOME/.config/nvim/init/plugconf/bullets.vim
+source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
+source $HOME/.config/nvim/init/plugconf/dashboard.vim
+source $HOME/.config/nvim/init/plugconf/DoxygenToolkit.vim
+source $HOME/.config/nvim/init/plugconf/dressing-nvim.vim
+source $HOME/.config/nvim/init/plugconf/fzf-gitignore.vim
+source $HOME/.config/nvim/init/plugconf/fzf.vim
+source $HOME/.config/nvim/init/plugconf/Leaderf.vim
+source $HOME/.config/nvim/init/plugconf/lightline.vim
+source $HOME/.config/nvim/init/plugconf/md-img-paste-vim.vim
+source $HOME/.config/nvim/init/plugconf/neovim-session-manager.vim
+source $HOME/.config/nvim/init/plugconf/nvim-treesitter.vim
+source $HOME/.config/nvim/init/plugconf/onemonoka-nvim.vim
+source $HOME/.config/nvim/init/plugconf/rnvimr.vim
+source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
+source $HOME/.config/nvim/init/plugconf/vim-cursorword.vim
+source $HOME/.config/nvim/init/plugconf/vim-floaterm.vim
+source $HOME/.config/nvim/init/plugconf/vim-markdown-toc.vim
+source $HOME/.config/nvim/init/plugconf/vim-oscyank.vim
+source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
+source $HOME/.config/nvim/init/plugconf/vimspector.vim
+source $HOME/.config/nvim/init/plugconf/Vista-vim.vim
+
+" auto comment disabled
+au BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

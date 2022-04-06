@@ -7,12 +7,12 @@
 " ------------------------------------------
 
 " cursor move
-nnoremap H b
-nnoremap J 5j
-nnoremap K 5k
-nnoremap L e
-nnoremap 9 ^
-nnoremap 0 $
+noremap H b
+noremap J 5j
+noremap K 5k
+noremap L e
+noremap 9 ^
+noremap 0 $
 
 " visual-block
 nnoremap <c-j> <c-v>
@@ -102,3 +102,13 @@ nnoremap @ @1
 
 nnoremap <silent> <LEADER>i zf%
 nnoremap <silent> <LEADER>o za
+
+
+" ------------------------------------------
+"    build / source / markdown preview
+" ------------------------------------------
+
+nnoremap <silent><expr> <F1> 
+       \ &filetype == 'vim' ? ":source $HOME/.config/nvim/init.vim<cr>" :
+       \ &filetype == 'markdown' ? ":MarkdownPreview<cr>" :
+       \ ":AsyncTask file-build<cr>"

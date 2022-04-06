@@ -99,7 +99,7 @@
         "]": "sourceNext"
     },
     "yank.enableCompletion": false,
-    "snippets.ultisnips.directories": ["$HOME/.config/nvim/Ultisnips/"],
+    "snippets.ultisnips.directories": ["$HOME/.config/nvim/snippets/"],
     "picgo.picBed.smms.token": "TsH7B2nLgORB6pJJ2AaF0egcJCIL2It7",
     "picgo.customOutputFormat": "<img src=\"${url}\" alt=\"\" width=\"250\">",
     "python.pythonPath": "/home/zk/.config/nvim/coc-pyright"

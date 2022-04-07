@@ -5,8 +5,12 @@ set termguicolors
 lua << EOF
 require("bufferline").setup{
 options = {
+    numbers = function(opts)
+                return string.format('%s.', opts.ordinal)
+              end,
     diagnostics = "coc",
-    separator_style = "thin" 
+    separator_style = "thin", 
+    always_show_bufferline = "true",
     }
 }
 EOF

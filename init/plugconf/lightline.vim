@@ -6,6 +6,9 @@ if !has('gui_running')
 endif
 set noshowmode
 let g:lightline = {
+      \ 'enable': {
+      \   'tabline': 0
+      \ },
       \ 'colorscheme': 'selenized_black',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
@@ -14,9 +17,13 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
       \   'filename': 'LightlineTruncatedFileName',
+      \   'readonly': 'LightlineReadonly',
       \ },
       \ }
 
+function! LightlineReadonly()
+  return &readonly && &filetype !=# 'help' ? 'RO' : ''
+endfunction
 
 function! LightlineTruncatedFileName()
 let l:filePath = substitute(expand("%:p"),$HOME,'~',"")
@@ -26,3 +33,4 @@ let l:filePath = substitute(expand("%:p"),$HOME,'~',"")
         return pathshorten(l:filePath)
     endif
 endfunction
+

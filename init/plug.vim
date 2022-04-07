@@ -72,6 +72,7 @@ Plug 'cpea2506/one_monokai.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
+" Plug 'nvim-lualine/lualine.nvim'
 " Plug 'mg979/vim-xtabline'
 " Plug 'NTBBloodbath/galaxyline.nvim'
 " Plug 'glepnir/spaceline.vim'
@@ -79,7 +80,7 @@ Plug 'itchyny/lightline.vim'
 
 "+--------------------------------------------------------------------+
 "|                                                                    |
-"|                         DDEVELOPMENT TOOL                          |
+"|                         DEVELOPMENT TOOL                          |
 "|                                                                    |
 "+--------------------------------------------------------------------+
 " ------------------------------------------
@@ -133,37 +134,48 @@ call plug#end()
 
 if g:nvim_plugins_installation_completed == 1
 
+"lsp
+source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
+
+"markdown
 source $HOME/.config/nvim/init/plugconf/vim-table-mode.vim
+source $HOME/.config/nvim/init/plugconf/vim-markdown-toc.vim
+source $HOME/.config/nvim/init/plugconf/bullets.vim
+source $HOME/.config/nvim/init/plugconf/md-img-paste-vim.vim
+
+"editor enhancement
+source $HOME/.config/nvim/init/plugconf/indent-blankline-nvim.vim
+source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
+source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
+source $HOME/.config/nvim/init/plugconf/vim-cursorword.vim
+source $HOME/.config/nvim/init/plugconf/vim-oscyank.vim
+
+"dressing up
+source $HOME/.config/nvim/init/plugconf/dashboard.vim
+source $HOME/.config/nvim/init/plugconf/onemonoka-nvim.vim
+source $HOME/.config/nvim/init/plugconf/bufferline-nvim.vim
+source $HOME/.config/nvim/init/plugconf/lightline.vim
+
+"development tool
+source $HOME/.config/nvim/init/plugconf/Vista-vim.vim
+source $HOME/.config/nvim/init/plugconf/DoxygenToolkit.vim
+source $HOME/.config/nvim/init/plugconf/nvim-treesitter.vim
+source $HOME/.config/nvim/init/plugconf/neovim-session-manager.vim
+source $HOME/.config/nvim/init/plugconf/dressing-nvim.vim
 source $HOME/.config/nvim/init/plugconf/asyncrun-vim.vim
 source $HOME/.config/nvim/init/plugconf/asynctasks-vim.vim
-source $HOME/.config/nvim/init/plugconf/bufferline-nvim.vim
-source $HOME/.config/nvim/init/plugconf/bullets.vim
-source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
-source $HOME/.config/nvim/init/plugconf/dashboard.vim
-source $HOME/.config/nvim/init/plugconf/DoxygenToolkit.vim
-source $HOME/.config/nvim/init/plugconf/dressing-nvim.vim
+source $HOME/.config/nvim/init/plugconf/vimspector.vim
+source $HOME/.config/nvim/init/plugconf/fzf-lua.vim
+source $HOME/.config/nvim/init/plugconf/rnvimr.vim
+source $HOME/.config/nvim/init/plugconf/vim-floaterm.vim
+
 " source $HOME/.config/nvim/init/plugconf/telescope-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/telescope-ui-select-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/guihua-lua.vim
 " source $HOME/.config/nvim/init/plugconf/fzf-gitignore.vim
 " source $HOME/.config/nvim/init/plugconf/fzf.vim
-source $HOME/.config/nvim/init/plugconf/fzf-lua.vim
 " source $HOME/.config/nvim/init/plugconf/Leaderf.vim
-source $HOME/.config/nvim/init/plugconf/indent-blankline-nvim.vim
-source $HOME/.config/nvim/init/plugconf/lightline.vim
-source $HOME/.config/nvim/init/plugconf/md-img-paste-vim.vim
-source $HOME/.config/nvim/init/plugconf/neovim-session-manager.vim
-source $HOME/.config/nvim/init/plugconf/nvim-treesitter.vim
-source $HOME/.config/nvim/init/plugconf/onemonoka-nvim.vim
-source $HOME/.config/nvim/init/plugconf/rnvimr.vim
-source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
-source $HOME/.config/nvim/init/plugconf/vim-cursorword.vim
-source $HOME/.config/nvim/init/plugconf/vim-floaterm.vim
-source $HOME/.config/nvim/init/plugconf/vim-markdown-toc.vim
-source $HOME/.config/nvim/init/plugconf/vim-oscyank.vim
-source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
-source $HOME/.config/nvim/init/plugconf/vimspector.vim
-source $HOME/.config/nvim/init/plugconf/Vista-vim.vim
+" source $HOME/.config/nvim/init/plugconf/lualine-nvim.vim
 
 endif
 

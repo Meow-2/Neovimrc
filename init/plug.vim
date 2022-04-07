@@ -165,6 +165,7 @@ source $HOME/.config/nvim/init/plugconf/dressing-nvim.vim
 source $HOME/.config/nvim/init/plugconf/asyncrun-vim.vim
 source $HOME/.config/nvim/init/plugconf/asynctasks-vim.vim
 source $HOME/.config/nvim/init/plugconf/vimspector.vim
+source $HOME/.config/nvim/init/plugconf/fzf.vim
 source $HOME/.config/nvim/init/plugconf/fzf-lua.vim
 source $HOME/.config/nvim/init/plugconf/rnvimr.vim
 source $HOME/.config/nvim/init/plugconf/vim-floaterm.vim
@@ -173,7 +174,6 @@ source $HOME/.config/nvim/init/plugconf/vim-floaterm.vim
 " source $HOME/.config/nvim/init/plugconf/telescope-ui-select-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/guihua-lua.vim
 " source $HOME/.config/nvim/init/plugconf/fzf-gitignore.vim
-" source $HOME/.config/nvim/init/plugconf/fzf.vim
 " source $HOME/.config/nvim/init/plugconf/Leaderf.vim
 " source $HOME/.config/nvim/init/plugconf/lualine-nvim.vim
 

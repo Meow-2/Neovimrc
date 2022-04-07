@@ -17,6 +17,7 @@ augroup fzf_commands
 augroup end
 " if g:nvim_plugins_installation_completed == 1
 lua <<EOF
+local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup {
 	global_resume = true,
 	global_resume_query = true,
@@ -72,59 +73,88 @@ require'fzf-lua'.setup {
 			["ctrl-k"]     = "up",
 		},
 	},
-  previewers = {
-    cat = {
-      cmd             = "cat",
-      args            = "--number",
+    actions = {
+        -- These override the default tables completely
+        -- no need to set to `false` to disable an action
+        -- delete or modify is sufficient
+        files = {
+            -- providers that inherit these actions:
+            --   files, git_files, git_status, grep, lsp
+            --   oldfiles, quickfix, loclist, tags, btags
+            --   args
+            -- default action opens a single selection
+            -- or sends multiple selection to quickfix
+            -- replace the default action with the below
+            -- to open all files whether single or multiple
+            ["default"]     = actions.file_edit,
+            ["default"]     = actions.file_edit_or_qf,
+            ["ctrl-s"]      = actions.file_split,
+            ["ctrl-x"]      = actions.file_vsplit,
+            ["ctrl-t"]      = actions.file_tabedit,
+            ["alt-q"]       = actions.file_sel_to_qf,
+        },
+        buffers = {
+            -- providers that inherit these actions:
+            --   buffers, tabs, lines, blines
+            ["default"]     = actions.buf_edit,
+            ["ctrl-s"]      = actions.buf_split,
+            ["ctrl-x"]      = actions.buf_vsplit,
+            ["ctrl-t"]      = actions.buf_tabedit,
+        }
     },
-    bat = {
-      cmd             = "bat",
-      args            = "--style=numbers,changes --color always",
-      theme           = 'Coldark-Dark', -- bat preview theme (bat --list-themes)
-      config          = nil,            -- nil uses $BAT_CONFIG_PATH
+    previewers = {
+        cat = {
+           cmd             = "cat",
+           args            = "--number",
+        },
+        bat = {
+            cmd             = "bat",
+            args            = "--style=numbers,changes --color always",
+            theme           = 'Coldark-Dark', -- bat preview theme (bat --list-themes)
+            config          = nil,            -- nil uses $BAT_CONFIG_PATH
+        },
+        head = {
+            cmd             = "head",
+            args            = nil,
+        },
+        git_diff = {
+            cmd_deleted     = "git diff --color HEAD --",
+            cmd_modified    = "git diff --color HEAD",
+            cmd_untracked   = "git diff --color --no-index /dev/null",
+            -- pager        = "delta",      -- if you have `delta` installed
+        },
+        man = {
+            cmd             = "man -c %s | col -bx",
+        },
+        builtin = {
+            syntax          = true,         -- preview syntax highlight?
+            syntax_limit_l  = 0,            -- syntax limit (lines), 0=nolimit
+            syntax_limit_b  = 1024*1024,    -- syntax limit (bytes), 0=nolimit
+        },
     },
-    head = {
-      cmd             = "head",
-      args            = nil,
+    files = {
+        -- previewer      = "bat",          -- uncomment to override previewer
+                                            -- (name from 'previewers' table)
+                                            -- set to 'false' to disable
+        prompt            = 'Files❯ ',
+        multiprocess      = true,           -- run command in a separate process
+        git_icons         = true,           -- show git icons?
+        file_icons        = true,           -- show file icons?
+        color_icons       = true,           -- colorize file|git icons
+        -- executed command priority is 'cmd' (if exists)
+        -- otherwise auto-detect prioritizes `fd`:`rg`:`find`
+        -- default options are controlled by 'fd|rg|find|_opts'
+        -- NOTE: 'find -printf' requires GNU find
+        -- cmd            = "find . -type f -printf '%P\n'",
+        find_opts         = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
+        rg_opts           = "--color=never --files --hidden --follow -g '!.git'",
+        fd_opts           = "--color=never --type f --hidden --follow --exclude .git",
     },
-    git_diff = {
-      cmd_deleted     = "git diff --color HEAD --",
-      cmd_modified    = "git diff --color HEAD",
-      cmd_untracked   = "git diff --color --no-index /dev/null",
-      -- pager        = "delta",      -- if you have `delta` installed
+    buffers = {
+        prompt            = 'Buffers❯ ',
+        file_icons        = true,         -- show file icons?
+        color_icons       = true,         -- colorize file|git icons
+        sort_lastused     = true,         -- sort buffers() by last used
     },
-    man = {
-      cmd             = "man -c %s | col -bx",
-    },
-    builtin = {
-      syntax          = true,         -- preview syntax highlight?
-      syntax_limit_l  = 0,            -- syntax limit (lines), 0=nolimit
-      syntax_limit_b  = 1024*1024,    -- syntax limit (bytes), 0=nolimit
-    },
-  },
-  files = {
-    -- previewer      = "bat",          -- uncomment to override previewer
-                                        -- (name from 'previewers' table)
-                                        -- set to 'false' to disable
-    prompt            = 'Files❯ ',
-    multiprocess      = true,           -- run command in a separate process
-    git_icons         = true,           -- show git icons?
-    file_icons        = true,           -- show file icons?
-    color_icons       = true,           -- colorize file|git icons
-    -- executed command priority is 'cmd' (if exists)
-    -- otherwise auto-detect prioritizes `fd`:`rg`:`find`
-    -- default options are controlled by 'fd|rg|find|_opts'
-    -- NOTE: 'find -printf' requires GNU find
-    -- cmd            = "find . -type f -printf '%P\n'",
-    find_opts         = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
-    rg_opts           = "--color=never --files --hidden --follow -g '!.git'",
-    fd_opts           = "--color=never --type f --hidden --follow --exclude .git",
-  },
-  buffers = {
-    prompt            = 'Buffers❯ ',
-    file_icons        = true,         -- show file icons?
-    color_icons       = true,         -- colorize file|git icons
-    sort_lastused     = true,         -- sort buffers() by last used
-  },
 }
 EOF

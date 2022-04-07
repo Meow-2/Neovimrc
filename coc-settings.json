@@ -18,7 +18,7 @@
     "clangd.path": "/usr/bin/clangd",
     "coc.preferences.enableFloatHighlight": true,
     "coc.preferences.extensionUpdateCheck": "daily",
-    "coc.preferences.formatOnSaveFiletypes": ["json", "cpp"],
+    "coc.preferences.formatOnSaveFiletypes": ["json", "cpp", "lua"],
     "coc.preferences.snippetStatusText": "Ⓢ ",
     "suggest.noselect": true,
     "suggest.snippetIndicator": "",
@@ -102,5 +102,6 @@
     "snippets.ultisnips.directories": ["$HOME/.config/nvim/init/snippets/"],
     "picgo.picBed.smms.token": "TsH7B2nLgORB6pJJ2AaF0egcJCIL2It7",
     "picgo.customOutputFormat": "<img src=\"${url}\" alt=\"\" width=\"250\">",
-    "python.pythonPath": "/home/zk/.config/nvim/init/coc-pyright"
+    "python.pythonPath": "/home/zk/.config/nvim/init/coc-pyright",
+    "Lua.telemetry.enable": true
 }

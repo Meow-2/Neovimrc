@@ -45,8 +45,9 @@ cnoremap <c-b> <left>
 
 " close buffer/tab/dashboard
 nnoremap <silent><expr> q
-       \ &filetype == 'dashboard' ? ":q!<cr>" :
        \ len(getbufinfo({'buflisted':1})) == 1 ? ":q!<cr>" :
+       \ len(win_findbuf(bufnr('%'))) > 1 ? ":q!<cr>" :
+       \ &filetype == 'dashboard' ? ":q!<cr>" :
        \ ":bd!<cr>"
 
 " write to file
@@ -61,23 +62,23 @@ nnoremap <C-q> :q!<cr>
 "----------------------------------------------------------------------
 
 " nnoremap S <nop>
-nnoremap <c-left> :set splitright<CR>:vsplit<CR>
-nnoremap <c-down> :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-nnoremap <c-up> :set splitbelow<CR>:split<CR>
-nnoremap <c-right> :set nosplitright<CR>:vsplit<CR>
+nnoremap <silent> <c-left> :set splitright<CR>:vsplit<CR>
+nnoremap <silent> <c-down> :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+nnoremap <silent> <c-up> :set splitbelow<CR>:split<CR>
+nnoremap <silent> <c-right> :set nosplitright<CR>:vsplit<CR>
 
 " move around split windows
 nnoremap <left> <C-w>h
 nnoremap <down> <C-w>j
 nnoremap <up> <C-w>k
 nnoremap <right> <C-w>l
-nnoremap <leader>c <C-w>c
+" nnoremap <leader>c <C-w>c
 
 " resize split windows
-nnoremap <S-left> :vertical resize+2<CR>
-nnoremap <S-down> :res -2<CR>
-nnoremap <S-up> :res +2<CR>
-nnoremap <S-right> :vertical resize-2<CR>
+nnoremap <silent> <S-left> :vertical resize+2<CR>
+nnoremap <silent> <S-down> :res -2<CR>
+nnoremap <silent> <S-up> :res +2<CR>
+nnoremap <silent> <S-right> :vertical resize-2<CR>
 nnoremap <leader>= <C-w>=
 
 
@@ -94,7 +95,7 @@ inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
 
 " find the placeholder
-nnoremap <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
+" nnoremap <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 
 
 "----------------------------------------------------------------------

@@ -1,11 +1,11 @@
 " ===
 " === fzf-lua
 " ===
-noremap <silent> <C-f> :FzfLua files<CR>
-noremap <silent> <C-w> :FzfLua grep_project<cr>
-noremap <silent> <C-h> :FzfLua oldfiles cwd=~<CR>
-noremap <silent> <C-p> :FzfLua builtin<CR>
-noremap <silent> <C-b> :FzfLua buffers<CR>
+noremap <silent> <leader>f :FzfLua files<CR>
+noremap <silent> <leader>w :FzfLua grep_project<cr>
+noremap <silent> <leader>h :FzfLua oldfiles cwd=~<CR>
+noremap <silent> <leader>p :FzfLua builtin<CR>
+noremap <silent> <leader>b :FzfLua buffers<CR>
 " noremap <silent> <C-t> :FzfLua lines<CR>
 " noremap <silent> <C-x> :FzfLua resume<CR>
 noremap <silent> z= :FzfLua spell_suggest<CR>

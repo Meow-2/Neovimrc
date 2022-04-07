@@ -10,13 +10,13 @@ options = {
     }
 }
 EOF
-nnoremap <silent>tl :BufferLineCycleNext<CR>
-nnoremap <silent>th :BufferLineCyclePrev<CR>
+nnoremap <silent>r :BufferLineCycleNext<CR>
+nnoremap <silent>e :BufferLineCyclePrev<CR>
 nnoremap <silent>tc :BufferLinePickClose<CR>
 nnoremap <silent>gb :BufferLinePick<CR>
 " These commands will move the current buffer backwards or forwards in the bufferline
-nnoremap <silent>tml :BufferLineMoveNext<CR>
-nnoremap <silent>tmh :BufferLineMovePrev<CR>
+nnoremap <silent>tl :BufferLineMoveNext<CR>
+nnoremap <silent>th :BufferLineMovePrev<CR>
 
 nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
 nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>

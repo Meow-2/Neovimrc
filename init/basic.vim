@@ -12,9 +12,9 @@
 " Auto load for first time uses
 let g:nvim_plugins_installation_completed=1
 if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
-    let g:nvim_plugins_installation_completed=0
 	silent !curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let g:nvim_plugins_installation_completed=0
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -112,6 +112,7 @@ au Filetype markdown vnoremap <buffer> <c-i> c**<esc>hp
 au Filetype markdown vnoremap <buffer> <c-s> c~~~~<esc>hhp
 " record cursor when exit
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au TermOpen * setlocal nonumber norelativenumber
 " alacritty cursor to beam
 au VimLeave * set guicursor=a:ver25-iCursor
 

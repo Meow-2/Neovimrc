@@ -60,25 +60,25 @@ nnoremap <C-q> :q!<cr>
 "                          split windows
 "----------------------------------------------------------------------
 
-nnoremap S <nop>
-nnoremap Sh :set nosplitright<CR>:vsplit<CR>
-nnoremap Sj :set splitbelow<CR>:split<CR>
-nnoremap Sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-nnoremap Sl :set splitright<CR>:vsplit<CR>
+" nnoremap S <nop>
+nnoremap <c-left> :set splitright<CR>:vsplit<CR>
+nnoremap <c-down> :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+nnoremap <c-up> :set splitbelow<CR>:split<CR>
+nnoremap <c-right> :set nosplitright<CR>:vsplit<CR>
 
 " move around split windows
-nnoremap <LEADER>h <C-w>h
-nnoremap <LEADER>j <C-w>j
-nnoremap <LEADER>k <C-w>k
-nnoremap <LEADER>l <C-w>l
-nnoremap <LEADER>c <C-w>c
+nnoremap <left> <C-w>h
+nnoremap <down> <C-w>j
+nnoremap <up> <C-w>k
+nnoremap <right> <C-w>l
+nnoremap <leader>c <C-w>c
 
 " resize split windows
-nnoremap <LEADER><left> :vertical resize+5<CR>
-nnoremap <LEADER><down> :res -5<CR>
-nnoremap <LEADER><up> :res +5<CR>
-nnoremap <LEADER><right> :vertical resize-5<CR>
-nnoremap <LEADER>= <C-w>=
+nnoremap <S-left> :vertical resize+2<CR>
+nnoremap <S-down> :res -2<CR>
+nnoremap <S-up> :res +2<CR>
+nnoremap <S-right> :vertical resize-2<CR>
+nnoremap <leader>= <C-w>=
 
 
 "----------------------------------------------------------------------

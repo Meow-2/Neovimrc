@@ -59,7 +59,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>.  <Plug>(coc-fix-current)
 
-nnoremap <silent> <LEADER>p :call <SID>show_documentation()<CR>
+nnoremap <silent> <c-p> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

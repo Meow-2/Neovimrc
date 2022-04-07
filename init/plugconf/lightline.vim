@@ -9,16 +9,20 @@ let g:lightline = {
       \ 'colorscheme': 'selenized_black',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch','readonly', 'filename' ] ],
+      \             [ 'gitbranch','readonly', 'filename' , 'modified', 'method' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
-      \   'filename': 'LightlineFilename',
+      \   'filename': 'LightlineTruncatedFileName',
       \ },
       \ }
-function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' +' : ''
-  return filename . modified
-endfunction
 
+
+function! LightlineTruncatedFileName()
+let l:filePath = substitute(expand("%:p"),$HOME,'~',"")
+    if winwidth(0) > 100
+        return l:filePath
+    else
+        return pathshorten(l:filePath)
+    endif
+endfunction

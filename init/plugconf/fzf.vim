@@ -2,7 +2,7 @@
 " === FZF
 " ===
 
-let g:fzf_preview_window = 'right:40%'
+let g:fzf_preview_window = ['right:50%', 'ctrl-p']
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 function! s:list_buffers()
@@ -18,6 +18,6 @@ endfunction
 
 command! BD call fzf#run(fzf#wrap({'source': s:list_buffers(), 'sink*': { lines -> s:delete_buffers(lines) }, 'options': '--multi --reverse --bind ctrl-a:select-all+accept'}))
 
-" noremap <c-d> :BD<CR>
+noremap <c-d> :BD<CR>
 
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }

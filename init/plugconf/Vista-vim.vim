@@ -2,7 +2,7 @@
 " === Vista.vim
 " ===
 noremap <silent> <LEADER>v :Vista!!<CR>
-noremap <silent> T :silent! Vista finder coc<CR>
+noremap <silent> <LEADER>t :silent! Vista finder coc<CR>
 " let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " let g:vista_icon_indent = ["└─ ", "├─ "]
 let g:vista_icon_indent = ["└─▸ ", "├─▸ "]

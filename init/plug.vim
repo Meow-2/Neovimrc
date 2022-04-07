@@ -70,6 +70,7 @@ Plug 'cpea2506/one_monokai.nvim'
 "              status line
 " ------------------------------------------
 Plug 'akinsho/bufferline.nvim'
+Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 " Plug 'mg979/vim-xtabline'
 " Plug 'NTBBloodbath/galaxyline.nvim'
@@ -115,10 +116,11 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enable-python '}
 
+
 " ------------------------------------------
 "             File navigation
 " ------------------------------------------
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'

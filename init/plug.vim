@@ -26,6 +26,8 @@ Plug 'ferrine/md-img-paste.vim'
 "|                        EDITOR ENHANCEMENT                          |
 "|                                                                    |
 "+--------------------------------------------------------------------+
+" Plug 'glepnir/indent-guides.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'luochen1990/rainbow'
 Plug 'mg979/vim-visual-multi'
 Plug 'jiangmiao/auto-pairs'
@@ -145,6 +147,7 @@ source $HOME/.config/nvim/init/plugconf/dressing-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/fzf.vim
 source $HOME/.config/nvim/init/plugconf/fzf-lua.vim
 " source $HOME/.config/nvim/init/plugconf/Leaderf.vim
+source $HOME/.config/nvim/init/plugconf/indent-blankline-nvim.vim
 source $HOME/.config/nvim/init/plugconf/lightline.vim
 source $HOME/.config/nvim/init/plugconf/md-img-paste-vim.vim
 source $HOME/.config/nvim/init/plugconf/neovim-session-manager.vim

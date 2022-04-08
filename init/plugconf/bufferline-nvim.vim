@@ -11,6 +11,7 @@ options = {
     diagnostics = "coc",
     separator_style = "thin", 
     always_show_bufferline = "true",
+    right_mouse_command = "vertical sbuffer %d",
     }
 }
 EOF

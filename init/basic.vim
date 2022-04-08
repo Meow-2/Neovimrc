@@ -53,7 +53,7 @@ set ttimeoutlen=0
 set notimeout
 set updatetime=100
 set virtualedit=block
-set wrap                       " show one line in two lines when out of range
+set nowrap                     " show one line in two lines when out of range
 set wildmenu                   " vicmd compelete
 set autochdir                  " exec vicmd in now path
 set laststatus=2               " always show the statusbar

@@ -79,6 +79,8 @@ nnoremap <up> <C-w>k
 nnoremap <right> <C-w>l
 nnoremap <c-h> <C-w>h
 nnoremap <c-l> <C-w>l
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
 
 " nnoremap <leader>c <C-w>c
 

@@ -81,7 +81,7 @@
         "s": false,
         "E": false,
         "Sj": "open:split",
-        "Sl": "open:vsplit",
+        "<c-x>": "open:vsplit",
         "yp": "copyFilepath",
         "yn": "copyFilename",
         "yy": "copyFile",

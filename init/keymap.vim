@@ -62,10 +62,11 @@ nnoremap <C-q> :q!<cr>
 "----------------------------------------------------------------------
 
 " nnoremap S <nop>
-nnoremap <silent> <c-left> :set splitright<CR>:vsplit<CR>
-nnoremap <silent> <c-down> :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-nnoremap <silent> <c-up> :set splitbelow<CR>:split<CR>
-nnoremap <silent> <c-right> :set nosplitright<CR>:vsplit<CR>
+nnoremap <silent> <c-left> :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+nnoremap <silent> <c-down> :set splitbelow<CR>:split<CR>
+nnoremap <silent> <c-up> :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+nnoremap <silent> <c-right> :set splitright<CR>:vsplit<CR>
+
 
 " move around split windows
 nnoremap <left> <C-w>h

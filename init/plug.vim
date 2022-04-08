@@ -72,6 +72,7 @@ Plug 'cpea2506/one_monokai.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
+" Plug 'feline-nvim/feline.nvim'
 " Plug 'nvim-lualine/lualine.nvim'
 " Plug 'mg979/vim-xtabline'
 " Plug 'NTBBloodbath/galaxyline.nvim'
@@ -106,6 +107,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'nvim-lua/plenary.nvim'        " dependency of neovim-session-manager and telescope
 Plug 'Shatur/neovim-session-manager'
 Plug 'stevearc/dressing.nvim'       " select menu
+" Plug 'lewis6991/impatient.nvim'
 " Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 " Plug 'nvim-telescope/telescope.nvim'
 " Plug 'nvim-telescope/telescope-ui-select.nvim'
@@ -126,6 +128,7 @@ Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'voldikss/vim-floaterm'
+Plug 'sindrets/winshift.nvim'
 " Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 " Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
@@ -134,6 +137,8 @@ call plug#end()
 
 if g:nvim_plugins_installation_completed == 1
 
+" lua require('impatient')
+" lua require'impatient'.enable_profile()
 "lsp
 source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
 
@@ -156,6 +161,7 @@ source $HOME/.config/nvim/init/plugconf/dashboard.vim
 source $HOME/.config/nvim/init/plugconf/onemonoka-nvim.vim
 source $HOME/.config/nvim/init/plugconf/bufferline-nvim.vim
 source $HOME/.config/nvim/init/plugconf/lightline.vim
+" source $HOME/.config/nvim/init/plugconf/feline-nvim.vim
 
 "development tool
 source $HOME/.config/nvim/init/plugconf/Vista-vim.vim
@@ -170,6 +176,7 @@ source $HOME/.config/nvim/init/plugconf/fzf.vim
 source $HOME/.config/nvim/init/plugconf/fzf-lua.vim
 source $HOME/.config/nvim/init/plugconf/rnvimr.vim
 source $HOME/.config/nvim/init/plugconf/vim-floaterm.vim
+source $HOME/.config/nvim/init/plugconf/winshift-nvim.vim
 
 " source $HOME/.config/nvim/init/plugconf/telescope-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/telescope-ui-select-nvim.vim

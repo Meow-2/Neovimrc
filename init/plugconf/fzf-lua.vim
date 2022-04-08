@@ -89,7 +89,7 @@ require'fzf-lua'.setup {
             ["default"]     = actions.file_edit,
             ["default"]     = actions.file_edit_or_qf,
             ["ctrl-s"]      = actions.file_split,
-            ["ctrl-x"]      = actions.file_vsplit,
+            ["ctrl-l"]      = actions.file_vsplit,
             ["ctrl-t"]      = actions.file_tabedit,
             ["alt-q"]       = actions.file_sel_to_qf,
         },
@@ -98,7 +98,7 @@ require'fzf-lua'.setup {
             --   buffers, tabs, lines, blines
             ["default"]     = actions.buf_edit,
             ["ctrl-s"]      = actions.buf_split,
-            ["ctrl-x"]      = actions.buf_vsplit,
+            ["ctrl-l"]      = actions.buf_vsplit,
             ["ctrl-t"]      = actions.buf_tabedit,
         }
     },

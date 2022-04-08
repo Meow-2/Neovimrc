@@ -9,7 +9,7 @@ highlight link RnvimrNormal CursorLine
 nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
             \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit vsplit',
+            \ '<C-l>': 'NvimEdit vsplit',
             \ 'gw': 'JumpNvimCwd',
             \ 'yw': 'EmitRangerCwd'
             \ }

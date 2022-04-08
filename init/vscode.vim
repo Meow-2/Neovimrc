@@ -68,10 +68,10 @@ map q <C-w>c
 noremap Q q
 
 " write to file
-nnoremap s :w<CR>
+nmap s :w<CR>
 
 " quit nvim
-nnoremap <C-q> :q!<cr>
+" nnoremap <C-q> :q!<cr>
 
 
 "----------------------------------------------------------------------
@@ -79,24 +79,24 @@ nnoremap <C-q> :q!<cr>
 "----------------------------------------------------------------------
 
 " nnoremap S <nop>
-nnoremap <silent> <c-left> :set splitright<CR>:vsplit<CR>
-nnoremap <silent> <c-down> :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-nnoremap <silent> <c-up> :set splitbelow<CR>:split<CR>
-nnoremap <silent> <c-right> :set nosplitright<CR>:vsplit<CR>
+nmap <silent> <c-left> :set splitright<CR>:vsplit<CR>
+nmap <silent> <c-down> :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+nmap <silent> <c-up> :set splitbelow<CR>:split<CR>
+nmap <silent> <c-right> :set nosplitright<CR>:vsplit<CR>
 
 " move around split windows
-nnoremap <left> <C-w>h
-nnoremap <down> <C-w>j
-nnoremap <up> <C-w>k
-nnoremap <right> <C-w>l
+nmap <left> <C-w>h
+nmap <down> <C-w>j
+nmap <up> <C-w>k
+nmap <right> <C-w>l
 " nnoremap <leader>c <C-w>c
 
 " resize split windows
-nnoremap <silent> <S-left> :vertical resize+2<CR>
-nnoremap <silent> <S-down> :res -2<CR>
-nnoremap <silent> <S-up> :res +2<CR>
-nnoremap <silent> <S-right> :vertical resize-2<CR>
-nnoremap <leader>= <C-w>=
+nmap <silent> <S-left> :vertical resize+2<CR>
+nmap <silent> <S-down> :res -2<CR>
+nmap <silent> <S-up> :res +2<CR>
+nmap <silent> <S-right> :vertical resize-2<CR>
+nmap <leader>= <C-w>=
 
 
 "----------------------------------------------------------------------
@@ -142,17 +142,17 @@ vnoremap <S-tab> <gv
 
 
 " fold code
-noremap <silent> <LEADER>i zf%
-noremap <silent> <LEADER>o za
+nmap <silent> <LEADER>i zf%
+nmap <silent> <LEADER>o za
 
 "----------------------------------------------------------------------
 "                              change tab
 "----------------------------------------------------------------------
 
-map r :tabp<CR>
-map e :tabn<CR>
-map tc :tabclose<CR>
-nnoremap tt <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>
+nmap e :tabp<CR>
+nmap r :tabn<CR>
+nmap tc :tabclose<CR>
+noremap tt <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>
 " nnoremap T <Cmd>call VSCodeNotify('workbench.action.terminal.focus')<CR>
 
 

@@ -1,4 +1,4 @@
-nnoremap S <Cmd>WinShift<CR>
+nnoremap <leader><leader> <Cmd>WinShift<CR>
 lua<<EOF
 require("winshift").setup({
   highlight_moving_win = true,  -- Highlight the window being moved

@@ -63,6 +63,8 @@ nnoremap <C-q> :q!<cr>
 
 nnoremap S <nop>
 nnoremap <silent> Sh        : set nosplitright<CR> : vsplit<CR> : set splitright<CR>
+nnoremap <silent> Sj        : set splitbelow<CR>   : split<CR>
+nnoremap <silent> Sk        : set nosplitbelow<CR> : split<CR>  : set splitbelow<CR>
 nnoremap <silent> Sl        : set splitright<CR>   : vsplit<CR>
 nnoremap <silent> <S-left>  : set nosplitright<CR> : vsplit<CR> : set splitright<CR>
 nnoremap <silent> <S-down>  : set splitbelow<CR>   : split<CR>

@@ -23,16 +23,16 @@ require'fzf-lua'.setup {
 	global_resume_query = true,
 	winopts = {
 		height = 0.95,
-		width = 0.95,
+		width  = 0.95,
 		preview = {
 			scrollbar = 'float',
 		},
 		fullscreen = false,
-		vertical       = 'down:45%',      -- up|down:size
-		horizontal     = 'right:60%',     -- right|left:size
-		hidden         = 'nohidden',
-		title = true,
-        border           = 'single',
+		vertical   = 'down:45%',      -- up|down:size
+		horizontal = 'right:60%',     -- right|left:size
+		hidden     = 'nohidden',
+		title      = true,
+        border     = 'single',
         hl = {
            normal         = 'Normal',        -- window normal color (fg+bg)
            border         = 'Normal',        -- border color (try 'FloatBorder')
@@ -50,27 +50,27 @@ require'fzf-lua'.setup {
 		-- no need to set to `false` to disable a bind
 		-- delete or modify is sufficient
 		builtin = {
-			["<c-f>"]      = "toggle-fullscreen",
-			["<c-r>"]      = "toggle-preview-wrap",
-			["<c-p>"]      = "toggle-preview",
-			["<c-down>"]      = "preview-page-down",
+			["<c-f>"]       = "toggle-fullscreen",
+			["<c-r>"]       = "toggle-preview-wrap",
+			["<c-p>"]       = "toggle-preview",
+			["<c-down>"]    = "preview-page-down",
 			["<c-up>"]      = "preview-page-up",
-			-- ["<S-left>"]   = "preview-page-reset",
+			-- ["<S-left>"] = "preview-page-reset",
 		},
 		fzf = {
 			-- ["esc"]        = "abort",
 			-- ["ctrl-h"]     = "unix-line-discard",
 			-- ["ctrl-k"]     = "half-page-down",
 			-- ["ctrl-b"]     = "half-page-up",
-			-- ["ctrl-"]     = "beginning-of-line",
+			-- ["ctrl-"]      = "beginning-of-line",
 			-- ["ctrl-a"]     = "end-of-line",
-			["ctrl-a"]      = "toggle-all",
+			["ctrl-a"]        = "toggle-all",
 			-- ["f3"]         = "toggle-preview-wrap",
 			-- ["f4"]         = "toggle-preview",
 			-- ["shift-down"] = "preview-page-down",
 			-- ["shift-up"]   = "preview-page-up",
-			["ctrl-j"]     = "down",
-			["ctrl-k"]     = "up",
+			["ctrl-j"]        = "down",
+			["ctrl-k"]        = "up",
 		},
 	},
     actions = {

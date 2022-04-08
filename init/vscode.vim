@@ -1,3 +1,24 @@
+let mapleader=" "
+exec "nohlsearch"
+exec "set splitbelow"
+exec "set splitright"
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set wildmenu 
+set lazyredraw
+set ttyfast
+set backspace=indent,eol,start
+
+set ttimeoutlen=0
+set notimeout
+set updatetime=100
+set virtualedit=block
+set showcmd
+
 
 "+--------------------------------------------------------------------+
 "|                                                                    |
@@ -43,12 +64,8 @@ cnoremap <c-b> <left>
 "                           save and quit
 "----------------------------------------------------------------------
 
-" close buffer/tab/dashboard
-nnoremap <silent><expr> q
-       \ len(getbufinfo({'buflisted':1})) == 1 ? ":q!<cr>" :
-       \ len(win_findbuf(bufnr('%'))) > 1 ? ":q!<cr>" :
-       \ &filetype == 'dashboard' ? ":q!<cr>" :
-       \ ":bd!<cr>"
+map q <C-w>c
+noremap Q q
 
 " write to file
 nnoremap s :w<CR>
@@ -128,12 +145,111 @@ vnoremap <S-tab> <gv
 noremap <silent> <LEADER>i zf%
 noremap <silent> <LEADER>o za
 
-
 "----------------------------------------------------------------------
-"                    build / source / markdown preview
+"                              change tab
 "----------------------------------------------------------------------
 
-nnoremap <silent><expr> <F1> 
-       \ &filetype == 'vim' ? ":source $HOME/.config/nvim/init.vim<cr>" :
-       \ &filetype == 'markdown' ? ":MarkdownPreview<cr>" :
-       \ ":AsyncTask file-build<cr>"
+map r :tabp<CR>
+map e :tabn<CR>
+map tc :tabclose<CR>
+nnoremap tt <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>
+" nnoremap T <Cmd>call VSCodeNotify('workbench.action.terminal.focus')<CR>
+
+
+
+call plug#begin('$HOME/.config/nvim/plugged')
+
+Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'mg979/vim-visual-multi'
+Plug 'tomtom/tcomment_vim'         " in <space>cn to comment a line
+Plug 'theniceboy/antovim'          " gs to switch false and true
+Plug 'tpope/vim-surround'          " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
+Plug 'godlygeek/tabular'           " ga, or :Tabularize <regex> to align
+" Plug 'lambdalisue/suda.vim'
+Plug 'wellle/targets.vim'
+Plug 'lilydjwg/fcitx.vim' " auto chinese to english
+" Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
+" Plug 'dkarter/bullets.vim'
+
+call plug#end()
+
+
+" ===
+" === nvim-treesitter
+" ===
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = {"javascript","cmake", "cpp","c_sharp", "python","bash","yaml","json","vim"},
+    incremental_selection ={
+    enable = true,
+        keymaps = {
+            init_selection = '<CR>',
+            node_incremental = '<CR>',
+            scope_incremental = '<BS>',
+            node_decremental = '<BS>',
+        }
+    }
+}
+EOF
+
+
+" " ===
+" " === vim-visual-multi
+" " ===
+" let g:VM_maps = {}
+" let g:VM_maps['Find Under']='<C-l>'
+" let g:VM_maps['Find Subword Under']='<C-l>'
+" let g:VM_maps["Add Cursor Down"]='<C-j>'
+" let g:VM_maps["Add Cursor Up"]='<C-k>'  
+
+
+" ===
+" === tcomment_vim
+" ===
+let g:tcomment_mapleader1=''
+nmap <c-/> gcc
+vmap <c-/> gc
+
+
+" ===
+" === tabular
+" ===
+vnoremap gt :Tabularize /
+
+
+" ===
+" === vim-table-mode
+" ===
+" noremap tm :TableModeToggle<CR>
+" "let g:table_mode_disable_mappings = 1
+" let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+
+" ===
+" === vim-markdown-toc
+" ===
+
+"let g:vmt_auto_update_on_save = 0
+"let g:vmt_dont_insert_fence = 1
+let g:vmt_cycle_list_item_markers = 1
+let g:vmt_fence_text = 'TOC'
+let g:vmt_fence_closing_text = '/TOC'
+
+
+" ===
+" === bullets.vim
+" ===
+" let g:bullets_set_mappings = 0
+" let g:bullets_enabled_file_types = [
+" 			\ 'markdown',
+" 			\ 'text',
+" 			\ 'gitcommit',
+" 			\ 'scratch'
+" 			\]
+
+" auto comment disabled
+au BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+au Filetype markdown vnoremap <buffer> <c-b> c****<esc>hhp
+au Filetype markdown vnoremap <buffer> <c-i> c**<esc>hp
+au Filetype markdown vnoremap <buffer> <c-s> c~~~~<esc>hhp
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif                  " record cursor when exit

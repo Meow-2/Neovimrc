@@ -30,7 +30,7 @@ language en_US.utf-8
 syntax on
 let mapleader=" "
 let &t_ut=''
-let g:python_host_prog='/usr/bin/python2'
+let g:python_host_prog='/usr/bin/python'
 let g:python3_host_prog='/usr/bin/python3'
 let g:barbaric_ime = 'fcitx5'
 let g:mkdp_browser = 'google-chrome-stable'

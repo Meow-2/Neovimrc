@@ -39,7 +39,7 @@ Plug 'wellle/targets.vim'
 Plug 'lilydjwg/fcitx.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'ojroques/vim-oscyank'
-" Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
+Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 
 
 "+--------------------------------------------------------------------+
@@ -149,6 +149,7 @@ source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
 source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
 source $HOME/.config/nvim/init/plugconf/vim-cursorword.vim
 source $HOME/.config/nvim/init/plugconf/vim-oscyank.vim
+source $HOME/.config/nvim/init/plugconf/tabular.vim
 
 "dressing up
 source $HOME/.config/nvim/init/plugconf/dashboard.vim

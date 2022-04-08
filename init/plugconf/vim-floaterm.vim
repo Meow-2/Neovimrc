@@ -14,6 +14,7 @@ let g:floaterm_wintype = 'vsplit'
 let g:floaterm_position = 'belowright'
 let g:floaterm_rootmarkers = ['build/CMakeFiles','.project', '.git', '.hg', '.svn', '.root']
 
+nnoremap <silent> <c-g> :FloatermNew! lazygit<cr>
 nnoremap <silent> <c-t> :FloatermToggle<cr>
 tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle<cr>
 " tnoremap <silent> <esc> <C-\><C-N>:q!<cr>

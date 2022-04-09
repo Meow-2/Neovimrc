@@ -77,19 +77,28 @@ nnoremap <left> <C-w>h
 nnoremap <down> <C-w>j
 nnoremap <up> <C-w>k
 nnoremap <right> <C-w>l
+
 nnoremap <c-h> <C-w>h
 nnoremap <c-l> <C-w>l
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 
+tnoremap <c-h> <c-\><c-n><c-w>h
+tnoremap <c-l> <c-\><c-n><c-w>l
+
 " nnoremap <leader>c <C-w>c
 
 " resize split windows
-nnoremap <silent> <c-left> :vertical resize+2<CR>
-nnoremap <silent> <c-down> :res -2<CR>
-nnoremap <silent> <c-up> :res +2<CR>
+nnoremap <silent> <c-left>  :vertical resize+2<CR>
+nnoremap <silent> <c-down>  :res -2<CR>
+nnoremap <silent> <c-up>    :res +2<CR>
 nnoremap <silent> <c-right> :vertical resize-2<CR>
-nnoremap <leader>= <C-w>=
+nnoremap <silent> <leader>= <C-w>=
+
+tnoremap <silent> <c-left>  <c-\><c-n>:vertical resize+2<CR>i
+tnoremap <silent> <c-down>  <c-\><c-n>:res -2<CR>i
+tnoremap <silent> <c-up>    <c-\><c-n>:res +2<CR>i
+tnoremap <silent> <c-right> <c-\><c-n>:vertical resize-2<CR>i
 
 
 "----------------------------------------------------------------------

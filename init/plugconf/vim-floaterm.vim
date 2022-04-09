@@ -21,8 +21,8 @@ tnoremap <silent><expr> <c-g>
        \ "<c-g>"
 
 nnoremap <silent> <S-F3> :FloatermNew! --name=lldb lldb %:h/build/%:t:r<cr>
-" tnoremap <silent> <S-F3> <C-d><C-\><C-N>:FloatermKill lldb<cr>
-tnoremap <silent> <S-F3> i<c-u><C-d>exit<cr>
+tnoremap <silent> <S-F3> <C-d><C-\><C-N>:FloatermKill lldb<cr>
+" tnoremap <silent> <S-F3> i<c-u><C-d>exit<cr>
 
 nnoremap <silent> <c-t> :FloatermToggle<cr>
 tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle<cr>

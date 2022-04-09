@@ -17,11 +17,11 @@ let g:floaterm_rootmarkers = ['build/CMakeFiles','.project', '.git', '.hg', '.sv
 nnoremap <silent> <c-g> :FloatermNew! --name=lazygit lazygit<cr>
 tnoremap <silent><expr> <c-g> 
        \ &filetype == 'floaterm' ? 
-       \ "<C-\><C-N>:FloatermKill lazygit<cr>" :
+       \ "q<C-\><C-N>:FloatermKill lazygit<cr>" :
        \ "<c-g>"
 
-nnoremap <silent> <S-F3> :FloatermNew! --name=lldb lldb build/%<cr>
-tnoremap <silent> <S-F3> <C-\><C-N>:FloatermKill lldb<cr>
+nnoremap <silent> <S-F3> :FloatermNew! --name=lldb lldb %:h/build/%:t:r<cr>
+tnoremap <silent> <S-F3> <C-d><C-\><C-N>:FloatermKill lldb<cr>
 
 nnoremap <silent> <c-t> :FloatermToggle<cr>
 tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle<cr>

@@ -25,12 +25,19 @@ function! LightlineReadonly()
   return &readonly && &filetype !=# 'help' ? 'RO' : ''
 endfunction
 
-function! LightlineTruncatedFileName()
-let l:filePath = substitute(expand("%:p"),$HOME,'~',"")
-    if winwidth(0) > 100
-        return l:filePath
-    else
-        return pathshorten(l:filePath)
-    endif
-endfunction
+" function! LightlineTruncatedFileName()
+" let l:filePath = substitute(expand("%:p"),$HOME,'~',"")
+"     if winwidth(0) > 100
+"         return l:filePath
+"     else
+"         return pathshorten(l:filePath)
+"     endif
+" endfunction
 
+function! LightlineTruncatedFileName()
+    let l:filePath = substitute(expand("%:p"),$HOME,'~',"")
+    if winwidth(0) < 100
+        let l:filePath = pathshorten(l:filePath)
+    endif
+    return stridx(&filetype,'dapui') == -1 ? l:filePath : expand('%')
+endfunction

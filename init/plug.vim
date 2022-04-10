@@ -117,7 +117,11 @@ Plug 'stevearc/dressing.nvim'       " select menu
 " ------------------------------------------
 Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enable-python '}
+" Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enable-python '}
+Plug 'Pocco81/DAPInstall.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'rcarriga/nvim-dap-ui'
 
 
 " ------------------------------------------
@@ -171,7 +175,10 @@ source $HOME/.config/nvim/init/plugconf/neovim-session-manager.vim
 source $HOME/.config/nvim/init/plugconf/dressing-nvim.vim
 source $HOME/.config/nvim/init/plugconf/asyncrun-vim.vim
 source $HOME/.config/nvim/init/plugconf/asynctasks-vim.vim
-source $HOME/.config/nvim/init/plugconf/vimspector.vim
+" source $HOME/.config/nvim/init/plugconf/vimspector.vim
+
+source $HOME/.config/nvim/lua/dapconf/nvim-dap.vim
+
 source $HOME/.config/nvim/init/plugconf/fzf.vim
 source $HOME/.config/nvim/init/plugconf/fzf-lua.vim
 source $HOME/.config/nvim/init/plugconf/rnvimr.vim

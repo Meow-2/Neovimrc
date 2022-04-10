@@ -42,7 +42,7 @@ let g:mkdp_browser = 'google-chrome-stable'
 set hidden
 set shortmess+=c
 set number
-" set relativenumber
+set relativenumber
 set encoding=UTF-8
 set showcmd
 set lazyredraw

@@ -20,8 +20,8 @@ tnoremap <silent><expr> <c-g>
        \ "q<C-\><C-N>:FloatermKill lazygit<cr>" :
        \ "<c-g>"
 
-nnoremap <silent> <S-F3> :FloatermNew! --name=lldb lldb %:h/build/%:t:r<cr>
-tnoremap <silent> <S-F3> <C-d><C-\><C-N>:FloatermKill lldb<cr>
+nnoremap <silent> <S-F3> :set norelativenumber<cr>:FloatermNew! --name=lldb lldb %:h/build/%:t:r<cr>
+tnoremap <silent> <S-F3> <C-d><C-\><C-N>:FloatermKill lldb<cr>:set relativenumber<cr>
 " tnoremap <silent> <S-F3> i<c-u><C-d>exit<cr>
 
 nnoremap <silent> <c-t> :FloatermToggle<cr>

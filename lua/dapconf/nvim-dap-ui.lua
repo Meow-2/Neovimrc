@@ -3,10 +3,13 @@ local dap, dapui = require "dap", require "dapui"
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
   vim.api.nvim_command("DapVirtualTextEnable")
+  vim.api.nvim_set_keymap("n", "<c-k>", "<cmd>lua require'dapui'.eval()<cr>", { noremap = true, silent = true })
   -- dapui.close("tray")
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
   vim.api.nvim_command("DapVirtualTextDisable")
+  vim.api.nvim_del_keymap("n", "<c-k>")
+  vim.api.nvim_set_keymap("n", "<c-k>", "<c-v>", { noremap = true })
   dapui.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
@@ -18,6 +21,7 @@ dap.listeners.before.disconnect["dapui_config"] = function()
   vim.api.nvim_command("DapVirtualTextDisable")
   dapui.close()
 end
+
 -- TODO: wait dap-ui for fix temrinal layout
 -- the "30" of "30vsplit: doesn't work
 dap.defaults.fallback.terminal_win_cmd = '30vsplit new' -- this will be override by dapui
@@ -63,9 +67,10 @@ dapui.setup ({
     position = "left", -- Can be "left", "right", "top", "bottom"
   },
   tray = {
-    elements = { "repl" },
-    size = 5,
-    position = "bottom", -- Can be "left", "right", "top", "bottom"
+    -- elements = { "repl" },
+    elements = {},
+    -- size = 5,
+    -- position = "bottom", -- Can be "left", "right", "top", "bottom"
   },
   floating = {
     max_height = nil, -- These can be integers or a float between 0 and 1.

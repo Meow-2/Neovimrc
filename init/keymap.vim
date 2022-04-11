@@ -20,7 +20,7 @@ noremap 0 $
 " visual-block
 nnoremap <c-j> <c-v>
 vnoremap <c-j> j
-" nnoremap <c-k> <c-v>
+nnoremap <c-k> <c-v>
 vnoremap <c-k> k
 
 "edit like emacs

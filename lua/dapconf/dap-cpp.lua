@@ -16,7 +16,7 @@ dap.adapters.lldb = {
 local dap = require('dap')
 dap.configurations.cpp = {
   {
-    name = "Launch file",
+    name = "Launch",
     type = "lldb",
     request = "launch",
     -- program = function()

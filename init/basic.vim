@@ -53,7 +53,7 @@ set ttimeoutlen=0
 set notimeout
 set updatetime=100
 set virtualedit=block
-set wrap                       " show one line in two lines when out of range
+set nowrap                     " show one line in two lines when out of range
 set wildmenu                   " vicmd compelete
 set autochdir                  " exec vicmd in now path
 set laststatus=2               " always show the statusbar
@@ -110,6 +110,7 @@ endif
 au Filetype markdown vnoremap <buffer> <c-b> c****<esc>hhp
 au Filetype markdown vnoremap <buffer> <c-i> c**<esc>hp
 au Filetype markdown vnoremap <buffer> <c-s> c~~~~<esc>hhp
+au Filetype markdown set wrap
 " record cursor when exit
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 au TermOpen * setlocal nonumber norelativenumber

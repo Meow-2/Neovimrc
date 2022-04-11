@@ -13,6 +13,9 @@ nnoremap <F12> :lua require'dap'.step_out()<cr>
 " keymap('n', '<F10>', '<cmd>lua require"user.dap.dap-util".reload_continue()<CR>', opts)
 
 lua<<EOF
+-- local dap_install = require("dap-install")
+-- dap_install.config("python", {})
+-- dap_install.config("ccppr_lldb", {})
 require('dapconf.dap-cpp')
 require('dapconf.nvim-dap-virtual-text')
 require('dapconf.nvim-dap-ui')

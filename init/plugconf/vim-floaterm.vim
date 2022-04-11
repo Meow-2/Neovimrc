@@ -8,10 +8,11 @@ let g:neoterm_autoscroll = 1
 " nnoremap <C-t> :set splitright<CR>:vsplit<CR>:term<CR>i
 
 " nnoremap T :FloatermNew --height=0.75 --width=0.7 --cwd=<buffer><cr>
-let g:floaterm_width = 0.5
-" let g:floaterm_height = 0.75 
-let g:floaterm_wintype = 'vsplit'
-let g:floaterm_position = 'belowright'
+let g:floaterm_width = 0.85
+let g:floaterm_height = 0.85 
+let g:floaterm_title = ''
+" let g:floaterm_wintype = 'vsplit'
+" let g:floaterm_position = 'belowright'
 let g:floaterm_rootmarkers = ['build/CMakeFiles','.project', '.git', '.hg', '.svn', '.root']
 
 nnoremap <silent> <c-g> :FloatermNew! --name=lazygit lazygit<cr>
@@ -20,7 +21,7 @@ tnoremap <silent><expr> <c-g>
        \ "q<C-\><C-N>:FloatermKill lazygit<cr>" :
        \ "<c-g>"
 
-nnoremap <silent> <S-F3> :set norelativenumber<cr>:FloatermNew! --name=lldb lldb %:h/build/%:t:r<cr>
+nnoremap <silent> <S-F3> :set norelativenumber<cr>:FloatermNew! --width=0.5 --position=belowright --wintype=vsplit --name=lldb lldb %:h/build/%:t:r<cr>
 tnoremap <silent> <S-F3> <C-d><C-\><C-N>:FloatermKill lldb<cr>:set relativenumber<cr>
 " tnoremap <silent> <S-F3> i<c-u><C-d>exit<cr>
 

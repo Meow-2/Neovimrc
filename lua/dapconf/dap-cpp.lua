@@ -24,6 +24,7 @@ dap.configurations.cpp = {
     -- end,
     program = '${workspaceFolder}/build/${fileBasenameNoExtension}',
     cwd = '${workspaceFolder}',
+    -- stdio = {"input.txt", nil, nil},
     stopOnEntry = false,
     args = {},
 
@@ -39,14 +40,22 @@ dap.configurations.cpp = {
     -- But you should be aware of the implications:
     -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
 
-    runInTerminal = true,
+    runInTerminal = false,
 
     -- 💀
     -- If you use `runInTerminal = true` and resize the terminal window,
     -- lldb-vscode will receive a `SIGWINCH` signal which can cause problems
     -- To avoid that uncomment the following option
     -- See https://github.com/mfussenegger/nvim-dap/issues/236#issuecomment-1066306073
-    postRunCommands = {'process handle -p true -s false -n false SIGWINCH'}
+    -- postRunCommands = {'process handle -p true -s false -n false SIGWINCH'},
+    postRunCommands = {'break set -n main'},
+    setupCommands = {
+    {
+        description =  'enable pretty printing',
+        text = '-enable-pretty-printing',
+        ignoreFailures = false
+      },
+    },
   },
 }
 

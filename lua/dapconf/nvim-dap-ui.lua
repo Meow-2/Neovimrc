@@ -24,7 +24,7 @@ end
 
 -- TODO: wait dap-ui for fix temrinal layout
 -- the "30" of "30vsplit: doesn't work
-dap.defaults.fallback.terminal_win_cmd = '30vsplit new' -- this will be override by dapui
+dap.defaults.fallback.terminal_win_cmd = '10split new' -- this will be override by dapui
 -- dap.defaults.fallback.terminal_win_cmd = [[belowright new +let\ b:dap_terminal\ =\ 1]]
 
 local dap_breakpoint = {
@@ -67,10 +67,9 @@ dapui.setup ({
     position = "left", -- Can be "left", "right", "top", "bottom"
   },
   tray = {
-    -- elements = { "repl" },
-    elements = {},
-    -- size = 5,
-    -- position = "bottom", -- Can be "left", "right", "top", "bottom"
+    elements = { "repl" },
+    size = 15,
+    position = "bottom", -- Can be "left", "right", "top", "bottom"
   },
   floating = {
     max_height = nil, -- These can be integers or a float between 0 and 1.

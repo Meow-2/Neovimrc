@@ -80,7 +80,6 @@
     "explorer.keyMappings.global": {
         "s": false,
         "E": false,
-        "Sj": "open:split",
         "<c-l>": "open:vsplit",
         "yp": "copyFilepath",
         "yn": "copyFilename",

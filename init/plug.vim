@@ -155,6 +155,7 @@ source $HOME/.config/nvim/init/plugconf/md-img-paste-vim.vim
 "editor enhancement
 source $HOME/.config/nvim/init/plugconf/indent-blankline-nvim.vim
 source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
+source $HOME/.config/nvim/init/plugconf/auto-pairs.vim
 source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
 source $HOME/.config/nvim/init/plugconf/vim-cursorword.vim
 source $HOME/.config/nvim/init/plugconf/vim-oscyank.vim

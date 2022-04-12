@@ -30,7 +30,7 @@ Plug 'ferrine/md-img-paste.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'luochen1990/rainbow'
 Plug 'mg979/vim-visual-multi'
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 Plug 'tomtom/tcomment_vim'
 Plug 'theniceboy/antovim'
 Plug 'tpope/vim-surround'
@@ -123,7 +123,6 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
 
-
 " ------------------------------------------
 "             File navigation
 " ------------------------------------------
@@ -155,7 +154,7 @@ source $HOME/.config/nvim/init/plugconf/md-img-paste-vim.vim
 "editor enhancement
 source $HOME/.config/nvim/init/plugconf/indent-blankline-nvim.vim
 source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
-source $HOME/.config/nvim/init/plugconf/auto-pairs.vim
+source $HOME/.config/nvim/init/plugconf/nvim-autopairs.vim
 source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
 source $HOME/.config/nvim/init/plugconf/vim-cursorword.vim
 source $HOME/.config/nvim/init/plugconf/vim-oscyank.vim

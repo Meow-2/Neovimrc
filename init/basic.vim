@@ -63,7 +63,7 @@ set backspace=indent,eol,start " backspace to last line
 " set whichwrap+=<,>,[,],h,l   " alow h to last line
 if exists('g:nvui')
   " Configure nvui
-  set guifont=Hack:h14
+  set guifont=FiraCode\ Nerd\ Font\ Mono:h15
 endif
 
 

@@ -32,7 +32,7 @@ cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 cnoremap <c-d> <del>
 
-cnoremap <c-h> <left>
+cnoremap <c-h> <bs>
 cnoremap <c-j> <down>
 cnoremap <c-k> <up>
 cnoremap <c-l> <right>
@@ -125,6 +125,7 @@ noremap y "+y
 nnoremap yy "+yy
 nnoremap Y "+y$
 
+nnoremap \v v$h
 
 "----------------------------------------------------------------------
 "                                marco

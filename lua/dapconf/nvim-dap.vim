@@ -16,6 +16,7 @@ lua<<EOF
 -- local dap_install = require("dap-install")
 -- dap_install.config("python", {})
 -- dap_install.config("ccppr_lldb", {})
+-- dap_install.config("codelldb", {})
 require('dapconf.dap-cpp')
 require('dapconf.nvim-dap-virtual-text')
 require('dapconf.nvim-dap-ui')

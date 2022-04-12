@@ -8,15 +8,16 @@
 -- `${workspaceFolder}`: The current working directory of Neovim
 -- `${workspaceFolderBasename}`: The name of the folder opened in Neovim
 local dap = require('dap')
+
 dap.adapters.lldb = {
   type = 'executable',
   command = '/usr/bin/lldb-vscode', -- adjust as needed
   name = "lldb"
 }
-local dap = require('dap')
+
 dap.configurations.cpp = {
   {
-    name = "Launch",
+    name = "Launch(lldb-vscode)",
     type = "lldb",
     request = "launch",
     -- program = function()

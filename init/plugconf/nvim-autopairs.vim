@@ -1,11 +1,11 @@
 lua<<EOF
-local disable_filetype = { "dap-repl" }
 local Rule = require('nvim-autopairs.rule')
 local npairs = require("nvim-autopairs")
 local ts_conds = require('nvim-autopairs.ts-conds')
 
 npairs.setup({
     check_ts = true,
+    disable_filetype = { "dap-repl" },
     ts_config = {
         lua = {'string'},-- it will not add a pair on that treesitter node
         javascript = {'template_string'},

@@ -104,11 +104,11 @@ inoremap <silent> <C-y>  <esc>:<C-u>CocList -A --normal yank<cr>
 " ===
 " === coc-snippets
 " ===
-imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-j> <Plug>(coc-snippets-select)
+" imap <C-l> <Plug>(coc-snippets-expand)
+" vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+" imap <C-j> <Plug>(coc-snippets-expand-jump)
 " let g:snips_author = 'David Chen'
 " autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 

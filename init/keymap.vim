@@ -5,6 +5,10 @@
 "|                                                                    |
 "+--------------------------------------------------------------------+
 
+" the help of binding ctrl shift f1-12 key
+" https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
+" `showkey -a` to show the keycode you push
+
 "----------------------------------------------------------------------
 "                          cursor behaviors
 "----------------------------------------------------------------------
@@ -27,17 +31,29 @@ vnoremap <c-k> k
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-d> <del>
+inoremap <c-b> <bs>
+
+inoremap <c-h> <left>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+inoremap <c-l> <right>
+
+inoremap <c-s-h> <c-left>
+inoremap <c-s-l> <c-right>
 
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 cnoremap <c-d> <del>
+cnoremap <c-b> <bs>
 
-cnoremap <c-h> <bs>
+cnoremap <c-h> <left>
 cnoremap <c-j> <down>
 cnoremap <c-k> <up>
 cnoremap <c-l> <right>
 
-cnoremap <c-b> <left>
+cnoremap <c-s-h> <c-left>
+cnoremap <c-s-l> <c-right>
+
 
 "----------------------------------------------------------------------
 "                           save and quit

@@ -87,6 +87,13 @@ Plug 'itchyny/lightline.vim'
 "|                         DEVELOPMENT TOOL                          |
 "|                                                                    |
 "+--------------------------------------------------------------------+
+"-------------------------------------------
+"             useful tool
+"-------------------------------------------
+Plug 'sindrets/winshift.nvim'
+Plug 'voldikss/vim-floaterm'
+Plug 'folke/which-key.nvim'
+
 " ------------------------------------------
 "              taglist
 " ------------------------------------------
@@ -133,8 +140,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'
-Plug 'voldikss/vim-floaterm'
-Plug 'sindrets/winshift.nvim'
 " Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 " Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
@@ -171,6 +176,10 @@ source $HOME/.config/nvim/init/plugconf/lightline.vim
 " source $HOME/.config/nvim/init/plugconf/feline-nvim.vim
 
 "development tool
+source $HOME/.config/nvim/init/plugconf/winshift-nvim.vim
+source $HOME/.config/nvim/init/plugconf/vim-floaterm.vim
+"to be configured
+source $HOME/.config/nvim/init/plugconf/which-key-nvim.vim
 source $HOME/.config/nvim/init/plugconf/Vista-vim.vim
 source $HOME/.config/nvim/init/plugconf/DoxygenToolkit.vim
 source $HOME/.config/nvim/init/plugconf/nvim-treesitter.vim
@@ -185,8 +194,6 @@ source $HOME/.config/nvim/lua/dapconf/nvim-dap.vim
 source $HOME/.config/nvim/init/plugconf/fzf.vim
 source $HOME/.config/nvim/init/plugconf/fzf-lua.vim
 source $HOME/.config/nvim/init/plugconf/rnvimr.vim
-source $HOME/.config/nvim/init/plugconf/vim-floaterm.vim
-source $HOME/.config/nvim/init/plugconf/winshift-nvim.vim
 
 " source $HOME/.config/nvim/init/plugconf/telescope-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/telescope-ui-select-nvim.vim

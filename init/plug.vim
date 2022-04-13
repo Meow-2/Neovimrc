@@ -63,8 +63,11 @@ Plug 'kyazdani42/nvim-web-devicons'
 "              color themes
 " ------------------------------------------
 Plug 'cpea2506/one_monokai.nvim'
+" Plug 'glepnir/zephyr-nvim'
+" Plug 'PHSix/nvim-hybrid'
 " Plug 'theniceboy/nvim-deus'
 " Plug 'glepnir/oceanic-material'
+" Plug 'olimorris/onedarkpro.nvim'
 
 " ------------------------------------------
 "              status line
@@ -162,7 +165,7 @@ source $HOME/.config/nvim/init/plugconf/tabular.vim
 
 "dressing up
 source $HOME/.config/nvim/init/plugconf/dashboard.vim
-source $HOME/.config/nvim/init/plugconf/onemonoka-nvim.vim
+source $HOME/.config/nvim/init/plugconf/colorscheme.vim
 source $HOME/.config/nvim/init/plugconf/bufferline-nvim.vim
 source $HOME/.config/nvim/init/plugconf/lightline.vim
 " source $HOME/.config/nvim/init/plugconf/feline-nvim.vim

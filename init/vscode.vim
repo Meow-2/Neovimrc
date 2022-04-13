@@ -53,7 +53,7 @@ map q <C-w>c
 noremap Q q
 
 " write to file
-nmap s :w!<CR>
+nmap s :w<CR>
 
 " quit nvim
 " nnoremap <C-q> :q!<cr>

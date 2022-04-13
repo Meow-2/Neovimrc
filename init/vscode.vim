@@ -44,21 +44,6 @@ vnoremap <c-j> j
 nnoremap <c-k> <c-v>
 vnoremap <c-k> k
 
-"edit like emacs
-inoremap <c-a> <home>
-inoremap <c-e> <end>
-inoremap <c-d> <del>
-
-cnoremap <c-a> <home>
-cnoremap <c-e> <end>
-cnoremap <c-d> <del>
-
-cnoremap <c-h> <left>
-cnoremap <c-j> <down>
-cnoremap <c-k> <up>
-cnoremap <c-l> <right>
-
-cnoremap <c-b> <left>
 
 "----------------------------------------------------------------------
 "                           save and quit
@@ -68,7 +53,7 @@ map q <C-w>c
 noremap Q q
 
 " write to file
-nmap s :w<CR>
+nmap s :w!<CR>
 
 " quit nvim
 " nnoremap <C-q> :q!<cr>
@@ -78,11 +63,16 @@ nmap s :w<CR>
 "                          split windows
 "----------------------------------------------------------------------
 
-" nnoremap S <nop>
-nmap <silent> <c-left> :set splitright<CR>:vsplit<CR>
-nmap <silent> <c-down> :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-nmap <silent> <c-up> :set splitbelow<CR>:split<CR>
-nmap <silent> <c-right> :set nosplitright<CR>:vsplit<CR>
+nmap S <nop>
+nmap Sh        :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+nmap Sj        :set splitbelow<CR>:split<CR>
+nmap Sk        :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+nmap Sl        :set splitright<CR>:vsplit<CR>
+
+nmap <c-h> <C-w>h
+nmap <c-l> <C-w>l
+nmap <leader>j <C-w>j
+nmap <leader>k <C-w>k
 
 " move around split windows
 nmap <left> <C-w>h
@@ -92,10 +82,10 @@ nmap <right> <C-w>l
 " nnoremap <leader>c <C-w>c
 
 " resize split windows
-nmap <silent> <S-left> :vertical resize+2<CR>
-nmap <silent> <S-down> :res -2<CR>
-nmap <silent> <S-up> :res +2<CR>
-nmap <silent> <S-right> :vertical resize-2<CR>
+nmap <c-left>  :vertical resize+2<CR>
+nmap <c-down>  :res -2<CR>
+nmap <c-up>    :res +2<CR>
+nmap <c-right> :vertical resize-2<CR>
 nmap <leader>= <C-w>=
 
 

@@ -31,9 +31,9 @@ vnoremap <c-k> k
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-d> <del>
-inoremap <c-b> <bs>
+inoremap <c-b> <left>
 
-inoremap <c-h> <left>
+inoremap <c-h> <bs>
 inoremap <c-j> <down>
 inoremap <c-k> <up>
 inoremap <c-l> <right>
@@ -44,9 +44,9 @@ inoremap <c-s-l> <c-right>
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 cnoremap <c-d> <del>
-cnoremap <c-b> <bs>
+cnoremap <c-b> <left>
 
-cnoremap <c-h> <left>
+cnoremap <c-h> <bs>
 cnoremap <c-j> <down>
 cnoremap <c-k> <up>
 cnoremap <c-l> <right>

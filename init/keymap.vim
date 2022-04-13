@@ -28,7 +28,7 @@ nnoremap <c-k> <c-v>
 vnoremap <c-k> k
 
 "edit like emacs
-inoremap <c-a> <home>
+inoremap <c-a> <esc>^i
 inoremap <c-e> <end>
 inoremap <c-d> <del>
 inoremap <c-b> <left>

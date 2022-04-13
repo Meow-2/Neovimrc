@@ -94,13 +94,17 @@ nnoremap <down> <C-w>j
 nnoremap <up> <C-w>k
 nnoremap <right> <C-w>l
 
-nnoremap <c-h> <C-w>h
-nnoremap <c-l> <C-w>l
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
+nnoremap <c-s-h> <C-w>h
+nnoremap <c-s-j> <C-w>j
+nnoremap <c-s-k> <C-w>k
+nnoremap <c-s-l> <C-w>l
+" nnoremap <leader>j <C-w>j
+" nnoremap <leader>k <C-w>k
 
-tnoremap <c-h> <c-\><c-n><c-w>h
-tnoremap <c-l> <c-\><c-n><c-w>l
+tnoremap <c-s-h> <c-\><c-n><c-w>h
+tnoremap <c-s-j> <c-\><c-n><C-w>j
+tnoremap <c-s-k> <c-\><c-n><C-w>k
+tnoremap <c-s-l> <c-\><c-n><c-w>l
 
 " nnoremap <leader>c <C-w>c
 

@@ -67,7 +67,7 @@ nnoremap <silent><expr> q
        \ ":bd!<cr>"
 
 " write to file
-nnoremap s :w<CR>
+nnoremap s :w!<CR>
 
 " quit nvim
 nnoremap <C-q> :q!<cr>
@@ -98,8 +98,8 @@ nnoremap <c-s-h> <C-w>h
 nnoremap <c-s-j> <C-w>j
 nnoremap <c-s-k> <C-w>k
 nnoremap <c-s-l> <C-w>l
-" nnoremap <leader>j <C-w>j
-" nnoremap <leader>k <C-w>k
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
 
 tnoremap <c-s-h> <c-\><c-n><c-w>h
 tnoremap <c-s-j> <c-\><c-n><C-w>j

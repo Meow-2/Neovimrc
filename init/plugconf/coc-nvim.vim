@@ -19,18 +19,20 @@ inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
     \ HavePair() ? "<esc>la" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
+    \ "\<TAB>"
+    " \ <SID>check_back_space() ? "\<TAB>"
+    " \ coc#refresh()
 
 func HavePair()  
     if getline('.')[col('.') - 1] == ')' 
     \ || getline('.')[col('.') - 1] == ']' 
-    \ || getline('.')[col('.') - 1] == '"' 
+    \ || getline('.')[col('.') - 1] == '"'   
     \ || getline('.')[col('.') - 1] == "'" 
     \ || getline('.')[col('.') - 1] == '}' 
     \ || getline('.')[col('.') - 1] == '>'
+    \ || getline('.')[col('.') - 1] == '`'
         return 1  
-    else  
+    else              
         return 0
     endif  
 endfunc

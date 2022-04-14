@@ -23,7 +23,7 @@ let g:coc_global_extensions = [
     " \ coc#refresh()
 imap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
-    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ coc#jumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
     \ "\<Plug>(Tabout)"
 "     " \ "\<TAB>"
 "

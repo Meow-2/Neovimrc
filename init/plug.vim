@@ -40,6 +40,7 @@ Plug 'lilydjwg/fcitx.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'ojroques/vim-oscyank'
 Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
+Plug 'abecodes/tabout.nvim'
 
 
 "+--------------------------------------------------------------------+
@@ -151,7 +152,9 @@ if g:nvim_plugins_installation_completed == 1
 " lua require('impatient')
 " lua require'impatient'.enable_profile()
 "lsp
+source $HOME/.config/nvim/init/plugconf/tabout-nvim.vim
 source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
+" source $HOME/.config/nvim/init/plugconf/omnisharp-vim.vim
 
 "markdown
 source $HOME/.config/nvim/init/plugconf/vim-table-mode.vim

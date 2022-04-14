@@ -10,35 +10,59 @@ let g:coc_global_extensions = [
     \ 'coc-cmake',
     \ 'coc-explorer',
     \ 'coc-yank',
-    \ 'coc-omnisharp',
     \ 'coc-pyright',
     \ 'coc-picgo',
     \ 'coc-snippets']
 
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-    \ HavePair() ? "<esc>la" :
-    \ "\<TAB>"
+" inoremap <silent><expr> <TAB>
+"     \ pumvisible() ? "\<C-n>" :
+"     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"     \ HavePair() ? "<esc>la" :
+"     \ "\<TAB>"
     " \ <SID>check_back_space() ? "\<TAB>"
     " \ coc#refresh()
+imap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ "\<Plug>(Tabout)"
+"     " \ "\<TAB>"
+"
+" lua<<EOF
+" vim.keymap.set({"i"},"<tab>",function()
+"             if vim.fn["pumvisible"]() == 1 then
+"                 return '<c-n>'
+"             elseif vim.fn["coc#expandableOrJumpable"]() == 1 then
+"                 return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
+"             else
+"                 return '<Plug>(Tabout)'
+"             end
+"         end,{ expr=true })
+" EOF
 
 func HavePair()  
-    if getline('.')[col('.') - 1] == ')' 
+    if (getline('.')[col('.') - 1] == ')' 
     \ || getline('.')[col('.') - 1] == ']' 
     \ || getline('.')[col('.') - 1] == '"'   
     \ || getline('.')[col('.') - 1] == "'" 
     \ || getline('.')[col('.') - 1] == '}' 
     \ || getline('.')[col('.') - 1] == '>'
-    \ || getline('.')[col('.') - 1] == '`'
+    \ || getline('.')[col('.') - 1] == '`')
         return 1  
     else              
         return 0
     endif  
 endfunc
 
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" :
-    \ "\<C-h>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" :
+"     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"     \ "\<C-h>"
+"     \ 
+
+imap <silent><expr> <S-TAB>
+    \ pumvisible() ? "\<C-p>" :
+    \ <SID>check_back_space() ? "\<C-h>" :
+    \ "\<Plug>(TaboutBack)"
+
 
 inoremap <silent><expr> <cr>
     \ pumvisible() ? coc#_select_confirm() :

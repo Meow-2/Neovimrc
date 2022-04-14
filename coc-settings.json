@@ -67,13 +67,10 @@
         "[": "sourcePrev",
         "]": "sourceNext"
     },
-    "languageserver": {
-        "csharp-ls": {
-            "command": "/home/zk/.dotnet/tools/csharp-ls",
-            "filetypes": ["cs"],
-            "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
-        }
-    },
+    "picgo.picBed.smms.token": "TsH7B2nLgORB6pJJ2AaF0egcJCIL2It7",
+    "picgo.customOutputFormat": "<img src=\"${url}\" alt=\"\" width=\"250\">",
+    "prettier.tabWidth": 4,
+    "python.pythonPath": "/home/zk/.config/nvim/init/coc-pyright",
     "snippets.ultisnips.directories": ["$HOME/.config/nvim/init/snippets/"],
     "suggest.noselect": true,
     "suggest.snippetIndicator": "",
@@ -105,9 +102,5 @@
         "value": "\uf89f",
         "variable": "\ue71b"
     },
-    "picgo.picBed.smms.token": "TsH7B2nLgORB6pJJ2AaF0egcJCIL2It7",
-    "picgo.customOutputFormat": "<img src=\"${url}\" alt=\"\" width=\"250\">",
-    "prettier.tabWidth": 4,
-    "python.pythonPath": "/home/zk/.config/nvim/init/coc-pyright",
     "yank.enableCompletion": false
 }

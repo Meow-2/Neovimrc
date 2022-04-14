@@ -20,7 +20,8 @@ lua<<EOF
 -- dap_install.config("ccppr_vsc",{})
 -- dap_install.config("codelldb",{})
 
-require('dapconf.dap-cpp')
+-- require('dapconf.dap-cpp-codelldb')
+require('dapconf.dap-cpp-lldb')
 require('dapconf.nvim-dap-virtual-text')
 require('dapconf.nvim-dap-ui')
 EOF

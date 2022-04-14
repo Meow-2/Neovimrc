@@ -49,6 +49,7 @@ set lazyredraw
 set ttyfast
 set showtabline=2
 set mouse=a
+set timeoutlen=0
 set ttimeoutlen=0
 set notimeout
 set updatetime=100

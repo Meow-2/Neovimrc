@@ -46,6 +46,7 @@
     "explorer.icon.enableNerdfont": true,
     "explorer.buffer.showHiddenBuffers": false,
     "explorer.openAction.strategy": "previousBuffer",
+    "explorer.trash.command": "trash-put %s",
     "explorer.keyMappings.global": {
         "s": false,
         "E": false,

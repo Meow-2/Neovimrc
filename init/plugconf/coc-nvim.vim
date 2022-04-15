@@ -47,8 +47,8 @@ endfunc
 
 imap <silent> <expr> <S-TAB>
     \ pumvisible() ? "\<C-p>" :
+    \ <SID>check_back_space() ? "\<bs>" :
     \ "\<Plug>(TaboutBack)"
-    " \ <SID>check_back_space() ? "\<C-h>" :
 
 
 inoremap <silent> <expr> <cr>

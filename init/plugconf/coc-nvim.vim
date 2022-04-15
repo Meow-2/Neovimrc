@@ -14,57 +14,44 @@ let g:coc_global_extensions = [
     \ 'coc-picgo',
     \ 'coc-snippets']
 
-" inoremap <silent><expr> <TAB>
-"     \ pumvisible() ? "\<C-n>" :
-"     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"     \ HavePair() ? "<esc>la" :
-"     \ "\<TAB>"
-    " \ <SID>check_back_space() ? "\<TAB>"
-    " \ coc#refresh()
-imap <silent><expr> <TAB>
+imap <silent> <expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
-    \ coc#jumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ coc#jumpable() ? "<Plug>(coc-snippets-expand-jump)" :
+    \ IsNextCharPair() && CanTabOut() ? "<esc>a" : 
     \ "\<Plug>(Tabout)"
 "     " \ "\<TAB>"
 "
-" lua<<EOF
-" vim.keymap.set({"i"},"<tab>",function()
-"             if vim.fn["pumvisible"]() == 1 then
-"                 return '<c-n>'
-"             elseif vim.fn["coc#expandableOrJumpable"]() == 1 then
-"                 return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
-"             else
-"                 return '<Plug>(Tabout)'
-"             end
-"         end,{ expr=true })
-" EOF
+func CanTabOut()
+    if col('.') == 1
+    \ || (col('.') ==2 && getline('.')[col('.')-2] == ' ')
+    \ || (getline('.')[col('.')-2] == ' ' && getline('.')[col('.')-3] == ' ')
+        return 0
+    else 
+        return 1
+    endif
+endfunc
 
-func HavePair()  
-    if (getline('.')[col('.') - 1] == ')' 
+func IsNextCharPair()  
+    if getline('.')[col('.') - 1] == ')' 
     \ || getline('.')[col('.') - 1] == ']' 
     \ || getline('.')[col('.') - 1] == '"'   
     \ || getline('.')[col('.') - 1] == "'" 
     \ || getline('.')[col('.') - 1] == '}' 
     \ || getline('.')[col('.') - 1] == '>'
-    \ || getline('.')[col('.') - 1] == '`')
+    \ || getline('.')[col('.') - 1] == '`'
         return 1  
     else              
         return 0
     endif  
 endfunc
 
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" :
-"     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"     \ "\<C-h>"
-"     \ 
-
-imap <silent><expr> <S-TAB>
+imap <silent> <expr> <S-TAB>
     \ pumvisible() ? "\<C-p>" :
-    \ <SID>check_back_space() ? "\<C-h>" :
     \ "\<Plug>(TaboutBack)"
+    " \ <SID>check_back_space() ? "\<C-h>" :
 
 
-inoremap <silent><expr> <cr>
+inoremap <silent> <expr> <cr>
     \ pumvisible() ? coc#_select_confirm() :
     \ "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
 
@@ -142,25 +129,3 @@ let g:coc_snippet_prev = '<s-tab>'
 " === coc-picgo
 " ===
 inoremap <silent> <c-u> <esc>:CocCommand picgo.uploadImageFromClipboard<CR>
-
-" ===
-" === omnisharp-vim
-" ===
-" let g:OmniSharp_typeLookupInPreview = 1
-" let g:omnicomplete_fetch_full_documentation = 1
-"
-" let g:OmniSharp_server_use_mono = 1
-" let g:OmniSharp_server_stdio = 1
-" let g:OmniSharp_highlight_types = 2
-" let g:OmniSharp_selector_ui = 'fzf'
-"
-" autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDefinition<CR>
-" autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>
-" autocmd Filetype cs nnoremap <buffer> gy :OmniSharpTypeLookup<CR>
-" autocmd Filetype cs nnoremap <buffer> ga :OmniSharpGetCodeActions<CR>
-" autocmd Filetype cs nnoremap <buffer> <LEADER>rn :OmniSharpRename<CR><C-N>:res +5<CR>
-"
-" sign define OmniSharpCodeActions text=💡
-"
-" " let g:coc_sources_disable_map = { 'cs': ['cs', 'cs-1', 'cs-2', 'cs-3'] }
-

@@ -152,7 +152,6 @@ if g:nvim_plugins_installation_completed == 1
 " lua require('impatient')
 " lua require'impatient'.enable_profile()
 "lsp
-source $HOME/.config/nvim/init/plugconf/tabout-nvim.vim
 source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/omnisharp-vim.vim
 
@@ -170,6 +169,7 @@ source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
 source $HOME/.config/nvim/init/plugconf/vim-cursorword.vim
 source $HOME/.config/nvim/init/plugconf/vim-oscyank.vim
 source $HOME/.config/nvim/init/plugconf/tabular.vim
+source $HOME/.config/nvim/init/plugconf/tabout-nvim.vim
 
 "dressing up
 source $HOME/.config/nvim/init/plugconf/dashboard.vim

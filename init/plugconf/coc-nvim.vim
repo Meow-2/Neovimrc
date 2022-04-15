@@ -17,17 +17,18 @@ let g:coc_global_extensions = [
 imap <silent> <expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ coc#jumpable() ? "<Plug>(coc-snippets-expand-jump)" :
-    \ IsNextCharPair() && CanTabOut() ? "<esc>a" : 
+    \ CantTabOut() ? "\<tab>" :
+    \ IsNextCharPair() ? "<esc>a" : 
     \ "\<Plug>(Tabout)"
 "     " \ "\<TAB>"
 "
-func CanTabOut()
+func CantTabOut()
     if col('.') == 1
     \ || (col('.') ==2 && getline('.')[col('.')-2] == ' ')
     \ || (getline('.')[col('.')-2] == ' ' && getline('.')[col('.')-3] == ' ')
-        return 0
-    else 
         return 1
+    else 
+        return 0
     endif
 endfunc
 

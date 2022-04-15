@@ -48,22 +48,22 @@ dap.adapters.codelldb = function(on_adapter)
 
 dap.configurations.cpp = {
     {
-    name = "Launch",
+    name = "Launch file",
     type = "codelldb",
     request = "launch",
     program = '${workspaceFolder}/build/${fileBasenameNoExtension}',
     cwd = '${workspaceFolder}',
-    stdio = {"input.txt", nil, nil},
-    stopOnEntry = false,
-    args = {},
-    runInTerminal = false,
-    postRunCommands = {'break set -n main'},
-    setupCommands = {
-        {
-        description =  'enable pretty printing',
-        text = '-enable-pretty-printing',
-        ignoreFailures = false
-        },
-    },
+    -- stopOnEntry = false,
+    stdio = {"input.txt", nil, nil}
+    -- stopOnEntry = false,
+    -- args = {},
+    -- runInTerminal = false,
+    -- postRunCommands = {'break set -n main'},
+    -- setupCommands = {
+    --     {
+    --     description =  'enable pretty printing',
+    --     text = '-enable-pretty-printing',
+    --     ignoreFailures = false
+    --     },
     },
 }

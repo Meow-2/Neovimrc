@@ -129,7 +129,7 @@ Plug 'stevearc/dressing.nvim'       " select menu
 Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-rust --enable-python '}
-Plug 'Pocco81/DAPInstall.nvim'
+Plug 'Meow-2/DAPInstall.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'

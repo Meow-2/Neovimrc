@@ -13,15 +13,17 @@ nnoremap <F12> :lua require'dap'.step_out()<cr>
 " keymap('n', '<F10>', '<cmd>lua require"user.dap.dap-util".reload_continue()<CR>', opts)
 
 lua<<EOF
--- local dap_install = require("dap-install")
+
+local dap_install = require("dap-install")
 -- dap_install.setup({
--- 	installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+--     installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
 -- })
--- dap_install.config("ccppr_vsc",{})
+dap_install.config("ccppr_vsc",{})
 -- dap_install.config("codelldb",{})
 
 -- require('dapconf.dap-cpp-codelldb')
-require('dapconf.dap-cpp-lldb')
+-- require('dapconf.dap-cpp-lldb')
+-- require('dapconf.dap-cpp-gdb')
 require('dapconf.nvim-dap-virtual-text')
 require('dapconf.nvim-dap-ui')
 EOF

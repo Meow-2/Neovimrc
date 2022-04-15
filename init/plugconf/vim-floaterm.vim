@@ -8,8 +8,8 @@ let g:neoterm_autoscroll = 1
 " nnoremap <C-t> :set splitright<CR>:vsplit<CR>:term<CR>i
 
 " nnoremap T :FloatermNew --height=0.75 --width=0.7 --cwd=<buffer><cr>
-let g:floaterm_width = 0.85
-let g:floaterm_height = 0.85 
+let g:floaterm_width = 0.95
+let g:floaterm_height = 0.95
 let g:floaterm_title = ''
 " let g:floaterm_wintype = 'vsplit'
 " let g:floaterm_position = 'belowright'

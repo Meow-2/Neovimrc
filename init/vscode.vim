@@ -44,6 +44,30 @@ vnoremap <c-j> j
 nnoremap <c-k> <c-v>
 vnoremap <c-k> k
 
+
+"----------------------------------------------------------------------
+"                            text object
+"----------------------------------------------------------------------
+
+onoremap " i"
+onoremap ' i'
+"when you want to dw use de
+onoremap w iw
+onoremap / i/
+onoremap ` i`
+onoremap < i<
+onoremap > i>
+onoremap _ i_
+onoremap [ i]
+onoremap ] i[
+onoremap ( i(
+onoremap ) i)
+onoremap { i{
+onoremap } i}
+onoremap + i+
+onoremap - i-
+onoremap : i:
+
 "----------------------------------------------------------------------
 "                           save and quit
 "----------------------------------------------------------------------

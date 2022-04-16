@@ -54,6 +54,27 @@ cnoremap <c-l> <right>
 cnoremap <c-s-h> <c-left>
 cnoremap <c-s-l> <c-right>
 
+"----------------------------------------------------------------------
+"                            text object
+"----------------------------------------------------------------------
+omap " i"
+omap ' i'
+omap w iw
+omap / i/
+omap ` i`
+omap < i<
+omap > i>
+omap _ i_
+omap [ i]
+omap ] i[
+omap ( i(
+omap ) i)
+omap { i{
+omap } i}
+omap + i+
+omap - i-
+omap : i:
+
 
 "----------------------------------------------------------------------
 "                           save and quit

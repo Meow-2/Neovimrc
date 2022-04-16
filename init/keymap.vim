@@ -57,23 +57,25 @@ cnoremap <c-s-l> <c-right>
 "----------------------------------------------------------------------
 "                            text object
 "----------------------------------------------------------------------
-omap " i"
-omap ' i'
-omap w iw
-omap / i/
-omap ` i`
-omap < i<
-omap > i>
-omap _ i_
-omap [ i]
-omap ] i[
-omap ( i(
-omap ) i)
-omap { i{
-omap } i}
-omap + i+
-omap - i-
-omap : i:
+
+onoremap " i"
+onoremap ' i'
+"when you want to dw use de
+onoremap w iw
+onoremap / i/
+onoremap ` i`
+onoremap < i<
+onoremap > i>
+onoremap _ i_
+onoremap [ i]
+onoremap ] i[
+onoremap ( i(
+onoremap ) i)
+onoremap { i{
+onoremap } i}
+onoremap + i+
+onoremap - i-
+onoremap : i:
 
 
 "----------------------------------------------------------------------

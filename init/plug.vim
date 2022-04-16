@@ -6,7 +6,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
 "|                                                                    |
 "+--------------------------------------------------------------------+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'OmniSharp/omnisharp-vim'
+Plug 'OmniSharp/omnisharp-vim'
 
 
 "+--------------------------------------------------------------------+
@@ -41,6 +41,7 @@ Plug 'itchyny/vim-cursorword'
 Plug 'ojroques/vim-oscyank'
 Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'abecodes/tabout.nvim'
+" Plug 'unblevable/quick-scope'
 
 
 "+--------------------------------------------------------------------+
@@ -154,7 +155,7 @@ if g:nvim_plugins_installation_completed == 1
 " lua require'impatient'.enable_profile()
 "lsp
 source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
-" source $HOME/.config/nvim/init/plugconf/omnisharp-vim.vim
+source $HOME/.config/nvim/init/plugconf/omnisharp-vim.vim
 
 "markdown
 source $HOME/.config/nvim/init/plugconf/vim-table-mode.vim

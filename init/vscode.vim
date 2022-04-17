@@ -243,6 +243,7 @@ EOF
 source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
 source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
 source $HOME/.config/nvim/init/plugconf/tabular.vim
+source $HOME/.config/nvim/init/plugconf/vim-surround.vim
 " source $HOME/.config/nvim/init/plugconf/tabout-nvim.vim
 
 silent !mkdir -p $HOME/.config/nvim/tmp/undo

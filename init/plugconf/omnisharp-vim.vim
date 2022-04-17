@@ -1,13 +1,15 @@
 "----------------------------------------------------------------------
 " omnisharp-vim.vim
 "----------------------------------------------------------------------
+let g:OmniSharp_translate_cygwin_wsl = 1
 let g:OmniSharp_typeLookupInPreview = 1
 let g:omnicomplete_fetch_full_documentation = 1
-let g:OmniSharp_server_use_mono = 1
+" let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_highlight_types = 2
-let g:OmniSharp_server_use_net6 = 1
+" let g:OmniSharp_server_use_net6 = 1
 let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_typeLookupInPreview = 1
 
 autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDefinition<CR>
 autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>

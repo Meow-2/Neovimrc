@@ -168,6 +168,7 @@ source $HOME/.config/nvim/init/plugconf/indent-blankline-nvim.vim
 source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
 source $HOME/.config/nvim/init/plugconf/nvim-autopairs.vim
 source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
+source $HOME/.config/nvim/init/plugconf/vim-surround.vim
 source $HOME/.config/nvim/init/plugconf/vim-cursorword.vim
 source $HOME/.config/nvim/init/plugconf/vim-oscyank.vim
 source $HOME/.config/nvim/init/plugconf/tabular.vim

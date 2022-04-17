@@ -54,6 +54,29 @@ cnoremap <c-l> <right>
 cnoremap <c-s-h> <c-left>
 cnoremap <c-s-l> <c-right>
 
+"----------------------------------------------------------------------
+"                            text object
+"----------------------------------------------------------------------
+
+onoremap " i"
+onoremap ' i'
+"when you want to dw use de
+onoremap w iw
+onoremap / i/
+onoremap ` i`
+onoremap < i<
+onoremap > i>
+onoremap _ i_
+onoremap [ i]
+onoremap ] i[
+onoremap ( i(
+onoremap ) i)
+onoremap { i{
+onoremap } i}
+onoremap + i+
+onoremap - i-
+onoremap : i:
+
 
 "----------------------------------------------------------------------
 "                           save and quit
@@ -132,6 +155,8 @@ nnoremap N Nzz
 " cancel the highlight of search result
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
+
+nnoremap / /<c-r><c-w>
 
 " find the placeholder
 " nnoremap <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l

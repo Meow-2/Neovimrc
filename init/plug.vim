@@ -41,6 +41,7 @@ Plug 'itchyny/vim-cursorword'
 Plug 'ojroques/vim-oscyank'
 Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'abecodes/tabout.nvim'
+" Plug 'unblevable/quick-scope'
 
 
 "+--------------------------------------------------------------------+

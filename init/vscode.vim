@@ -49,24 +49,24 @@ vnoremap <c-k> k
 "                            text object
 "----------------------------------------------------------------------
 
-onoremap " i"
-onoremap ' i'
+omap " i"
+omap ' i'
 "when you want to dw use de
-onoremap w iw
-onoremap / i/
-onoremap ` i`
-onoremap < i<
-onoremap > i>
-onoremap _ i_
-onoremap [ i]
-onoremap ] i[
-onoremap ( i(
-onoremap ) i)
-onoremap { i{
-onoremap } i}
-onoremap + i+
-onoremap - i-
-onoremap : i:
+omap w iw
+omap / i/
+omap ` i`
+omap < i<
+omap > i>
+omap _ i_
+omap [ i]
+omap ] i[
+omap ( i(
+omap ) i)
+omap { i{
+omap } i}
+omap + i+
+omap - i-
+omap : i:
 
 "----------------------------------------------------------------------
 "                           save and quit

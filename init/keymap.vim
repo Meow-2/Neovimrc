@@ -155,8 +155,6 @@ nnoremap N Nzz
 inoremap <silent> <esc> <esc>l:nohlsearch<cr>
 noremap <silent> <esc> <esc>:nohlsearch<cr>
 
-nnoremap / /<c-r><c-w>
-
 " find the placeholder
 " nnoremap <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
 

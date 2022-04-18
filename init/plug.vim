@@ -64,7 +64,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 " ------------------------------------------
 "              color themes
 " ------------------------------------------
-Plug 'cpea2506/one_monokai.nvim'
+Plug 'Meow-2/one_monokai.nvim'
 " Plug 'glepnir/zephyr-nvim'
 " Plug 'PHSix/nvim-hybrid'
 " Plug 'theniceboy/nvim-deus'
@@ -142,6 +142,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'
+Plug 'lewis6991/gitsigns.nvim'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
@@ -200,6 +201,7 @@ source $HOME/.config/nvim/lua/dapconf/nvim-dap.vim
 source $HOME/.config/nvim/init/plugconf/fzf.vim
 source $HOME/.config/nvim/init/plugconf/fzf-lua.vim
 source $HOME/.config/nvim/init/plugconf/rnvimr.vim
+source $HOME/.config/nvim/init/plugconf/gitsigns-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/vim-gitgutter.vim
 
 " source $HOME/.config/nvim/init/plugconf/telescope-nvim.vim

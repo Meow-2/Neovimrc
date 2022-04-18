@@ -69,7 +69,7 @@ Plug 'Meow-2/one_monokai.nvim'
 " Plug 'PHSix/nvim-hybrid'
 " Plug 'theniceboy/nvim-deus'
 " Plug 'glepnir/oceanic-material'
-" Plug 'olimorris/onedarkpro.nvim'
+Plug 'navarasu/onedark.nvim'
 
 " ------------------------------------------
 "              status line

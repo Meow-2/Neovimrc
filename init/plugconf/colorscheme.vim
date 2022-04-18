@@ -8,9 +8,14 @@
 colorscheme one_monokai
 
 " ===
-" === onedarkpro
+" === onedark
 " ===
-" colorscheme onedarkpro
+" colorscheme onedark
+" " Vim
+" let g:onedark_config = {
+"     \ 'style': 'cool',
+" \}
+" colorscheme onedark
 " lua<<EOF
 " vim.o.background = "dark" -- to load onedark
 " -- vim.o.background = "light" -- to load onelight

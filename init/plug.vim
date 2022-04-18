@@ -6,7 +6,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
 "|                                                                    |
 "+--------------------------------------------------------------------+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'OmniSharp/omnisharp-vim'
+" Plug 'OmniSharp/omnisharp-vim'
 
 
 "+--------------------------------------------------------------------+
@@ -156,7 +156,7 @@ if g:nvim_plugins_installation_completed == 1
 " lua require'impatient'.enable_profile()
 "lsp
 source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
-source $HOME/.config/nvim/init/plugconf/omnisharp-vim.vim
+" source $HOME/.config/nvim/init/plugconf/omnisharp-vim.vim
 
 "markdown
 source $HOME/.config/nvim/init/plugconf/vim-table-mode.vim

@@ -19,7 +19,6 @@ set updatetime=100
 set virtualedit=block
 set showcmd
 
-
 "+--------------------------------------------------------------------+
 "|                                                                    |
 "|                              KEYMAP                                |
@@ -146,16 +145,20 @@ noremap <silent> <esc> <esc>:nohlsearch<cr>
 
 " find the placeholder
 " nnoremap <LEADER><LEADER> <esc>/<++><CR>:nohlsearch<CR>c4l
-nnoremap / /<c-r><c-w>
 
 
 "----------------------------------------------------------------------
 "                      yank to system clipboard
 "----------------------------------------------------------------------
-
-noremap y "+y
-nnoremap yy "+yy
-nnoremap Y "+y$
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point [2]
+if executable(s:clip)
+    set clipboard=unnamedplus " default
+    au TextYankPost * if v:event.operator is 'y' | call system(s:clip, @0) | endif
+else
+    noremap y "+y
+    nnoremap yy "+yy
+    nnoremap Y "+y$
+endif
 
 nnoremap \v v$h
 

@@ -67,8 +67,10 @@ omap ` i`
 omap < i<
 omap > i>
 omap _ i_
-omap [ i]
-omap ] i[
+" matchit is a standard plugin, it will map [% ]%, disable it
+let g:loaded_{'matchit'} = 1
+omap [ i[
+omap ] i]
 omap ( i(
 omap ) i)
 omap { i{

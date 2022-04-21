@@ -67,6 +67,25 @@ omap + i+
 omap - i-
 omap : i:
 
+xmap " i"
+xmap ' i'
+"when you want to dw use de
+xmap w iw
+xmap / i/
+xmap ` i`
+xmap < i<
+xmap > i>
+xmap _ i_
+xmap [ i[
+xmap ] i]
+xmap ( i(
+xmap ) i)
+xmap { i{
+xmap } i}
+xmap + i+
+xmap - i-
+xmap : i:
+
 "----------------------------------------------------------------------
 "                           save and quit
 "----------------------------------------------------------------------
@@ -218,6 +237,7 @@ Plug 'tomtom/tcomment_vim'         " in <space>cn to comment a line
 Plug 'theniceboy/antovim'          " gs to switch false and true
 Plug 'tpope/vim-surround'          " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'godlygeek/tabular'           " ga, or :Tabularize <regex> to align
+" Plug 'itchyny/vim-cursorword'
 " Plug 'abecodes/tabout.nvim'
 " Plug 'mg979/vim-visual-multi'
 " Plug 'lambdalisue/suda.vim'
@@ -249,6 +269,7 @@ source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
 source $HOME/.config/nvim/init/plugconf/tabular.vim
 source $HOME/.config/nvim/init/plugconf/vim-surround.vim
 source $HOME/.config/nvim/init/plugconf/gitsigns-nvim.vim
+" source $HOME/.config/nvim/init/plugconf/vim-cursorword.vim
 " source $HOME/.config/nvim/init/plugconf/tabout-nvim.vim
 
 silent !mkdir -p $HOME/.config/nvim/tmp/undo

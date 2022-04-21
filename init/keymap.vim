@@ -79,6 +79,24 @@ omap + i+
 omap - i-
 omap : i:
 
+xmap " i"
+xmap ' i'
+"when you want to dw use de
+xmap w iw
+xmap / i/
+xmap ` i`
+xmap < i<
+xmap > i>
+xmap _ i_
+xmap [ i[
+xmap ] i]
+xmap ( i(
+xmap ) i)
+xmap { i{
+xmap } i}
+xmap + i+
+xmap - i-
+xmap : i:
 "----------------------------------------------------------------------
 "                           save and quit
 "----------------------------------------------------------------------

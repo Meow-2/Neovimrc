@@ -225,6 +225,7 @@ Plug 'wellle/targets.vim'
 Plug 'lilydjwg/fcitx.vim' " auto chinese to english
 " Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
+Plug 'lewis6991/gitsigns.nvim'
 " Plug 'dkarter/bullets.vim'
 
 call plug#end()
@@ -247,6 +248,7 @@ source $HOME/.config/nvim/init/plugconf/vim-visual-multi.vim
 source $HOME/.config/nvim/init/plugconf/tcomment_vim.vim
 source $HOME/.config/nvim/init/plugconf/tabular.vim
 source $HOME/.config/nvim/init/plugconf/vim-surround.vim
+source $HOME/.config/nvim/init/plugconf/gitsigns-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/tabout-nvim.vim
 
 silent !mkdir -p $HOME/.config/nvim/tmp/undo

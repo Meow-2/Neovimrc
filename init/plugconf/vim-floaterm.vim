@@ -15,13 +15,13 @@ let g:floaterm_title = ''
 " let g:floaterm_position = 'belowright'
 let g:floaterm_rootmarkers = ['build/CMakeFiles','.project', '.git', '.hg', '.svn', '.root']
 
-nnoremap <silent> <c-g> :FloatermNew! --name=lazygit lazygit<cr>
+nnoremap <silent> <c-g> :FloatermNew! --cwd=<buffer> --name=lazygit lazygit<cr>
 tnoremap <silent><expr> <c-g> 
        \ &filetype == 'floaterm' ? 
        \ "q<C-\><C-N>:FloatermKill lazygit<cr>" :
        \ "<c-g>"
 
-nnoremap <silent> <S-F3> :set norelativenumber<cr>:FloatermNew! --width=0.5 --position=belowright --wintype=vsplit --name=lldb lldb %:h/build/%:t:r<cr>
+nnoremap <silent> <S-F3> :set norelativenumber<cr>:FloatermNew! --cmd=<buffer> --width=0.5 --position=belowright --wintype=vsplit --name=lldb lldb %:h/build/%:t:r<cr>
 tnoremap <silent> <S-F3> <C-d><C-\><C-N>:FloatermKill lldb<cr>:set relativenumber<cr>
 " tnoremap <silent> <S-F3> i<c-u><C-d>exit<cr>
 

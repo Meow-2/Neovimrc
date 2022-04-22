@@ -56,7 +56,7 @@ set updatetime=100
 set virtualedit=block
 set nowrap                     " show one line in two lines when out of range
 set wildmenu                   " vicmd compelete
-" set autochdir                  " exec vicmd in now path
+set autochdir                  " exec vicmd in now path
 set laststatus=2               " always show the statusbar
 set scrolloff=4                " 4 line remain
 set backspace=indent,eol,start " backspace to last line

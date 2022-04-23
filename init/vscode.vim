@@ -57,6 +57,7 @@ omap ` i`
 omap < i<
 omap > i>
 omap _ i_
+let g:loaded_{'matchit'} = 1
 omap [ i]
 omap ] i[
 omap ( i(
@@ -277,6 +278,7 @@ if has('persistent_undo')
 	set undofile
 	set undodir=$HOME/.config/nvim/tmp/undo,.
 endif
+
 
 
 " auto comment disabled

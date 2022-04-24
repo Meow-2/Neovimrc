@@ -107,6 +107,12 @@ omap ac <Plug>(coc-classobj-a)
 " === coc-explorer
 " ===
 nmap tt :CocCommand explorer<CR>
+" will open coc-explorer rather than netrw
+augroup MyCocExplorer
+  autocmd!
+  autocmd VimEnter * sil! au! FileExplorer *
+  autocmd BufEnter * let d = expand('%') | if isdirectory(d) | silent! bd | exe 'CocCommand explorer ' . d | endif
+augroup END
 
 
 " ===

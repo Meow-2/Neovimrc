@@ -5,7 +5,7 @@
 " ===
 " === onemonoka.nvim
 " ===
-" colorscheme one_monokai
+colorscheme one_monokai
 
 " ===
 " === onedark
@@ -18,7 +18,7 @@
 " ===
 " === onedarkpro
 " ===
-colorscheme onedarkpro
+" colorscheme onedarkpro
 
 " ===
 " === github-nvim-theme

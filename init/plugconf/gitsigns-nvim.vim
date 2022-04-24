@@ -52,8 +52,8 @@ gitsigns.setup {
     end
 
     -- Navigation
-    -- map('n', '<leader>hj', ':Gitsigns next_hunk<CR>')
-    -- map('n', '<leader>hk',':Gitsigns prev_hunk<CR>')
+    map('n', '<leader>gn',':Gitsigns next_hunk<CR>')
+    map('n', '<leader>gN',':Gitsigns prev_hunk<CR>')
 
     -- Actions
     map('n', '<leader>gs', ':Gitsigns stage_hunk<CR>')

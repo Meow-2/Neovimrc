@@ -3,9 +3,18 @@
 "----------------------------------------------------------------------
 
 " ===
+" === one
+" ===
+set background=dark " for the dark version
+" set background=light " for the light version
+let g:one_allow_italics = 1 " I love italic for comments
+colorscheme one
+call one#highlight('DiffviewSignColumn','','','')
+
+" ===
 " === onemonoka.nvim
 " ===
-colorscheme one_monokai
+" colorscheme one_monokai
 
 " ===
 " === onedark

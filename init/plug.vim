@@ -64,13 +64,14 @@ Plug 'kyazdani42/nvim-web-devicons'
 " ------------------------------------------
 "              color themes
 " ------------------------------------------
-Plug 'Meow-2/one_monokai.nvim'
+" Plug 'Meow-2/one_monokai.nvim'
 " Plug 'glepnir/zephyr-nvim'
 " Plug 'PHSix/nvim-hybrid'
 " Plug 'theniceboy/nvim-deus'
 " Plug 'glepnir/oceanic-material'
-Plug 'olimorris/onedarkpro.nvim'
-Plug 'projekt0n/github-nvim-theme'
+Plug 'rakr/vim-one'
+" Plug 'olimorris/onedarkpro.nvim'
+" Plug 'projekt0n/github-nvim-theme'
 " Plug 'navarasu/onedark.nvim'
 
 " ------------------------------------------

@@ -207,8 +207,8 @@ vnoremap <S-tab> <gv
 
 
 " fold code
-noremap <silent> <LEADER>i zf%
-noremap <silent> <LEADER>o za
+noremap <silent> zi zf%
+noremap <silent> zo za
 
 
 "----------------------------------------------------------------------

@@ -112,7 +112,7 @@ nnoremap <silent><expr> q
 nnoremap s :w!<CR>
 
 " quit nvim
-nnoremap <C-q> :q!<cr>
+nnoremap <C-q> :qa!<cr>
 
 
 "----------------------------------------------------------------------

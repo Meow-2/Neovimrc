@@ -109,7 +109,7 @@ nnoremap <silent><expr> q
        \ ":bd!<cr>"
 
 " write to file
-nnoremap s :w!<CR>
+nnoremap s :w!<cr>
 
 " quit nvim
 nnoremap <C-q> :qa!<cr>

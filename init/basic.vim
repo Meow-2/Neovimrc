@@ -68,6 +68,7 @@ if exists('g:nvui')
   set guifont=FiraCode\ Nerd\ Font\ Mono:h15
   hi Cursor gui=bold,italic
   inoremap <c-v> <esc>"+Pi
+  cnoremap <c-v> <c-r>+
 endif
 
 

@@ -141,10 +141,33 @@ nnoremap <c-s-l> <C-w>l
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 
-tnoremap <c-s-h> <c-\><c-n><c-w>h
-tnoremap <c-s-j> <c-\><c-n><C-w>j
-tnoremap <c-s-k> <c-\><c-n><C-w>k
-tnoremap <c-s-l> <c-\><c-n><c-w>l
+tnoremap <expr> <c-s-h> 
+    \ &filetype == 'floaterm' ?
+    \ "\x1b[72;6u" :
+    \ &filetype == 'rnvimr' ?
+    \ "<c-s-h>" :
+    \ "<c-\><c-n><c-w>h"
+
+tnoremap <expr> <c-s-j> 
+    \ &filetype == 'floaterm' ?
+    \ "<c-s-j>" :
+    \ &filetype == 'rnvimr' ?
+    \ "<c-s-j>" :
+    \ "<c-\><c-n><c-w>j"
+
+tnoremap <expr> <c-s-k> 
+    \ &filetype == 'floaterm' ?
+    \ "<c-s-k>" :
+    \ &filetype == 'rnvimr' ?
+    \ "<c-s-k>" :
+    \ "<c-\><c-n><c-w>k"
+
+tnoremap <expr> <c-s-l> 
+    \ &filetype == 'floaterm' ?
+    \ "\x1b[76;6u" :
+    \ &filetype == 'rnvimr' ?
+    \ "<c-s-l>" :
+    \ "<c-\><c-n><c-w>l"
 
 " nnoremap <leader>c <C-w>c
 

@@ -108,7 +108,7 @@ Plug 'liuchengxu/vista.vim'
 "         comment to document
 " ------------------------------------------
 Plug 'babaybus/DoxygenToolkit.vim'
-" Plug 'folke/todo-comments.nvim'
+Plug 'folke/todo-comments.nvim'
 
 " ------------------------------------------
 "             treesitter
@@ -193,7 +193,7 @@ source $HOME/.config/nvim/init/plugconf/vim-floaterm.vim
 source $HOME/.config/nvim/init/plugconf/which-key-nvim.vim
 source $HOME/.config/nvim/init/plugconf/Vista-vim.vim
 source $HOME/.config/nvim/init/plugconf/DoxygenToolkit.vim
-" source $HOME/.config/nvim/init/plugconf/todo-comments-nvim.vim
+source $HOME/.config/nvim/init/plugconf/todo-comments-nvim.vim
 source $HOME/.config/nvim/init/plugconf/nvim-treesitter.vim
 source $HOME/.config/nvim/init/plugconf/neovim-session-manager.vim
 source $HOME/.config/nvim/init/plugconf/dressing-nvim.vim

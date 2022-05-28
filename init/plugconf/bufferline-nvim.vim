@@ -8,7 +8,7 @@ options = {
     numbers = function(opts)
                 return string.format('%s.', opts.ordinal)
               end,
-    diagnostics = "coc",
+    diagnostics = false,
     separator_style = "thin", 
     always_show_bufferline = "true",
     show_close_icon = false,

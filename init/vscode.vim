@@ -34,8 +34,8 @@ noremap H b
 noremap J 5j
 noremap K 5k
 noremap L e
-noremap 9 ^
-noremap 0 $
+" noremap 9 ^
+" noremap 0 $
 
 " visual-block
 nnoremap <c-j> <c-v>

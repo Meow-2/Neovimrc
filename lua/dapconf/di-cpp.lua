@@ -12,11 +12,11 @@ dap_install.config("ccppr_vsc",{
 			type = "cppdbg",
 			request = "launch",
 			miDebuggerPath = "/usr/bin/gdb",
-            program = '${workspaceFolder}/build/${fileBasenameNoExtension}',
+            -- program = '${workspaceFolder}/build/${fileBasenameNoExtension}',
             -- TODO : rewrite config in lua
-			-- program = function()
-			-- 	return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			-- end,
+			program = function()
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+			end,
             -- args = function()
             --     local input = vim.fn.input("Input args: ")
             --     return require("dapconf.dap-util").str2argtable(input)

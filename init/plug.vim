@@ -163,6 +163,7 @@ source $HOME/.config/nvim/init/plugconf/coc-nvim.vim
 " source $HOME/.config/nvim/init/plugconf/omnisharp-vim.vim
 
 "markdown
+source $HOME/.config/nvim/init/plugconf/markdown-preview-nvim.vim
 source $HOME/.config/nvim/init/plugconf/vim-table-mode.vim
 source $HOME/.config/nvim/init/plugconf/vim-markdown-toc.vim
 source $HOME/.config/nvim/init/plugconf/bullets.vim

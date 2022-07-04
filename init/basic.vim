@@ -34,6 +34,8 @@ let g:python_host_prog='/usr/bin/python'
 let g:python3_host_prog='/usr/bin/python3'
 let g:barbaric_ime = 'fcitx5'
 let g:remoteSession = ($SSH_TTY != "")
+let g:clipboard = {}
+
 " let g:mkdp_browser = 'google-chrome-stable'
 " let g:mkdp_browser = 'microsoft-edge-stable'
 

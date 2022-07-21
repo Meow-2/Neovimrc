@@ -178,6 +178,7 @@ else
     noremap y "+y
     nnoremap yy "+yy
     nnoremap Y "+y$
+    vnoremap y "+y`]
 endif
 
 nnoremap \v v$h

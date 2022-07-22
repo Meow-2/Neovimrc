@@ -34,6 +34,7 @@ noremap H b
 noremap J 5j
 noremap K 5k
 noremap L e
+noremap <leader>i F<space>a
 " noremap 9 ^
 " noremap 0 $
 

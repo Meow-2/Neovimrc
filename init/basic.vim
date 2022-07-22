@@ -71,7 +71,8 @@ if exists('g:nvui')
   " Configure nvui
     set guifont=FiraCode\ Nerd\ Font\ Mono:h15
     hi Cursor gui=bold,italic
-    inoremap <c-v> <esc>:set paste<cr>a<c-r>=getreg('+')<cr><esc>:set nopaste<cr>mi`[=`]`ia
+    " inoremap <c-v> <esc>:set paste<cr>a<c-r>=getreg('+')<cr><esc>:set nopaste<cr>mi`[=`]`ia
+    inoremap <c-v> <c-r>+
     cnoremap <c-v> <c-r>+
     nmap <c-/> gcc
     vmap <c-/> gc

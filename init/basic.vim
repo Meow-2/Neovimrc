@@ -65,6 +65,7 @@ set laststatus=2               " always show the statusbar
 set scrolloff=4                " 4 line remain
 set backspace=indent,eol,start " backspace to last line
 set termguicolors
+set fdm=marker fmr={{{,}}} fdl=0
 " set clipboard=unnamedplus
 " set whichwrap+=<,>,[,],h,l   " alow h to last line
 if exists('g:nvui')

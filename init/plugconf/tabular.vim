@@ -1,5 +1,0 @@
-"===
-"=== tabular
-"===
-vnoremap gt :Tabularize /
-

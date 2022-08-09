@@ -31,10 +31,10 @@ vim.opt.shada = "!,'300,<50,@100,s10,h"
 vim.opt.backupskip = '/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim'
 vim.opt.smarttab = true
 vim.opt.shiftround = true
-vim.opt.timeout = true
+vim.opt.timeout = false
 vim.opt.ttimeout = true
-vim.opt.timeoutlen = 500
-vim.opt.ttimeoutlen = 10
+vim.opt.timeoutlen = 0
+vim.opt.ttimeoutlen = 50
 vim.opt.updatetime = 100
 vim.opt.redrawtime = 1500
 vim.opt.ignorecase = true
@@ -60,11 +60,6 @@ vim.opt.showmode = false
 vim.opt.shortmess = 'aoOTIcF'
 vim.opt.scrolloff = 2
 vim.opt.sidescrolloff = 5
-vim.opt.foldmethod = 'marker'
-vim.opt.foldmarker = '{{{,}}}'
-vim.opt.foldminlines = 0
-vim.opt.foldlevelstart = 99
-vim.opt.foldenable = true
 vim.opt.ruler = false
 vim.opt.list = true
 vim.opt.showtabline = 2
@@ -73,7 +68,7 @@ vim.opt.winminwidth = 10
 vim.opt.pumheight = 15
 vim.opt.helpheight = 12
 vim.opt.previewheight = 12
-vim.opt.showcmd = false
+vim.opt.showcmd = true
 -- just for nightly
 vim.opt.cmdheight = 1
 vim.opt.cmdwinheight = 5
@@ -102,6 +97,12 @@ vim.opt.number = true
 vim.opt.signcolumn = 'yes'
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'niv'
+
+vim.opt.foldenable = true
+vim.opt.foldlevelstart = 99
+vim.opt.foldmethod = 'marker'
+vim.opt.foldmarker = '{{{,}}}'
+vim.opt.foldminlines = 0
 
 
 -- vim.g.remoteSession = os.getenv($SSH_TTY) ~= "" and true or false

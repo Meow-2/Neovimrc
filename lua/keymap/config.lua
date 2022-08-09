@@ -15,6 +15,31 @@ vim.g.mapleader = ' '
 -- nmap({ ' ', '', opts(noremap) })
 -- xmap({ ' ', '', opts(noremap) })
 
+local quitbuffer = function()
+    local temp = vim.fn.getbufinfo({buflisted = 1})
+    if #temp == 1 then
+        return vim.cmd('q!')
+    end
+    temp = vim.fn.win_findbuf(vim.fn.bufnr('%'))
+    if #temp > 1 then
+        return vim.cmd('q!')
+    end
+    if vim.bo.filetype == 'dashboard' then
+        return vim.cmd('q!')
+    end
+    return vim.cmd('bd!')
+end
+
+local compile = function()
+    if vim.bo.filetype == 'vim' then
+        return vim.cmd('luafile $HOME/.config/nvim/init.lua')
+    end
+    if vim.bo.filetype == 'markdown' then
+        return vim.cmd('MarkdownPreview')
+    end
+    return vim.cmd('AsyncTask file-build')
+end
+
 nmap({
     -- noremal remap
     -- cursor move
@@ -32,7 +57,7 @@ nmap({
     { 's'                  , cmd('w!')     , opts(noremap) } ,
     { '<C-q>'              , cmd('qa!')    , opts(noremap) } ,
     -- close buffer/tab/dashboard
-    { 'q' , cmd('bd!'), opts(noremap)},
+    { 'q' , quitbuffer , opts(noremap,silent)},
     -- split windows
     { 'S','<Nop>',opts(noremap,silent)},
     { 'Sh',cmds('set nosplitright','vsplit','set splitright'),opts(noremap,silent)},

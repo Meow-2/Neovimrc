@@ -63,7 +63,6 @@ vim.opt.sidescrolloff = 5
 vim.opt.foldlevelstart = 0
 vim.opt.foldmethod = 'marker'
 vim.opt.foldmarker = '{{{,}}}'
-vim.opt.fold = 'marker'
 vim.opt.ruler = false
 vim.opt.list = true
 vim.opt.showtabline = 2
@@ -74,7 +73,7 @@ vim.opt.helpheight = 12
 vim.opt.previewheight = 12
 vim.opt.showcmd = false
 -- just for nightly
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
 vim.opt.cmdwinheight = 5
 vim.opt.equalalways = false
 vim.opt.laststatus = 2
@@ -105,12 +104,12 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'niv'
 
 
-vim.g.remoteSession = os.getenv($SSH_TTY) ~= ""
+-- vim.g.remoteSession = os.getenv($SSH_TTY) ~= "" and true or false
 vim.g.barbaric_ime = 'fcitx5'
 vim.g.python_host_prog = '/usr/bin/python'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
-if vim.g.nvui
+if vim.g.nvui then
     vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
 end
 

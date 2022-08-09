@@ -11,31 +11,10 @@ local cmd,cmds = keymap.cmd, keymap.cmds
 
 -- Use space as leader key
 vim.g.mapleader = ' '
-
 -- leaderkey
 -- nmap({ ' ', '', opts(noremap) })
 -- xmap({ ' ', '', opts(noremap) })
 
--- usage example
--- nmap({
-  -- noremal remap
-  -- close buffer
-  -- { '<C-x>k', cmd('bdelete'), opts(noremap, silent) },
-  -- -- save
-  -- { '<C-s>', cmd('write'), opts(noremap) },
-  -- -- yank
-  -- { 'Y', 'y$', opts(noremap) },
-  -- -- buffer jump
-  -- { ']b', cmd('bn'), opts(noremap) },
-  -- { '[b', cmd('bp'), opts(noremap) },
-  -- -- remove trailing white space
-  -- { '<Leader>t', cmd('TrimTrailingWhitespace'), opts(noremap) },
-  -- window jump
-  -- { '<C-h>', '<C-w>h', opts(noremap) },
-  -- { '<C-l>', '<C-w>l', opts(noremap) },
-  -- { '<C-j>', '<C-w>j', opts(noremap) },
-  -- { '<C-k>', '<C-w>k', opts(noremap) },
--- })
 nmap({
     -- noremal remap
     -- cursor move
@@ -50,8 +29,8 @@ nmap({
     { '<C-k>'              , '<C-v>k'    , opts(noremap) } ,
     { '\v' , 'v$h' , opts(noremap)},
     -- save and quit
-    { 's'                  , cmd(w!)     , opts(noremap) } ,
-    { '<C-q>'              , cmd(qa!)    , opts(noremap) } ,
+    { 's'                  , cmd('w!')     , opts(noremap) } ,
+    { '<C-q>'              , cmd('qa!')    , opts(noremap) } ,
     -- close buffer/tab/dashboard
     { 'q' , cmd('bd!'), opts(noremap)},
     -- split windows
@@ -77,10 +56,10 @@ nmap({
     { '<Up>', '<C-w>k', opts(noremap) },
     { '<Right>', '<C-w>l', opts(noremap) },
     -- adjust the size of split windows
-    { '<C-Left>' , cmd(vertical resize+2), opts(noremap, silent)} ,
-    { '<C-Down>' , cmd(resize-2), opts(noremap, silent)} ,
-    { '<C-Up>' , cmd(resize+2), opts(noremap, silent)} ,
-    { '<C-Right>' , cmd(vertical resize-2), opts(noremap, silent)} ,
+    { '<C-Left>' , cmd('vertical resize+2'), opts(noremap, silent)} ,
+    { '<C-Down>' , cmd('resize-2'), opts(noremap, silent)} ,
+    { '<C-Up>' , cmd('resize+2'), opts(noremap, silent)} ,
+    { '<C-Right>' , cmd('vertical resize-2'), opts(noremap, silent)} ,
     { '<Leader>=', '<C-w>=', opts(noremap)},
     -- search behavior
     { 'n' , 'nzz' , opts(noremap)},
@@ -142,8 +121,8 @@ vmap({
     { 'J'                  , '5j'        , opts(noremap) } ,
     { 'K'                  , '5k'        , opts(noremap) } ,
     { 'L'                  , 'e'         , opts(noremap) } ,
-    { '<c-j>', 'j', opts(noremap) }
-    { '<c-k>', 'k', opts(noremap) }
+    { '<c-j>', 'j', opts(noremap) },
+    { '<c-k>', 'k', opts(noremap) },
     -- <Esc> behavior
     { '<Esc>', '<Esc>'..cmd('nohlsearch'), opts(noremap)},
     -- yank to system clipboard

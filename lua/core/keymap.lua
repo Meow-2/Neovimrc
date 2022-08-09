@@ -77,6 +77,7 @@ function keymap.cmds(...)
     local str = ""
     for _,arg in pairs(args) do
         str = str .. '<Cmd>' .. arg .. '<CR>'
+    end
     return str
 end
 

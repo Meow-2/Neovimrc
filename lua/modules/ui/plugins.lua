@@ -29,5 +29,5 @@ plugin({ 'akinsho/bufferline.nvim', config = conf('bufferline.nvim'), requires =
 
 plugin({ 'lukas-reineke/indent-blankline.nvim',after = {'nvim-treesitter'}, config = conf('indent-blankline.nvim')})
 plugin({'norcalli/nvim-colorizer.lua', config = conf('nvim-colorizer.lua')})
+plugin({'RRethy/vim-illuminate', config =conf('vim-illuminate')})
 -- plugin({'SmiteshP/nvim-gps'})
--- plugin({ 'xiyaowong/nvim-cursorword', config= conf('nvim-cursorword')})

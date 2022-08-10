@@ -9,11 +9,13 @@ local nmap,vmap = key.nmap,key.vmap
 local silent, noremap = key.silent, key.noremap
 local opts = key.new_opts
 local cmd,cmds = key.cmd, key.cmds
+local source_file = vim.fn.stdpath('config') .. '/init.lua'
 
 -- usage of plugins
 nmap({
   -- packer
   { '<Leader>p'      , '<Nop>'                     , opts(noremap , silent)}  ,
+  { '<Leader>ps'     , cmd('luafile '..source_file), opts(noremap , silent)}  ,
   { '<Leader>pu'     , cmd('PackerUpdate')         , opts(noremap , silent) } ,
   { '<Leader>pi'     , cmd('PackerInstall')        , opts(noremap , silent) } ,
   { '<Leader>pc'     , cmd('PackerCompile')        , opts(noremap , silent) } ,

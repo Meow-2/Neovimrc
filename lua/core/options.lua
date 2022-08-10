@@ -101,7 +101,7 @@ vim.opt.concealcursor = 'niv'
 vim.opt.foldenable = true
 vim.opt.foldmethod = 'marker'
 vim.opt.foldmarker = '{{{,}}}'
-vim.opt.foldminlines = 0
+vim.opt.foldminlines = 1
 
 
 -- vim.g.remoteSession = os.getenv($SSH_TTY) ~= "" and true or false

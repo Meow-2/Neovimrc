@@ -1,10 +1,4 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
-local config = {}
-
-function config.telescope()
+return function()
   if not packer_plugins['plenary.nvim'].loaded then
     vim.cmd([[packadd plenary.nvim]])
     vim.cmd([[packadd popup.nvim]])
@@ -31,5 +25,3 @@ function config.telescope()
   })
   require('telescope').load_extension('fzy_native')
 end
-
-return config

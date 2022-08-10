@@ -3,20 +3,20 @@
 -- License: MIT
 
 local plugin = require('core.pack').register_plugin
-local conf = require('modules.completion.config')
+local conf = require('core.pack').conf_plugin('modules.completion')
 
 plugin({
   'neovim/nvim-lspconfig',
   -- used filetype to lazyload lsp
   -- config your language filetype in here
   ft = { 'lua', 'rust', 'c', 'cpp', 'python','go'},
-  config = conf.nvim_lsp,
+  config = conf('nvim-lspconfig'),
 })
 
 plugin({
   'hrsh7th/nvim-cmp',
   event = 'BufReadPre',
-  config = conf.nvim_cmp,
+  config = conf('nvim-cmp'),
   requires = {
     { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-lspconfig' },
     { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
@@ -25,4 +25,4 @@ plugin({
   },
 })
 
-plugin({ 'L3MON4D3/LuaSnip', event = 'InsertEnter', config = conf.lua_snip })
+plugin({ 'L3MON4D3/LuaSnip', event = 'InsertEnter', config = conf('LuaSnip') })

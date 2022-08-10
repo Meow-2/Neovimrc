@@ -3,12 +3,12 @@
 -- License: MIT
 
 local plugin = require('core.pack').register_plugin
-local conf = require('modules.tools.config')
+local conf = require('core.pack').conf_plugin('modules.tools')
 
 plugin({
   'nvim-telescope/telescope.nvim',
   cmd = 'Telescope',
-  config = conf.telescope,
+  config = conf('telescope.nvim'),
   requires = {
     { 'nvim-lua/popup.nvim', opt = true },
     { 'nvim-lua/plenary.nvim', opt = true },

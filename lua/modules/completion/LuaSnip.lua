@@ -1,25 +1,4 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
-local config = {}
-
--- config server in this function
-function config.nvim_lsp() end
-
-function config.nvim_cmp()
-  local cmp = require('cmp')
-
-  cmp.setup({
-    preselect = cmp.PreselectMode.Item,
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
-    },
-  })
-end
-
-function config.lua_snip()
+return function()
   local ls = require('luasnip')
   local types = require('luasnip.util.types')
   ls.config.set_config({
@@ -40,5 +19,3 @@ function config.lua_snip()
     paths = { './snippets/' },
   })
 end
-
-return config

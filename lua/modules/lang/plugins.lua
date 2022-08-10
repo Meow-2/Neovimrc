@@ -3,14 +3,14 @@
 -- License: MIT
 
 local plugin = require('core.pack').register_plugin
-local conf = require('modules.lang.config')
+local conf = require('core.pack').conf_plugin('modules.lang')
 
 plugin({
   'nvim-treesitter/nvim-treesitter',
   event = 'BufRead',
   run = ':TSUpdate',
   after = 'telescope.nvim',
-  config = conf.nvim_treesitter,
+  config = conf('nvim-treesitter'),
 })
 
 plugin({ 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' })

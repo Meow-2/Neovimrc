@@ -1,6 +1,4 @@
-local config = {}
-
-function config.nvim_treesitter()
+return function()
   -- vim.api.nvim_command('set foldmethod=marker')
   -- vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
   require('nvim-treesitter.configs').setup({
@@ -22,5 +20,3 @@ function config.nvim_treesitter()
     },
   })
 end
-
-return config

@@ -23,11 +23,10 @@ local conf = require('core.pack').conf_plugin('modules.editor')
 plugin({ 'Meow-2/antovim'})
 plugin({'lambdalisue/suda.vim'})
 plugin({ 'lilydjwg/fcitx.vim' })
-plugin({ 'ojroques/vim-oscyank'}) -- autocmd
-plugin({ 'godlygeek/tabular'}) -- map
+plugin({ 'godlygeek/tabular'})
+plugin({ 'ojroques/vim-oscyank', config = conf('vim-oscyank')})
 plugin({ 'mg979/vim-visual-multi', config = conf('vim-visual-multi')})
 plugin({ 'terrortylor/nvim-comment' , config = conf('nvim-comment')})
 plugin({ 'windwp/nvim-autopairs', config = conf('nvim-autopairs')})
 plugin({ 'kylechui/nvim-surround' , config = conf('nvim-surround')}) -- map
 -- plugin({ 'abecodes/tabout.nvim', after = {'nvim-treesitter'}, config = conf('tabout.nvim'), requires = {'nvim-treesitter'}})
--- plugin({ 'xiyaowong/nvim-cursorword', config= conf('nvim-cursorword')})

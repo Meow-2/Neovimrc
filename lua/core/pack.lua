@@ -93,6 +93,17 @@ function plugins.register_plugin(repo)
   table.insert(Packer.repos, repo)
 end
 
+function plugins.conf_plugin(modules_path)
+    return function(plugin)
+        plugin = plugin:gsub('%.','-')
+        local vim_path = vim.fn.stdpath('config')
+        local plugin_conf_path = vim_path ..'/lua/'.. modules_path:gsub('%.','/') .. '/' .. plugin .. '.lua'
+        if #vim.fn.glob(plugin_conf_path) == 0 then
+            os.execute('echo "return function()\nend" > ' .. plugin_conf_path)
+        end
+        return require(modules_path..'.' .. plugin)
+    end
+end
 -- function plugins.compile_notify()
 --   plugins.compile()
 --   vim.notify('Compile Done!','info',{ title = 'Packer' })

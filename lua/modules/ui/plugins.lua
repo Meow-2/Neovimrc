@@ -3,16 +3,7 @@
 -- License: MIT
 
 local plugin = require('core.pack').register_plugin
-local conf = function(plugin)
-    plugin = plugin:gsub('%.','-')
-    local vim_path = vim.fn.stdpath('config')
-    local plugin_conf_path = vim_path ..'/lua/modules/ui/' .. plugin .. '.lua'
-    if #vim.fn.glob(plugin_conf_path) == 0 then
-        os.execute('echo "return function()\nend" > ' .. plugin_conf_path)
-    end
-    return require('modules.ui.' .. plugin)
-end
-
+local conf = require('core.pack').conf_plugin('modules.ui')
 
 plugin({ 'glepnir/zephyr-nvim', config = conf('zephyr-nvim') })
 

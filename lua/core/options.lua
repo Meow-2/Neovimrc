@@ -99,7 +99,6 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'niv'
 
 vim.opt.foldenable = true
-vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = 'marker'
 vim.opt.foldmarker = '{{{,}}}'
 vim.opt.foldminlines = 0

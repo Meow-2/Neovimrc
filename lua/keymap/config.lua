@@ -15,8 +15,8 @@ vim.g.mapleader = ' '
 -- nmap({ ' ', '', opts(noremap) })
 -- xmap({ ' ', '', opts(noremap) })
 
-local quitbuffer = function()
-    local temp = vim.fn.getbufinfo({buflisted = 1})
+local quitbuffer = function()--{{{
+    local temp = vim.fn.getbufinfo({buflisted = true})
     if #temp == 1 then
         return vim.cmd('q!')
     end
@@ -28,9 +28,9 @@ local quitbuffer = function()
         return vim.cmd('q!')
     end
     return vim.cmd('bd!')
-end
+end--}}}
 
-local compile = function()
+local compile = function()--{{{
     if vim.bo.filetype == 'vim' then
         return vim.cmd('luafile $HOME/.config/nvim/init.lua')
     end
@@ -38,7 +38,7 @@ local compile = function()
         return vim.cmd('MarkdownPreview')
     end
     return vim.cmd('AsyncTask file-build')
-end
+end--}}}
 
 nmap({
     -- noremal remap

@@ -1,12 +1,12 @@
 return function()
       require('nvim-tree').setup({
+            disable_netrw = true,
             sort_by = "case_sensitive",
     view = {
         adaptive_size = true,
  --     width = 30,
  --     height = 30,
       side = 'left',
-      preserve_window_proportions = false,
       number = false,
       relativenumber = false,
       signcolumn = 'yes',
@@ -16,6 +16,16 @@ return function()
           { key = { 'l' }, action = 'edit' },
           { key = { 's' }, action = 'split' },
           { key = { '<C-l>' }, action = 'vsplit' },
+          { key = { 'yp' }, action = 'copy_absolute_path'},
+          { key = { 'yn' }, action = 'copy_name'},
+          { key = { 'yy' }, action = 'copy'},
+          { key = { 'dd' }, action = 'cut'},
+          { key = { 'pp' }, action = 'paste'},
+          { key = { 'dD' }, action = 'trash'},
+          { key = { 'V' }, action = 'create'},
+          { key = { 'zh' }, action = 'toggle_dotfiles'},
+          { key = { 'cw' }, action = 'rename'},
+          { key = { 'f' }, action = 'search_node'},
         },
       },
     },
@@ -46,5 +56,10 @@ return function()
         },
       },
     },
+    actions = {
+        open_file = {
+            quit_on_open = true
+        }
+    }
   })
 end

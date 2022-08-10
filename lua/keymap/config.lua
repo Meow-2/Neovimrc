@@ -52,7 +52,7 @@ nmap({
     -- visual select
     { '<C-j>'              , '<C-v>j'    , opts(noremap) } ,
     { '<C-k>'              , '<C-v>k'    , opts(noremap) } ,
-    { '\v' , 'v$h' , opts(noremap)},
+    { [[\v]] , 'v$h' , opts(noremap)},
     -- save and quit
     { 's'                  , cmd('w!')     , opts(noremap) } ,
     { '<C-q>'              , cmd('qa!')    , opts(noremap) } ,
@@ -94,6 +94,7 @@ nmap({
     { 'y' , [["+y]] , opts(noremap)},
     { 'yy' , [["+yy]] , opts(noremap)},
     { 'Y' , [["+y$]] , opts(noremap)},
+    { 'yp' , [[T/"+yt']] , opts(noremap)},
     -- marco
     { 'Q' ,'q1',opts(noremap)},
     { '@' ,'@1',opts(noremap)},

@@ -5,7 +5,7 @@
 
 require('keymap.config')
 local key = require('core.keymap')
-local nmap = key.nmap
+local nmap,vmap = key.nmap,key.vmap
 local silent, noremap = key.silent, key.noremap
 local opts = key.new_opts
 local cmd,cmds = key.cmd, key.cmds
@@ -36,4 +36,11 @@ nmap({
   { 'tc', cmd('BufferLinePickClose'), opts(noremap, silent)},
   { 'tl', cmd('BufferLineMoveNext'), opts(noremap, silent)},
   { 'th', cmd('BufferLineMovePrev'), opts(noremap, silent)},
+  -- nvim-comment
+  { '<C-_>', cmd('CommentToggle'), opts(noremap,silent)},
+})
+
+vmap({
+    -- nvim-comment
+    { '<C-_>', cmd('CommentToggle'), opts(noremap,silent)},
 })

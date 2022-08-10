@@ -29,3 +29,4 @@ plugin({ 'akinsho/bufferline.nvim', config = conf('bufferline.nvim'), requires =
 
 plugin({ 'lukas-reineke/indent-blankline.nvim',after = {'nvim-treesitter'}, config = conf('indent-blankline.nvim')})
 -- plugin({'SmiteshP/nvim-gps'})
+-- plugin({ 'xiyaowong/nvim-cursorword', config= conf('nvim-cursorword')})

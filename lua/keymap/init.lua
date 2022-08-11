@@ -45,11 +45,13 @@ nmap({
   { '<Leader>m', cmd('Mason'),opts(noremap,silent)},
   -- nvim-comment
   { '<C-_>'                 , cmd('CommentToggle')                        , opts(noremap , silent)}  ,
+  { '<C-/>'                 , cmd('CommentToggle')                        , opts(noremap , silent)}  ,
 })
 
 -- nvim-comment
 vmap({
     {'<C-_>'      , [[:CommentToggle<Cr>]] , opts(noremap   , silent)} ,
+    {'<C-/>'      , [[:CommentToggle<Cr>]] , opts(noremap   , silent)} ,
     { '<Leader>t' , [[:Tabularize /]]      , opts(noremap)} ,
 })
 

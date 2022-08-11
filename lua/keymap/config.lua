@@ -124,7 +124,10 @@ imap({
     -- <Esc> behavior
     { '<Esc>', '<Esc>l'..cmd('nohlsearch'), opts(noremap)},
     -- <S-Tab> behavior
-    { '<S-Tab>', '<C-d>', opts(noremap)}
+    { '<S-Tab>', '<C-d>', opts(noremap)},
+    -- for nvui
+    { '<C-v>', '<C-r>+', opts(noremap)},
+
 })
 
 cmap({
@@ -143,6 +146,8 @@ cmap({
     -- word jump
     { '<C-S-h>', '<C-Left>', opts(noremap)},
     { '<C-S-l>', '<C-Right>', opts(noremap)},
+    -- for nvui
+    { '<C-v>', '<C-r>+', opts(noremap)},
 })
 
 vmap({

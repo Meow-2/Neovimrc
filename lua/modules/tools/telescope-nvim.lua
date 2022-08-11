@@ -53,6 +53,7 @@ return function()
     defaults = {
 
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+        -- borderchars = { "═", "║" ,"═", "║", "╔", "╗", "╝", "╚" },
         -- borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
         layout_config = {
             horizontal = { prompt_position = 'top', results_width = 0.6 },

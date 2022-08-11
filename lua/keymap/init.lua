@@ -34,7 +34,6 @@ nmap({
   { '<Leader>f'            , cmd('Telescope find_files')                 , opts(noremap , silent) } ,
   { '<Leader>o'            , cmd('Telescope oldfiles')                  , opts(noremap , silent) } ,
   { '<Leader>h'            , cmd('Telescope help_tags')                  , opts(noremap , silent) } ,
-  -- { '<Leader>w'            , cmd('Telescope find_files')                 , opts(noremap , silent) } ,
   -- bufferline.nvim
   { 'e'                     , cmd('BufferLineCyclePrev')                  , opts(noremap , silent)}  ,
   { 'r'                     , cmd('BufferLineCycleNext')                  , opts(noremap , silent)}  ,
@@ -43,6 +42,7 @@ nmap({
   { 'tc'                    , cmd('BufferLinePickClose')                  , opts(noremap , silent)}  ,
   { 'tl'                    , cmd('BufferLineMoveNext')                   , opts(noremap , silent)}  ,
   { 'th'                    , cmd('BufferLineMovePrev')                   , opts(noremap , silent)}  ,
+  { '<Leader>m', cmd('Mason'),opts(noremap,silent)},
   -- nvim-comment
   { '<C-_>'                 , cmd('CommentToggle')                        , opts(noremap , silent)}  ,
 })

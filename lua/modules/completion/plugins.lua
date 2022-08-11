@@ -5,6 +5,7 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.completion')
 
+
 plugin({
   'neovim/nvim-lspconfig',
   -- used filetype to lazyload lsp
@@ -12,9 +13,11 @@ plugin({
   ft = { 'lua', 'c', 'cpp', 'python','go'},
   config = conf('nvim-lspconfig'),
 })
-plugin({
-    'williamboman/nvim-lsp-installer'
-})
+
+plugin({ 'williamboman/mason.nvim' , config = conf('mason.nvim')})
+plugin({ 'williamboman/mason-lspconfig.nvim',after = {'nvim-lspconfig'}, config = conf('mason-lspconfig.nvim') })
+-- plugin({'williamboman/nvim-lsp-installer', after = 'nvim-lspconfig',config = conf('nvim-lsp-installer')})
+
 plugin({'kosayoda/nvim-lightbulb'})
 plugin({'ray-x/lsp_signature.nvim'})
 

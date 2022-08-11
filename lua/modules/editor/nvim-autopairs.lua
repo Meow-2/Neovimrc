@@ -16,7 +16,7 @@ npairs.setup({
         map = '<c-f>',
         chars = { '{', '[', '(', '"', "'" },
         pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
-        offset = -1, -- Offset from pattern match
+        offset = 0, -- Offset from pattern match
         end_key = 'l',
         keys = 'qwertyuiopzxcvbnmasdfghjk',
         check_comma = true,

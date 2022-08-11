@@ -1,7 +1,7 @@
 return function()
 vim.g.Illuminate_ftblacklist = {
     "NvimTree",
-    "toggleterm",
-    "dashboard"
+    "dashboard",
+    "mason.nvim",
 }
 end

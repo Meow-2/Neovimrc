@@ -71,6 +71,7 @@ vim.opt.showcmd = true
 -- just for nightly
 vim.opt.cmdheight = 1
 vim.opt.cmdwinheight = 5
+vim.opt.cursorline = true
 vim.opt.equalalways = false
 vim.opt.laststatus = 2
 vim.opt.display = 'lastline'

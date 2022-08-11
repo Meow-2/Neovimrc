@@ -101,6 +101,9 @@ nmap({
     -- fold code
     { 'zi', 'zf%', opts(noremap,silent)},
     { 'zo', 'za', opts(noremap,silent)},
+    -- indent line
+    { '<Tab>', '>>',opts(noremap, silent)},
+    { '<S-Tab>', '<<',opts(noremap, silent)},
 })
 
 imap({
@@ -120,6 +123,8 @@ imap({
     { '<C-S-l>'            , '<C-Right>' , opts(noremap) } ,
     -- <Esc> behavior
     { '<Esc>', '<Esc>l'..cmd('nohlsearch'), opts(noremap)},
+    -- <S-Tab> behavior
+    { '<S-Tab>', '<C-d>', opts(noremap)}
 })
 
 cmap({

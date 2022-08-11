@@ -11,7 +11,7 @@ local cache_dir = home .. '/.cache/nvim/'
 local createdir = function()
   local data_dir = {
     cache_dir .. 'backup',
-    cache_dir .. 'session',
+    cache_dir .. 'sessions',
     cache_dir .. 'swap',
     cache_dir .. 'tags',
     cache_dir .. 'undo',

@@ -1,11 +1,9 @@
 return function()
     require('nvim-tree').setup({
-        disable_netrw = false,
+        disable_netrw = true,
         sort_by = "case_sensitive",
         auto_reload_on_write = true,
-        disable_netrw = false,
         hijack_cursor = false,
-        hijack_netrw = true,
         hijack_unnamed_buffer_when_opening = false,
         ignore_buffer_on_setup = false,
         open_on_setup = false,
@@ -77,8 +75,8 @@ return function()
                     enable = true,
                     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
                     exclude = {
-                    filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-                    buftype = { "nofile", "terminal", "help" },
+                        filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                        buftype = { "nofile", "terminal", "help" },
                     },
                 },
             }

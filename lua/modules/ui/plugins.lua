@@ -7,7 +7,8 @@ local conf = require('core.pack').conf_plugin('modules.ui')
 
 
 plugin({ 'glepnir/zephyr-nvim', config = conf('zephyr-nvim') })
--- plugin({ 'rakr/vim-one', after = {'nvim-bufferline.lua'}, config = conf('vim-one') })
+-- plugin({ 'rakr/vim-one', config = conf('vim-one') })
+-- plugin({ 'tomasiser/vim-code-dark', config = conf('vim-code-dark') })
 
 plugin({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim') })
 
@@ -29,8 +30,6 @@ plugin({ 'akinsho/bufferline.nvim', config = conf('bufferline.nvim'), requires =
 
 plugin({'lukas-reineke/indent-blankline.nvim',after = {'nvim-treesitter'}, config = conf('indent-blankline.nvim')})
 -- plugin({'norcalli/nvim-colorizer.lua', config = conf('nvim-colorizer.lua')})
-plugin({'RRethy/vim-illuminate', config =conf('vim-illuminate')})
+plugin({'RRethy/vim-illuminate', after = {'nvim-treesitter'}, config =conf('vim-illuminate')})
 
 -- plugin({'SmiteshP/nvim-gps'})
---
---

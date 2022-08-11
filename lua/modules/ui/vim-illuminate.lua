@@ -1,7 +1,7 @@
 return function()
 vim.g.Illuminate_ftblacklist = {
     "NvimTree",
-    "vista_kind",
-    "toggleterm"
+    "toggleterm",
+    "dashboard"
 }
 end

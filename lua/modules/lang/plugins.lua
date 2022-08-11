@@ -7,9 +7,9 @@ local conf = require('core.pack').conf_plugin('modules.lang')
 
 plugin({
   'nvim-treesitter/nvim-treesitter',
-  event = 'BufRead',
+  -- event = 'BufRead',
   run = ':TSUpdate',
-  after = {'telescope.nvim'},
+  -- after = {'telescope.nvim'},
   config = conf('nvim-treesitter'),
 })
 

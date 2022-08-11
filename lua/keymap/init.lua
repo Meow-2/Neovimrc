@@ -29,14 +29,17 @@ nmap({
   -- nvimtree
   { 'tt'                    , cmd('NvimTreeToggle')                       , opts(noremap , silent) } ,
   -- Telescope
-  { '<Leader>b'             , cmd('Telescope buffers')                    , opts(noremap , silent) } ,
-  { '<Leader>fa'            , cmd('Telescope live_grep')                  , opts(noremap , silent) } ,
-  { '<Leader>ff'            , cmd('Telescope find_files')                 , opts(noremap , silent) } ,
+  { '<Leader>b'            , cmd('Telescope buffers')                    , opts(noremap , silent) } ,
+  { '<Leader>w'            , cmd('Telescope live_grep')                  , opts(noremap , silent) } ,
+  { '<Leader>f'            , cmd('Telescope find_files')                 , opts(noremap , silent) } ,
+  { '<Leader>o'            , cmd('Telescope oldfiles')                  , opts(noremap , silent) } ,
+  { '<Leader>h'            , cmd('Telescope help_tags')                  , opts(noremap , silent) } ,
+  -- { '<Leader>w'            , cmd('Telescope find_files')                 , opts(noremap , silent) } ,
   -- bufferline.nvim
   { 'e'                     , cmd('BufferLineCyclePrev')                  , opts(noremap , silent)}  ,
   { 'r'                     , cmd('BufferLineCycleNext')                  , opts(noremap , silent)}  ,
   { 'gb'                    , cmd('BufferLinePick')                       , opts(noremap , silent)}  ,
-  { 'tv'                    , cmd('BufferLinePickVsplit')                 , opts(noremap , silent)}  ,
+  { 'gv'                    , cmd('BufferLinePickVsplit')                 , opts(noremap , silent)}  ,
   { 'tc'                    , cmd('BufferLinePickClose')                  , opts(noremap , silent)}  ,
   { 'tl'                    , cmd('BufferLineMoveNext')                   , opts(noremap , silent)}  ,
   { 'th'                    , cmd('BufferLineMovePrev')                   , opts(noremap , silent)}  ,

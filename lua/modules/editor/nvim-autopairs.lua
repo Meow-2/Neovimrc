@@ -6,22 +6,22 @@ local npairs = require("nvim-autopairs")
 npairs.setup({
     -- check_ts = true,
     disable_filetype = { "dap-repl" },
-    map_cr = false,
+    map_cr = true,
     -- ts_config = {
     --     lua = {'string'},-- it will not add a pair on that treesitter node
     --     javascript = {'template_string'},
     --     java = false,-- don't check treesitter on java
     -- },
     fast_wrap = {
-      map = '<c-f>',
-      chars = { '{', '[', '(', '"', "'" },
-      pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
-      offset = -1, -- Offset from pattern match
-      end_key = 'l',
-      keys = 'qwertyuiopzxcvbnmasdfghjk',
-      check_comma = true,
-      highlight = 'PmenuSel',
-      highlight_grey='LineNr'
+        map = '<c-f>',
+        chars = { '{', '[', '(', '"', "'" },
+        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
+        offset = -1, -- Offset from pattern match
+        end_key = 'l',
+        keys = 'qwertyuiopzxcvbnmasdfghjk',
+        check_comma = true,
+        highlight = 'PmenuSel',
+        highlight_grey='LineNr'
     },
 })
 

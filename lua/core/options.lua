@@ -107,10 +107,10 @@ vim.opt.foldminlines = 1
 vim.g.python_host_prog = '/usr/bin/python'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
-if vim.g.nvui then
-    vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
-    --hi Cursor gui=bold,italic
-end
+-- if vim.g.nvui then
+vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
+--hi Cursor gui=bold,italic
+-- end
 
 
 if vim.loop.os_uname().sysname == 'Darwin' then

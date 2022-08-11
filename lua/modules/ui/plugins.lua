@@ -20,14 +20,17 @@ plugin({
 
 plugin({
   'kyazdani42/nvim-tree.lua',
-  cmd = 'NvimTreeToggle',
+  -- cmd = 'NvimTreeToggle',
   config = conf('nvim-tree.lua'),
   requires = 'kyazdani42/nvim-web-devicons',
 })
 
 plugin({ 'akinsho/bufferline.nvim', config = conf('bufferline.nvim'), requires = 'kyazdani42/nvim-web-devicons' })
 
-plugin({ 'lukas-reineke/indent-blankline.nvim',after = {'nvim-treesitter'}, config = conf('indent-blankline.nvim')})
-plugin({'norcalli/nvim-colorizer.lua', config = conf('nvim-colorizer.lua')})
+plugin({'lukas-reineke/indent-blankline.nvim',after = {'nvim-treesitter'}, config = conf('indent-blankline.nvim')})
+-- plugin({'norcalli/nvim-colorizer.lua', config = conf('nvim-colorizer.lua')})
 plugin({'RRethy/vim-illuminate', config =conf('vim-illuminate')})
+
 -- plugin({'SmiteshP/nvim-gps'})
+--
+--

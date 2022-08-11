@@ -11,7 +11,10 @@ plugin({
   config = conf('telescope.nvim'),
   requires = {
     { 'nvim-lua/popup.nvim', opt = true },
-    { 'nvim-lua/plenary.nvim', opt = true },
+    { 'nvim-lua/plenary.nvim'},
     { 'nvim-telescope/telescope-fzy-native.nvim', opt = true },
   },
 })
+
+plugin({'Shatur/neovim-session-manager', config= conf('neovim-session-manager'), requires={'plenary.nvim'}})
+

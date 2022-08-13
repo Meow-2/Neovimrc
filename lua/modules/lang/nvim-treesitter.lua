@@ -7,7 +7,6 @@ return function()
     highlight = {
       enable = true,
     },
-
     textobjects = {
       select = {
         enable = true,

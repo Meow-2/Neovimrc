@@ -88,7 +88,7 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.softtabstop = -1 
+vim.opt.softtabstop = -1
 vim.opt.breakindentopt = 'shift:4,min:20'
 vim.opt.wrap = false
 vim.opt.linebreak = true
@@ -107,11 +107,9 @@ vim.opt.foldminlines = 1
 vim.g.python_host_prog = '/usr/bin/python'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
--- if vim.g.nvui then
 vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
---hi Cursor gui=bold,italic
--- end
-
+-- vim.opt.guifont = [[Hack Nerd Font Mono:h15]]
+-- vim.opt.guifont = [[JetBrainsMono Nerd Font:h15]]
 
 if vim.loop.os_uname().sysname == 'Darwin' then
   vim.g.clipboard = {

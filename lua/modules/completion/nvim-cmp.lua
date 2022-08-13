@@ -1,27 +1,20 @@
 return function()
+
+  local luasnip = require("luasnip")
   local cmp = require('cmp')
 
-  local map = cmp.mapping
-  local insert_map = cmp.mapping.preset.insert()
-  rawset(insert_map, '<C-d>', map.scroll_docs(4))
-  rawset(insert_map, '<C-u>', map.scroll_docs(-4))
-  rawset(insert_map, '<C-j>', map.select_next_item())
-  rawset(insert_map, '<C-k>', map.select_prev_item())
-  rawset(insert_map, '<CR>', map.confirm({ select = true }))
-  rawset(insert_map, '<Tab>', map(map.select_next_item(),{'i','c'}))
-  rawset(insert_map, '<S-Tab>', map(map.select_prev_item(),{'i','c'}))
-  rawset(insert_map, '<C-Space>', map(map.complete(),{'i','c'}))
-
+  local insert_map = _CMP_MAP(cmp, luasnip, cmp.SelectBehavior.select)
+  local cmdline_map = _CMP_MAP(cmp, luasnip, cmp.SelectBehavior.select)
   cmp.setup({
     preselect = cmp.PreselectMode.Item,
-    confirm_opts = {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
-    },
-    window = {
+    -- confirm_opts = {
+    --    
+    --     select = false,
+    -- },
+    -- window = {
       -- completion = cmp.config.window.bordered(),
       -- documentation = cmp.config.window.bordered(),
-    },
+    -- },
     experimental = {
         ghost_text = false,
         native_menu = false,
@@ -86,9 +79,9 @@ return function()
       { name = 'cmdline' },
     },
   })
-  cmp.setup.cmdline(':', { sources = { { name = 'cmdline' } } })
-  cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
-  cmp.setup.cmdline('?', { sources = { { name = 'buffer' } } })
+  cmp.setup.cmdline(':', {mapping = cmdline_map, sources = { { name = 'cmdline' } } })
+  cmp.setup.cmdline('/', {mapping = cmdline_map, sources = { { name = 'buffer' } } })
+  cmp.setup.cmdline('?', {mapping = cmdline_map, sources = { { name = 'buffer' } } })
 end
 
 

@@ -9,7 +9,6 @@ return function()
         open_on_setup = false,
         open_on_setup_file = false,
         open_on_tab = false,
-        sort_by = "name",
         view = {
             adaptive_size = true,
             side = 'left',
@@ -87,5 +86,5 @@ return function()
             ignore_list = {},
         }
     })
-    require('nvim-tree.events').on_file_created(function(file) vim.cmd("edit " .. file.fname) end)
+    -- require('nvim-tree.events').on_file_created(function(file) vim.cmd("edit " .. file.fname) end)
 end

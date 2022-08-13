@@ -72,15 +72,6 @@ function keymap.cmd(str)
   return '<cmd>' .. str .. '<CR>'
 end
 
-function keymap.cmds(...)
-    local args = {...}
-    local str = ""
-    for _,arg in pairs(args) do
-        str = str .. '<Cmd>' .. arg .. '<CR>'
-    end
-    return str
-end
-
 -- visual
 function keymap.cu(str)
   return '<C-u><cmd>' .. str .. '<CR>'

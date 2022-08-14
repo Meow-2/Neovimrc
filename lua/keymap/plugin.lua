@@ -1,9 +1,10 @@
 local key = require('core.keymap')
-local nmap,vmap,imap = key.nmap,key.vmap,key.imap
+local nmap,vmap,imap,tmap = key.nmap,key.vmap,key.imap,key.tmap
 local opts = key.new_opts
 local cmd = key.cmd
 local nore = opts(key.noremap,key.silent)
 local nore_silent = opts(key.noremap,key.silent)
+local nore_silent_expr = opts(key.noremap,key.silent,key.expr)
 local source_file = vim.fn.stdpath('config') .. '/init.lua'
 
 -- usage of plugins
@@ -41,6 +42,15 @@ nmap({
     -- nvim-comment
     { '<C-_>'                 , cmd('CommentToggle')                        , nore_silent}  ,
     { '<C-/>'                 , cmd('CommentToggle')                        , nore_silent}  ,
+    -- vim-floaterm
+    { '<C-g>', cmd('FloatermNew! --cwd=<buffer> --name=lazygit lazygit'),nore_silent},
+    { '<C-t>', cmd('FloatermToggle'), nore_silent},
+    -- nnoremap <silent> <S-F3> :set norelativenumber<cr>:FloatermNew! --cmd=<buffer> --width=0.5 --position=belowright --wintype=vsplit --name=lldb lldb %:h/build/%:t:r<cr>
+    -- tnoremap <silent> <S-F3> <C-d><C-\><C-N>:FloatermKill lldb<cr>:set relativenumber<cr>
+    -- " tnoremap <silent> <S-F3> i<c-u><C-d>exit<cr>
+    --
+    -- nnoremap <silent> <c-t> :FloatermToggle<cr>
+    -- tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle<cr>
     -- lspsaga.nvim
     { 'gt', cmd('Lspsaga lsp_finder'), nore_silent },
     { 'gD', cmd('Lspsaga preview_definition'), nore_silent },
@@ -49,7 +59,7 @@ nmap({
     { '<Leader>rn', cmd('Lspsaga rename'), nore_silent },
     { '<Leader>o', cmd('LSoutlineToggle'), nore_silent },
     { '<C-k>', cmd('Lspsaga hover_doc'), nore_silent },
-    {'<C-p>', cmd('Lspsaga signature_help'),nore_silent },
+    { '<C-p>', cmd('Lspsaga signature_help'),nore_silent },
     -- { '<Leader>.', cmd('Lspsaga code_action'), nore_silent },
     -- Lspsaga floaterminal
     -- { '<C-t>',a cmd ('Lspsaga open_floaterm'), nore_silent },
@@ -76,5 +86,14 @@ vmap({
     {'<C-/>'      , [[:CommentToggle<Cr>]], nore_silent} ,
     { 'gt' , [[:Tabularize /]]      , nore} ,
     { '<Leader>.', cmd('Lspsaga range_code_action'), nore_silent },
+})
+
+tmap({
+    -- tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle<cr>
+    {'<C-t>', [[<C-\><C-n>:FloatermToggle<Cr>]], nore_silent },
+    -- vim-floaterm
+    {'<C-g>', function ()
+        return vim.bo.filetype == 'floaterm' and [[q<C-\><C-n>:FloatermKill lazygit<cr>]] or '<C-g>'
+    end,nore_silent_expr},
 })
 

@@ -33,3 +33,4 @@ plugin({
     requires={'plenary.nvim'},
 })
 
+plugin({'voldikss/vim-floaterm', config = conf('vim-floaterm')})

@@ -5,7 +5,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
 "|                                LSP                                 |
 "|                                                                    |
 "+--------------------------------------------------------------------+
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'OmniSharp/omnisharp-vim'
 
 
@@ -27,19 +27,19 @@ Plug 'ferrine/md-img-paste.vim'
 "|                                                                    |
 "+--------------------------------------------------------------------+
 " Plug 'glepnir/indent-guides.nvim'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'luochen1990/rainbow'
-Plug 'mg979/vim-visual-multi'
-Plug 'windwp/nvim-autopairs'
-Plug 'tomtom/tcomment_vim'
-Plug 'Meow-2/antovim'
-Plug 'tpope/vim-surround'
-Plug 'lambdalisue/suda.vim'
-Plug 'wellle/targets.vim'
-Plug 'lilydjwg/fcitx.vim'
+" Plug 'lukas-reineke/indent-blankline.nvim'
+" Plug 'luochen1990/rainbow'
+" Plug 'mg979/vim-visual-multi'
+" " Plug 'windwp/nvim-autopairs'
+" Plug 'tomtom/tcomment_vim'
+" Plug 'Meow-2/antovim'
+" Plug 'tpope/vim-surround'
+" Plug 'lambdalisue/suda.vim'
+" Plug 'wellle/targets.vim'
+" Plug 'lilydjwg/fcitx.vim'
 Plug 'itchyny/vim-cursorword'
-Plug 'ojroques/vim-oscyank'
-Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
+" Plug 'ojroques/vim-oscyank'
+" Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'abecodes/tabout.nvim'
 " Plug 'unblevable/quick-scope'
 
@@ -52,14 +52,14 @@ Plug 'abecodes/tabout.nvim'
 " ------------------------------------------
 "               start buffer
 " ------------------------------------------
-Plug 'glepnir/dashboard-nvim'
+" Plug 'glepnir/dashboard-nvim'
 " Plug 'mhinz/vim-startify'
 
 " ------------------------------------------
 "                 icons
 " ------------------------------------------
-Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'kyazdani42/nvim-web-devicons'
 
 " ------------------------------------------
 "              color themes
@@ -69,7 +69,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'PHSix/nvim-hybrid'
 " Plug 'theniceboy/nvim-deus'
 " Plug 'glepnir/oceanic-material'
-Plug 'rakr/vim-one'
+" Plug 'rakr/vim-one'
 " Plug 'olimorris/onedarkpro.nvim'
 " Plug 'projekt0n/github-nvim-theme'
 " Plug 'navarasu/onedark.nvim'
@@ -77,9 +77,9 @@ Plug 'rakr/vim-one'
 " ------------------------------------------
 "              status line
 " ------------------------------------------
-Plug 'akinsho/bufferline.nvim'
-Plug 'tpope/vim-fugitive'
-Plug 'itchyny/lightline.vim'
+" Plug 'akinsho/bufferline.nvim'
+" Plug 'tpope/vim-fugitive'
+" Plug 'itchyny/lightline.vim'
 " Plug 'feline-nvim/feline.nvim'
 " Plug 'nvim-lualine/lualine.nvim'
 " Plug 'mg979/vim-xtabline'
@@ -102,7 +102,7 @@ Plug 'folke/which-key.nvim'
 " ------------------------------------------
 "              taglist
 " ------------------------------------------
-Plug 'liuchengxu/vista.vim'        
+" Plug 'liuchengxu/vista.vim'        
 
 " ------------------------------------------
 "         comment to document

@@ -43,8 +43,9 @@ nmap({
     { '<C-_>'                 , cmd('CommentToggle')                        , nore_silent}  ,
     { '<C-/>'                 , cmd('CommentToggle')                        , nore_silent}  ,
     -- vim-floaterm
-    { '<C-g>', cmd('FloatermNew! --cwd=<buffer> --name=lazygit lazygit'),nore_silent},
+    { '<C-g>', cmd('FloatermNew --cwd=<root> --name=lazygit lazygit'),nore_silent},
     { '<C-t>', cmd('FloatermToggle'), nore_silent},
+    { 'R', cmd('FloatermNew ranger'),nore_silent},
     -- nnoremap <silent> <S-F3> :set norelativenumber<cr>:FloatermNew! --cmd=<buffer> --width=0.5 --position=belowright --wintype=vsplit --name=lldb lldb %:h/build/%:t:r<cr>
     -- tnoremap <silent> <S-F3> <C-d><C-\><C-N>:FloatermKill lldb<cr>:set relativenumber<cr>
     -- " tnoremap <silent> <S-F3> i<c-u><C-d>exit<cr>
@@ -52,10 +53,10 @@ nmap({
     -- nnoremap <silent> <c-t> :FloatermToggle<cr>
     -- tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle<cr>
     -- lspsaga.nvim
-    { 'gt', cmd('Lspsaga lsp_finder'), nore_silent },
-    { 'gD', cmd('Lspsaga preview_definition'), nore_silent },
     { '=', cmd('Lspsaga diagnostic_jump_next'), nore_silent },
     { '-', cmd('Lspsaga diagnostic_jump_prev'), nore_silent },
+    { 'gt', cmd('Lspsaga lsp_finder'), nore_silent },
+    { 'gD', cmd('Lspsaga preview_definition'), nore_silent },
     { '<Leader>rn', cmd('Lspsaga rename'), nore_silent },
     { '<Leader>o', cmd('LSoutlineToggle'), nore_silent },
     { '<C-k>', cmd('Lspsaga hover_doc'), nore_silent },

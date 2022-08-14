@@ -4,7 +4,7 @@
 -- recommend some vim mode key defines in this file
 
 local keymap = require('core.keymap')
-local nmap, imap, cmap, vmap, tmap, omap, xmap = keymap.nmap, keymap.imap, keymap.cmap, keymap.vmap, keymap.tmap, keymap.omap, keymap.xmap
+local nmap, imap, cmap, vmap, omap, xmap = keymap.nmap, keymap.imap, keymap.cmap, keymap.vmap, keymap.omap, keymap.xmap
 local silent, noremap = keymap.silent, keymap.noremap
 local opts = keymap.new_opts
 local cmd= keymap.cmd

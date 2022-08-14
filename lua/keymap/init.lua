@@ -1,16 +1,14 @@
 require('keymap.config')
 local key = require('core.keymap')
-local cmd = key.cmd
-local nore_silent = key.new_opts(key.noremap,key.silent)
-local source_file = vim.fn.stdpath('config') .. '/init.lua'
 local vmap,imap,tmap = key.vmap,key.imap,key.tmap
+local cmd = key.cmd
 local opts = key.new_opts
 local nore = opts(key.noremap)
+local nore_silent =opts(key.noremap,key.silent)
 local nore_silent_expr = opts(key.noremap,key.silent,key.expr)
+local source_file = vim.fn.stdpath('config') .. '/init.lua'
 
 function _LSP_MAP(buffnr)
-    -- local nore_silent_buf = nore_silent
-    -- nore_silent_buf.buffer = buffnr
     -- key.nmap({
         -- { '-', vim.diagnostic.goto_prev, nore_silent },
         -- { '=', vim.diagnostic.goto_next, nore_silent },
@@ -59,7 +57,7 @@ local function super_tab(cmp,luasnip,select_behavior)
     end
 end
 
-local function super_s_tab(cmp, luasnip, select_behavior)
+local function super_s_tab(cmp, luasnip, select_behavior)--{{{
     return function(fallback)
         if cmp.visible() then
             cmp.select_prev_item(select_behavior)
@@ -69,9 +67,9 @@ local function super_s_tab(cmp, luasnip, select_behavior)
             fallback()
         end
     end
-end
+end--}}}
 
-function _CMP_MAP(cmp,luasnip,select_behavior)
+function _CMP_MAP(cmp,luasnip,select_behavior)--{{{
     local insert_map = cmp.mapping.preset.insert()
     rawset(insert_map, '<C-d>', cmp.mapping.scroll_docs(4))
     rawset(insert_map, '<C-u>', cmp.mapping.scroll_docs(-4))
@@ -82,7 +80,7 @@ function _CMP_MAP(cmp,luasnip,select_behavior)
     rawset(insert_map, '<S-Tab>', cmp.mapping(super_s_tab(cmp,luasnip,{behavior = select_behavior}),{'i','c'}))
     rawset(insert_map, '<C-Space>', cmp.mapping(cmp.mapping.complete(),{'i','c'}))
     return insert_map
-end
+end--}}}
 
 
 _WK_N_OPTS = {mode = "n",buffer = nil,silent = true,noremap = true,nowait = true,}

@@ -27,7 +27,7 @@ plugin({'nvim-telescope/telescope-file-browser.nvim'})
 -- plugin({'nvim-telescope/telescope-dap.nvim'})
 
 plugin({
-    'Shatur/neovim-session-manager', 
+    'Shatur/neovim-session-manager',
     -- cmd = 'SessionManager',
     config= conf('neovim-session-manager'),
 

@@ -140,6 +140,10 @@ _WK_N = {
     -- nvim-lspconfig
     ['<Leader>e']={ cmd('vim.diagnostic.open_float'), 'Lsp Diagnostic Float Win' },
     ['<Leader>a']={ cmd('vim.diagnostic.setloclist'), 'Lsp Diagnostic List ' },
+    -- asynctask
+    ['<S-F1>'] = {cmd('AsyncTask file-buildrun'), 'Code Runner'},
+    ['<F2>'] = {cmd('call asyncrun#quickfix_toggle(6)'), 'Close Code Runner'},
+    ['<F3>'] = {cmd('AsyncTask file-run'), 'Code Runner'},
 }
 
 imap({'<C-p>', cmd('Lspsaga signature_help'),nore_silent })

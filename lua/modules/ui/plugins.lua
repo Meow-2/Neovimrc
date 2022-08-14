@@ -31,5 +31,10 @@ plugin({ 'akinsho/bufferline.nvim', config = conf('bufferline.nvim'), requires =
 plugin({'lukas-reineke/indent-blankline.nvim',after = {'nvim-treesitter'}, config = conf('indent-blankline.nvim')})
 -- plugin({'norcalli/nvim-colorizer.lua', config = conf('nvim-colorizer.lua')})
 plugin({'RRethy/vim-illuminate', after = {'nvim-treesitter'}, config =conf('vim-illuminate')})
-
+plugin({
+  'lewis6991/gitsigns.nvim',
+  event = { 'BufRead', 'BufNewFile' },
+  config = conf('gitsigns.nvim'),
+  requires = { 'nvim-lua/plenary.nvim'},
+})
 -- plugin({'SmiteshP/nvim-gps'})

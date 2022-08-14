@@ -1,7 +1,7 @@
+---@diagnostic disable: undefined-global
 -- author: glepnr https://github.com/glepnir
 -- date: 2022-07-02
 -- License: MIT
-
 local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.completion')
 
@@ -19,7 +19,6 @@ local enable_lsp_filetype = {
   -- 'typescriptreact',
 }
 
-
 plugin({
   'neovim/nvim-lspconfig',
   -- used filetype to lazyload lsp
@@ -33,8 +32,8 @@ plugin({'glepnir/lspsaga.nvim',branch = 'main',config = conf('lspsaga.nvim')})
 
 -- plugin({'williamboman/nvim-lsp-installer', after = 'nvim-lspconfig',config = conf('nvim-lsp-installer')})
 
--- plugin({'kosayoda/nvim-lightbulb'})
--- plugin({'ray-x/lsp_signature.nvim'})
+-- plugin({'kosayoda/nvim-lightbulb', config = conf('nvim-lightbulb')})
+plugin({'ray-x/lsp_signature.nvim', config = conf ('lsp_signature.nvim')})
 
 plugin({
   'hrsh7th/nvim-cmp',

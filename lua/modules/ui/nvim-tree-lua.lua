@@ -10,7 +10,9 @@ return function()
         open_on_setup_file = false,
         open_on_tab = false,
         view = {
-            adaptive_size = true,
+            width = 30,
+            height = 30,
+            adaptive_size = false,
             side = 'left',
             number = false,
             relativenumber = false,
@@ -69,7 +71,7 @@ return function()
         actions = {
             open_file = {
                 quit_on_open = true,
-                resize_window = true,
+                resize_window = false,
                 window_picker = {
                     enable = true,
                     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",

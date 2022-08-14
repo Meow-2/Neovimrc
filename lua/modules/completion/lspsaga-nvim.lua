@@ -35,72 +35,72 @@ return function()
 
 
     local settings = {
-      --  symbol_in_winbar = {
-      --   enable = true,
-      -- },
-    border_style = "single",
-    move_in_saga = { prev = '<C-p>',next = '<C-n>'},
-    diagnostic_header = { "", "", "", "" },
-    diagnostic_source_bracket = {},
-    max_preview_lines = 10,
-    code_action_icon = "",
-    saga_winblend = 0,
-    code_action_num_shortcut = true,
-    code_action_lightbulb = {
-    enable = true,
-    sign = true,
-    enable_in_insert = true,
-    sign_priority = 20,
-    virtual_text = true,
-    },
-    finder_icons = {
-    def = '  ',
-    ref = '諭 ',
-    link = '  ',
-  },
-  finder_request_timeout = 1500,
-  finder_action_keys = {
-      open = "o",
-      vsplit = "s",
-      split = "i",
-      tabe = "t",
-      quit = "q",
-      scroll_down = "<C-f>",
-      scroll_up = "<C-b>", -- quit can be a table
-  },
-  code_action_keys = {
-      quit = "q",
-      exec = "<CR>",
-  },
-  rename_action_quit = "<C-c>",
-  rename_in_select = true,
-  definition_preview_icon = "  ",
-  -- show symbols in winbar must nightly
-  symbol_in_winbar = {
-      in_custom = false,
-      enable = false,
-      separator = ' ',
-      show_file = true,
-      click_support = false,
-  },
-  -- show outline
-  show_outline = {
-    win_position = 'right',
-    --set special filetype win that outline window split.like NvimTree neotree
-    -- defx, db_ui
-    win_with = '',
-    win_width = 30,
-    auto_enter = true,
-    auto_preview = true,
-    virt_text = '┃',
-    jump_key = 'o',
-    -- auto refresh when change buffer
-    auto_refresh = true,
-  },
-  -- if you don't use nvim-lspconfig you must pass your server name and
-  -- the related filetypes into this table
-  -- like server_filetype_map = { metals = { "sbt", "scala" } }
-    server_filetype_map = {},
-    }
-    saga.init_lsp_saga(settings)
-end
+        --  symbol_in_winbar = {
+            --   enable = true,
+            -- },
+            border_style = "single",
+            move_in_saga = { prev = '<S-Tab>',next = '<Tab>'},
+            diagnostic_header = { "", "", "", "" },
+            diagnostic_source_bracket = {},
+            max_preview_lines = 10,
+            code_action_icon = "",
+            saga_winblend = 0,
+            code_action_num_shortcut = true,
+            code_action_lightbulb = {
+                enable = true,
+                sign = false,
+                enable_in_insert = false,
+                sign_priority = 10,
+                virtual_text = true,
+            },
+            finder_icons = {
+                def = '  ',
+                ref = '諭 ',
+                link = '  ',
+            },
+            finder_request_timeout = 1500,
+            finder_action_keys = {
+                open = "<Cr>",
+                vsplit = "v",
+                split = "s",
+                tabe = "t",
+                quit = "q",
+                scroll_down = "<C-u>",
+                scroll_up = "<C-d>", -- quit can be a table
+            },
+            code_action_keys = {
+                quit = "<Esc>",
+                exec = "<CR>",
+            },
+            rename_action_quit = "<Esc>",
+            rename_in_select = false,
+            definition_preview_icon = "  ",
+            -- show symbols in winbar must nightly
+            symbol_in_winbar = {
+                in_custom = false,
+                enable = false,
+                separator = ' ',
+                show_file = true,
+                click_support = false,
+            },
+            -- show outline
+            show_outline = {
+                win_position = 'right',
+                --set special filetype win that outline window split.like NvimTree neotree
+                -- defx, db_ui
+                win_with = '',
+                win_width = 30,
+                auto_enter = true,
+                auto_preview = true,
+                virt_text = '┃',
+                jump_key = '<Cr>',
+                -- auto refresh when change buffer
+                auto_refresh = true,
+            },
+            -- if you don't use nvim-lspconfig you must pass your server name and
+            -- the related filetypes into this table
+            -- like server_filetype_map = { metals = { "sbt", "scala" } }
+            -- server_filetype_map = {},
+        }
+        saga.init_lsp_saga(settings)
+    end

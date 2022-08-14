@@ -49,8 +49,8 @@ nmap({
     { 'J'                  , '5j'        , nore } ,
     { 'K'                  , '5k'        , nore } ,
     { 'L'                  , 'e'         , nore } ,
-    { '<Leader>i'          , 'Bi'        , nore } ,
-    { '<Leader>o'          , 'Ea'        , nore } ,
+    -- { '<Leader>i'          , 'Bi'        , nore } ,
+    -- { '<Leader>o'          , 'Ea'        , nore } ,
     -- visual select
     { '<C-j>'              , '<C-v>j'    , nore } ,
     { '<C-k>'              , '<C-v>k'    , nore } ,

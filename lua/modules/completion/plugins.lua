@@ -12,6 +12,7 @@ local enable_lsp_filetype = {
   'go',
   'json',
   'lua',
+  'markdown',
   'python',
   'sh',
   -- 'rust',

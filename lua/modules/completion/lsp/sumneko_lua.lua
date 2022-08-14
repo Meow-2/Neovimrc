@@ -11,8 +11,8 @@ local lsp_settings = {
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                -- library = vim.api.nvim_get_runtime_file("", true),
-                library = vim.list_extend({ [vim.fn.expand('$VIMRUNTIME/lua')] = true }, {}),
+                library = vim.api.nvim_get_runtime_file("", true),
+                -- library = vim.list_extend({ [vim.fn.expand('$VIMRUNTIME/lua')] = true }, {}),
 
             },
             -- Do not send telemetry data containing a randomized but unique identifier

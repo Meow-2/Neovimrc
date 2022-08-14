@@ -68,6 +68,7 @@ return function()
         dynamic_preview_title = true,
         mappings = {
         i = {
+            ["<C-v>"] = false,
             ["<C-n>"] = actions.cycle_history_next,
             ["<C-p>"] = actions.cycle_history_prev,
 

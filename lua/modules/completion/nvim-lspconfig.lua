@@ -8,6 +8,14 @@ return function()
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
 
+    local win_style = {
+        border = "single",
+        winhighlight =  'Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None',
+        zindex = 1001,
+        col_offset =  0,
+        side_padding = 1,
+    }
+
     vim.diagnostic.config({
         signs = true,
         update_in_insert = false,
@@ -16,6 +24,10 @@ return function()
         virtual_text = {
             source = true,
         },
+        -- disable virtual text
+        -- virtual_text = false,
+        -- show signs
+        float = win_style,
     })
 
     -- nvim-lspconfig : capabilities

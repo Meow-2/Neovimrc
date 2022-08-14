@@ -5,7 +5,6 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.ui')
 
-
 plugin({ 'glepnir/zephyr-nvim', config = conf('zephyr-nvim') })
 -- plugin({ 'rakr/vim-one', config = conf('vim-one') })
 -- plugin({ 'tomasiser/vim-code-dark', config = conf('vim-code-dark') })
@@ -38,3 +37,4 @@ plugin({
   requires = { 'nvim-lua/plenary.nvim'},
 })
 -- plugin({'SmiteshP/nvim-gps'})
+plugin({'folke/todo-comments.nvim', config = conf('todo-comments.nvim'), requires = 'plenary.nvim'})

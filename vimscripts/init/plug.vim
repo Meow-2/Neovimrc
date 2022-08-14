@@ -96,7 +96,7 @@ Plug 'abecodes/tabout.nvim'
 "             useful tool
 "-------------------------------------------
 Plug 'sindrets/winshift.nvim'
-Plug 'voldikss/vim-floaterm'
+" Plug 'voldikss/vim-floaterm'
 Plug 'folke/which-key.nvim'
 
 " ------------------------------------------

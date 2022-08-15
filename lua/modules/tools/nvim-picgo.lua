@@ -1,4 +1,5 @@
 return function()
+    if not vim.g.remoteSession then
     require("nvim-picgo").setup({
     -- method to informe
     -- notice = "notify",
@@ -9,4 +10,5 @@ return function()
     -- debug mode
     debug = false,
     })
+end
 end

@@ -17,6 +17,6 @@ plugin({ 'terrortylor/nvim-comment' , config = conf('nvim-comment')})
 plugin({ 'windwp/nvim-autopairs', config = conf('nvim-autopairs')})
 plugin({ 'kylechui/nvim-surround' , config = conf('nvim-surround')})
 plugin({ 'ethanholz/nvim-lastplace' , config = conf('nvim-lastplace')})
-plugin({'dhruvasagar/vim-table-mode'})
+plugin({'dhruvasagar/vim-table-mode',config = conf('vim-table-mode')})
 
 -- plugin({ 'abecodes/tabout.nvim', after = {'nvim-treesitter'}, config = conf('tabout.nvim'), requires = {'nvim-treesitter'}})

@@ -133,6 +133,9 @@ function WK_MAP()
     ['<F1>'] = {cmd('AsyncTask file-buildrun'), 'Code Runner'},
     ['<F2>'] = {cmd('AsyncTask project-buildrun'), 'Project Build'},
     ['<F3>'] = {cmd('call asyncrun#quickfix_toggle(6)'), 'Quickfix Close'},
+    -- vim-table-mode
+    ['<Leader>t'] = {name = 'Table Mode'},
+    ['<Leader>tm'] = {cmd('TableModeToggle'),'Table Mode Toggle'},
     }
     require('which-key').register(mappings ,mappings_opt)
 end

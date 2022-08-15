@@ -4,16 +4,16 @@ return function()
   local db = require('dashboard')
   db.session_directory = home .. '/.cache/nvim/sessions'
 
-  if not vim.g.nvui then
-    db.preview_command = 'ueberzug'
-    db.preview_file_path = vim_conf_path .. '/static/logo.png'
-    db.preview_file_height = 15
-    db.preview_file_width = 46
-  else
+  if vim.g.nvui or vim.g.remoteSession then
     db.preview_command = 'cat | lolcat -F 0.2'
     db.preview_file_path = vim_conf_path .. '/static/neovim.cat'
     db.preview_file_height = 12
     db.preview_file_width = 100
+  else
+    db.preview_command = 'ueberzug'
+    db.preview_file_path = vim_conf_path .. '/static/logo.png'
+    db.preview_file_height = 15
+    db.preview_file_width = 46
   end
     -- db.preview_command = 'cat | lolcat -F 0.3'
     db.hide_statusline = false

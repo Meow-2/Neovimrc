@@ -1,119 +1,239 @@
-# My shortcut of nvim
+<!--toc:start-->
+ - [What is Cosynvim](#what-is-cosynvim)
+ - [Structure](#structure)
+ - [Usage](#usage)
+  - [How to install plugins](#how-to-install-plugins)
+  - [How to config keymap](#how-to-config-keymap)
+ - [Tips](#tips)
+ - [Donate](#donate)
+ - [Licenese MIT](#licenese-mit)
+<!--toc:end-->
+<h1 align="center">
+  <img
+    src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png"
+    height="30"
+    width="0px"
+  />
+  Cosynvim
+  <img
+    src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png"
+    height="30"
+    width="0px"
+  />
+</h1>
 
-| Mode       | Key                  | Map                                                            |
-| ---------- | -------------------- | -------------------------------------------------------------  |
-| normal     | s                    | :w<CR\>                                                        |
-| normal     | q                    | quit buffer and tab                                            |
-| normal     | Q                    | q1                                                             |
-| normal     | @                    | @1                                                             |
-| normal     | H                    | 0                                                              |
-| normal     | J                    | 5j                                                             |
-| normal     | K                    | 5k                                                             |
-| normal     | L                    | $                                                              |
-| normal     | Y                    | y$                                                             |
-| normal     | R                    | :RnvimrToggle<CR\><C-\\><C-n\>:RnvimrResize 0<CR\>             |
-| normal     | S                    | <nop\>                                                         |
-| normal     | T                    | :silent!Vista finder coc<CR\>                                  |
-| normal     | Sh                   | :set nosplitright<CR\>:vsplit<CR\>                             |
-| normal     | Sj                   | :set splitbelow<CR\>:split<CR\>                                |
-| normal     | Sk                   | :set nosplitbelow<CR\>:split<CR\>:set splitbelow<CR\>          |
-| normal     | Sl                   | :set splitright<CR\>:vsplit<CR\>                               |
-| normal     | tt                   | :CocCommand explorer<CR\>                                      |
-| normal     | to                   | :XTabMode<CR\>                                                 |
-| normal     | tn                   | :tabe<CR\>                                                     |
-| normal     | tl                   | :+tabnext<CR\>                                                 |
-| normal     | tc                   | :tabclose<CR\>                                                 |
-| normal     | tmh                  | :-tabmove<CR\>                                                 |
-| normal     | tml                  | :+tabmove<CR\>                                                 |
-| normal     | gd                   | <Plug\>(coc-definition)                                        |
-| normal     | gy                   | <Plug\>(coc-type-definition)                                   |
-| normal     | gi                   | <Plug\>(coc-implementation)                                    |
-| normal     | gr                   | <Plug\>(coc-references)                                        |
-| normal     | \v                   | v$h                                                            |
-| normal     | \p                   | :echo expand('%:p')<CR\>                                       |
-| normal     | m                    | make mark                                                      |
-| normal     | <CR>                 | init_selection(treesitter)                                     |
-| normal     | <CR>                 | node_incremental(treesitter)                                   |
-| normal     | <BS>                 | node_decremental(treesitter)                                   |
-| normal     | <BS>                 | scope_incremental(treesitter)                                  |
-| normal     | <esc\>               | <esc\>:nohlsearch<cr\>                                         |
-| normal     | <C-y\>               | :<C-u\>CocList -A --normal yank<cr\>                           |
-| normal     | <C-f\>               | :Rg<CR\>                                                       |
-| normal     | <C-h\>               | :History<CR\>                                                  |
-| normal     | <C-b\>               | :Buffers<CR\>                                                  |
-| normal     | <C-d\>               | :BD<CR\>                                                       |
-| normal     | <C-t>                | :FloatermToggle<cr\>                                           |
-| normal     | <C-p\>               | :Leaderf file<CR\>                                             |
-| normal     | <C-]\>               | find tags by LeaderF                                           |
-| normal     | <C-/\>               | gcc                                                            |
-| normal     | <C-l\>               | 'Find Under' visual-multi                                      |
-| normal     | <C-l\>               | 'Find Subword Under' visual-multi                              |
-| normal     | <C-j\>               | <c-v>                                                          |
-| normal     | <C-k\>               | <c-v>                                                          |
-| normal     | \\q                  | 'Cancel the last Selected Cursor ' visual-multi                |
-| normal     | <F1\>                | :call f1map#source_vimrc_and_file_build()<cr\>                 |
-| normal     | <F2\>                | :call asyncrun#quickfix_toggle(6)<cr\>                         |
-| normal     | <F3\>                | :AsyncTask file-run<cr\>                                       |
-| normal     | <F4\>                | :tabclose<cr\>                                                 |
-| normal     | <LEADER\>i           | zf%                                                            |
-| normal     | <LEADER\>o           | za                                                             |
-| normal     | <LEADER\>h           | <C-w\>h                                                        |
-| normal     | <LEADER\>j           | <C-w\>j                                                        |
-| normal     | <LEADER\>k           | <C-w\>k                                                        |
-| normal     | <LEADER\>l           | <C-w\>l                                                        |
-| normal     | <LEADER\>c           | <C-w\>c                                                        |
-| normal     | <LEADER\>=           | <C-w\>=                                                        |
-| normal     | <LEADER\>p           | :call <SID\>show_documentation()<CR\>                          |
-| normal     | <LEADER\>v           | :Vista!!<CR\>                                                  |
-| normal     | <LEADER\>;           | :History:<CR\>                                                 |
-| normal     | <LEADER\>gi          | :FzfGitignore<CR\>                                             |
-| normal     | <LEADER\>rc          | :e $HOME/.config/nvim/init.vim<CR\>                            |
-| normal     | <LEADER\>-           | <Plug\>(coc-diagnostic-prev)                                   |
-| normal     | <LEADER\>=           | <Plug\>(coc-diagnostic-next)                                   |
-| normal     | <LEADER\>rn          | <Plug\>(coc-rename)                                            |
-| normal     | <LEADER\>.           | <Plug\>(coc-fix-current)                                       |
-| normal     | <LEADER\>aw          | <Plug\>(coc-codeaction-selected)w                              |
-| normal     | <LEADER\>di          | <Plug\>VimspectorBalloonEval                                   |
-| normal     | <LEADER\>db          | :tabe .vimspector.json<CR\>:LoadVimSpectorJsonTemplate<CR\>    |
-| normal     | <LEADER\>tm          | :TableModeToggle<CR\>                                          |
-| normal     | <LEADER\>ss          | :SessionManager! save_current_session<CR>                      |
-| normal     | <LEADER\>sl          | :SessionManager! load_session<CR>                              |
-| normal     | <LEADER\>sd          | :SessionManager! delete_session<CR>                            |
-| normal     | <LEADER\><left\>     | :vertical resize+5<CR\>                                        |
-| normal     | <LEADER\><down\>     | :res -5<CR\>                                                   |
-| normal     | <LEADER\><up\>       | :res +5<CR\>                                                   |
-| normal     | <LEADER\><right\>    | :vertical resize-5<CR\>                                        |
-| normal     | <LEADER\><LEADER\>   | <esc\>/<++\><CR\>:nohlsearch<CR\>c4l                           |
-| insert     | <C-a\>               | <esc>ggVG                                                      |
-| insert     | <C-l\>               | <Plug\>(coc-snippets-expand)                                   |
-| insert     | <C-j\>               | <Plug\>(coc-snippets-expand-jump)                              |
-| insert     | <C-y\>               | <esc\>:<C-u\>CocList -A --normal yank<cr\>                     |
-| insert     | <c-u>                | <esc>:CocCommand picgo.uploadImageFromClipboard<CR>            |
-| insert     | <c-p>                | <esc>:call mdip#MarkdownClipboardImage()<CR>                   |
-| insert     | <C-space\>           | coc#refresh()                                                  |
-| visual     | <C-j\>               | <Plug\>(coc-snippets-select) / j                               |
-| visual     | <C-k\>               | k                                                              |
-| visual     | <C-/\>               | gc                                                             |
-| visual     | ga                   | :Tabularize /                                                  |
-| visual     | y                    | "+y                                                            |
-| xmap       | if                   | <Plug\>(coc-funcobj-i)                                         |
-| xmap       | af                   | <Plug\>(coc-funcobj-a)                                         |
-| omap       | if                   | <Plug\>(coc-funcobj-i)                                         |
-| omap       | af                   | <Plug\>(coc-funcobj-a)                                         |
-| xmap       | ic                   | <Plug\>(coc-classobj-i)                                        |
-| omap       | ic                   | <Plug\>(coc-classobj-i)                                        |
-| xmap       | ac                   | <Plug\>(coc-classobj-a)                                        |
-| omap       | ac                   | <Plug\>(coc-classobj-a)                                        |
-| xmap       | <LEADER\>a           | <Plug\>(coc-codeaction-selected)                               |
-| xmap       | <LEADER\>di          | <Plug\>VimspectorBalloonEval                                   |
-| terminal   | <esc\>               | <C-\\><C-N\>:q!<cr\>                                           |
-| normal     | <F5\>                | When debugging, continue. Otherwise start debugging.           |
-| normal     | <Shift F5\>          | Stop debugging.                                                |
-| normal     | <Ctrl Shift F5\>     | Restart debugging with the same configuration.                 |
-| normal     | <F6\>                | Pause debuggee.                                                |
-| normal     | <F9\>                | Toggle line breakpoint on the current line.                    |
-| normal     | <Shift F9\>          | Add a function breakpoint for the expression under cursor      |
-| normal     | <F10\>               | Step Over                                                      |
-| normal     | <F11\>               | Step Into                                                      |
-| normal     | <Shift F11\>         | Step out of current function scope                             |
+<p align="center">
+  <a href="https://github.com/glepnir/cosynvim/stargazers">
+    <img
+      alt="Stargazers"
+      src="https://img.shields.io/github/stars/glepnir/cosynvim?style=for-the-badge&logo=starship&color=c678dd&logoColor=d9e0ee&labelColor=282a36"
+    />
+  </a>
+  <a href="https://github.com/glepnir/cosynvim/issues">
+    <img
+      alt="Issues"
+      src="https://img.shields.io/github/issues/glepnir/cosynvim?style=for-the-badge&logo=gitbook&color=f0c062&logoColor=d9e0ee&labelColor=282a36"
+    />
+  </a>
+  <a href="https://github.com/glepnir/cosynvim/contributors">
+    <img
+      alt="Contributors"
+      src="https://img.shields.io/github/contributors/glepnir/cosynvim?style=for-the-badge&logo=opensourceinitiative&color=abcf84&logoColor=d9e0ee&labelColor=282a36"
+    />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/41671631/176990490-aeb6111b-41ea-4767-bc03-c0aee4774a4e.png"
+  height = "40%"
+  widht = "40%"
+  />
+</p>
+
+## What is Cosynvim
+
+Many people are interested in my [personal configuration](https://github.com/glepnir/nvim). So I created Cosynvim.
+
+What does Cosynvim do? Cosynvim wants vimers to have their own config with high performance
+
+fast speed and modernity.
+
+## Structure
+
+```
+├── init.lua  
+├── lua
+│   ├── core                       heart of cosynvim provide api
+│   │   ├── init.lua
+│   │   ├── keymap.lua             keymap api
+│   │   ├── options.lua            vim options
+│   │   └── pack.lua               hack packer
+│   ├── keymap                     your keymap in here
+│   │   ├── config.lua
+│   │   └── init.lua
+│   └── modules                    plugins module usage example
+│       ├── completion
+│       │   ├── config.lua
+│       │   └── plugins.lua
+│       ├── lang
+│       │   ├── config.lua
+│       │   └── plugins.lua
+│       ├── tools
+│       │   ├── config.lua
+│       │   └── plugins.lua
+│       └── ui
+│           ├── config.lua
+│           ├── eviline.lua
+│           └── plugins.lua
+├── snippets                       snippets 
+│   ├── lua.json
+│   └── package.json
+└── static                         dashboard logo
+    └── neovim.cat
+
+```
+
+A nice structure right ? Looks complicated ? You can delete any folder except core and keymap modules. The
+
+rule of `modules` is you can delete folders in modules. And create folder with your favorite name, but you must
+
+create `plugins.lua` and register your plugins in this file by using cosynvim api.
+
+## Usage
+
+- Click button `Use this template` It will genereate a new repo based on cosy on your github
+
+- Then you need input repo name, Give your nvim configuration a nice name
+
+- Enjoy
+
+### How to install plugins
+
+Api is `require('core.pack').register_plugin`. So pass plugin as param into this function. Usage
+
+like in `modules/your-folder-name/plugins.lua`
+
+```lua
+local plugin = require('core.pack').register_plugin
+local conf = require('modules.ui.config')
+
+plugin {'glepnir/zephyr-nvim', config = conf.zephyr}
+
+plugin {'plugin github repo name'}
+```
+
+what is `config` . This is a keyword of [packer.nvim](https://github.com/wbthomason/packer.nvim), you need to check the doc of packer to know how to use packer.
+
+If a plugin has many configs you can create other file in `modules/your-folder-name/config.lua` avoid
+making the
+
+plugins.lua file too long. Recommend lazyload plugins. Check the usage in `modules` , it will improve your neovim
+
+start speed. `lazyload` is not magic, it just generate your config into some `autocmds` , you can check the
+
+`packer_compiled.lua` to check it. I don't like the default path config in packer it use `plugins` folder  So i set
+
+compiled file path to `~/.local/share/nvim/site/lua`, you can find compiled file in this path. Use `:h autocmd`
+
+to know more about. When you edit the config and open neovim and it does not take effect. Please try
+
+ `PackerCompile` to generate a new compile file with your new change. In my personal config i have a function that
+
+ can auto compiled . when i edit the lua file that in this path `~/.config/nvim`. But it will make some noise so I didn't
+
+ use it in cosynvim. when i have a newimplement I will update it to cosynvim core.
+
+```lua
+
+-- modules/completion/plugins.lua
+plugin {'neovim/nvim-lspconfig',
+ -- used filetype to lazyload lsp
+ -- config your language filetype in here
+  ft = { 'lua','rust','c','cpp'},
+  config = conf.nvim_lsp,
+}
+
+-- modules/tools/plugins.lua
+plugin {'nvim-telescope/telescope.nvim',
+  -- use command to lazyload.
+  cmd = 'Telescope',
+  config = conf.telescope,
+  requires = {
+    {'nvim-lua/popup.nvim', opt = true},
+    {'nvim-lua/plenary.nvim',opt = true},
+    {'nvim-telescope/telescope-fzy-native.nvim',opt = true},
+  }
+}
+```
+
+### How to config keymap
+
+In cosynvim there are some apis that make it easy to set keymap. All apis are defined in `core/keymap.lua`.
+
+```lua
+keymap.(n/i/c/v/x/t)map -- function to generate keymap by vim.keymap.set
+keymap.new_opts -- generate opts into vim.keymap.set
+-- function type that work with keymap.new_opts
+keymap.silent keymap.noremap keymap.expr keymap.nowait keymap.remap
+keymap.cmd -- just return string with <Cmd> and <CR>
+keymap.cu -- work like cmd but for visual map
+```
+
+Use these apis to config your keymap in `keymap` folder. In this folder `keymap/init.lua` is necessary but if you
+
+have many vim mode remap you can config them in `keymap/other-file.lua` in cosynvim is `config.lua` just an
+
+example file. Then config plugins keymap in `keymap/init.lua`. the example of api usage
+
+```lua
+-- genreate keymap in noremal mode
+nmap {
+  -- packer
+  {'<Leader>pu',cmd('PackerUpdate'),opts(noremap,silent,'Packer update')},
+  {'<Leader>pi',cmd('PackerInstall'),opts(noremap,silent)},
+  {'<Leader>pc',cmd('PackerCompile'),opts(noremap,silent)},
+}
+```
+
+`map` foreach every table and generate a new table that can pass to `vim.keymap.set`. `cmd('PackerUpdate')` just
+
+return a string `<cmd>PackerUpdate<CR>` as rhs. lhs is `<leader>pu>`, `opts(noremap,silent,'Packer update')` generate options table
+
+`{noremap = true,silent = true, desc = 'Packer Update' }` . for some vim mode remap. not need use `cmd` function. oh maybe you will be
+
+confused what is `<cmd>` check `:h <cmd>` you will get answer
+
+```lua
+  -- window jump
+  {"<C-h>",'<C-w>h',opts(noremap)},
+```
+
+also you can pass a table not include sub table to `map` like
+
+```lua
+nmap {'key','rhs',opts(noremap,silent)}
+```
+
+use `:h vim.keymap.set` to know more about.
+
+## Tips
+
+- Improve key repeat
+
+```
+mac os need restart
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+linux
+xset r rate 210 40
+```
+
+## Donate
+
+[![](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/bobbyhub)
+
+If you'd like to support my work financially, buy me a drink through [paypal](https://paypal.me/bobbyhub)
+
+## Licenese MIT
 

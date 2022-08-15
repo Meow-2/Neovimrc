@@ -130,8 +130,9 @@ function WK_MAP()
     ['<Leader>e']={ cmd('lua vim.diagnostic.open_float()'), 'Lsp Diagnostic Float Win' },
     ['<Leader>a']={ cmd('lua vim.diagnostic.setloclist()'), 'Lsp Diagnostic List ' },
     -- asynctask
-    ['<S-F1>'] = {cmd('AsyncTask file-buildrun'), 'Code Runner'},
-    ['<F2>'] = {cmd('call asyncrun#quickfix_toggle(6)'), 'Close Code Runner'},
+    ['<F1>'] = {cmd('AsyncTask file-buildrun'), 'Code Runner'},
+    ['<F2>'] = {cmd('AsyncTask project-buildrun'), 'Project Build'},
+    ['<F3>'] = {cmd('call asyncrun#quickfix_toggle(6)'), 'Quickfix Close'},
     }
     require('which-key').register(mappings ,mappings_opt)
 end

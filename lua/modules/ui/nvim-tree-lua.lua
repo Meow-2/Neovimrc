@@ -33,7 +33,7 @@ return function()
                 { key = { 'dd' }, action = 'cut'},
                 { key = { 'pp' }, action = 'paste'},
                 { key = { 'dD' }, action = 'trash'},
-                { key = { 'V','a' }, action = 'create'},
+                { key = { 'a','V','M' }, action = 'create'},
                 { key = { 'zh' }, action = 'toggle_dotfiles'},
                 { key = { 'zH' }, action = 'toggle_git_ignored'},
                 { key = { 'cw' }, action = 'rename'},

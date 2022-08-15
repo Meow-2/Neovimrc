@@ -23,7 +23,7 @@ return function()
     db.center_pad = 1
     db.footer_pad = 5
     local plugin_count = #vim.tbl_keys(packer_plugins)
-    db.custom_footer = {' neovim loaded' .. plugin_count ..  ' plugins'}
+    db.custom_footer = {'  Neovim Loaded ' .. plugin_count ..  ' plugins'}
   db.custom_center = {
     {
       icon = '  ',

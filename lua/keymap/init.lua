@@ -100,8 +100,8 @@ function WK_MAP()
     -- bufferline
     ['e']={cmd('BufferLineCyclePrev'),'Buffer Prev'},
     ['r']={cmd('BufferLineCycleNext'),'Buffer Next'},
-    ['tp']={cmd('BufferLinePick'),'Buffer Pick Open'},
-    ['tv']={cmd('BufferLinePickVsplit'),'Buffer Pick Vsplit'},
+    ['to']={cmd('BufferLinePick'),'Buffer Open'},
+    ['tp']={cmd('BufferLinePickVsplit'),'Buffer Pick Vsplit'},
     ['tc']={cmd('BufferLinePickClose'),'Buffer Pick Close'},
     ['tl']={cmd('BufferLineMoveNext'),'Buffer Move Left'},
     ['th']={cmd('BufferLineMovePrev'),'Buffer Move Right'},
@@ -132,7 +132,6 @@ function WK_MAP()
     -- asynctask
     ['<S-F1>'] = {cmd('AsyncTask file-buildrun'), 'Code Runner'},
     ['<F2>'] = {cmd('call asyncrun#quickfix_toggle(6)'), 'Close Code Runner'},
-    ['<F3>'] = {cmd('AsyncTask file-run'), 'Code Runner'},
     }
     require('which-key').register(mappings ,mappings_opt)
 end

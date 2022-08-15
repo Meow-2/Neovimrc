@@ -35,5 +35,5 @@ plugin({
 
 plugin({'voldikss/vim-floaterm', config = conf('vim-floaterm')})
 plugin({'folke/which-key.nvim', config = conf('which-key.nvim')})
-plugin({'skywind3000/asyncrun.vim', config = conf('asyncrun.vim')})
+plugin({'skywind3000/asyncrun.vim'})
 plugin({'skywind3000/asynctasks.vim', config = conf('asynctasks.vim')})

@@ -64,7 +64,7 @@ function LSP_MAP(buffnr)
         ['<Leader>D']={cmd('lua vim.lsp.buf.declaration()'),'Lsp Go Decl'},
         ['<Leader>w'] = {name = 'Workspace'},
         ['<Leader>wa']={cmd('lua vim.lsp.buf.add_workspace_folder()'), 'Workspace Add ' },
-        ['<Leader>wr']={cmd('lua vim.lsp.buf.remove_workspace_folder()'),'Workspace Del' },
+        ['<Leader>wd']={cmd('lua vim.lsp.buf.remove_workspace_folder()'),'Workspace Del' },
         ['<Leader>wl']={cmd('lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))'), 'Workspace List'},
     }
     require('which-key').register(mappings ,mappings_opt)

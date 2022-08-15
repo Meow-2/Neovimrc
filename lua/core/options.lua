@@ -71,7 +71,6 @@ vim.opt.showcmd = true
 -- just for nightly
 vim.opt.cmdheight = 1
 vim.opt.cmdwinheight = 5
-vim.opt.cursorline = true
 vim.opt.equalalways = false
 vim.opt.laststatus = 2
 vim.opt.display = 'lastline'
@@ -107,7 +106,7 @@ vim.opt.foldminlines = 1
 vim.g.python_host_prog = '/usr/bin/python'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
-vim.opt.guifont = [[FiraCode Nerd Font:h15]]
+vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
 -- vim.opt.guifont = [[Hack Nerd Font Mono:h15]]
 -- vim.opt.guifont = [[JetBrainsMono Nerd Font:h15]]
 

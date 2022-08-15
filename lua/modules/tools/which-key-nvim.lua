@@ -72,11 +72,5 @@ return function()
     }
 
     which_key.setup(setup)
-    -- which_key.register(_WHICH_KEY_MAPPINGS_N_LEADER, _N_LEADER_OPT)
-    which_key.register(_WK_N, _WK_N_OPTS)
-    -- which_key.register(_WK_I,_WK_I_OPTS)
-    -- which_key.register(_WK_V,_WK_V_OPTS)
-    -- which_key.register(_WK_V_NORE,_WK_V_OPTS_NORE)
-    -- which_key.register(_WK_T,_WK_T_OPTS)
-    -- which_key.register(_WK_T_EXPR,_WK_T_OPTS_EXPR)
+    WK_MAP()
 end

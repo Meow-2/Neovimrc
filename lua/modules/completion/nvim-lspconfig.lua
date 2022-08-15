@@ -10,9 +10,9 @@ return function()
 
     local win_style = {
         border = "single",
-        winhighlight =  'Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None',
-        zindex = 1001,
-        col_offset =  0,
+        -- winhighlight =  'Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None',
+        -- zindex = 1001,
+        -- col_offset =  0,
         side_padding = 1,
     }
 
@@ -45,7 +45,7 @@ return function()
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        _LSP_MAP(bufnr)
+        LSP_MAP(bufnr)
 
         if client.server_capabilities.documentFormattingProvider then
             vim.api.nvim_create_autocmd('BufWritePre', {

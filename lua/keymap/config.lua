@@ -87,7 +87,7 @@ nmap({
     { '<C-Down>' , cmd('resize-2'), nore_silent} ,
     { '<C-Up>' , cmd('resize+2'), nore_silent} ,
     { '<C-Right>' , cmd('vertical resize-2'), nore_silent} ,
-    { '<Leader>=', '<C-w>=', nore},
+    -- { '<Leader>=', '<C-w>=', nore},
     -- search behavior
     { 'n' , 'nzz' , nore},
     { 'N' , 'Nzz' , nore},

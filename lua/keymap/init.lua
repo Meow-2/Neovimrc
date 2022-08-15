@@ -1,49 +1,19 @@
 require('keymap.config')
 local key = require('core.keymap')
-local vmap,imap,tmap = key.vmap,key.imap,key.tmap
-local cmd = key.cmd
+local vmap,imap,tmap,bmap = key.vmap,key.imap,key.tmap,vim.api.nvim_buf_set_keymap
+local cmd,cu = key.cmd,key.cu
 local opts = key.new_opts
 local nore = opts(key.noremap)
 local nore_silent =opts(key.noremap,key.silent)
 local nore_silent_expr = opts(key.noremap,key.silent,key.expr)
 local source_file = vim.fn.stdpath('config') .. '/init.lua'
 
-function _LSP_MAP(buffnr)
-    -- key.nmap({
-        -- { '-', vim.diagnostic.goto_prev, nore_silent },
-        -- { '=', vim.diagnostic.goto_next, nore_silent },
-        -- { 'gD', vim.lsp.buf.declaration, nore_silent_buf },
-        -- { 'gd', vim.lsp.buf.definition, nore_silent_buf },
-        -- { 'gi', vim.lsp.buf.implementation, nore_silent_buf },
-        -- { 'gr', vim.lsp.buf.references, nore_silent_buf },
-        -- { '<Leader>.', vim.lsp.buf.code_action, nore_silent_buf },
-        -- { '<Leader>=', vim.lsp.buf.formatting, nore_silent_buf },
-        -- { '<Leader>d', vim.lsp.buf.type_definition, nore_silent_buf },
-        -- { '<C-k>', vim.lsp.buf.hover, nore_silent_buf },
-        -- { '<Leader>rn', vim.lsp.buf.rename, nore_silent_buf },
-        -- { '<Leader>wa', vim.lsp.buf.add_workspace_folder, nore_silent_buf },
-        -- { '<Leader>wr', vim.lsp.buf.remove_workspace_folder, nore_silent_buf },
-        -- { '<Leader>wl', function()print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, nore_silent_buf },
-    -- })
-    local mappings_opt = {mode = "n",buffer = buffnr,silent = true,noremap = true,nowait = true,}
-    local mappings = {
-        ['gd']={cmd('lua vim.lsp.buf.definition()'), 'Lsp Go Def' },
-        ['gi']={cmd('lua vim.lsp.buf.implementation()'), 'Lsp Go Imp' },
-        ['gr']={cmd('lua vim.lsp.buf.references()'), 'Lsp Go Ref' },
-        ['<Leader>.']={cmd('lua vim.lsp.buf.code_action()'), 'Code Action' },
-        ['<Leader>=']={cmd('lua vim.lsp.buf.formatting()'), 'Lsp Format' },
-        ['<Leader>d']={cmd('lua vim.lsp.buf.type_definition()'), 'Lsp Go Type' },
-    }
-    require('which-key').register(mappings ,mappings_opt)
-    -- key.imap({ '<C-p>', vim.lsp.buf.signature_help, nore_silent_buf })
-end
-
-local has_words_before = function()
+local has_words_before = function()--{{{
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+end--}}}
 
-local function super_tab(cmp,luasnip,select_behavior)
+local function super_tab(cmp,luasnip,select_behavior)--{{{
     return  function(fallback)
         if cmp.visible() then
             cmp.select_next_item(select_behavior)
@@ -55,7 +25,7 @@ local function super_tab(cmp,luasnip,select_behavior)
             fallback()
         end
     end
-end
+end--}}}
 
 local function super_s_tab(cmp, luasnip, select_behavior)--{{{
     return function(fallback)
@@ -82,9 +52,28 @@ function _CMP_MAP(cmp,luasnip,select_behavior)--{{{
     return insert_map
 end--}}}
 
+function LSP_MAP(buffnr)
+    local mappings_opt = {mode = "n",buffer = buffnr,silent = true,noremap = true,nowait = true,}
+    local mappings = {
+        ['gd']={cmd('lua vim.lsp.buf.definition()'), 'Lsp Go Def' },
+        ['gi']={cmd('lua vim.lsp.buf.implementation()'), 'Lsp Go Imp' },
+        ['gr']={cmd('lua vim.lsp.buf.references()'), 'Lsp Go Ref' },
+        ['<Leader>.']={cmd('lua vim.lsp.buf.code_action()'), 'Code Action' },
+        ['<Leader>=']={cmd('lua vim.lsp.buf.formatting()'), 'Lsp Format' },
+        ['<Leader>d']={cmd('lua vim.lsp.buf.type_definition()'), 'Lsp Go Type' },
+        ['<Leader>D']={cmd('lua vim.lsp.buf.declaration()'),'Lsp Go Decl'},
+        ['<Leader>w'] = {name = 'Workspace'},
+        ['<Leader>wa']={cmd('lua vim.lsp.buf.add_workspace_folder()'), 'Workspace Add ' },
+        ['<Leader>wr']={cmd('lua vim.lsp.buf.remove_workspace_folder()'),'Workspace Del' },
+        ['<Leader>wl']={cmd('lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))'), 'Workspace List'},
+    }
+    require('which-key').register(mappings ,mappings_opt)
+end
 
-_WK_N_OPTS = {mode = "n",buffer = nil,silent = true,noremap = true,nowait = true,}
-_WK_N = {
+function WK_MAP()
+
+    local mappings_opt ={mode = "n",buffer = nil,silent = true,noremap = true,nowait = true,}
+    local mappings = {
     ['<C-s>']={cmd('luafile '..source_file),'Source Config'},
     -- Packer
     ['<Leader>u'] = {cmd('PackerUpdate'), 'Plugins Update'},
@@ -94,7 +83,7 @@ _WK_N = {
     ['<Leader>n']={cmd('DashboardNewFile'),'New File'},
     -- Telescope
     ['<Leader>b']={cmd('Telescope buffers'),'Find Buffers'},
-    ['<Leader>w']={cmd('Telescope live_grep'),'Find Words'},
+    ['<Leader>l']={cmd('Telescope live_grep'),'Find Words'},
     ['<Leader>f']={cmd('Telescope find_files'),'Find Files'},
     ['<Leader>h']={cmd('Telescope oldfiles'),'Find Open History'},
     ['<Leader>p']={cmd('Telescope help_tags'),'Find Help Tags'},
@@ -138,13 +127,41 @@ _WK_N = {
     ['<Leader>r'] = {name = 'Lspsaga Rename'},
     ['<Leader>rn']= {cmd('Lspsaga rename'), 'Lsp Rename'},
     -- nvim-lspconfig
-    ['<Leader>e']={ cmd('vim.diagnostic.open_float'), 'Lsp Diagnostic Float Win' },
-    ['<Leader>a']={ cmd('vim.diagnostic.setloclist'), 'Lsp Diagnostic List ' },
+    ['<Leader>e']={ cmd('lua vim.diagnostic.open_float()'), 'Lsp Diagnostic Float Win' },
+    ['<Leader>a']={ cmd('lua vim.diagnostic.setloclist()'), 'Lsp Diagnostic List ' },
     -- asynctask
     ['<S-F1>'] = {cmd('AsyncTask file-buildrun'), 'Code Runner'},
     ['<F2>'] = {cmd('call asyncrun#quickfix_toggle(6)'), 'Close Code Runner'},
     ['<F3>'] = {cmd('AsyncTask file-run'), 'Code Runner'},
+    }
+    require('which-key').register(mappings ,mappings_opt)
+end
+
+function GS_MAP(bufnr)
+
+    local mappings_opt = {mode = "n",buffer = bufnr,silent = true,noremap = true,nowait = true,}
+    local mappings = {
+    ['<Leader>g'] = {name = 'git'},
+    ['<Leader>gn']={cmd('Gitsigns next_hunk'),'Next Hunk'},
+    ['<Leader>gN']={cmd('Gitsigns prev_hunk'),'Prev Hunk'},
+    -- Actions,
+    ['<Leader>gs']={cmd('Gitsigns stage_hunk'),'Stage Hunk'},
+    ['<Leader>gr']={cmd('Gitsigns reset_hunk'),'Reset Hunk'},
+    ['<Leader>gu']={cmd('Gitsigns undo_stage_hunk'),'Unstage Hunk'},
+    ['<Leader>gS']={cmd('Gitsigns stage_buffer'),'Stage Buffer'},
+    ['<Leader>gR']={cmd('Gitsigns reset_buffer'),'Reset Buffer'},
+    -- ['<Leader>gU']={cmd('Gitsigns undo_stage_buffer'),'Unstage Buffer'},
+    ['<Leader>gp']={cmd('Gitsigns preview_hunk'),'Preview Hunk'},
+    ['<Leader>gb']={cmd('lua require"gitsigns".blame_line{full=true}'),'Show Commit Message'},
+    ['<Leader>gd']={cmd('Gitsigns diffthis'),'Show Diff'},
+    -- ['<Leader>gD']={cmd('lua require"gitsigns".diffthis("~")'),'Show Diff'},
+    --
+    -- Text object
+    bmap(bufnr, 'o', 'ih', cu('Gitsigns select_hunk'), {noremap = true, silent = true}),
+    bmap(bufnr, 'x', 'ih', cu('Gitsigns select_hunk'), {noremap = true, silent = true}),
 }
+    require('which-key').register(mappings ,mappings_opt)
+end
 
 imap({'<C-p>', cmd('Lspsaga signature_help'),nore_silent })
 

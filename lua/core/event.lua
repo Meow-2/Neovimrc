@@ -1,6 +1,14 @@
 local MyGroup = vim.api.nvim_create_augroup('MyGroup', { clear = true })
 
--- vim.api.nvim_set_hl(0,'CursorWord',{bg ='#3f444a' ,underline=false})
+
+-- highlight on_yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+    group = MyGroup,
+    pattern = { '*' },
+    callback = function()
+        vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 400 })
+    end
+})
 
 -- set highlight
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter'}, {
@@ -30,14 +38,6 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter'}, {
     end
 })
 
--- highlight on_yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-    group = MyGroup,
-    pattern = { '*' },
-    callback = function()
-        vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 400 })
-    end
-})
 
 -- cursorline
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'InsertLeave' }, {

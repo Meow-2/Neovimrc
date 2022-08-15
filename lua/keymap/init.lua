@@ -1,7 +1,7 @@
 require('keymap.config')
 local key = require('core.keymap')
-local vmap,imap,tmap,bmap = key.vmap,key.imap,key.tmap,vim.api.nvim_buf_set_keymap
-local cmd,cu = key.cmd,key.cu
+local vmap,imap,tmap,omap,xmap = key.vmap,key.imap,key.tmap,key.omap,key.xmap
+local cmd = key.cmd
 local opts = key.new_opts
 local nore = opts(key.noremap)
 local nore_silent =opts(key.noremap,key.silent)
@@ -150,15 +150,14 @@ function GS_MAP(bufnr)
     ['<Leader>gu']={cmd('Gitsigns undo_stage_hunk'),'Unstage Hunk'},
     ['<Leader>gS']={cmd('Gitsigns stage_buffer'),'Stage Buffer'},
     ['<Leader>gR']={cmd('Gitsigns reset_buffer'),'Reset Buffer'},
-    -- ['<Leader>gU']={cmd('Gitsigns undo_stage_buffer'),'Unstage Buffer'},
     ['<Leader>gp']={cmd('Gitsigns preview_hunk'),'Preview Hunk'},
     ['<Leader>gb']={cmd('lua require"gitsigns".blame_line{full=true}'),'Show Commit Message'},
     ['<Leader>gd']={cmd('Gitsigns diffthis'),'Show Diff'},
     -- ['<Leader>gD']={cmd('lua require"gitsigns".diffthis("~")'),'Show Diff'},
     --
     -- Text object
-    bmap(bufnr, 'o', 'ih', cu('Gitsigns select_hunk'), {noremap = true, silent = true}),
-    bmap(bufnr, 'x', 'ih', cu('Gitsigns select_hunk'), {noremap = true, silent = true}),
+    omap({'ih',':<C-U>Gitsigns select_hunk<Cr>',{noremap = true,silent =true, buffer = bufnr}}),
+    xmap({'ih',':<C-U>Gitsigns select_hunk<Cr>',{noremap = true,silent =true, buffer = bufnr}}),
 }
     require('which-key').register(mappings ,mappings_opt)
 end

@@ -165,7 +165,11 @@ function GS_MAP(bufnr)
     require('which-key').register(mappings ,mappings_opt)
 end
 
-imap({'<C-p>', cmd('Lspsaga signature_help'),nore_silent })
+imap({
+    {'<C-p>', cmd('Lspsaga signature_help'),nore_silent },
+    {'<C-u>', cmd([[lua require('nvim-picgo').upload_clipboard()]]), nore },
+})
+
 
 vmap({
     -- nvim-comment

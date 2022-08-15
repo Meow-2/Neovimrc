@@ -39,7 +39,11 @@ plugin({'skywind3000/asyncrun.vim'})
 plugin({'skywind3000/asynctasks.vim', config = conf('asynctasks.vim')})
 
 
-plugin({'iamcco/markdown-preview.nvim', config = conf('markdown-preview.nvim')})
-plugin({'askfiy/nvim-picgo'})
--- Meow-2/bullets.vim
--- ferrine/md-img-paste.vim
+plugin({ "iamcco/markdown-preview.nvim",
+run = "cd app && npm install",
+setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+ft = { "markdown" },
+config = conf('markdown-preview.nvim')
+})
+
+plugin({'askfiy/nvim-picgo',ft = {'markdown'},config = conf('nvim-picgo')})

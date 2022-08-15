@@ -2,7 +2,7 @@ return function()
   -- vim.api.nvim_command('set foldmethod=marker')
   -- vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
   require('nvim-treesitter.configs').setup({
-    ensure_installed = {'c','cpp','lua','python','go','bash','yaml','vim','json', 'cmake','markdown'},
+    ensure_installed = {'c','cpp','lua','python','go','bash','json', 'cmake','markdown'},
     -- ignore_install = { 'phpdoc' },
     highlight = {
       enable = true,

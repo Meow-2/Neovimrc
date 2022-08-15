@@ -10,6 +10,23 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter'}, {
         vim.cmd('highlight Comment cterm=italic gui=italic')
         vim.cmd('highlight Cursor cterm=bold,italic gui=bold,italic')
         vim.api.nvim_set_hl(0,'CursorWord',{bg ='#3f444a' ,underline=false})
+
+        vim.g.terminal_color_0  = '#262a33'
+        vim.g.terminal_color_1  = '#e95678'
+        vim.g.terminal_color_2  = '#afd700'
+        vim.g.terminal_color_3  = '#fac661'
+        vim.g.terminal_color_4  = '#61afef'
+        vim.g.terminal_color_5  = '#CBA6F7'
+        vim.g.terminal_color_6  = '#36d0e0'
+        vim.g.terminal_color_7  = '#e0e0e0'
+        vim.g.terminal_color_8  = '#c78665'
+        vim.g.terminal_color_9  = '#e95678'
+        vim.g.terminal_color_10 = '#afd700'
+        vim.g.terminal_color_11 = '#fac661'
+        vim.g.terminal_color_12 = '#61afef'
+        vim.g.terminal_color_13 = '#CBA6F7'
+        vim.g.terminal_color_14 = '#36d0e0'
+        vim.g.terminal_color_15 = '#bbc2cf'
     end
 })
 

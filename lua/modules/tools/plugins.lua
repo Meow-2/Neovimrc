@@ -37,3 +37,9 @@ plugin({'voldikss/vim-floaterm', config = conf('vim-floaterm')})
 plugin({'folke/which-key.nvim', config = conf('which-key.nvim')})
 plugin({'skywind3000/asyncrun.vim'})
 plugin({'skywind3000/asynctasks.vim', config = conf('asynctasks.vim')})
+
+
+plugin({'iamcco/markdown-preview.nvim', config = conf('markdown-preview.nvim')})
+plugin({'askfiy/nvim-picgo'})
+-- Meow-2/bullets.vim
+-- ferrine/md-img-paste.vim

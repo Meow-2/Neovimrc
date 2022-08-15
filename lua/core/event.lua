@@ -140,3 +140,15 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'BufWinEnter' }, {
     pattern = '*',
     callback = disable_cursorword,
 })
+
+-- " auto comment disabled
+-- au BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+-- " markdown
+-- au Filetype markdown vnoremap <buffer> <c-b> c****<esc>hhp
+-- au Filetype markdown vnoremap <buffer> <c-i> c**<esc>hp
+-- au Filetype markdown vnoremap <buffer> <c-s> c~~~~<esc>hhp
+-- au Filetype markdown set wrap
+-- au Filetype yaml set wrap
+-- au Filetype json set wrap
+-- " record cursor when exit
+-- au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

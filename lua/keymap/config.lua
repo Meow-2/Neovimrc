@@ -135,21 +135,21 @@ imap({
 cmap({
     -- commandline remap
     -- emacs keymap
-    { '<C-h>', '<Bs>', nore_silent },
-    { '<C-j>', '<Down>', nore_silent },
-    { '<C-k>', '<Up>', nore_silent },
-    { '<C-l>', '<Right>', nore_silent },
+    { '<C-h>', '<Bs>', nore },
+    { '<C-j>', '<Down>', nore },
+    { '<C-k>', '<Up>', nore },
+    { '<C-l>', '<Right>', nore },
 
-    { '<C-e>', '<End>', nore_silent },
-    { '<C-a>', '<Home>', nore_silent },
-    { '<C-d>', '<Del>', nore_silent },
-    { '<C-b>', '<Left>', nore_silent },
+    { '<C-e>', '<End>', nore },
+    { '<C-a>', '<Home>', nore },
+    { '<C-d>', '<Del>', nore },
+    { '<C-b>', '<Left>', nore },
 
     -- word jump
-    { '<C-S-h>', '<C-Left>', nore_silent},
-    { '<C-S-l>', '<C-Right>', nore_silent},
+    { '<C-S-h>', '<C-Left>', nore},
+    { '<C-S-l>', '<C-Right>', nore},
     -- for nvui
-    { '<C-v>', '<C-r>+', nore_silent},
+    { '<C-v>', '<C-r>+', nore},
 })
 
 vmap({

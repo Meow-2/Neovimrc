@@ -70,6 +70,30 @@ function LSP_MAP(buffnr)
     require('which-key').register(mappings ,mappings_opt)
 end
 
+function Super_F1()--{{{
+    local cur_path = vim.api.nvim_buf_get_name(0)
+    local config_path = vim.fn.stdpath('config')
+    if vim.bo.filetype == 'markdown' then
+        vim.api.nvim_command('MarkdownPreview')
+    elseif cur_path:find(config_path) ~= nil then
+        require('core.pack').compile()
+        local f = io.open('temp','w')
+        io.output(f)
+        for name,_ in pairs(package.loaded) do
+            -- print(name)
+            -- if name:match('^core') or name:match('^keymap') or name:match('^modules')  then
+            -- package.loaded[name] = nil
+            io.write(name .. '\n')
+            -- end
+        end
+            io.close()
+        -- require('core')
+        -- print('Config Reload Finish!')
+    else
+        vim.api.nvim_command('AsyncTask file-buildrun')
+    end
+end--}}}
+
 function WK_MAP()
 
     local mappings_opt ={mode = "n",buffer = nil,silent = true,noremap = true,nowait = true,}
@@ -130,7 +154,7 @@ function WK_MAP()
     ['<Leader>e']={ cmd('lua vim.diagnostic.open_float()'), 'Lsp Diagnostic Float Win' },
     ['<Leader>a']={ cmd('lua vim.diagnostic.setloclist()'), 'Lsp Diagnostic List ' },
     -- asynctask
-    ['<F1>'] = {cmd('AsyncTask file-buildrun'), 'Code Runner'},
+    ['<F1>'] = {cmd('lua Super_F1()'), 'Super Run'},
     ['<F2>'] = {cmd('AsyncTask project-buildrun'), 'Project Build'},
     ['<F3>'] = {cmd('call asyncrun#quickfix_toggle(6)'), 'Quickfix Close'},
     -- vim-table-mode
@@ -155,6 +179,7 @@ function WK_MAP()
     ["<Leader>dbt"] = {cmd("GdbLopenBacktrace"),'GDB bt' },
     ["<Leader>dbp"]  ={cmd("GdbLopenBreakpoints"),'GDB bp'},
     }
+    -- require('which-key').register({['<F1>'] = {cmd('lua Super_F1()'), 'Super Run'}} ,{mode = "n",noremap = true,nowait = true})
     require('which-key').register(mappings ,mappings_opt)
 end
 

@@ -136,6 +136,17 @@ function WK_MAP()
     -- vim-table-mode
     ['<Leader>t'] = {name = 'Table Mode'},
     ['<Leader>tm'] = {cmd('TableModeToggle'),'Table Mode Toggle'},
+    -- nvim-dap
+    ['<F5>']={cmd([[lua require'dap'.continue()]]),'Debug Continue'},
+    ['<F6>']={cmd([[lua require'dap'.toggle_breakpoint()]]),'Toggle Breakpoint'},
+    ['<F8>']={cmd([[lua require'dap'.terminate()]]),'Debug Quit'},
+    ['<F9>']={cmd([[lua require'dap'.run_last()]]),'Debug Again'},
+    ['<F10>']={cmd([[lua require'dap'.step_over()]]),'Step Over'},
+    ['<F11>']={cmd([[lua require'dap'.step_into()]]),'Step Into'},
+    ['<F12>']={cmd([[lua require'dap'.step_out()]]),'Step out'},
+    -- " nnoremap <c-k> :lua require'dapui'.eval()]]),''},
+    --
+    ['<leader>B']={cmd([[lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')]]),''}
     }
     require('which-key').register(mappings ,mappings_opt)
 end

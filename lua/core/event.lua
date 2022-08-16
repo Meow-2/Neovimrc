@@ -141,6 +141,13 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'BufWinEnter' }, {
     callback = disable_cursorword,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+    group = MyGroup,
+    pattern = 'c,cpp,python,go,python,lua',
+    callback = require('modules.debug.dap-utils').load_breakpoints
+})
+
+
 -- " auto comment disabled
 -- au BufNewFile,BufRead * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 -- " markdown

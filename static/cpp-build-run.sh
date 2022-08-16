@@ -22,4 +22,4 @@
 # $(VIM_INIHOME)     # 当前任务的 ini 文件的目录（方便调用一些和配置文件位置相关的脚本）
 mkdir -p build;
 clang++ -std=c++17 -g -Wall -pthread -o "$VIM_FILEDIR/build/$VIM_FILENOEXT" "$VIM_FILEPATH" &&
-./build/$VIM_FILENOEXT
+./build/"$VIM_FILENOEXT"

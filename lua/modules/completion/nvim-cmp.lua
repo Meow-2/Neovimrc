@@ -2,7 +2,7 @@ return function()
     local luasnip = require("luasnip")
     local cmp = require('cmp')
 
-    local insert_map = _CMP_MAP(cmp, luasnip, cmp.SelectBehavior.Select)
+    local insert_map = _CMP_MAP(cmp, luasnip)
 
     local win_style = {
         border = "single",
@@ -85,10 +85,9 @@ return function()
                 { name = 'cmdline' },
             },
         })
-        local cmdline_map = _CMP_MAP(cmp, luasnip, cmp.SelectBehavior.Insert)
-        cmp.setup.cmdline(':', {mapping = cmdline_map, sources = { { name = 'cmdline' } } })
-        cmp.setup.cmdline('/', {mapping = cmdline_map, sources = { { name = 'buffer' } } })
-        cmp.setup.cmdline('?', {mapping = cmdline_map, sources = { { name = 'buffer' } } })
+        cmp.setup.cmdline(':', {mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'cmdline' },{ name = 'path' }}})
+        cmp.setup.cmdline('/', {mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'buffer' } ,{ name = 'path' }} })
+        cmp.setup.cmdline('?', {mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'buffer' } } })
     end
 
 

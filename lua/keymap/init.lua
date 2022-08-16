@@ -13,10 +13,10 @@ local has_words_before = function()--{{{
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end--}}}
 
-local function super_tab(cmp,luasnip,select_behavior)--{{{
+local function super_tab(cmp,luasnip)--{{{
     return  function(fallback)
         if cmp.visible() then
-            cmp.select_next_item(select_behavior)
+            cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
         elseif luasnip.jumpable(1) then
             luasnip.jump(1)
         elseif has_words_before() then
@@ -39,15 +39,15 @@ local function super_s_tab(cmp, luasnip, select_behavior)--{{{
     end
 end--}}}
 
-function _CMP_MAP(cmp,luasnip,select_behavior)--{{{
+function _CMP_MAP(cmp,luasnip)--{{{
     local insert_map = cmp.mapping.preset.insert()
     rawset(insert_map, '<C-d>', cmp.mapping.scroll_docs(4))
     rawset(insert_map, '<C-u>', cmp.mapping.scroll_docs(-4))
     rawset(insert_map, '<C-j>', cmp.mapping.select_next_item())
     rawset(insert_map, '<C-k>', cmp.mapping.select_prev_item())
     rawset(insert_map, '<CR>', cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true }))
-    rawset(insert_map, '<Tab>', cmp.mapping(super_tab(cmp,luasnip,{behavior = select_behavior}),{'i','c'}))
-    rawset(insert_map, '<S-Tab>', cmp.mapping(super_s_tab(cmp,luasnip,{behavior = select_behavior}),{'i','c'}))
+    rawset(insert_map, '<Tab>', cmp.mapping(super_tab(cmp,luasnip),{'i','s'}))
+    rawset(insert_map, '<S-Tab>', cmp.mapping(super_s_tab(cmp,luasnip),{'i','s'}))
     rawset(insert_map, '<C-Space>', cmp.mapping(cmp.mapping.complete(),{'i','c'}))
     return insert_map
 end--}}}

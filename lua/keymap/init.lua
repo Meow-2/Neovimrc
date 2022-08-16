@@ -60,7 +60,7 @@ function LSP_MAP(buffnr)
         ['gr']={cmd('lua vim.lsp.buf.references()'), 'Lsp Go Ref' },
         ['<Leader>.']={cmd('lua vim.lsp.buf.code_action()'), 'Code Action' },
         ['<Leader>=']={cmd('lua vim.lsp.buf.formatting()'), 'Lsp Format' },
-        ['<Leader>d']={cmd('lua vim.lsp.buf.type_definition()'), 'Lsp Go Type' },
+        -- ['<Leader>d']={cmd('lua vim.lsp.buf.type_definition()'), 'Lsp Go Type' },
         ['<Leader>D']={cmd('lua vim.lsp.buf.declaration()'),'Lsp Go Decl'},
         ['<Leader>w'] = {name = 'Workspace'},
         ['<Leader>wa']={cmd('lua vim.lsp.buf.add_workspace_folder()'), 'Workspace Add ' },
@@ -144,9 +144,16 @@ function WK_MAP()
     ['<F10>']={cmd([[lua require'dap'.step_over()]]),'Step Over'},
     ['<F11>']={cmd([[lua require'dap'.step_into()]]),'Step Into'},
     ['<F12>']={cmd([[lua require'dap'.step_out()]]),'Step out'},
-    ['<leader>B']={cmd([[lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > '); require'modules.debug.dap-utils'.store_breakpoints(true)]]),'Condition Breakpoint'},
-    ['<leader>rb']={cmd([[lua require'dap'.clear_breakpoints(); require'modules.debug.dap-utils'.store_breakpoints(true)]]),'Remove All Breakpoint'},
-    -- " nnoremap <c-k> :lua require'dapui'.eval()]]),''},
+    ['<Leader>B']={cmd([[lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > '); require'modules.debug.dap-utils'.store_breakpoints(true)]]),'Condition Breakpoint'},
+    ['<Leader>rb']={cmd([[lua require'dap'.clear_breakpoints(); require'modules.debug.dap-utils'.store_breakpoints(true)]]),'Remove All Breakpoints'},
+    -- nvim-gdb
+    ["<Leader>d"] = {name = 'Debug GDB'},
+    ["<Leader>dr"] = {cmd("GdbStart gdbr"), 'GDB Start Remote'},
+    ["<Leader>ds"] = {cmd("lua StartGdbSession()"),'GDB Start'},
+    ["<Leader>dc"] = {cmd("lua CreateWatch()"), 'GDB Create Watch'},
+    ["<Leader>db"] = {name = 'Debug GDB Cmd'},
+    ["<Leader>dbt"] = {cmd("GdbLopenBacktrace"),'GDB bt' },
+    ["<Leader>dbp"]  ={cmd("GdbLopenBreakpoints"),'GDB bp'},
     }
     require('which-key').register(mappings ,mappings_opt)
 end

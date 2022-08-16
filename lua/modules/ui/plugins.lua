@@ -36,4 +36,6 @@ plugin({
   requires = { 'nvim-lua/plenary.nvim'},
 })
 -- plugin({'SmiteshP/nvim-gps'})
-plugin({'folke/todo-comments.nvim', config = conf('todo-comments.nvim'), requires = 'plenary.nvim'})
+-- dedicated config for todo-comments to fix PackerCompile
+plugin({'folke/todo-comments.nvim', requires = 'plenary.nvim'})
+require('modules.ui.todo-comments-nvim')

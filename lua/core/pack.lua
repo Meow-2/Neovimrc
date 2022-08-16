@@ -21,7 +21,6 @@ Packer.__index = Packer
 -- require("modules/ui/plugins")
 function Packer:load_plugins()
   self.repos = {}
-  
   -- list = {"modules/completion/plugins", "modules/lang/plugins", "modules/tools/plugins", "modules/ui/plugins"}
   local get_plugins_list = function()
     local list = {}

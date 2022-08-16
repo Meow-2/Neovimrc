@@ -138,15 +138,15 @@ function WK_MAP()
     ['<Leader>tm'] = {cmd('TableModeToggle'),'Table Mode Toggle'},
     -- nvim-dap
     ['<F5>']={cmd([[lua require'dap'.continue()]]),'Debug Continue'},
-    ['<F6>']={cmd([[lua require'dap'.toggle_breakpoint()]]),'Toggle Breakpoint'},
+    ['<F6>']={cmd([[lua require'dap'.toggle_breakpoint(); require'modules.debug.dap-utils'.store_breakpoints(true)]]),'Toggle Breakpoint'},
     ['<F8>']={cmd([[lua require'dap'.terminate()]]),'Debug Quit'},
-    ['<F9>']={cmd([[lua require'dap'.run_last()]]),'Debug Again'},
+    ['<F9>']={cmd([[lua require'dap'.run_last()]]),'Debug Run Last'},
     ['<F10>']={cmd([[lua require'dap'.step_over()]]),'Step Over'},
     ['<F11>']={cmd([[lua require'dap'.step_into()]]),'Step Into'},
     ['<F12>']={cmd([[lua require'dap'.step_out()]]),'Step out'},
+    ['<leader>B']={cmd([[lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > '); require'modules.debug.dap-utils'.store_breakpoints(true)]]),'Condition Breakpoint'},
+    ['<leader>rb']={cmd([[lua require'dap'.clear_breakpoints(); require'modules.debug.dap-utils'.store_breakpoints(true)]]),'Remove All Breakpoint'},
     -- " nnoremap <c-k> :lua require'dapui'.eval()]]),''},
-    --
-    ['<leader>B']={cmd([[lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')]]),''}
     }
     require('which-key').register(mappings ,mappings_opt)
 end
@@ -179,6 +179,7 @@ end
 imap({
     {'<C-p>', cmd('Lspsaga signature_help'),nore_silent },
     {'<C-u>', cmd([[lua require('nvim-picgo').upload_clipboard()]]), nore },
+    {'<C-y>', cmd([[lua require('dap.ext.autocompl').attach()]]), nore },
 })
 
 

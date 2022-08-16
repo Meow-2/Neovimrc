@@ -1,16 +1,4 @@
 local M = {}
-local dap = require('dap')
-
--- refresh config
-M.reload_continue = function()
-  package.loaded['modules.debug.nvim-dap'] = nil
-  package.loaded['modules.debug.nvim-dap-ui'] = nil
-  package.loaded['modules.debug.nvim-dap-virtual-text'] = nil
-  require('modules.debug.nvim-dap')()
-  require('modules.debug.nvim-dap-ui')()
-  require('modules.debug.nvim-dap-virtual-text')()
-  dap.continue()
-end
 
 -- support passing args
 M.find_next_start = function(str, cur_idx)
@@ -64,7 +52,7 @@ end
 
 
 -- persist breakpoint
-local bp_base_dir = os.getenv("HOME") .. "/.cache/dap-breakpoint/"
+local bp_base_dir = vim.fn.stdpath('cache') .. "/dap-breakpoint/"
 local breakpoints = require('dap.breakpoints')
 
 function M.store_breakpoints()

@@ -6,8 +6,11 @@ return function()
         -- change to you vps or vm ip
         vim.g.mkdp_open_ip = '119.29.90.39'
         vim.g.mkdp_port = 43969
-        vim.g.mkdp_browserfunc = function(url)
-            vim.cmd('!lemonade open '.. tostring(url))
-        end
+        vim.cmd([[
+        function! g:Open_browser(url)
+            silent exe '!lemonade open 'a:url
+        endfunction
+        ]])
+        vim.g.mkdp_browserfunc = 'g:Open_browser'
     end
 end

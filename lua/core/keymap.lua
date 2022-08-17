@@ -112,5 +112,9 @@ keymap.vmap = map('v')
 keymap.tmap = map('t')
 keymap.omap = map('o')
 keymap.xmap = map('x')
-
+keymap.dmap = function(mod, key)
+  if vim.fn.maparg(key, mod) ~= '' then
+    vim.keymap.del(mod, key)
+  end
+end
 return keymap

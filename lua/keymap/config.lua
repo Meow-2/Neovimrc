@@ -1,6 +1,13 @@
 local keymap = require('core.keymap')
-local nmap, imap, cmap, vmap, tmap, omap, xmap =
-  keymap.nmap, keymap.imap, keymap.cmap, keymap.vmap, keymap.tmap, keymap.omap, keymap.xmap
+local nmap, imap, cmap, vmap, tmap, omap, xmap, dmap =
+  keymap.nmap,
+  keymap.imap,
+  keymap.cmap,
+  keymap.vmap,
+  keymap.tmap,
+  keymap.omap,
+  keymap.xmap,
+  keymap.dmap
 local silent, noremap = keymap.silent, keymap.noremap
 local opts = keymap.new_opts
 local cmd = keymap.cmd
@@ -38,7 +45,6 @@ local compile = function() --{{{
   end
   return vim.cmd('AsyncTask file-build')
 end --}}}
-
 nmap({
   -- noremal remap
   -- cursor move
@@ -53,16 +59,25 @@ nmap({
   { '<C-k>', '<C-v>k', nore_silent },
   { [[\v]], 'v$h', nore_silent },
   -- save and quit
-  { 's', cmd('w!'), nore },
+  { '<C-s>', cmd('w!'), nore },
   { '<C-q>', cmd('qa!'), nore_silent },
   -- close buffer/tab/dashboard
   { 'q', quitbuffer, nore_silent },
   -- split windows
-  { 'S', '<Nop>', nore_silent },
-  { 'Sh', cmd('set nosplitright') .. cmd('vsplit') .. cmd('set splitright'), nore_silent },
-  { 'Sj', cmd('set splitbelow') .. cmd('split'), nore_silent },
-  { 'Sk', cmd('set nosplitbelow') .. cmd('split') .. cmd('set splitbelow'), nore_silent },
-  { 'Sl', cmd('set splitright') .. cmd('vsplit'), nore_silent },
+  { 's', '<Nop>', nore_silent },
+  { 'ss', '<Nop>', nore_silent },
+  {
+    'sh',
+    cmd('set nosplitright') .. cmd('vsplit') .. cmd('set splitright'),
+    opts(noremap, silent, 'Split Left'),
+  },
+  { 'sj', cmd('set splitbelow') .. cmd('split'), opts(noremap, silent, 'Split Up') },
+  {
+    'sk',
+    cmd('set nosplitbelow') .. cmd('split') .. cmd('set splitbelow'),
+    opts(noremap, silent, 'Split Down'),
+  },
+  { 'sl', cmd('set splitright') .. cmd('vsplit'), opts(noremap, silent, 'Split Right') },
 
   { '<S-Left>', cmd('set nosplitright') .. cmd('vsplit') .. cmd('set splitright'), nore_silent },
   { '<S-Down>', cmd('set splitbelow') .. cmd('split'), nore_silent },

@@ -60,13 +60,13 @@ end --}}}
 function LSP_MAP(buffnr)
   local mappings_opt = { mode = 'n', buffer = buffnr, silent = true, noremap = true, nowait = true }
   local mappings = {
-    ['gd'] = { cmd('lua vim.lsp.buf.definition()'), 'Lsp Go Def' },
-    ['gi'] = { cmd('lua vim.lsp.buf.implementation()'), 'Lsp Go Imp' },
+    ['gd'] = { cmd('lua vim.lsp.buf.definition()'), 'Lsp Go Definition' },
+    ['gi'] = { cmd('lua vim.lsp.buf.implementation()'), 'Lsp Go Implement' },
     ['gr'] = { cmd('lua vim.lsp.buf.references()'), 'Lsp Go Ref' },
     ['<Leader>.'] = { cmd('lua vim.lsp.buf.code_action()'), 'Code Action' },
-    ['<Leader>='] = { cmd('lua vim.lsp.buf.formatting()'), 'Lsp Format' },
-    -- ['<Leader>d']={cmd('lua vim.lsp.buf.type_definition()'), 'Lsp Go Type' },
-    ['<Leader>D'] = { cmd('lua vim.lsp.buf.declaration()'), 'Lsp Go Decl' },
+    -- ['<Leader>='] = { cmd('lua vim.lsp.buf.formatting()'), 'Lsp Format' },
+    ['<Leader>T'] = { cmd('lua vim.lsp.buf.type_definition()'), 'Lsp Go Type Definition' },
+    ['<Leader>D'] = { cmd('lua vim.lsp.buf.declaration()'), 'Lsp Go Declaration' },
     ['<Leader>w'] = { name = 'Workspace' },
     ['<Leader>wa'] = { cmd('lua vim.lsp.buf.add_workspace_folder()'), 'Workspace Add ' },
     ['<Leader>wd'] = { cmd('lua vim.lsp.buf.remove_workspace_folder()'), 'Workspace Del' },
@@ -105,19 +105,22 @@ end --}}}
 function WK_MAP()
   local mappings_opt = { mode = 'n', buffer = nil, silent = true, noremap = true, nowait = true }
   local mappings = {
-    ['<C-s>'] = { cmd('luafile ' .. source_file), 'Source Config' },
+    -- Telescope
+    ['sb'] = { cmd('Telescope buffers'), 'Search Buffers' },
+    ['sw'] = { cmd('Telescope live_grep'), 'Search Words' },
+    ['sf'] = { cmd('Telescope find_files'), 'Search Files' },
+    ['so'] = { cmd('Telescope oldfiles'), 'Search Open History' },
+    ['sp'] = { cmd('Telescope help_tags'), 'Search Help Tags' },
+    -- ['sh'] = { desc = 'Split Left' },
+    -- ['sj'] = { desc = 'Split Down' },
+    -- ['sk'] = { desc = 'Split Up' },
+    -- ['sl'] = { desc = 'Split Right' },
     -- Packer
     ['<Leader>u'] = { cmd('PackerUpdate'), 'Plugins Update' },
     ['<Leader>i'] = { cmd('PackerInstall'), 'Plugins Install' },
     ['<Leader>c'] = { cmd('PackerCompile'), 'Plugins Config Compile' },
     -- Dashboard
     ['<Leader>n'] = { cmd('DashboardNewFile'), 'New File' },
-    -- Telescope
-    ['<Leader>b'] = { cmd('Telescope buffers'), 'Find Buffers' },
-    ['<Leader>l'] = { cmd('Telescope live_grep'), 'Find Words' },
-    ['<Leader>f'] = { cmd('Telescope find_files'), 'Find Files' },
-    ['<Leader>h'] = { cmd('Telescope oldfiles'), 'Find Open History' },
-    ['<Leader>p'] = { cmd('Telescope help_tags'), 'Find Help Tags' },
     -- Mason
     ['<Leader>m'] = { cmd('Mason'), 'Install Lsp and Dap' },
     -- neovim-session-manager
@@ -155,11 +158,11 @@ function WK_MAP()
     ['<C-p>'] = { cmd('Lspsaga signature_help'), 'Lsp Signature Help' },
     -- Lspsaga
     ['<Leader>o'] = { cmd('LSoutlineToggle'), 'Show OutLine' },
-    ['<Leader>r'] = { name = 'Lspsaga Rename' },
-    ['<Leader>rn'] = { cmd('Lspsaga rename'), 'Lsp Rename' },
+    -- ['<Leader>r'] = { name = 'Lspsaga Rename' },
+    ['<Leader>r'] = { cmd('Lspsaga rename'), 'Lsp Rename' },
     -- nvim-lspconfig
-    ['<Leader>e'] = { cmd('lua vim.diagnostic.open_float()'), 'Lsp Diagnostic Float Win' },
-    ['<Leader>a'] = { cmd('lua vim.diagnostic.setloclist()'), 'Lsp Diagnostic List ' },
+    ['<Leader>f'] = { cmd('lua vim.diagnostic.open_float()'), 'Lsp Diagnostic Float Win' },
+    ['<Leader>l'] = { cmd('lua vim.diagnostic.setloclist()'), 'Lsp Diagnostic List ' },
     -- asynctask
     ['<F1>'] = { cmd('lua Super_F1()'), 'Super Run' },
     ['<F2>'] = { cmd('AsyncTask project-buildrun'), 'Project Build' },
@@ -180,26 +183,33 @@ function WK_MAP()
     ['<F10>'] = { cmd([[lua require'dap'.step_over()]]), 'Step Over' },
     ['<F11>'] = { cmd([[lua require'dap'.step_into()]]), 'Step Into' },
     ['<F12>'] = { cmd([[lua require'dap'.step_out()]]), 'Step out' },
-    ['<Leader>B'] = {
+    ['<Leader>b'] = { name = 'Dap Breakpoints' },
+    ['<Leader>bc'] = {
       cmd(
         [[lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > '); require'modules.debug.dap-utils'.store_breakpoints(true)]]
       ),
-      'Condition Breakpoint',
+      'Breakpoints Condition',
     },
-    ['<Leader>rb'] = {
+    ['<Leader>be'] = {
+      cmd(
+        [[lua require'dap'.set_exception_breakpoints('default'); require'modules.debug.dap-utils'.store_breakpoints(true)]]
+      ),
+      'Breakpoints Exception',
+    },
+    ['<Leader>bd'] = {
       cmd(
         [[lua require'dap'.clear_breakpoints(); require'modules.debug.dap-utils'.store_breakpoints(true)]]
       ),
-      'Remove All Breakpoints',
+      'Breakpoints Del All',
     },
+    ['<Leader>bl'] = { cmd([[lua require'dap'.list_breakpoints()]]), 'Breakpoints List' },
     -- nvim-gdb
-    ['<Leader>d'] = { name = 'Debug GDB' },
+    ['<Leader>d'] = { name = 'GDB Debug' },
     ['<Leader>dr'] = { cmd('GdbStart gdbr'), 'GDB Start Remote' },
-    ['<Leader>ds'] = { cmd('lua StartGdbSession()'), 'GDB Start' },
-    ['<Leader>dc'] = { cmd('lua CreateWatch()'), 'GDB Create Watch' },
-    ['<Leader>db'] = { name = 'Debug GDB Cmd' },
-    ['<Leader>dbt'] = { cmd('GdbLopenBacktrace'), 'GDB bt' },
-    ['<Leader>dbp'] = { cmd('GdbLopenBreakpoints'), 'GDB bp' },
+    ['<Leader>dl'] = { cmd('lua StartGdbSession()'), 'GDB Start' },
+    ['<Leader>dw'] = { cmd('lua CreateWatch()'), 'GDB Create Watch' },
+    ['<Leader>dt'] = { cmd('GdbLopenBacktrace'), 'GDB Backtrace' },
+    ['<Leader>db'] = { cmd('GdbLopenBreakpoints'), 'GDB Breakpoint' },
   }
   -- require('which-key').register({['<F1>'] = {cmd('lua Super_F1()'), 'Super Run'}} ,{mode = "n",noremap = true,nowait = true})
   require('which-key').register(mappings, mappings_opt)

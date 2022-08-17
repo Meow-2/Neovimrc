@@ -10,12 +10,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- set highlight
-vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter', 'BufEnter' }, {
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'colorscheme' }, {
   group = MyGroup,
   pattern = { '*' },
   callback = function()
     vim.cmd('highlight Comment cterm=italic gui=italic')
-    vim.cmd('highlight Cursor cterm=bold,italic gui=bold,italic')
+    vim.cmd('highlight Cursor gui=bold,italic')
+    vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = '#de841b' })
     vim.api.nvim_set_hl(0, 'CursorWord', { bg = '#3f444a', underline = false })
 
     vim.g.terminal_color_0 = '#262a33'

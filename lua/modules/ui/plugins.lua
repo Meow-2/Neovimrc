@@ -39,7 +39,6 @@ plugin({
   config = conf('gitsigns.nvim'),
   requires = { 'nvim-lua/plenary.nvim' },
 })
--- plugin({'SmiteshP/nvim-gps'})
--- dedicated config for todo-comments to fix PackerCompile
+-- plugin({ 'SmiteshP/nvim-navic', config = conf('nvim-navic'), requires = 'neovim/nvim-lspconfig' })
 plugin({ 'folke/todo-comments.nvim', requires = 'plenary.nvim' })
 require('modules.ui.todo-comments-nvim')

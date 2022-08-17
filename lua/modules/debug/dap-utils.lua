@@ -50,14 +50,13 @@ M.str2argtable = function(str)
   return arg_list
 end
 
-
 -- persist breakpoint
-local bp_base_dir = vim.fn.stdpath('cache') .. "/dap-breakpoint/"
+local bp_base_dir = vim.fn.stdpath('cache') .. '/dap-breakpoint/'
 local breakpoints = require('dap.breakpoints')
 
 function M.store_breakpoints()
   if vim.fn.isdirectory(bp_base_dir) == 0 then
-    os.execute("mkdir -p " .. bp_base_dir)
+    os.execute('mkdir -p ' .. bp_base_dir)
   end
 
   -- save current buffer breakpoints
@@ -71,7 +70,7 @@ function M.store_breakpoints()
 
   -- build bps json file
   local buf_name = vim.api.nvim_buf_get_name(0)
-  buf_name = buf_name:gsub("/", "-")
+  buf_name = buf_name:gsub('/', '-')
   local fp = io.open(bp_base_dir .. buf_name:sub(2, #buf_name) .. '.json', 'w')
 
   -- write bps into json file
@@ -85,7 +84,7 @@ end
 function M.load_breakpoints()
   -- build bps json file
   local buf_name = vim.api.nvim_buf_get_name(0)
-  buf_name = buf_name:gsub("/", "-")
+  buf_name = buf_name:gsub('/', '-')
   local fp = io.open(bp_base_dir .. buf_name:sub(2, #buf_name) .. '.json', 'r')
   if fp == nil then
     return
@@ -102,7 +101,7 @@ function M.load_breakpoints()
         local opts = {
           condition = bp.condition,
           log_message = bp.logMessage,
-          hit_condition = bp.hitCondition
+          hit_condition = bp.hitCondition,
         }
         breakpoints.set(opts, bufnr, line)
       end

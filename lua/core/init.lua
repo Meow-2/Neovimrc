@@ -1,7 +1,3 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
 local vim = vim
 local home = os.getenv('HOME')
 -- remove check is windows because I only use mac or linux

@@ -1,3 +1,3 @@
 return function()
-    vim.cmd('colorscheme zephyr')
+  vim.cmd('colorscheme zephyr')
 end

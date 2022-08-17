@@ -1,6 +1,3 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
 local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
 
 vim.opt.termguicolors = true
@@ -100,7 +97,6 @@ vim.opt.foldenable = true
 vim.opt.foldmethod = 'marker'
 vim.opt.foldmarker = '{{{,}}}'
 vim.opt.foldminlines = 1
-
 
 vim.g.remoteSession = os.getenv('SSH_TTY') and true or false
 vim.g.python_host_prog = '/usr/bin/python'

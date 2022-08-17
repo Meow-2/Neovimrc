@@ -1,3 +1,3 @@
 return function()
-    vim.cmd('colorscheme codedark')
+  vim.cmd('colorscheme codedark')
 end

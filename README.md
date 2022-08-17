@@ -61,7 +61,7 @@ fast speed and modernity.
 ## Structure
 
 ```
-├── init.lua  
+├── init.lua
 ├── lua
 │   ├── core                       heart of cosynvim provide api
 │   │   ├── init.lua
@@ -85,7 +85,7 @@ fast speed and modernity.
 │           ├── config.lua
 │           ├── eviline.lua
 │           └── plugins.lua
-├── snippets                       snippets 
+├── snippets                       snippets
 │   ├── lua.json
 │   └── package.json
 └── static                         dashboard logo

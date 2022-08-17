@@ -1,3 +1,2 @@
-local lsp_settings = {
-}
+local lsp_settings = {}
 return lsp_settings

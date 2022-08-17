@@ -1,7 +1,3 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
 local status_ok, galaxyline = pcall(require, 'galaxyline')
 if not status_ok then
   return
@@ -47,7 +43,9 @@ gls.left[2] = {
         v = colors.blue,
         V = colors.blue,
       }
-      vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
+      vim.api.nvim_command(
+        'hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg
+      )
       return '  '
     end,
   },

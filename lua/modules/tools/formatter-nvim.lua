@@ -11,69 +11,86 @@ return function()
     filetype = {
       sh = {
         function()
-          local shiftwidth = vim.opt.shiftwidth:get()
-          local expandtab = vim.opt.expandtab:get()
-
-          if not expandtab then
-            shiftwidth = 0
-          end
-
-          return {
-            exe = 'shfmt',
-            args = { '-i', shiftwidth, '-ci', '-bn' },
-            stdin = true,
-          }
+          return vim.b.disable_format and {}
+            or {
+              exe = 'shfmt',
+              args = { '-i', 4, '-ci', '-bn' },
+              stdin = true,
+            }
         end,
       },
       cpp = {
-        require('formatter.filetypes.cpp').clangformat,
+        function()
+          return vim.b.disable_format and {}
+            or {
+              exe = 'clang-format',
+              args = {
+                '-assume-filename',
+                util.escape_path(util.get_current_buffer_file_name()),
+              },
+              stdin = true,
+              try_node_modules = true,
+            }
+        end,
       },
       python = {
-        require('formatter.filetypes.python').autopep8,
+        function()
+          return vim.b.disable_format and {}
+            or {
+              exe = 'autopep8',
+              args = { '-' },
+              stdin = 1,
+            }
+        end,
       },
       json = {
-        require('formatter.defaults.clangformat'),
+        function()
+          return vim.b.disable_format and {}
+            or {
+              exe = 'clang-format',
+              args = {
+                '-assume-filename',
+                util.escape_path(util.get_current_buffer_file_name()),
+              },
+              stdin = true,
+              try_node_modules = true,
+            }
+        end,
       },
       cmake = {
         function()
-          return {
-            exe = 'cmake-format',
-            args = { '-' },
-            stdin = true,
-          }
+          return vim.b.disable_format and {}
+            or {
+              exe = 'cmake-format',
+              args = { '-' },
+              stdin = true,
+            }
         end,
       },
       go = {
-        require('formatter.filetypes.go').gofmt,
+        function()
+          return vim.b.disable_format and {}
+            or {
+              exe = 'gofmt',
+              stdin = true,
+            }
+        end,
       },
-      -- Formatter configurations for filetype "lua" go here
-      -- and will be executed in order
       lua = {
-        -- "formatter.filetypes.lua" defines default configurations for the
-        -- "lua" filetype
-        require('formatter.filetypes.lua').stylua,
-
-        -- You can also define your own configuration
-        -- function()
-        -- 	-- Supports conditional formatting
-        -- 	if util.get_current_buffer_file_name() == "special.lua" then
-        -- 		return nil
-        -- 	end
-        --
-        -- 	-- Full specification of configurations is down below and in Vim help
-        -- 	-- files
-        -- 	return {
-        -- 		exe = "stylua",
-        -- 		args = {
-        -- 			"--search-parent-directories",
-        -- 			"--stdin-filepath",
-        -- 			util.escape_path(util.get_current_buffer_file_path()),
-        -- 			"--",
-        -- 			"-",
-        -- 		},
-        -- 		stdin = true,
-        -- 	}
-        -- end,
+        function()
+          return vim.b.disable_format and {}
+            or {
+              exe = 'stylua',
+              args = {
+                '--search-parent-directories',
+                '--stdin-filepath',
+                util.escape_path(util.get_current_buffer_file_path()),
+                '--',
+                '-',
+              },
+              stdin = true,
+            }
+        end,
       },
 
       -- Use the special "*" filetype for defining formatter configurations on
@@ -81,7 +98,34 @@ return function()
       ['*'] = {
         -- "formatter.filetypes.any" defines default configurations for any
         -- filetype
-        require('formatter.filetypes.any').remove_trailing_whitespace,
+        function(parser)
+          if vim.b.disable_format then
+            return {}
+          end
+          if not parser then
+            return {
+              exe = 'prettier',
+              args = {
+                '--stdin-filepath',
+                util.escape_path(util.get_current_buffer_file_path()),
+              },
+              stdin = true,
+              try_node_modules = true,
+            }
+          end
+
+          return {
+            exe = 'prettier',
+            args = {
+              '--stdin-filepath',
+              util.escape_path(util.get_current_buffer_file_path()),
+              '--parser',
+              parser,
+            },
+            stdin = true,
+            try_node_modules = true,
+          }
+        end,
       },
     },
   })
@@ -93,4 +137,13 @@ return function()
       vim.api.nvim_command('FormatWrite')
     end,
   })
+  function Toggle_Format()
+    if vim.b.disable_format then
+      print('Formatter.nvim Enabled in Buffer!')
+      vim.b.disable_format = false
+      return
+    end
+    print('Formatter.nvim Disabled in Buffer!')
+    vim.b.disable_format = true
+  end
 end

@@ -6,7 +6,6 @@ local opts = key.new_opts
 local nore = opts(key.noremap)
 local nore_silent = opts(key.noremap, key.silent)
 local nore_silent_expr = opts(key.noremap, key.silent, key.expr)
-local source_file = vim.fn.stdpath('config') .. '/init.lua'
 
 local has_words_before = function() --{{{
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -64,7 +63,6 @@ function LSP_MAP(buffnr)
     ['gi'] = { cmd('lua vim.lsp.buf.implementation()'), 'Lsp Go Implement' },
     ['gr'] = { cmd('lua vim.lsp.buf.references()'), 'Lsp Go Ref' },
     ['<Leader>.'] = { cmd('lua vim.lsp.buf.code_action()'), 'Code Action' },
-    -- ['<Leader>='] = { cmd('lua vim.lsp.buf.formatting()'), 'Lsp Format' },
     ['<Leader>T'] = { cmd('lua vim.lsp.buf.type_definition()'), 'Lsp Go Type Definition' },
     ['<Leader>D'] = { cmd('lua vim.lsp.buf.declaration()'), 'Lsp Go Declaration' },
     ['<Leader>w'] = { name = 'Workspace' },
@@ -161,8 +159,8 @@ function WK_MAP()
     -- ['<Leader>r'] = { name = 'Lspsaga Rename' },
     ['<Leader>r'] = { cmd('Lspsaga rename'), 'Lsp Rename' },
     -- nvim-lspconfig
-    ['<Leader>f'] = { cmd('lua vim.diagnostic.open_float()'), 'Lsp Diagnostic Float Win' },
-    ['<Leader>l'] = { cmd('lua vim.diagnostic.setloclist()'), 'Lsp Diagnostic List ' },
+    ['<Leader>e'] = { cmd('lua vim.diagnostic.open_float()'), 'Lsp Diagnostic Float Win' },
+    ['<Leader>a'] = { cmd('lua vim.diagnostic.setloclist()'), 'Lsp Diagnostic List ' },
     -- asynctask
     ['<F1>'] = { cmd('lua Super_F1()'), 'Super Run' },
     ['<F2>'] = { cmd('AsyncTask project-buildrun'), 'Project Build' },
@@ -214,6 +212,8 @@ function WK_MAP()
     ['<Leader>dw'] = { cmd('lua CreateWatch()'), 'GDB Create Watch' },
     ['<Leader>dt'] = { cmd('GdbLopenBacktrace'), 'GDB Backtrace' },
     ['<Leader>db'] = { cmd('GdbLopenBreakpoints'), 'GDB Breakpoint' },
+    -- formatter.nvim
+    ['<Leader>f'] = { cmd('lua Toggle_Format()'), 'Formatter Enable/Disable' },
   }
   -- require('which-key').register({['<F1>'] = {cmd('lua Super_F1()'), 'Super Run'}} ,{mode = "n",noremap = true,nowait = true})
   require('which-key').register(mappings, mappings_opt)
@@ -263,6 +263,7 @@ vmap({
   { '<C-/>', [[:CommentToggle<Cr>]], nore_silent },
   { 't', [[:Tabularize /]], nore },
   { '<Leader>.', cmd('Lspsaga range_code_action'), nore_silent },
+  { '<Leader>f', cmd('Format'), nore_silent },
 })
 
 tmap({

@@ -118,9 +118,24 @@ keymap.vmap = map('v')
 keymap.tmap = map('t')
 keymap.omap = map('o')
 keymap.xmap = map('x')
-keymap.dmap = function(mod, key)
+
+local delmap = function(mod, key)
   if vim.fn.maparg(key, mod) ~= '' then
     vim.keymap.del(mod, key)
+    print('del ' .. ' mod:' .. mod .. ' key:' .. key)
+  end
+end
+
+keymap.dmap = function(tbl)
+  vim.validate({
+    tbl = { tbl, 'table' },
+  })
+  if type(tbl[1]) == 'table' and type(tbl[2]) == 'table' then
+    for _, v in pairs(tbl) do
+      delmap(v[1], v[2])
+    end
+  else
+    delmap(tbl[1], tbl[2])
   end
 end
 return keymap

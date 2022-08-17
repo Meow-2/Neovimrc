@@ -17,7 +17,7 @@ dap.configurations.cpp = {
     type = 'cppdbg',
     request = 'launch',
     program = function()
-      dmap('c', '<Tab>')
+      dmap({ 'c', '<Tab>' })
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/', 'file')
     end,
     args = function()

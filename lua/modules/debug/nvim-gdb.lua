@@ -58,7 +58,7 @@ return function()
   end
 
   _G.StartGdbSession = function()
-    dmap('c', '<Tab>')
+    dmap({ 'c', '<Tab>' })
     -- start gdb sessoin
     local exec_file = vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/', 'file')
     vim.api.nvim_command(':GdbStart gdb -q ' .. exec_file)

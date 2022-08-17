@@ -2,7 +2,7 @@ return function()
   -- vim.api.nvim_command('set foldmethod=marker')
   -- vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
   require('nvim-treesitter.configs').setup({
-    ensure_installed = {'c','cpp','lua','python','go','bash','json', 'cmake','markdown'},
+    ensure_installed = { 'c', 'cpp', 'lua', 'python', 'go', 'bash', 'json', 'cmake', 'markdown' },
     -- ignore_install = { 'phpdoc' },
     highlight = {
       enable = true,
@@ -22,18 +22,17 @@ return function()
       include_surrounding_whitespace = false,
     },
     matchup = {
-        enable = true,
-        disable = {},
+      enable = true,
+      disable = {},
     },
     incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<Cr>",
-      node_incremental = "<Cr>",
-      node_decremental = "<Bs>",
-      -- scope_incremental = "grc",
+      enable = true,
+      keymaps = {
+        init_selection = '<Cr>',
+        node_incremental = '<Cr>',
+        node_decremental = '<Bs>',
+        -- scope_incremental = "grc",
+      },
     },
-  },
   })
 end
-

@@ -21,8 +21,8 @@
 # $(VIM_INIFILE)     # 当前任务的 ini 文件名
 # $(VIM_INIHOME)     # 当前任务的 ini 文件的目录（方便调用一些和配置文件位置相关的脚本）
 cmake -B build \
--GNinja \
--DCMAKE_BUILD_TYPE=Debug \
--DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
--DCMAKE_EXPORT_COMPILE_COMMANDS=Enable &&
-cmake --build build -j16
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=Enable \
+    && cmake --build build -j16

@@ -191,9 +191,7 @@ function WK_MAP()
       'Breakpoints Condition',
     },
     ['<Leader>be'] = {
-      cmd(
-        [[lua require'dap'.set_exception_breakpoints('default'); require'modules.debug.dap-utils'.store_breakpoints(true)]]
-      ),
+      cmd([[lua require'dap'.set_exception_breakpoints()]]),
       'Breakpoints Exception',
     },
     ['<Leader>bd'] = {
@@ -203,6 +201,12 @@ function WK_MAP()
       'Breakpoints Del All',
     },
     ['<Leader>bl'] = { cmd([[lua require'dap'.list_breakpoints()]]), 'Breakpoints List' },
+    ['<Leader>bp'] = {
+      cmd(
+        [[lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '));require'modules.debug.dap-utils'.store_breakpoints(true)]]
+      ),
+      'Breakpoints Log Print',
+    },
     -- nvim-gdb
     ['<Leader>d'] = { name = 'GDB Debug' },
     ['<Leader>dr'] = { cmd('GdbStart gdbr'), 'GDB Start Remote' },

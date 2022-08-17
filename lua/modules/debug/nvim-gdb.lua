@@ -10,7 +10,7 @@ return function()
   -- 2. ./configure --with-python
   -- 3. make
   -- 4. make install
-
+  local dmap = require('core.keymap').dmap
   vim.g.nvimgdb_disable_start_keymaps = 1
   vim.g.nvimgdb_use_find_executables = 0
   vim.g.nvimgdb_use_cmake_to_find_executables = 0
@@ -58,6 +58,7 @@ return function()
   end
 
   _G.StartGdbSession = function()
+    dmap('c', '<Tab>')
     -- start gdb sessoin
     local exec_file = vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/', 'file')
     vim.api.nvim_command(':GdbStart gdb -q ' .. exec_file)

@@ -88,24 +88,28 @@ return function()
     error = {
       text = '● ',
       texthl = 'LspDiagnosticsSignError',
-      linehl = '',
-      numhl = '',
+    },
+    condition = {
+      text = ' ',
+      texthl = 'LspDiagnosticsSignHint',
+    },
+    log = {
+      text = 'ﳁ ',
+      texthl = 'LspDiagnosticsSignInformation',
     },
     rejected = {
-      text = '',
+      text = ' ',
       texthl = 'LspDiagnosticsSignHint',
-      linehl = '',
-      numhl = '',
     },
     stopped = {
-      text = '',
+      text = ' ',
       texthl = 'LspDiagnosticsSignInformation',
-      linehl = 'DiagnosticUnderlineInfo',
-      numhl = 'LspDiagnosticsSignInformation',
     },
   }
 
   vim.fn.sign_define('DapBreakpoint', dap_breakpoint.error)
-  vim.fn.sign_define('DapStopped', dap_breakpoint.stopped)
+  vim.fn.sign_define('DapBreakpointCondition', dap_breakpoint.condition)
+  vim.fn.sign_define('DapLogPoint', dap_breakpoint.log)
   vim.fn.sign_define('DapBreakpointRejected', dap_breakpoint.rejected)
+  vim.fn.sign_define('DapStopped', dap_breakpoint.stopped)
 end

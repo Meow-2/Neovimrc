@@ -1,11 +1,11 @@
 require('keymap.config')
-local key = require('core.keymap')
-local vmap, imap, tmap, omap, xmap = key.vmap, key.imap, key.tmap, key.omap, key.xmap
-local cmd = key.cmd
-local opts = key.new_opts
-local nore = opts(key.noremap)
-local nore_silent = opts(key.noremap, key.silent)
-local nore_silent_expr = opts(key.noremap, key.silent, key.expr)
+local keymap = require('core.keymap')
+local vmap, imap, tmap, omap, xmap = keymap.vmap, keymap.imap, keymap.tmap, keymap.omap, keymap.xmap
+local cmd = keymap.cmd
+local opts = keymap.new_opts
+local noremap, silent, expr = keymap.noremap, keymap.silent, keymap.expr
+-- local nore = opts(noremap)
+-- local opts(noremap, silent) = opts(noremap, silent)
 
 local has_words_before = function() --{{{
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -39,7 +39,7 @@ local function super_s_tab(cmp, luasnip, select_behavior) --{{{
   end
 end --}}}
 
-function _CMP_MAP(cmp, luasnip) --{{{
+function _CMP_MAP(cmp, luasnip)
   local insert_map = cmp.mapping.preset.insert()
   rawset(insert_map, '<C-d>', cmp.mapping.scroll_docs(4))
   rawset(insert_map, '<C-u>', cmp.mapping.scroll_docs(-4))
@@ -54,10 +54,10 @@ function _CMP_MAP(cmp, luasnip) --{{{
   rawset(insert_map, '<S-Tab>', cmp.mapping(super_s_tab(cmp, luasnip), { 'i', 's' }))
   rawset(insert_map, '<C-Space>', cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }))
   return insert_map
-end --}}}
+end
 
-function LSP_MAP(buffnr)
-  local mappings_opt = { mode = 'n', buffer = buffnr, silent = true, noremap = true, nowait = true }
+function LSP_MAP(bufnr)
+  local mappings_opt = { mode = 'n', buffer = bufnr, silent = true, noremap = true, nowait = true }
   local mappings = {
     ['gd'] = { cmd('lua vim.lsp.buf.definition()'), 'Lsp Go Definition' },
     ['gi'] = { cmd('lua vim.lsp.buf.implementation()'), 'Lsp Go Implement' },
@@ -252,29 +252,29 @@ function GS_MAP(bufnr)
 end
 
 imap({
-  { '<C-p>', cmd('Lspsaga signature_help'), nore_silent },
-  { '<C-u>', cmd([[lua require('nvim-picgo').upload_clipboard()]]), nore },
-  { '<C-y>', cmd([[lua require('dap.ext.autocompl').attach()]]), nore },
+  { '<C-p>', cmd('Lspsaga signature_help'), opts(noremap, silent) },
+  { '<C-u>', cmd([[lua require('nvim-picgo').upload_clipboard()]]), opts(noremap) },
+  { '<C-y>', cmd([[lua require('dap.ext.autocompl').attach()]]), opts(noremap) },
 })
 
 vmap({
   -- nvim-comment
-  { '<C-_>', [[:CommentToggle<Cr>]], nore_silent },
-  { '<C-/>', [[:CommentToggle<Cr>]], nore_silent },
-  { 't', [[:Tabularize /]], nore },
-  { '<Leader>.', cmd('Lspsaga range_code_action'), nore_silent },
-  { '<Leader>f', cmd('Format'), nore_silent },
+  { '<C-_>', [[:CommentToggle<Cr>]], opts(noremap, silent) },
+  { '<C-/>', [[:CommentToggle<Cr>]], opts(noremap, silent) },
+  { 't', [[:Tabularize /]], opts(noremap) },
+  { '<Leader>.', cmd('Lspsaga range_code_action'), opts(noremap, silent) },
+  { '<Leader>f', cmd('Format'), opts(noremap, silent) },
 })
 
 tmap({
   -- tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle<cr>
-  { '<C-t>', [[<C-\><C-n>:FloatermToggle<Cr>]], nore_silent },
+  { '<C-t>', [[<C-\><C-n>:FloatermToggle<Cr>]], opts(noremap, silent) },
   -- vim-floaterm
   {
     '<C-g>',
     function()
       return vim.bo.filetype == 'floaterm' and [[q<C-\><C-n>:FloatermKill lazygit<cr>]] or '<C-g>'
     end,
-    nore_silent_expr,
+    opts(noremap, silent, expr),
   },
 })

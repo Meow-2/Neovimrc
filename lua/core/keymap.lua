@@ -46,6 +46,10 @@ function keymap.nowait(opt)
   end
 end
 
+function keymap.buffer(bufnr)
+  return bufnr
+end
+
 function keymap.new_opts(...)
   local args = { ... }
   local o = opts:new()
@@ -55,7 +59,9 @@ function keymap.new_opts(...)
   end
 
   for _, arg in pairs(args) do
-    if type(arg) == 'string' then
+    if type(arg) == 'number' then
+      o.options.buffer = arg
+    elseif type(arg) == 'string' then
       o.options.desc = arg
     else
       arg(o.options)()

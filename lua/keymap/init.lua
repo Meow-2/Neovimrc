@@ -1,6 +1,7 @@
 require('keymap.config')
 local keymap = require('core.keymap')
-local vmap, imap, tmap, omap, xmap = keymap.vmap, keymap.imap, keymap.tmap, keymap.omap, keymap.xmap
+local nmap, vmap, imap, tmap, omap, xmap =
+  keymap.nmap, keymap.vmap, keymap.imap, keymap.tmap, keymap.omap, keymap.xmap
 local cmd = keymap.cmd
 local opts = keymap.new_opts
 local noremap, silent, expr = keymap.noremap, keymap.silent, keymap.expr
@@ -250,6 +251,36 @@ function GS_MAP(bufnr)
   }
   require('which-key').register(mappings, mappings_opt)
 end
+
+-- vim-matchup
+nmap({
+  { ';', '<Plug>(matchup-%)' },
+  { '[;', '<Plug>(matchup-[%)' },
+  { '];', '<Plug>(matchup-]%)' },
+  { 'g;', '<Plug>(matchup-z%)' },
+  { 'z;', '<Plug>(matchup-z%)' },
+  { '<c-[>', cmd('MatchupWhereAmI?'), opts(noremap) },
+})
+
+omap({
+  { ';', '<Plug>(matchup-i%)' },
+  { '[;', '<Plug>(matchup-[%)' },
+  { '];', '<Plug>(matchup-]%)' },
+  { 'i;', '<Plug>(matchup-i%)' },
+  { 'a;', '<Plug>(matchup-a%)' },
+  { 'g;', '<Plug>(matchup-z%)' },
+  { 'z;', '<Plug>(matchup-z%)' },
+})
+
+xmap({
+  { ';', '<Plug>(matchup-i%)' },
+  { '[;', '<Plug>(matchup-[%)' },
+  { '];', '<Plug>(matchup-]%)' },
+  { 'i;', '<Plug>(matchup-i%)' },
+  { 'a;', '<Plug>(matchup-a%)' },
+  { 'g;', '<Plug>(matchup-z%)' },
+  { 'z;', '<Plug>(matchup-z%)' },
+})
 
 imap({
   { '<C-p>', cmd('Lspsaga signature_help'), opts(noremap, silent) },

@@ -23,6 +23,7 @@ plugin({
 plugin({
     'akinsho/bufferline.nvim',
     config = conf('bufferline.nvim'),
+    after = 'zephyr-nvim',
     requires = 'kyazdani42/nvim-web-devicons',
 })
 

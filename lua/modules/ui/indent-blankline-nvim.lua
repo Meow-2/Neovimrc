@@ -7,4 +7,5 @@ return function()
     buftype_exclude = { 'terminal' },
     filetype_exclude = { 'dashboard', 'NvimTree', 'mason.nvim', 'lspsagaoutline' },
   })
+  vim.cmd([[highlight IndentBlanklineContextChar guifg=#61afef gui=nocombine]])
 end

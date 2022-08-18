@@ -45,6 +45,18 @@ local function super_s_tab(cmp, luasnip, select_behavior) --{{{
     end
 end --}}}
 
+function Toggle_Quickfix()
+    for _, win in pairs(vim.fn.getwininfo()) do
+        if win['quickfix'] == 1 then
+            vim.cmd('cclose')
+            return
+        end
+    end
+    if not vim.tbl_isempty(vim.fn.getqflist()) then
+        vim.cmd('copen')
+    end
+end
+
 function _CMP_MAP(cmp, luasnip)
     local insert_map = cmp.mapping.preset.insert()
     rawset(insert_map, '<C-d>', cmp.mapping.scroll_docs(4))
@@ -193,7 +205,7 @@ function WK_MAP()
         -- asynctask
         ['<F1>'] = { cmd('lua Super_F1()'), 'Super Run' },
         ['<F2>'] = { cmd('AsyncTask project-buildrun'), 'Project Build' },
-        ['<F3>'] = { cmd('call asyncrun#quickfix_toggle(6)'), 'Quickfix Close' },
+        ['<F3>'] = { cmd('call asyncrun#quickfix_toggle(12)'), 'Quickfix Close' },
         -- vim-table-mode
         ['<Leader>t'] = { name = 'Table Mode' },
         ['<Leader>tm'] = { cmd('TableModeToggle'), 'Table Mode Toggle' },

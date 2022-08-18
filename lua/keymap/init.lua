@@ -217,6 +217,8 @@ function WK_MAP()
         ['<Leader>db'] = { cmd('GdbLopenBreakpoints'), 'GDB Breakpoint' },
         -- formatter.nvim
         ['<Leader>f'] = { cmd('lua Toggle_Format()'), 'Formatter Enable/Disable' },
+        -- sniprun
+        ['<Leader>q'] = { cmd('SnipClose'), 'SnipRun Win Close' },
     }
     -- require('which-key').register({['<F1>'] = {cmd('lua Super_F1()'), 'Super Run'}} ,{mode = "n",noremap = true,nowait = true})
     require('which-key').register(mappings, mappings_opt)
@@ -296,11 +298,13 @@ imap({
 
 vmap({
     -- nvim-comment
+    -- sniprun
+    { 'r', [[:SnipRun<Cr>]], opts(noremap) },
+    { 't', [[:Tabularize /]], opts(noremap) },
+    { 'f', [[:Format<Cr><Esc>]], opts(noremap, silent) },
+    { '.', cmd('Lspsaga range_code_action'), opts(noremap, silent) },
     { '<C-_>', [[:CommentToggle<Cr>]], opts(noremap, silent) },
     { '<C-/>', [[:CommentToggle<Cr>]], opts(noremap, silent) },
-    { 't', [[:Tabularize /]], opts(noremap) },
-    { '<Leader>.', cmd('Lspsaga range_code_action'), opts(noremap, silent) },
-    { '<Leader>f', cmd('Format'), opts(noremap, silent) },
 })
 
 tmap({

@@ -15,3 +15,4 @@ plugin({
 })
 
 plugin({ 'sakhnik/nvim-gdb', run = './install.sh', config = conf('nvim-gdb') })
+plugin({ 'michaelb/sniprun', run = 'bash ./install.sh', config = conf('sniprun') })

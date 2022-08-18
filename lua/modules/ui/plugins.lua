@@ -41,5 +41,8 @@ plugin({
     requires = { 'nvim-lua/plenary.nvim' },
 })
 -- plugin({ 'SmiteshP/nvim-navic', config = conf('nvim-navic'), requires = 'neovim/nvim-lspconfig' })
-plugin({ 'folke/todo-comments.nvim', requires = 'plenary.nvim' })
-require('modules.ui.todo-comments-nvim')
+plugin({
+    'folke/todo-comments.nvim',
+    requires = 'plenary.nvim',
+    config = conf('todo-comments-nvim'),
+})

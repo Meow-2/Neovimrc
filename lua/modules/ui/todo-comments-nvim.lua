@@ -1,9 +1,8 @@
 return function()
     require('todo-comments').setup({
         keywords = {
-            -- alt ： 别名
             FIX = {
-                icon = ' ',
+                icon = ' ',
                 color = '#DC2626',
                 alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE', '!' },
             },

@@ -49,7 +49,6 @@ nmap({
     { 'q', quitbuffer, opts(noremap, silent) },
     -- split windows
     { 's', '<Nop>', opts(noremap, silent) },
-    { 'ss', '<Nop>', opts(noremap, silent) },
     {
         'sh',
         cmd('set nosplitright') .. cmd('vsplit') .. cmd('set splitright'),

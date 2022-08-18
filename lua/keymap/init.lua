@@ -111,11 +111,33 @@ function WK_MAP()
     local mappings_opt = { mode = 'n', buffer = nil, silent = true, noremap = true, nowait = true }
     local mappings = {
         -- Telescope
+        ['s'] = { name = 'Search' },
         ['sb'] = { cmd('Telescope buffers'), 'Search Buffers' },
-        ['sw'] = { cmd('Telescope live_grep'), 'Search Words' },
+        -- ['sw'] = { cmd('Telescope live_grep'), 'Search Words' },
+        ['sw'] = {
+            cmd("lua require('telescope').extensions.live_grep_args.live_grep_args()"),
+            'Search Words Live',
+        },
         ['sf'] = { cmd('Telescope find_files'), 'Search Files' },
         ['so'] = { cmd('Telescope oldfiles'), 'Search Open History' },
         ['sp'] = { cmd('Telescope help_tags'), 'Search Help Tags' },
+        ['sm'] = { cmd('Telescope man_pages'), 'Search Man Pages' },
+        ['st'] = { cmd('TodoTelescope'), 'Search TODO Lists' },
+        ['sc'] = { cmd('Telescope colorscheme'), 'Search ColorScheme' },
+        ['sC'] = { cmd('Telescope commands'), 'Search Commands' },
+        ['sK'] = { cmd('Telescope keymaps'), 'Search Keymap' },
+        ['ss'] = {
+            cmd("lua require('telescope.builtin').lsp_document_symbols()"),
+            'Search Symbol',
+        },
+        ['sS'] = {
+            cmd("lua require('telescope.builtin').lsp_dynamic_workspace_symbols()"),
+            'Search Workspace Symbol',
+        },
+        ['sg'] = { name = 'Search Git' },
+        ['sgf'] = { cmd('Telescope git_status'), 'Open changed file' },
+        ['sgb'] = { cmd('Telescope git_branches'), 'Checkout branch' },
+        ['sgc'] = { cmd('Telescope git_commits'), 'Checkout commit' },
         -- ['sh'] = { desc = 'Split Left' },
         -- ['sj'] = { desc = 'Split Down' },
         -- ['sk'] = { desc = 'Split Up' },

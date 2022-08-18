@@ -1,6 +1,7 @@
 vim.opt_local.autoindent = true
 vim.opt_local.cindent = true
 vim.opt_local.copyindent = true
+-- always insert spaces, tab will be shown as 8 spaces
 vim.opt_local.expandtab = true
 vim.opt_local.smartindent = true
 vim.opt_local.shiftwidth = 4

@@ -13,7 +13,7 @@ vim.opt.encoding = 'utf-8'
 -- vim.opt.sessionoptions = 'curdir,help,tabpages,winsize'
 vim.opt.wildignorecase = true
 vim.opt.wildignore =
-  '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'
+    '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
@@ -107,19 +107,19 @@ vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
 -- vim.opt.guifont = [[JetBrainsMono Nerd Font:h15]]
 
 if vim.loop.os_uname().sysname == 'Darwin' then
-  vim.g.clipboard = {
-    name = 'macOS-clipboard',
-    copy = {
-      ['+'] = 'pbcopy',
-      ['*'] = 'pbcopy',
-    },
-    paste = {
-      ['+'] = 'pbpaste',
-      ['*'] = 'pbpaste',
-    },
-    cache_enabled = 0,
-  }
-  vim.g.python_host_prog = '/usr/bin/python'
-  vim.g.python3_host_prog = '/usr/bin/python3'
-  vim.g.barbaric_ime = 'fcitx5'
+    vim.g.clipboard = {
+        name = 'macOS-clipboard',
+        copy = {
+            ['+'] = 'pbcopy',
+            ['*'] = 'pbcopy',
+        },
+        paste = {
+            ['+'] = 'pbpaste',
+            ['*'] = 'pbpaste',
+        },
+        cache_enabled = 0,
+    }
+    vim.g.python_host_prog = '/usr/bin/python'
+    vim.g.python3_host_prog = '/usr/bin/python3'
+    vim.g.barbaric_ime = 'fcitx5'
 end

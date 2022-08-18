@@ -46,141 +46,141 @@
 -- ^core go$ | rb$ | py$
 
 return function()
-  local actions = require('telescope.actions')
-  local lga_actions = require('telescope-live-grep-args.actions')
+    local actions = require('telescope.actions')
+    local lga_actions = require('telescope-live-grep-args.actions')
 
-  require('telescope').setup({
-    defaults = {
+    require('telescope').setup({
+        defaults = {
 
-      borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
-      -- borderchars = { "═", "║" ,"═", "║", "╔", "╗", "╝", "╚" },
-      -- borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
-      layout_config = {
-        horizontal = { prompt_position = 'top', results_width = 0.6 },
-        vertical = { mirror = false },
-      },
-      prompt_prefix = ' ',
-      selection_caret = ' ',
-      sorting_strategy = 'ascending',
-      file_previewer = require('telescope.previewers').vim_buffer_cat.new,
-      grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
-      qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-      dynamic_preview_title = true,
-      mappings = {
-        i = {
-          ['<C-v>'] = false,
-          ['<C-n>'] = actions.cycle_history_next,
-          ['<C-p>'] = actions.cycle_history_prev,
+            borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            -- borderchars = { "═", "║" ,"═", "║", "╔", "╗", "╝", "╚" },
+            -- borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+            layout_config = {
+                horizontal = { prompt_position = 'top', results_width = 0.6 },
+                vertical = { mirror = false },
+            },
+            prompt_prefix = ' ',
+            selection_caret = ' ',
+            sorting_strategy = 'ascending',
+            file_previewer = require('telescope.previewers').vim_buffer_cat.new,
+            grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
+            qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+            dynamic_preview_title = true,
+            mappings = {
+                i = {
+                    ['<C-v>'] = false,
+                    ['<C-n>'] = actions.cycle_history_next,
+                    ['<C-p>'] = actions.cycle_history_prev,
 
-          ['<C-j>'] = actions.move_selection_next,
-          ['<C-k>'] = actions.move_selection_previous,
+                    ['<C-j>'] = actions.move_selection_next,
+                    ['<C-k>'] = actions.move_selection_previous,
 
-          ['<C-c>'] = actions.close,
+                    ['<C-c>'] = actions.close,
 
-          ['<Down>'] = actions.move_selection_next,
-          ['<Up>'] = actions.move_selection_previous,
+                    ['<Down>'] = actions.move_selection_next,
+                    ['<Up>'] = actions.move_selection_previous,
 
-          ['<CR>'] = actions.select_default,
-          ['<C-s>'] = actions.select_horizontal,
-          ['<C-l>'] = actions.select_vertical,
-          ['<C-t>'] = actions.select_tab,
+                    ['<CR>'] = actions.select_default,
+                    ['<C-s>'] = actions.select_horizontal,
+                    ['<C-l>'] = actions.select_vertical,
+                    ['<C-t>'] = actions.select_tab,
 
-          ['<C-u>'] = actions.preview_scrolling_up,
-          ['<C-d>'] = actions.preview_scrolling_down,
+                    ['<C-u>'] = actions.preview_scrolling_up,
+                    ['<C-d>'] = actions.preview_scrolling_down,
 
-          ['<PageUp>'] = actions.results_scrolling_up,
-          ['<PageDown>'] = actions.results_scrolling_down,
+                    ['<PageUp>'] = actions.results_scrolling_up,
+                    ['<PageDown>'] = actions.results_scrolling_down,
 
-          ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
-          ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
-          ['<C-q>'] = actions.send_to_qflist + actions.open_qflist,
-          ['<M-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
-          -- ["<C-l>"] = actions.complete_tag,
-          ['<C-_>'] = actions.which_key, -- keys from pressing <C-/>
+                    ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
+                    ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
+                    ['<C-q>'] = actions.send_to_qflist + actions.open_qflist,
+                    ['<M-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+                    -- ["<C-l>"] = actions.complete_tag,
+                    ['<C-_>'] = actions.which_key, -- keys from pressing <C-/>
+                },
+
+                n = {
+                    ['<esc>'] = actions.close,
+                    ['<CR>'] = actions.select_default,
+                    ['<C-s>'] = actions.select_horizontal,
+                    ['<C-l>'] = actions.select_vertical,
+                    ['<C-t>'] = actions.select_tab,
+
+                    ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
+                    ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
+                    ['<C-q>'] = actions.send_to_qflist + actions.open_qflist,
+                    ['<M-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+
+                    ['j'] = actions.move_selection_next,
+                    ['k'] = actions.move_selection_previous,
+                    ['H'] = actions.move_to_top,
+                    ['M'] = actions.move_to_middle,
+                    ['L'] = actions.move_to_bottom,
+
+                    ['<Down>'] = actions.move_selection_next,
+                    ['<Up>'] = actions.move_selection_previous,
+                    ['gg'] = actions.move_to_top,
+                    ['G'] = actions.move_to_bottom,
+
+                    ['<C-u>'] = actions.preview_scrolling_up,
+                    ['<C-d>'] = actions.preview_scrolling_down,
+
+                    ['<PageUp>'] = actions.results_scrolling_up,
+                    ['<PageDown>'] = actions.results_scrolling_down,
+
+                    ['?'] = actions.which_key,
+                },
+            },
         },
-
-        n = {
-          ['<esc>'] = actions.close,
-          ['<CR>'] = actions.select_default,
-          ['<C-s>'] = actions.select_horizontal,
-          ['<C-l>'] = actions.select_vertical,
-          ['<C-t>'] = actions.select_tab,
-
-          ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
-          ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
-          ['<C-q>'] = actions.send_to_qflist + actions.open_qflist,
-          ['<M-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
-
-          ['j'] = actions.move_selection_next,
-          ['k'] = actions.move_selection_previous,
-          ['H'] = actions.move_to_top,
-          ['M'] = actions.move_to_middle,
-          ['L'] = actions.move_to_bottom,
-
-          ['<Down>'] = actions.move_selection_next,
-          ['<Up>'] = actions.move_selection_previous,
-          ['gg'] = actions.move_to_top,
-          ['G'] = actions.move_to_bottom,
-
-          ['<C-u>'] = actions.preview_scrolling_up,
-          ['<C-d>'] = actions.preview_scrolling_down,
-
-          ['<PageUp>'] = actions.results_scrolling_up,
-          ['<PageDown>'] = actions.results_scrolling_down,
-
-          ['?'] = actions.which_key,
-        },
-      },
-    },
-    -- pickers = {
-    --     find_files = {
-    --         theme = "dropdown",
-    --         previewer = false,
-    --         -- find_command = { "find", "-type", "f" },
-    --         find_command = { "fd", "-H" , "-I"},  -- "-H" search hidden files, "-I" do not respect to gitignore
-    --     },
-    -- },
-    extensions = {
-      fzf = {
-        fuzzy = true, -- false will only do exact matching
-        override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
-      },
-      ['ui-select'] = {
-        -- require("telescope.themes").get_ivy {
-        --
-        --     layout_config = {
-        --         height = 10,
+        -- pickers = {
+        --     find_files = {
+        --         theme = "dropdown",
+        --         previewer = false,
+        --         -- find_command = { "find", "-type", "f" },
+        --         find_command = { "fd", "-H" , "-I"},  -- "-H" search hidden files, "-I" do not respect to gitignore
         --     },
-        --     border = true,
-        --     borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
-        -- }
-        require('telescope.themes').get_dropdown({
-          borderchars = {
-            prompt = { '─', '│', ' ', '│', '┌', '┐', '│', '│' },
-            results = { '─', '│', '─', '│', '├', '┤', '┘', '└' },
-            preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
-          },
-        }),
-      },
-      live_grep_args = {
-        auto_quoting = true, -- enable/disable auto-quoting
-        mappings = {
-          i = {
-            ['<C-k>'] = actions.move_selection_previous,
-            ['<C-x>'] = lga_actions.quote_prompt(),
-            ['<C-l>g'] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
-            ['<C-l>t'] = lga_actions.quote_prompt({ postfix = ' -t' }),
-          },
+        -- },
+        extensions = {
+            fzf = {
+                fuzzy = true, -- false will only do exact matching
+                override_generic_sorter = true, -- override the generic sorter
+                override_file_sorter = true, -- override the file sorter
+                case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+            },
+            ['ui-select'] = {
+                -- require("telescope.themes").get_ivy {
+                --
+                --     layout_config = {
+                --         height = 10,
+                --     },
+                --     border = true,
+                --     borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+                -- }
+                require('telescope.themes').get_dropdown({
+                    borderchars = {
+                        prompt = { '─', '│', ' ', '│', '┌', '┐', '│', '│' },
+                        results = { '─', '│', '─', '│', '├', '┤', '┘', '└' },
+                        preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+                    },
+                }),
+            },
+            live_grep_args = {
+                auto_quoting = true, -- enable/disable auto-quoting
+                mappings = {
+                    i = {
+                        ['<C-k>'] = actions.move_selection_previous,
+                        ['<C-x>'] = lga_actions.quote_prompt(),
+                        ['<C-l>g'] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
+                        ['<C-l>t'] = lga_actions.quote_prompt({ postfix = ' -t' }),
+                    },
+                },
+            },
         },
-      },
-    },
-  })
-  require('telescope').load_extension('fzf')
-  require('telescope').load_extension('ui-select')
-  require('telescope').load_extension('file_browser')
+    })
+    require('telescope').load_extension('fzf')
+    require('telescope').load_extension('ui-select')
+    require('telescope').load_extension('file_browser')
 
-  -- require("telescope").load_extension('dap')
-  require('telescope').load_extension('live_grep_args')
+    -- require("telescope").load_extension('dap')
+    require('telescope').load_extension('live_grep_args')
 end

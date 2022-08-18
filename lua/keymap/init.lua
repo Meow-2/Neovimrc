@@ -45,17 +45,18 @@ local function super_s_tab(cmp, luasnip, select_behavior) --{{{
     end
 end --}}}
 
-function Toggle_Quickfix()
-    for _, win in pairs(vim.fn.getwininfo()) do
-        if win['quickfix'] == 1 then
-            vim.cmd('cclose')
-            return
-        end
-    end
-    if not vim.tbl_isempty(vim.fn.getqflist()) then
-        vim.cmd('copen')
-    end
-end
+-- function Close_Quickfix_Locationlist()
+--     for _, win in pairs(vim.fn.getwininfo()) do
+--         if win['quickfix'] == 1 then
+--             vim.cmd('cclose')
+--             return
+--         end
+--         if win['locationlist'] == 1 then
+--             vim.cmd('lclose')
+--             return
+--         end
+--     end
+-- end
 
 function _CMP_MAP(cmp, luasnip)
     local insert_map = cmp.mapping.preset.insert()
@@ -178,6 +179,7 @@ function WK_MAP()
         ['tc'] = { cmd('BufferLinePickClose'), 'Buffer Pick Close' },
         ['tl'] = { cmd('BufferLineMoveNext'), 'Buffer Move Left' },
         ['th'] = { cmd('BufferLineMovePrev'), 'Buffer Move Right' },
+        ['tq'] = { cmd('TodoQuickFix'), 'TODO QuickFix' },
         -- nvim-comment
         ['<C-_>'] = { cmd('CommentToggle'), 'Comment Code' },
         -- for nvui

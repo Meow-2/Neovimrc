@@ -2,9 +2,21 @@
   "contributes": {
     "snippets": [
       {
+        "language": "cpp",
+        "path": "./cpp.json"
+      },
+      {
+        "language": "go",
+        "path": "./go.json"
+      },
+      {
+        "language": "python",
+        "path": "./python.json"
+      },
+      {
         "language": "lua",
         "path": "./lua.json"
-      }
+      },
     ]
   }
 }

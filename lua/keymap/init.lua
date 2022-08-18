@@ -271,7 +271,7 @@ nmap({
     { '];', '<Plug>(matchup-]%)' },
     { 'g;', '<Plug>(matchup-z%)' },
     { 'z;', '<Plug>(matchup-z%)' },
-    { '<c-[>', cmd('MatchupWhereAmI?'), opts(noremap) },
+    { '<c-m>', cmd('MatchupWhereAmI?'), opts(noremap) },
 })
 
 omap({

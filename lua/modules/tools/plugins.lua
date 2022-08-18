@@ -40,6 +40,7 @@ plugin({ 'voldikss/vim-floaterm', config = conf('vim-floaterm') })
 plugin({ 'folke/which-key.nvim', config = conf('which-key.nvim') })
 plugin({ 'skywind3000/asyncrun.vim' })
 plugin({ 'skywind3000/asynctasks.vim', config = conf('asynctasks.vim') })
+plugin({ 'kevinhwang91/nvim-bqf', config = conf('nvim-bqf') })
 
 plugin({
     'iamcco/markdown-preview.nvim',

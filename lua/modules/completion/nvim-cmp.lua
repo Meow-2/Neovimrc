@@ -61,7 +61,7 @@ return function()
                     buffer = ' [Buffer]',
                     nvim_lsp = ' [' .. meta_type .. ']',
                     path = ' [Path]',
-                    luasnip = ' [Snip]',
+                    luasnip = ' [LuaSnip]',
                     cmdline = ' [Cmd]',
                 })[entry.source.name]
 
@@ -89,13 +89,10 @@ return function()
         mapping = cmp.mapping.preset.cmdline(),
         sources = { { name = 'cmdline' }, { name = 'path' } },
     })
-    cmp.setup.cmdline(
-        '/',
-        {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = { { name = 'buffer' }, { name = 'path' } },
-        }
-    )
+    cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = { { name = 'buffer' }, { name = 'path' } },
+    })
     cmp.setup.cmdline(
         '?',
         { mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'buffer' } } }

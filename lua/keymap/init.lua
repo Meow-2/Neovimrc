@@ -5,27 +5,31 @@ local nmap, vmap, imap, tmap, omap, xmap =
 local cmd = keymap.cmd
 local opts = keymap.new_opts
 local noremap, silent, expr = keymap.noremap, keymap.silent, keymap.expr
--- local nore = opts(noremap)
--- local opts(noremap, silent) = opts(noremap, silent)
 
-local has_words_before = function() --{{{
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0
-        and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s')
-            == nil
+local is_words = function(col) --{{{
+    return not (col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')) --{{{}}}
+end --}}}
+
+local is_pairs = function(col) --{{{
+    return vim.fn.getline('.'):sub(col, col):match('[\'">%])}]')
 end --}}}
 
 local function super_tab(cmp, luasnip) --{{{
     return function(fallback)
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        if is_words(col) and is_pairs(col + 1) then
+            vim.api.nvim_win_set_cursor(0, { line, col + 1 })
+            return
+        end
         if cmp.visible() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-        elseif luasnip.jumpable(1) then
-            luasnip.jump(1)
-        elseif has_words_before() then
-            cmp.complete()
-        else
-            fallback()
+            return
         end
+        if luasnip.jumpable(1) then
+            luasnip.jump(1)
+            return
+        end
+        fallback()
     end
 end --}}}
 

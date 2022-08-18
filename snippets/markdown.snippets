@@ -4,6 +4,60 @@
 
 # The suffix `c` stands for "Clipboard".
 
+snippet 1 "Head 1"
+	# ${1}
+
+snippet 2 "Head 2"
+	## ${1}
+
+snippet 3 "Head 3"
+	### ${1}
+
+snippet 4 "Head 4"
+	#### ${1}
+
+snippet b "Blod **"
+	**${1}**${2}
+
+snippet s "Del ~~"
+	~~${1}~~${2}
+
+snippet i "Italic *"
+	*${1}*${2}
+
+snippet d "Code in Line"
+	`${1}`${2}
+
+snippet c "Code Block"
+	```${1}
+	${2}
+	```
+	${0}
+
+snippet a "Link"
+	[${1}](${2})${0}
+
+snippet l "Line"
+	--------
+
+snippet l "Title Line"
+	---
+
+snippet th "Table Heading"
+	| ${1:Key} | ${2:Value} |
+	|-|-|
+	${0}
+
+snippet tr "Table Row"
+	| ${1:Term} | ${2:Definition} |
+	${0}
+
+snippet v "Vector in Latex"
+	\$large \vec{${1}}$${0}
+
+snippet n "LeetCode Note"
+	- [[${1}](${2})|[解答](${3})]:
+
 snippet [
 	[${1:text}](https://${2:address})
 snippet [*
@@ -97,15 +151,15 @@ snippet blockquote-link
 	{% endblockquote %}
 
 snippet ```
-	\`\`\`${1}
+	```${1}
 	${0:${VISUAL}}
-	\`\`\`
+	```
 
 # Language.
 snippet ```l
-	\`\`\`${1:language}
+	```${1:language}
 	${2:code}
-	\`\`\`
+	```
 
 snippet codeblock-short
 	{% codeblock %}
@@ -130,7 +184,7 @@ snippet youtube
 	{% youtube ${0:video_id} %}
 
 snippet tb
-	|  ${0:factors}      |    ${1:a}       |  ${2:b}   	|
+	|  ${0:factors} |    ${1:a}     |  ${2:b} |
 	| ------------- |-------------  | ------- |
 	|    ${3:f1}    |    Y          | N       |
 	|    ${4:f2}    |    Y          | N       |

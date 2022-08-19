@@ -20,13 +20,13 @@ plugin({
 })
 plugin({
     'dhruvasagar/vim-table-mode',
-    event = 'BufReadPost',
+    -- event = 'BufReadPost',
     ft = { 'markdown' },
     config = conf('vim-table-mode'),
 })
 plugin({
     'dkarter/bullets.vim',
-    event = { 'InsertEnter' },
+    -- event = { 'InsertEnter' },
     ft = { 'markdown' },
     config = conf('bullets.vim'),
 })

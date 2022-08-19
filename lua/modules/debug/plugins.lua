@@ -5,7 +5,7 @@ local conf = require('core.pack').conf_plugin('modules.debug')
 plugin({
     'mfussenegger/nvim-dap',
     config = conf('nvim-dap'),
-    ft = { 'c', 'cpp', 'go', 'python' },
+    ft = { 'c', 'cpp', 'go', 'python', 'lua' },
     requires = {
         {
             'theHamsta/nvim-dap-virtual-text',

@@ -1,5 +1,5 @@
 return function()
-    local Rule = require('nvim-autopairs.rule')
+    -- local Rule = require('nvim-autopairs.rule')
     local npairs = require('nvim-autopairs')
     -- local ts_conds = require('nvim-autopairs.ts-conds')
 
@@ -15,10 +15,9 @@ return function()
         fast_wrap = {
             map = '<c-f>',
             chars = { '{', '[', '(', '"', "'" },
-            pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
-            offset = 0, -- Offset from pattern match
+            pattern = [=[[%'%"%)%>%]%)%}%,]]=],
             end_key = 'l',
-            keys = 'qwertyuiopzxcvbnmasdfghjk',
+            keys = 'qwertyuiopzxcvbnmasdfghjk$',
             check_comma = true,
             highlight = 'PmenuSel',
             highlight_grey = 'LineNr',

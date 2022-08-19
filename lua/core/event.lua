@@ -30,6 +30,16 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave', 'InsertEnter' }, {
     end,
 })
 
+-- set cursor to the line when vim quit
+vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
+    group = MyGroup,
+    pattern = '*',
+    callback = function()
+        if vim.fn.line([['"]]) > 1 and vim.fn.line([['"]]) <= vim.fn.line('$') then
+            vim.cmd([[normal! g'"]])
+        end
+    end,
+})
 -- cursorword
 
 local function matchadd() --{{{

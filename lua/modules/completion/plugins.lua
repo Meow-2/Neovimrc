@@ -22,35 +22,51 @@ plugin({
     -- config your language filetype in here
     ft = enable_lsp_filetype,
     config = conf('nvim-lspconfig'),
-})
-plugin({ 'williamboman/mason.nvim', config = conf('mason.nvim') })
-plugin({
-    'williamboman/mason-lspconfig.nvim',
-    after = { 'nvim-lspconfig' },
-    config = conf('mason-lspconfig.nvim'),
-})
-plugin({ 'glepnir/lspsaga.nvim', branch = 'main', config = conf('lspsaga.nvim') })
-
--- plugin({'williamboman/nvim-lsp-installer', after = 'nvim-lspconfig',config = conf('nvim-lsp-installer')})
-
--- plugin({'kosayoda/nvim-lightbulb', config = conf('nvim-lightbulb')})
-plugin({ 'ray-x/lsp_signature.nvim', config = conf('lsp_signature.nvim') })
-
-plugin({
-    'hrsh7th/nvim-cmp',
-    -- event = 'BufReadPre',
-    config = conf('nvim-cmp'),
     requires = {
-        { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-lspconfig' },
-        { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-        { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-        { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-        { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' },
+        { 'williamboman/mason.nvim', after = { 'nvim-lspconfig' }, config = conf('mason.nvim') },
+        {
+            'williamboman/mason-lspconfig.nvim',
+            after = { 'nvim-lspconfig', 'mason.nvim' },
+            config = conf('mason-lspconfig.nvim'),
+        },
+        {
+            'glepnir/lspsaga.nvim',
+            after = { 'nvim-lspconfig' },
+            branch = 'main',
+            config = conf('lspsaga.nvim'),
+        },
+        {
+            'ray-x/lsp_signature.nvim',
+            after = { 'nvim-lspconfig' },
+            config = conf('lsp_signature.nvim'),
+        },
     },
 })
+-- plugin({ 'williamboman/mason.nvim', config = conf('mason.nvim') })
+-- plugin({
+--     'williamboman/mason-lspconfig.nvim',
+--     after = { 'nvim-lspconfig' },
+--     config = conf('mason-lspconfig.nvim'),
+-- })
+-- plugin({ 'glepnir/lspsaga.nvim', branch = 'main', config = conf('lspsaga.nvim') })
+--
+-- plugin({ 'ray-x/lsp_signature.nvim', config = conf('lsp_signature.nvim') })
 
 plugin({
     'L3MON4D3/LuaSnip',
-    -- event = 'InsertEnter',
+    event = { 'InsertEnter', 'CmdwinEnter' },
     config = conf('LuaSnip'),
+})
+
+plugin({
+    'hrsh7th/nvim-cmp',
+    after = 'LuaSnip',
+    config = conf('nvim-cmp'),
+    requires = {
+        { 'hrsh7th/cmp-nvim-lsp', after = { 'nvim-cmp', 'nvim-lspconfig' } },
+        { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+        { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+        { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+        { 'saadparwaiz1/cmp_luasnip', after = { 'nvim-cmp', 'LuaSnip' } },
+    },
 })

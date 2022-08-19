@@ -2,6 +2,7 @@ local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.ui')
 
 plugin({ 'glepnir/zephyr-nvim', config = conf('zephyr-nvim') })
+plugin({ 'catppuccin/nvim', as = 'catppuccin' })
 -- plugin({ 'rakr/vim-one', config = conf('vim-one') })
 
 plugin({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim') })

@@ -9,4 +9,5 @@ return function()
     for _, i in ipairs(dap_list) do
         require('modules.debug.dap.' .. i)
     end
+    require('modules.debug.dap-utils').load_breakpoints()
 end

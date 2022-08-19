@@ -123,14 +123,6 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'BufWinEnter' }, {
 
 vim.api.nvim_create_autocmd('FileType', {
     group = MyGroup,
-    pattern = 'c,cpp,python,go,python,lua',
-    callback = function()
-        require('modules.debug.dap-utils').load_breakpoints()
-    end,
-})
-
-vim.api.nvim_create_autocmd('FileType', {
-    group = MyGroup,
     pattern = 'dap-repl',
     callback = function()
         require('dap.ext.autocompl').attach()

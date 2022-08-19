@@ -17,7 +17,6 @@ plugin({
     -- setup = conf('github-nvim-theme'),
     config = conf('bufferline.nvim'),
     requires = 'kyazdani42/nvim-web-devicons',
-    opt = false,
 })
 
 plugin({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim') })

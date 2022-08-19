@@ -53,3 +53,4 @@ plugin({
 })
 
 plugin({ 'askfiy/nvim-picgo', ft = { 'markdown' }, config = conf('nvim-picgo') })
+plugin({ 'dstein64/vim-startuptime' })

@@ -15,12 +15,12 @@ vim.g.mapleader = ' '
 -- xmap({ ' ', '', noremap })
 
 local quitbuffer = function() --{{{
-    local temp = vim.fn.getbufinfo({ buflisted = true })
-    if #temp == 1 then
+    local same_buffer_count = vim.fn.win_findbuf(vim.fn.bufnr('%'))
+    if #same_buffer_count > 1 then
         return vim.cmd('q!')
     end
-    temp = vim.fn.win_findbuf(vim.fn.bufnr('%'))
-    if #temp > 1 then
+    local buffer_count = vim.fn.getbufinfo({ buflisted = true })
+    if #buffer_count == 1 then
         return vim.cmd('q!')
     end
     if vim.bo.filetype == 'dashboard' then

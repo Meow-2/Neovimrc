@@ -2,7 +2,6 @@ local dap = require('dap')
 local dmap = require('core.keymap').dmap
 local dap_utils = require('modules.debug.dap-utils')
 
-local mason_path = vim.fn.stdpath('data') .. '/mason/packages'
 dap.adapters.cppdbg = {
     id = 'cppdbg',
     type = 'executable',

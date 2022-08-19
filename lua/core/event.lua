@@ -3,7 +3,7 @@ local MyGroup = vim.api.nvim_create_augroup('MyGroup', { clear = true })
 -- highlight on_yank
 vim.api.nvim_create_autocmd('TextYankPost', {
     group = MyGroup,
-    pattern = { '*' },
+    pattern = '*',
     callback = function()
         vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 400 })
     end,
@@ -119,12 +119,4 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'BufWinEnter' }, {
     group = MyGroup,
     pattern = '*',
     callback = disable_cursorword,
-})
-
-vim.api.nvim_create_autocmd('FileType', {
-    group = MyGroup,
-    pattern = 'dap-repl',
-    callback = function()
-        require('dap.ext.autocompl').attach()
-    end,
 })

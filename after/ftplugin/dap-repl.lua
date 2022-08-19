@@ -1,13 +1,26 @@
--- vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { noremap = true, silent = true })
-vim.api.nvim_create_augroup('Repl-Compeletion', { clear = true })
+local dap_repl_bufid = vim.fn.bufnr('dap-repl')
+require('dap.ext.autocompl').attach()
+
+local dap_repl_group = vim.api.nvim_create_augroup('Dap_repl_complete', { clear = true })
+
 vim.api.nvim_create_autocmd('CursorMovedI', {
-    group = 'Repl-Compeletion',
-    pattern = '*',
+    group = dap_repl_group,
+    buffer = dap_repl_bufid,
     callback = function()
+        print(' bufferid = ' .. dap_repl_bufid)
         vim.api.nvim_feedkeys(
             vim.api.nvim_replace_termcodes('<C-x><C-o>', true, false, true),
             'm',
             true
         )
+    end,
+})
+
+vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
+    group = dap_repl_group,
+    buffer = dap_repl_bufid,
+    callback = function()
+        print('del autogroup' .. ' bufferid = ' .. dap_repl_bufid)
+        vim.api.nvim_del_augroup_by_name('Dap_repl_complete')
     end,
 })

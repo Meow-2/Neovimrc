@@ -26,7 +26,7 @@ local quitbuffer = function() --{{{
     if vim.bo.filetype == 'dashboard' then
         return vim.cmd('q!')
     end
-    return vim.cmd('bd!')
+    vim.cmd('bd!')
 end --}}}
 
 nmap({

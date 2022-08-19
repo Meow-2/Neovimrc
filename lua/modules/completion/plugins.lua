@@ -60,7 +60,7 @@ plugin({
 
 plugin({
     'hrsh7th/nvim-cmp',
-    after = 'LuaSnip',
+    after = { 'nvim-autopairs', 'LuaSnip' },
     config = conf('nvim-cmp'),
     requires = {
         { 'hrsh7th/cmp-nvim-lsp', after = { 'nvim-cmp', 'nvim-lspconfig' } },

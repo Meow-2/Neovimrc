@@ -19,7 +19,7 @@ plugin({ 'nvim-telescope/telescope-ui-select.nvim' })
 plugin({ 'nvim-telescope/telescope-file-browser.nvim' })
 -- plugin({'nvim-telescope/telescope-ui-select.nvim'})
 -- plugin({'nvim-telescope/telescope-fzf-native.nvim', run = 'make'})
--- plugin({'nvim-telescope/telescope-dap.nvim'})
+plugin({ 'nvim-telescope/telescope-dap.nvim' })
 plugin({
     'nvim-treesitter/nvim-treesitter',
     -- event = 'BufRead',

@@ -1,5 +1,5 @@
 local plugin = require('core.pack').register_plugin
-local conf = require('core.pack').conf_plugin('modules.ui')
+local conf = require('core.pack').conf_plugin('modules.dress')
 
 -- plugin({ 'glepnir/zephyr-nvim', config = conf('zephyr-nvim') })
 -- plugin({ 'navarasu/onedark.nvim', config = conf('onedark.nvim') })

@@ -91,7 +91,6 @@ end
 function plugins.conf_plugin(modules_path)
     return function(plugin)
         plugin = plugin:gsub('%.', '-')
-        local vim_path = vim.fn.stdpath('config')
         local plugin_conf_path = vim_path
             .. '/lua/'
             .. modules_path:gsub('%.', '/')

@@ -9,6 +9,7 @@ return function()
         open_on_setup = false,
         open_on_setup_file = false,
         open_on_tab = false,
+        sync_root_with_cwd = true,
         view = {
             width = 30,
             height = 30,
@@ -91,7 +92,7 @@ return function()
         },
         update_focused_file = {
             enable = true,
-            update_cwd = false,
+            update_cwd = true,
             ignore_list = {},
         },
     })

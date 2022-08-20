@@ -7,17 +7,14 @@ plugin({
     'folke/which-key.nvim',
     keys = {
         's',
-        't',
         'g',
         'z',
-        "'",
-        '"',
+        't',
         'c',
         'd',
-        'y',
         '<Leader>',
     },
-    module = { 'gitsigns', 'cmp', 'lspconfig' },
+    module = { 'gitsigns', 'cmp', 'lspconfig', 'nvim-tree' },
     config = conf('which-key.nvim'),
 })
 

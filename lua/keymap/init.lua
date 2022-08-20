@@ -340,7 +340,7 @@ vmap({
     -- nvim-comment
     -- sniprun
     { 'r', [[:SnipRun<Cr>]], opts(noremap) },
-    { 't', [[:Tabularize /]], opts(noremap) },
+    { '=', [[:Tabularize /]], opts(noremap) },
     { 'f', [[:Format<Cr><Esc>]], opts(noremap, silent) },
     { '.', cmd('Lspsaga range_code_action'), opts(noremap, silent) },
     { '<C-_>', [[:CommentToggle<Cr>]], opts(noremap, silent) },

@@ -5,7 +5,16 @@ return function()
         -- for example, context is off by default, use this to turn it on
         show_current_context = true,
         buftype_exclude = { 'terminal' },
-        filetype_exclude = { 'dashboard', 'NvimTree', 'mason.nvim', 'lspsagaoutline', 'packer' },
+        filetype_exclude = {
+            'dashboard',
+            'NvimTree',
+            'mason.nvim',
+            'lspsagaoutline',
+            'lspsagafinder',
+            'packer',
+            'startuptime',
+            'dap-repl',
+        },
     })
     vim.cmd([[highlight IndentBlanklineContextChar guifg=#61afef gui=nocombine]])
 end

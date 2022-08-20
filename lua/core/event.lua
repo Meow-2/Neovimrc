@@ -49,6 +49,9 @@ local function matchadd() --{{{
         ['dashboard'] = true,
         ['mason.nvim'] = true,
         ['lspsagaoutline'] = true,
+        ['startuptime'] = true,
+        ['dap-repl'] = true,
+        ['packer'] = true,
     }
     if disable_ft[vim.bo.ft] then
         return

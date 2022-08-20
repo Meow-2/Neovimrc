@@ -45,7 +45,7 @@ plugin({
 })
 
 plugin({
-    'norcalli/nvim-colorizer.lua',
+    'NvChad/nvim-colorizer.lua',
     event = { 'BufRead', 'BufNewFile' },
     config = conf('nvim-colorizer.lua'),
 })

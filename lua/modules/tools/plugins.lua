@@ -37,7 +37,7 @@ plugin({
 -- plugin({ 'nvim-telescope/telescope-dap.nvim' })
 plugin({
     'nvim-treesitter/nvim-treesitter',
-    event = 'BufReadPost',
+    event = { 'BufNewFile', 'BufReadPost' },
     run = ':TSUpdate',
     -- after = {'telescope.nvim'},
     config = conf('nvim-treesitter'),
@@ -53,17 +53,25 @@ plugin({
     after = 'telescope.nvim',
     config = conf('neovim-session-manager'),
 })
-plugin({ 'mhartington/formatter.nvim', event = 'BufReadPost', config = conf('formatter.nvim') })
+plugin({
+    'mhartington/formatter.nvim',
+    event = { 'BufNewFile', 'BufReadPost' },
+    config = conf('formatter.nvim'),
+})
 -- plugin({ 'skywind3000/asyncrun.vim' })
 plugin({
     'skywind3000/asynctasks.vim',
     after = 'asyncrun.vim',
     config = conf('asynctasks.vim'),
     requires = {
-        { 'skywind3000/asyncrun.vim', event = 'BufReadPost' },
+        { 'skywind3000/asyncrun.vim', event = { 'BufNewFile', 'BufReadPost' } },
     },
 })
-plugin({ 'kevinhwang91/nvim-bqf', event = 'BufReadPost', config = conf('nvim-bqf') })
+plugin({
+    'kevinhwang91/nvim-bqf',
+    event = { 'BufNewFile', 'BufReadPost' },
+    config = conf('nvim-bqf'),
+})
 
 plugin({
     'iamcco/markdown-preview.nvim',

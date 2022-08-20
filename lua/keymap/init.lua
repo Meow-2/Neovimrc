@@ -52,17 +52,18 @@ function Super_F1() --{{{
         vim.api.nvim_command('MarkdownPreview')
     elseif cur_path:find(config_path) or vim.bo.filetype == 'dashboard' then
         require('core.pack').compile()
+        vim.cmd('luafile ' .. vim.fn.stdpath('config') .. '/init.lua')
         -- local base_package = {
         --     ['vim.shared'] = 1,['table'] = 1,['luv']=1,['io']=1,['package']=1,['mpack']=1,
         --     ['debug']=1,['math']=1,['jit.opt']=1,['_G']=1,['vim._meta']=1,['bit']=1,['jit']=1,
         --     ['string']=1,['os']=1,['vim._init_packages']=1,['coroutine']=1,['vim._editor'] = 1
         -- }
-        for name, _ in pairs(package.loaded) do
-            if name:match('^core') or name:match('^keymap') or name:match('^modules') then
-                package.loaded[name] = nil
-            end
-        end
-        require('core')
+        -- for name, _ in pairs(package.loaded) do
+        --     if name:match('^core') or name:match('^keymap') or name:match('^modules') then
+        --         package.loaded[name] = nil
+        --     end
+        -- end
+        -- require('core')
         print('Config Reload Finish!')
     else
         vim.api.nvim_command('AsyncTask file-buildrun')

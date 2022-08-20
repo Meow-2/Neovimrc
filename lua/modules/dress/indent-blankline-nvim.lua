@@ -14,6 +14,12 @@ return function()
             'packer',
             'startuptime',
             'dap-repl',
+            'dapui_breakpoints',
+            'dapui_watches',
+            'dapui_stacks',
+            'dapui_scopes',
+            'nvimgdb',
+            'qf',
         },
     })
     vim.cmd([[highlight IndentBlanklineContextChar guifg=#61afef gui=nocombine]])

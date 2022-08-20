@@ -1,23 +1,15 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.dress')
 
--- plugin({ 'glepnir/zephyr-nvim', config = conf('zephyr-nvim') })
-plugin({ 'Meow-2/zephyr-nvim', config = conf('zephyr-nvim') })
--- plugin({ 'navarasu/onedark.nvim', config = conf('onedark.nvim') })
--- plugin({
---     'projekt0n/github-nvim-theme',
---     config = conf('github-nvim-theme'),
--- })
--- plugin({ 'glepnir/zephyr-nvim' })
--- plugin({ 'navarasu/onedark.nvim' })
--- plugin({ 'projekt0n/github-nvim-theme' })
+plugin({ 'Meow-2/zephyr-nvim' })
+plugin({ 'navarasu/onedark.nvim' })
+plugin({ 'projekt0n/github-nvim-theme' })
+
 plugin({
     'akinsho/bufferline.nvim',
-    -- setup = conf('zephyr-nvim'),
+    setup = conf('zephyr-nvim'),
     -- setup = conf('onedark.nvim'),
     -- setup = conf('github-nvim-theme'),
-    -- after = 'github-nvim-theme',
-    after = 'zephyr-nvim',
     config = conf('bufferline.nvim'),
     requires = 'kyazdani42/nvim-web-devicons',
 })

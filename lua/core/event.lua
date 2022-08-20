@@ -52,6 +52,12 @@ local function matchadd() --{{{
         ['startuptime'] = true,
         ['dap-repl'] = true,
         ['packer'] = true,
+        ['dapui_breakpoints'] = true,
+        ['dapui_watches'] = true,
+        ['dapui_stacks'] = true,
+        ['dapui_scopes'] = true,
+        ['nvimgdb'] = true,
+        ['qf'] = true,
     }
     if disable_ft[vim.bo.ft] then
         return

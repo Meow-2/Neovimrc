@@ -16,6 +16,7 @@ plugin({
     -- setup = conf('zephyr-nvim'),
     -- setup = conf('onedark.nvim'),
     -- setup = conf('github-nvim-theme'),
+    -- after = 'github-nvim-theme',
     after = 'zephyr-nvim',
     config = conf('bufferline.nvim'),
     requires = 'kyazdani42/nvim-web-devicons',
@@ -31,21 +32,6 @@ plugin({
 })
 
 plugin({
-    'kyazdani42/nvim-tree.lua',
-    -- event = 'VimEnter',
-    cmd = { 'SessionManager', 'NvimTreeToggle' },
-    config = conf('nvim-tree.lua'),
-    requires = 'kyazdani42/nvim-web-devicons',
-    opt = true,
-})
-
-plugin({
-    'lukas-reineke/indent-blankline.nvim',
-    after = { 'nvim-treesitter' },
-    config = conf('indent-blankline.nvim'),
-})
-
-plugin({
     'NvChad/nvim-colorizer.lua',
     event = { 'BufRead', 'BufNewFile' },
     config = conf('nvim-colorizer.lua'),
@@ -57,10 +43,26 @@ plugin({
     config = conf('gitsigns.nvim'),
     requires = { 'nvim-lua/plenary.nvim' },
 })
--- plugin({ 'SmiteshP/nvim-navic', config = conf('nvim-navic'), requires = 'neovim/nvim-lspconfig' })
+
 plugin({
     'folke/todo-comments.nvim',
-    requires = 'plenary.nvim',
     event = { 'BufRead', 'BufNewFile' },
     config = conf('todo-comments-nvim'),
+    requires = 'plenary.nvim',
+})
+
+plugin({
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    event = { 'BufNewFile', 'BufReadPost' },
+    config = conf('nvim-treesitter'),
+    requires = {
+        { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
+    },
+})
+
+plugin({
+    'lukas-reineke/indent-blankline.nvim',
+    after = { 'nvim-treesitter' },
+    config = conf('indent-blankline.nvim'),
 })

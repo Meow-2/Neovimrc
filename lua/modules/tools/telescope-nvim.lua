@@ -180,8 +180,10 @@ return function()
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('ui-select')
     require('telescope').load_extension('file_browser')
-
-    -- require("telescope").load_extension('dap')
     require('telescope').load_extension('live_grep_args')
-    -- require('telescope').load_extension('dap')
+    vim.api.nvim_create_user_command(
+        'TelescopeLiveGrep',
+        require('telescope').extensions.live_grep_args.live_grep_args,
+        {}
+    )
 end

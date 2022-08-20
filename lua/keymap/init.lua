@@ -115,10 +115,7 @@ function WK_MAP()
         ['s'] = { name = 'Search' },
         ['sb'] = { cmd('Telescope buffers'), 'Search Buffers' },
         -- ['sw'] = { cmd('Telescope live_grep'), 'Search Words' },
-        ['sw'] = {
-            cmd("lua require('telescope').extensions.live_grep_args.live_grep_args()"),
-            'Search Words Live',
-        },
+        ['sw'] = { cmd('TelescopeLiveGrep'), 'Search Words Live' },
         ['sf'] = { cmd('Telescope find_files'), 'Search Files' },
         ['so'] = { cmd('Telescope oldfiles'), 'Search Open History' },
         ['sp'] = { cmd('Telescope help_tags'), 'Search Help Tags' },
@@ -128,11 +125,11 @@ function WK_MAP()
         ['sC'] = { cmd('Telescope commands'), 'Search Commands' },
         ['sK'] = { cmd('Telescope keymaps'), 'Search Keymap' },
         ['ss'] = {
-            cmd("lua require('telescope.builtin').lsp_document_symbols()"),
+            cmd('Telescope lsp_document_symbols'),
             'Search Symbol',
         },
         ['sS'] = {
-            cmd("lua require('telescope.builtin').lsp_dynamic_workspace_symbols()"),
+            cmd('Telescope lsp_dynamic_workspace_symbols'),
             'Search Workspace Symbol',
         },
         ['sg'] = { name = 'Search Git' },

@@ -2,19 +2,29 @@ local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.tools')
 
 plugin({ 'dstein64/vim-startuptime' })
-plugin({ 'voldikss/vim-floaterm', config = conf('vim-floaterm') })
+
 plugin({ 'folke/which-key.nvim', config = conf('which-key.nvim') })
+
+plugin({
+    'voldikss/vim-floaterm',
+    cmd = {
+        'FloatermNew',
+        'FloatermToggle',
+    },
+    config = conf('vim-floaterm'),
+})
+
 plugin({
     'nvim-telescope/telescope.nvim',
-    cmd = { 'Telescope', 'SessionManager' },
     tag = '0.1.0',
-    config = conf('telescope.nvim'),
+    cmd = { 'TelescopeLiveGrep', 'TodoTelescope', 'Telescope', 'SessionManager' },
     after = {
         'telescope-ui-select.nvim',
         'telescope-fzf-native.nvim',
         'telescope-file-browser.nvim',
         'telescope-live-grep-args.nvim',
     },
+    config = conf('telescope.nvim'),
     requires = {
         { 'nvim-lua/popup.nvim' },
         { 'nvim-lua/plenary.nvim' },
@@ -32,33 +42,25 @@ plugin({
     },
 })
 
--- plugin({'nvim-telescope/telescope-ui-select.nvim'})
--- plugin({'nvim-telescope/telescope-fzf-native.nvim', run = 'make'})
--- plugin({ 'nvim-telescope/telescope-dap.nvim' })
 plugin({
-    'nvim-treesitter/nvim-treesitter',
-    event = { 'BufNewFile', 'BufReadPost' },
-    run = ':TSUpdate',
-    -- after = {'telescope.nvim'},
-    config = conf('nvim-treesitter'),
-    requires = {
-        { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
-    },
+    'kyazdani42/nvim-tree.lua',
+    cmd = { 'SessionManager', 'NvimTreeToggle' },
+    config = conf('nvim-tree.lua'),
+    requires = 'kyazdani42/nvim-web-devicons',
 })
-
--- plugin({ 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' })
 
 plugin({
     'Shatur/neovim-session-manager',
     after = 'telescope.nvim',
     config = conf('neovim-session-manager'),
 })
+
 plugin({
     'mhartington/formatter.nvim',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('formatter.nvim'),
 })
--- plugin({ 'skywind3000/asyncrun.vim' })
+
 plugin({
     'skywind3000/asynctasks.vim',
     after = 'asyncrun.vim',

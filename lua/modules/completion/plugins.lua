@@ -11,15 +11,10 @@ local enable_lsp_filetype = {
     'markdown',
     'python',
     'sh',
-    -- 'rust',
-    -- 'typescript',
-    -- 'typescriptreact',
 }
 
 plugin({
     'neovim/nvim-lspconfig',
-    -- used filetype to lazyload lsp
-    -- config your language filetype in here
     ft = enable_lsp_filetype,
     config = conf('nvim-lspconfig'),
     requires = {
@@ -42,15 +37,6 @@ plugin({
         },
     },
 })
--- plugin({ 'williamboman/mason.nvim', config = conf('mason.nvim') })
--- plugin({
---     'williamboman/mason-lspconfig.nvim',
---     after = { 'nvim-lspconfig' },
---     config = conf('mason-lspconfig.nvim'),
--- })
--- plugin({ 'glepnir/lspsaga.nvim', branch = 'main', config = conf('lspsaga.nvim') })
---
--- plugin({ 'ray-x/lsp_signature.nvim', config = conf('lsp_signature.nvim') })
 
 plugin({
     'L3MON4D3/LuaSnip',

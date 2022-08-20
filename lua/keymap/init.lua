@@ -337,20 +337,22 @@ imap({
 })
 
 vmap({
-    -- nvim-comment
     -- sniprun
     { 'r', [[:SnipRun<Cr>]], opts(noremap) },
+    -- Tabularize
     { '=', [[:Tabularize /]], opts(noremap) },
+    -- formatter.nvim
     { 'f', [[:Format<Cr><Esc>]], opts(noremap, silent) },
+    -- lspsaga
     { '.', cmd('Lspsaga range_code_action'), opts(noremap, silent) },
+    -- nvim-comment
     { '<C-_>', [[:CommentToggle<Cr>]], opts(noremap, silent) },
     { '<C-/>', [[:CommentToggle<Cr>]], opts(noremap, silent) },
 })
 
 tmap({
-    -- tnoremap <silent> <c-t> <C-\><C-N>:FloatermToggle<cr>
-    { '<C-t>', [[<C-\><C-n>:FloatermToggle<Cr>]], opts(noremap, silent) },
     -- vim-floaterm
+    { '<C-t>', [[<C-\><C-n>:FloatermToggle<Cr>]], opts(noremap, silent) },
     {
         '<C-g>',
         function()

@@ -5,6 +5,7 @@ local nmap, vmap, imap, tmap, omap, xmap =
 local cmd = keymap.cmd
 local opts = keymap.new_opts
 local noremap, silent, expr = keymap.noremap, keymap.silent, keymap.expr
+local home = os.getenv('HOME')
 
 local is_words = function(col) --{{{
     return not (col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')) --{{{}}}
@@ -113,10 +114,14 @@ function WK_MAP()
     local mappings = {
         -- Telescope
         ['s'] = { name = 'Search' },
-        ['sb'] = { cmd('Telescope buffers'), 'Search Buffers' },
-        -- ['sw'] = { cmd('Telescope live_grep'), 'Search Words' },
         ['sw'] = { cmd('TelescopeLiveGrep'), 'Search Words Live' },
+        ['sb'] = { cmd('Telescope buffers'), 'Search Buffers' },
+        ['sB'] = { cmd('Telescope file_browser'), 'Search Buffers' },
         ['sf'] = { cmd('Telescope find_files'), 'Search Files' },
+        ['sF'] = {
+            cmd('Telescope find_files find_command=rg,--hidden,--files'),
+            'Search All Files',
+        },
         ['so'] = { cmd('Telescope oldfiles'), 'Search Open History' },
         ['sp'] = { cmd('Telescope help_tags'), 'Search Help Tags' },
         ['sm'] = { cmd('Telescope man_pages'), 'Search Man Pages' },
@@ -124,6 +129,10 @@ function WK_MAP()
         ['sc'] = { cmd('Telescope colorscheme'), 'Search ColorScheme' },
         ['sC'] = { cmd('Telescope commands'), 'Search Commands' },
         ['sK'] = { cmd('Telescope keymaps'), 'Search Keymap' },
+        ['sH'] = {
+            cmd('Telescope find_files find_command=rg,--hidden,--files,' .. home),
+            'Search Keymap',
+        },
         ['ss'] = {
             cmd('Telescope lsp_document_symbols'),
             'Search Symbol',

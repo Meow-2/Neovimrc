@@ -132,20 +132,15 @@ return function()
                 },
             },
         },
-        -- pickers = {
-        --     find_files = {
-        --         theme = "dropdown",
-        --         previewer = false,
-        --         -- find_command = { "find", "-type", "f" },
-        --         find_command = { "fd", "-H" , "-I"},  -- "-H" search hidden files, "-I" do not respect to gitignore
-        --     },
-        -- },
         extensions = {
             fzf = {
                 fuzzy = true, -- false will only do exact matching
                 override_generic_sorter = true, -- override the generic sorter
                 override_file_sorter = true, -- override the file sorter
                 case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+            },
+            file_browser = {
+                hijack_netrw = true,
             },
             ['ui-select'] = {
                 -- require("telescope.themes").get_ivy {
@@ -181,6 +176,7 @@ return function()
     require('telescope').load_extension('ui-select')
     require('telescope').load_extension('file_browser')
     require('telescope').load_extension('live_grep_args')
+    require('telescope').load_extension('file_browser')
     vim.api.nvim_create_user_command(
         'TelescopeLiveGrep',
         require('telescope').extensions.live_grep_args.live_grep_args,

@@ -17,7 +17,13 @@ plugin({
 plugin({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.0',
-    cmd = { 'TelescopeLiveGrep', 'TodoTelescope', 'Telescope', 'SessionManager' },
+    cmd = {
+        'TelescopeLiveGrep',
+        'TodoTelescope',
+        'Telescope',
+        'SessionManager',
+        'NvimTreeToggle',
+    },
     after = {
         'telescope-ui-select.nvim',
         'telescope-fzf-native.nvim',
@@ -44,14 +50,14 @@ plugin({
 
 plugin({
     'kyazdani42/nvim-tree.lua',
-    cmd = { 'SessionManager', 'NvimTreeToggle' },
+    after = 'telescope.nvim',
     config = conf('nvim-tree.lua'),
     requires = 'kyazdani42/nvim-web-devicons',
 })
 
 plugin({
     'Shatur/neovim-session-manager',
-    after = 'telescope.nvim',
+    after = 'nvim-tree.lua',
     config = conf('neovim-session-manager'),
 })
 

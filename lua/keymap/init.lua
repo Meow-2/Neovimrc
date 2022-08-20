@@ -203,7 +203,7 @@ function WK_MAP()
         ['<Leader>t'] = { name = 'Table Mode' },
         ['<Leader>tm'] = { cmd('TableModeToggle'), 'Table Mode Toggle' },
         -- nvim-dap
-        ['<F5>'] = { cmd([[lua require'dap'.continue()]]), 'Debug Continue' },
+        ['<F5>'] = { cmd('DapContinue'), 'Debug Continue' },
         ['<F6>'] = {
             cmd(
                 [[lua require'dap'.toggle_breakpoint(); require'modules.debug.dap-utils'.store_breakpoints(true)]]

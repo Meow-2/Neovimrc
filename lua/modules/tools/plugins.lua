@@ -18,12 +18,14 @@ plugin({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.0',
     cmd = {
+        'Telescope',
         'TelescopeLiveGrep',
         'TodoTelescope',
-        'Telescope',
         'SessionManager',
         'NvimTreeToggle',
+        'DapContinue',
     },
+    module = 'dap',
     after = {
         'telescope-ui-select.nvim',
         'telescope-fzf-native.nvim',

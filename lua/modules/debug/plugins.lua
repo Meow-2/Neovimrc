@@ -5,6 +5,7 @@ local conf = require('core.pack').conf_plugin('modules.debug')
 plugin({
     'mfussenegger/nvim-dap',
     config = conf('nvim-dap'),
+    -- after = 'telescope.nvim',
     ft = { 'c', 'cpp', 'go', 'python', 'lua' },
     requires = {
         {

@@ -3,7 +3,23 @@ local conf = require('core.pack').conf_plugin('modules.tools')
 
 plugin({ 'dstein64/vim-startuptime' })
 
-plugin({ 'folke/which-key.nvim', config = conf('which-key.nvim') })
+plugin({
+    'folke/which-key.nvim',
+    keys = {
+        's',
+        't',
+        'g',
+        'z',
+        "'",
+        '"',
+        'c',
+        'd',
+        'y',
+        '<Leader>',
+    },
+    module = { 'gitsigns', 'cmp', 'lspconfig' },
+    config = conf('which-key.nvim'),
+})
 
 plugin({
     'voldikss/vim-floaterm',

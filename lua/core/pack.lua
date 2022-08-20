@@ -44,7 +44,7 @@ function Packer:load_packer()
     packer.init({
         compile_path = packer_compiled,
         git = { clone_timeout = 120 },
-        disable_commands = true,
+        disable_commands = false,
         profile = {
             enable = true,
             threshold = 1, -- integer in milliseconds, plugins which load faster than this won't be shown in profile output

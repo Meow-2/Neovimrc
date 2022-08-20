@@ -54,7 +54,7 @@ plugin({
 
 plugin({
     'L3MON4D3/LuaSnip',
-    event = { 'InsertEnter', 'CmdwinEnter' },
+    event = { 'InsertEnter', 'CmdlineEnter' },
     config = conf('LuaSnip'),
 })
 

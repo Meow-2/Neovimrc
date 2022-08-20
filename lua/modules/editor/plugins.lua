@@ -15,7 +15,7 @@ plugin({ 'kylechui/nvim-surround', event = 'BufReadPost', config = conf('nvim-su
 
 plugin({
     'windwp/nvim-autopairs',
-    event = { 'InsertEnter', 'CmdwinEnter' },
+    event = { 'InsertEnter', 'CmdlineEnter' },
     config = conf('nvim-autopairs'),
 })
 plugin({

@@ -45,6 +45,30 @@ local function super_s_tab(cmp, luasnip, select_behavior) --{{{
     end
 end --}}}
 
+function Super_F1() --{{{
+    local cur_path = vim.api.nvim_buf_get_name(0)
+    local config_path = vim.fn.stdpath('config')
+    if vim.bo.filetype == 'markdown' then
+        vim.api.nvim_command('MarkdownPreview')
+    elseif cur_path:find(config_path) or vim.bo.filetype == 'dashboard' then
+        require('core.pack').compile()
+        -- local base_package = {
+        --     ['vim.shared'] = 1,['table'] = 1,['luv']=1,['io']=1,['package']=1,['mpack']=1,
+        --     ['debug']=1,['math']=1,['jit.opt']=1,['_G']=1,['vim._meta']=1,['bit']=1,['jit']=1,
+        --     ['string']=1,['os']=1,['vim._init_packages']=1,['coroutine']=1,['vim._editor'] = 1
+        -- }
+        for name, _ in pairs(package.loaded) do
+            if name:match('^core') or name:match('^keymap') or name:match('^modules') then
+                package.loaded[name] = nil
+            end
+        end
+        require('core')
+        print('Config Reload Finish!')
+    else
+        vim.api.nvim_command('AsyncTask file-buildrun')
+    end
+end --}}}
+
 function _CMP_MAP(cmp, luasnip)
     local insert_map = cmp.mapping.preset.insert()
     rawset(insert_map, '<C-d>', cmp.mapping.scroll_docs(4))
@@ -82,30 +106,6 @@ function LSP_MAP(bufnr)
     }
     require('which-key').register(mappings, mappings_opt)
 end
-
-function Super_F1() --{{{
-    local cur_path = vim.api.nvim_buf_get_name(0)
-    local config_path = vim.fn.stdpath('config')
-    if vim.bo.filetype == 'markdown' then
-        vim.api.nvim_command('MarkdownPreview')
-    elseif cur_path:find(config_path) or vim.bo.filetype == 'dashboard' then
-        require('core.pack').compile()
-        -- local base_package = {
-        --     ['vim.shared'] = 1,['table'] = 1,['luv']=1,['io']=1,['package']=1,['mpack']=1,
-        --     ['debug']=1,['math']=1,['jit.opt']=1,['_G']=1,['vim._meta']=1,['bit']=1,['jit']=1,
-        --     ['string']=1,['os']=1,['vim._init_packages']=1,['coroutine']=1,['vim._editor'] = 1
-        -- }
-        for name, _ in pairs(package.loaded) do
-            if name:match('^core') or name:match('^keymap') or name:match('^modules') then
-                package.loaded[name] = nil
-            end
-        end
-        require('core')
-        print('Config Reload Finish!')
-    else
-        vim.api.nvim_command('AsyncTask file-buildrun')
-    end
-end --}}}
 
 function WK_MAP()
     local mappings_opt = { mode = 'n', buffer = nil, silent = true, noremap = true, nowait = true }

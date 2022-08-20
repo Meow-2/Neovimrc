@@ -68,6 +68,7 @@ return function()
                     },
                 },
             },
+            special_files = { 'CMakeLists.txt', 'README.md', 'readme.md' },
         },
         actions = {
             open_file = {

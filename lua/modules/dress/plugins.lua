@@ -8,6 +8,7 @@ plugin({ 'projekt0n/github-nvim-theme' })
 plugin({
     'akinsho/bufferline.nvim',
     setup = conf('zephyr-nvim'),
+    -- setup = conf('kanagawa.nvim'),
     -- setup = conf('onedark.nvim'),
     -- setup = conf('github-nvim-theme'),
     config = conf('bufferline.nvim'),

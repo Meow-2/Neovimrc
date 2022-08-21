@@ -43,7 +43,7 @@ nmap({
     { '<C-k>', '<C-v>k', opts(noremap, silent) },
     { [[\v]], 'v$h', opts(noremap, silent) },
     -- save and quit
-    { '<C-s>', cmd('w!') .. cmd('ColorizerAttachToBuffer'), opts(noremap) },
+    { '<C-s>', cmd('w!'), opts(noremap) },
     { '<C-q>', cmd('qa!'), opts(noremap, silent) },
     -- close buffer/tab/dashboard
     { 'q', quitbuffer, opts(noremap, silent) },

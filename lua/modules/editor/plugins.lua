@@ -23,13 +23,14 @@ plugin({
     config = conf('nvim-surround'),
 })
 
-plugin({ 'Meow-2/antovim', cmd = { 'Antovim' } })
-plugin({ 'godlygeek/tabular', cmd = { 'Tabularize' } })
 plugin({
     'terrortylor/nvim-comment',
-    cmd = { 'CommentToggle' },
+    event = { 'BufNewFile', 'BufReadPost' },
     config = conf('nvim-comment'),
 })
+
+plugin({ 'Meow-2/antovim', cmd = { 'Antovim' } })
+plugin({ 'godlygeek/tabular', cmd = { 'Tabularize' } })
 
 plugin({ 'lambdalisue/suda.vim', event = 'InsertEnter' })
 plugin({ 'lilydjwg/fcitx.vim', event = 'InsertEnter', config = conf('fcitx.vim') })

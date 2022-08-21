@@ -2,7 +2,12 @@ return function()
     require('bufferline').setup({
         options = {
             offsets = {
-                { filetype = 'NvimTree', text = ' File Explorer', text_align = 'center' },
+                {
+                    filetype = 'NvimTree',
+                    text = ' File Explorer',
+                    text_align = 'center',
+                    highlight = 'NvimTreeSpecialFile',
+                },
             },
             diagnostics = false,
             buffer_close_icon = '',

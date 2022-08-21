@@ -2,15 +2,10 @@ local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.dress')
 
 plugin({ 'Meow-2/zephyr-nvim' })
--- plugin({ 'navarasu/onedark.nvim' })
--- plugin({ 'projekt0n/github-nvim-theme' })
 
 plugin({
     'akinsho/bufferline.nvim',
     setup = conf('zephyr-nvim'),
-    -- setup = conf('kanagawa.nvim'),
-    -- setup = conf('onedark.nvim'),
-    -- setup = conf('github-nvim-theme'),
     config = conf('bufferline.nvim'),
     requires = 'kyazdani42/nvim-web-devicons',
 })

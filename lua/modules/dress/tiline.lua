@@ -5,6 +5,7 @@ end
 
 local colors = require('galaxyline.theme').default
 local condition = require('galaxyline.condition')
+local fileinfo = require('galaxyline.provider_fileinfo')
 local gls = galaxyline.section
 galaxyline.short_line_list = {
     'dap-repl',
@@ -20,6 +21,29 @@ galaxyline.short_line_list = {
     'dashboard',
 }
 
+local mode_color = {
+    ['!'] = colors.red,
+    [''] = colors.yellow,
+    [''] = colors.orange,
+    ['r?'] = colors.cyan,
+    c = colors.magenta,
+    ce = colors.red,
+    cv = colors.red,
+    i = colors.cyan,
+    ic = colors.yellow,
+    n = colors.red,
+    no = colors.red,
+    r = colors.cyan,
+    R = colors.violet,
+    rm = colors.cyan,
+    Rv = colors.violet,
+    s = colors.orange,
+    S = colors.orange,
+    t = colors.orange,
+    v = colors.orange,
+    V = colors.orange,
+}
+
 gls.left[1] = {
     RainbowRed = {
         provider = function()
@@ -33,32 +57,10 @@ gls.left[2] = {
     ViMode = {
         provider = function()
             -- auto change color according the vim mode
-            local mode_color = {
-                ['!'] = colors.red,
-                [''] = colors.blue,
-                [''] = colors.orange,
-                ['r?'] = colors.cyan,
-                c = colors.magenta,
-                ce = colors.red,
-                cv = colors.red,
-                i = colors.green,
-                ic = colors.yellow,
-                n = colors.red,
-                no = colors.red,
-                r = colors.cyan,
-                R = colors.violet,
-                rm = colors.cyan,
-                Rv = colors.violet,
-                s = colors.orange,
-                S = colors.orange,
-                t = colors.red,
-                v = colors.blue,
-                V = colors.blue,
-            }
             vim.api.nvim_command(
                 'hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg
             )
-            return '  '
+            return ' '
         end,
     },
 }
@@ -66,8 +68,17 @@ gls.left[2] = {
 gls.left[3] = {
     FileSize = {
         condition = condition.buffer_not_empty,
-        highlight = { colors.fg, colors.bg },
-        provider = 'FileSize',
+        -- highlight = { colors.red, colors.bg },
+        provider = function()
+            vim.api.nvim_command(
+                'hi GalaxyFileSize guifg='
+                    .. mode_color[vim.fn.mode()]
+                    .. ' guibg='
+                    .. colors.bg
+                    .. ' gui=bold'
+            )
+            return fileinfo.get_file_size()
+        end,
     },
 }
 
@@ -82,14 +93,14 @@ gls.left[4] = {
 gls.left[5] = {
     FileName = {
         condition = condition.buffer_not_empty,
-        highlight = { colors.fg, colors.bg, 'bold' },
+        highlight = { colors.blue, colors.bg, 'bold' },
         provider = 'FileName',
     },
 }
 
 gls.left[6] = {
     LineInfo = {
-        highlight = { colors.fg, colors.bg },
+        highlight = { colors.cyan, colors.bg, 'bold' },
         provider = 'LineColumn',
         separator = ' ',
         separator_highlight = { 'NONE', colors.bg },
@@ -98,7 +109,7 @@ gls.left[6] = {
 
 gls.left[7] = {
     PerCent = {
-        highlight = { colors.fg, colors.bg, 'bold' },
+        highlight = { colors.cyan, colors.bg, 'bold' },
         provider = 'LinePercent',
         separator = ' ',
         separator_highlight = { 'NONE', colors.bg },
@@ -153,46 +164,26 @@ gls.mid[1] = {
 }
 
 gls.right[1] = {
-    FileEncode = {
-        condition = condition.hide_in_width,
-        highlight = { colors.green, colors.bg, 'bold' },
-        provider = 'FileEncode',
+    GitIcon = {
+        provider = function()
+            return '  '
+        end,
+        condition = condition.check_git_workspace,
+        highlight = { colors.red, colors.bg },
         separator = ' ',
         separator_highlight = { 'NONE', colors.bg },
     },
 }
 
 gls.right[2] = {
-    FileFormat = {
-        condition = condition.hide_in_width,
-        highlight = { colors.green, colors.bg, 'bold' },
-        provider = 'FileFormat',
-        separator = ' ',
-        separator_highlight = { 'NONE', colors.bg },
-    },
-}
-
-gls.right[3] = {
-    GitIcon = {
-        provider = function()
-            return '  '
-        end,
-        condition = condition.check_git_workspace,
-        highlight = { colors.violet, colors.bg, 'bold' },
-        separator = ' ',
-        separator_highlight = { 'NONE', colors.bg },
-    },
-}
-
-gls.right[4] = {
     GitBranch = {
         condition = condition.check_git_workspace,
-        highlight = { colors.violet, colors.bg, 'bold' },
+        highlight = { colors.red, colors.bg, 'bold' },
         provider = 'GitBranch',
     },
 }
 
-gls.right[5] = {
+gls.right[3] = {
     Separator = {
         provider = function()
             return ' '
@@ -200,7 +191,7 @@ gls.right[5] = {
     },
 }
 
-gls.right[6] = {
+gls.right[4] = {
     DiffAdd = {
         condition = condition.hide_in_width,
         highlight = { colors.green, colors.bg },
@@ -209,7 +200,7 @@ gls.right[6] = {
     },
 }
 
-gls.right[7] = {
+gls.right[5] = {
     DiffModified = {
         condition = condition.hide_in_width,
         highlight = { colors.orange, colors.bg },
@@ -218,7 +209,7 @@ gls.right[7] = {
     },
 }
 
-gls.right[8] = {
+gls.right[6] = {
     DiffRemove = {
         condition = condition.hide_in_width,
         highlight = { colors.red, colors.bg },
@@ -227,10 +218,30 @@ gls.right[8] = {
     },
 }
 
+gls.right[7] = {
+    FileEncode = {
+        condition = condition.hide_in_width,
+        highlight = { colors.green, colors.bg },
+        provider = 'FileEncode',
+        separator = ' ',
+        separator_highlight = { 'NONE', colors.bg },
+    },
+}
+
+gls.right[8] = {
+    FileFormat = {
+        condition = condition.hide_in_width,
+        highlight = { colors.green, colors.bg },
+        provider = 'FileFormat',
+        separator = ' ',
+        separator_highlight = { 'NONE', colors.bg },
+    },
+}
+
 gls.right[9] = {
     RainbowBlue = {
         provider = function()
-            return ' ▊'
+            return '  ▊'
         end,
         highlight = { colors.blue, colors.bg },
     },

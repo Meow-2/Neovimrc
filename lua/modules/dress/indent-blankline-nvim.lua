@@ -8,7 +8,7 @@ return function()
         filetype_exclude = {
             'dashboard',
             'NvimTree',
-            'mason.nvim',
+            'mason',
             'lspsagaoutline',
             'lspsagafinder',
             'packer',

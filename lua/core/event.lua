@@ -47,7 +47,7 @@ local function matchadd() --{{{
         ['NvimTree'] = true,
         ['lspsagafinder'] = true,
         ['dashboard'] = true,
-        ['mason.nvim'] = true,
+        ['mason'] = true,
         ['lspsagaoutline'] = true,
         ['startuptime'] = true,
         ['dap-repl'] = true,

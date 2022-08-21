@@ -18,12 +18,12 @@ end --}}}
 local function super_tab(cmp, luasnip) --{{{
     return function(fallback)
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        if is_words(col) and is_pairs(col + 1) then
-            vim.api.nvim_win_set_cursor(0, { line, col + 1 })
-            return
-        end
         if cmp.visible() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            return
+        end
+        if is_words(col) and is_pairs(col + 1) then
+            vim.api.nvim_win_set_cursor(0, { line, col + 1 })
             return
         end
         if luasnip.jumpable(1) then

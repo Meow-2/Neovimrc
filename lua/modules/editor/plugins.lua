@@ -3,8 +3,6 @@ local conf = require('core.pack').conf_plugin('modules.editor')
 
 plugin({ 'mg979/vim-visual-multi', config = conf('vim-visual-multi') })
 
-plugin({ 'Meow-2/antovim', event = { 'BufNewFile', 'BufReadPost' } })
-plugin({ 'godlygeek/tabular', event = { 'BufNewFile', 'BufReadPost' } })
 plugin({ 'wellle/targets.vim', event = { 'BufNewFile', 'BufReadPost' } })
 
 plugin({
@@ -12,20 +10,25 @@ plugin({
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('vim-matchup'),
 })
+
 plugin({
     'ojroques/vim-oscyank',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('vim-oscyank'),
 })
-plugin({
-    'terrortylor/nvim-comment',
-    event = { 'BufNewFile', 'BufReadPost' },
-    config = conf('nvim-comment'),
-})
+
 plugin({
     'kylechui/nvim-surround',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('nvim-surround'),
+})
+
+plugin({ 'Meow-2/antovim', cmd = { 'Antovim' } })
+plugin({ 'godlygeek/tabular', cmd = { 'Tabularize' } })
+plugin({
+    'terrortylor/nvim-comment',
+    cmd = { 'CommentToggle' },
+    config = conf('nvim-comment'),
 })
 
 plugin({ 'lambdalisue/suda.vim', event = 'InsertEnter' })

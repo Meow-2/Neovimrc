@@ -39,7 +39,7 @@ plugin({
 
 plugin({
     'folke/todo-comments.nvim',
-    event = { 'BufRead', 'BufNewFile' },
+    cmd = { 'CommentToggle' },
     config = conf('todo-comments-nvim'),
     requires = 'plenary.nvim',
 })

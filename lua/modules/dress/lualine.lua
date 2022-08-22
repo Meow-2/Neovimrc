@@ -3,6 +3,14 @@ if not status_ok then
     return
 end
 
+local condition = require('galaxyline.condition')
+local fileinfo = require('galaxyline.provider_fileinfo')
+local vcs = require('galaxyline.provider_vcs')
+local diagnostic = require('galaxyline.provider_diagnostic')
+local gls = galaxyline.section
+
+-- utils{{{
+
 local hex_to_rgb = function(hex_str) --{{{
     local hex = '[abcdef0-9][abcdef0-9]'
     local pat = string.format('^#(%s)(%s)(%s)$', hex, hex, hex)
@@ -34,11 +42,109 @@ local lighten = function(hex, amount, fg) --{{{
     return blend(hex, fg or '#FFFFFF', math.abs(amount))
 end --}}}
 
----@type gt.ColorPalette
+local get_mode_color_alpha = function(mode_color, mod, alpha, fg) --{{{
+    local tbl = {}
+    for key, val in pairs(mode_color) do
+        tbl[key] = mod(val, alpha, fg)
+    end
+    return tbl
+end --}}}
+
+local function buffer_is_readonly() --{{{
+    if vim.bo.filetype == 'help' then
+        return false
+    end
+    return vim.bo.readonly
+end --}}}
+
+local function file_with_icons(file, modified_icon, readonly_icon) --{{{
+    if vim.fn.empty(file) == 1 then
+        return ''
+    end
+
+    modified_icon = modified_icon or ''
+    readonly_icon = readonly_icon or ''
+
+    if buffer_is_readonly() then
+        file = file .. readonly_icon
+    end
+
+    if vim.bo.modifiable and vim.bo.modified then
+        file = file .. modified_icon
+    end
+
+    return ' ' .. file .. ' '
+end --}}}
+
+local function has_gitinfo() --{{{
+    return vcs.diff_add() or vcs.diff_modified() or vcs.diff_remove()
+end --}}}
+
+local function has_diagnostic() --{{{
+    if next(vim.lsp.buf_get_clients(0)) == nil then
+        return false
+    end
+    local active_clients = vim.lsp.get_active_clients()
+
+    if active_clients then
+        local count = #vim.diagnostic.get(
+            vim.api.nvim_get_current_buf(),
+            { severity = vim.diagnostic.severity.ERROR }
+        )
+        if count ~= 0 then
+            return true
+        end
+        count = #vim.diagnostic.get(
+            vim.api.nvim_get_current_buf(),
+            { severity = vim.diagnostic.severity.HINT }
+        )
+        if count ~= 0 then
+            return true
+        end
+        count = #vim.diagnostic.get(
+            vim.api.nvim_get_current_buf(),
+            { severity = vim.diagnostic.severity.INFO }
+        )
+        if count ~= 0 then
+            return true
+        end
+        count = #vim.diagnostic.get(
+            vim.api.nvim_get_current_buf(),
+            { severity = vim.diagnostic.severity.WARN }
+        )
+        if count ~= 0 then
+            return true
+        end
+    else
+        return false
+    end
+    return false
+end --}}}
+
+local set_hl = function(group, _fg, _bg) --{{{
+    vim.api.nvim_set_hl(0, 'Galaxy' .. group, { fg = _fg, bg = _bg })
+end --}}}
+
+--}}}
+
+galaxyline.short_line_list = { --{{{
+    'dap-repl',
+    'dapui_breakpoints',
+    'dapui_watches',
+    'dapui_stacks',
+    'dapui_scopes',
+    'nvimgdb',
+    'NvimTree',
+    'vista',
+    'packer',
+    'lspsagaoutline',
+    'dashboard',
+} --}}}
+
 local github_color = { --{{{
     -- -- Background Colors
-    bg0 = '#ffffff',
-    bg1 = '#f6f8fa',
+    bg = '#ffffff',
+    bg2 = '#f6f8fa',
 
     -- -- Foreground Colors
     fg = '#24292e',
@@ -127,115 +233,30 @@ local github_color = { --{{{
 
     -- Plugin Colors
     git_signs = {
-        add = '#34d058',
+        add = '#22863a',
         change = '#f9c513',
         delete = '#d73a49',
     },
 } --}}}
 
--- local colors = require('galaxyline.theme').default
 local colors = { --{{{
-
-    ---@type string
     bg = '#ffffff',
-    -- bg1 = '#f6f8fa',
-    -- bg0 = colors.bg,
-    -- bg1 = colors.cyan,
-    red = '#d73a49',
+    bg2 = '#f6f8fa',
     fg = '#24292e',
-
+    red = '#d73a49',
     blue = '#0366d6',
-    bright_magenta = '#8a63d2',
     green = '#22863a',
     orange = '#d18616',
     yellow = '#f9c513',
-} --}}}
-
-local condition = require('galaxyline.condition')
-local fileinfo = require('galaxyline.provider_fileinfo')
-local vcs = require('galaxyline.provider_vcs')
-local diagnostic = require('galaxyline.provider_diagnostic')
-local gls = galaxyline.section
-
-local function buffer_is_readonly() --{{{
-    if vim.bo.filetype == 'help' then
-        return false
-    end
-    return vim.bo.readonly
-end --}}}
-
-local function file_with_icons(file, modified_icon, readonly_icon) --{{{
-    if vim.fn.empty(file) == 1 then
-        return ''
-    end
-
-    modified_icon = modified_icon or ''
-    readonly_icon = readonly_icon or ''
-
-    if buffer_is_readonly() then
-        file = file .. readonly_icon
-    end
-
-    if vim.bo.modifiable and vim.bo.modified then
-        file = file .. modified_icon
-    end
-
-    return ' ' .. file .. ' '
-end --}}}
-
-local function has_diagnostic() --{{{
-    if next(vim.lsp.buf_get_clients(0)) == nil then
-        return false
-    end
-    local active_clients = vim.lsp.get_active_clients()
-
-    if active_clients then
-        local count = #vim.diagnostic.get(
-            vim.api.nvim_get_current_buf(),
-            { severity = vim.diagnostic.severity.ERROR }
-        )
-        if count ~= 0 then
-            return true
-        end
-        count = #vim.diagnostic.get(
-            vim.api.nvim_get_current_buf(),
-            { severity = vim.diagnostic.severity.HINT }
-        )
-        if count ~= 0 then
-            return true
-        end
-        count = #vim.diagnostic.get(
-            vim.api.nvim_get_current_buf(),
-            { severity = vim.diagnostic.severity.INFO }
-        )
-        if count ~= 0 then
-            return true
-        end
-        count = #vim.diagnostic.get(
-            vim.api.nvim_get_current_buf(),
-            { severity = vim.diagnostic.severity.WARN }
-        )
-        if count ~= 0 then
-            return true
-        end
-    else
-        return false
-    end
-    return false
-end --}}}
-
-galaxyline.short_line_list = { --{{{
-    'dap-repl',
-    'dapui_breakpoints',
-    'dapui_watches',
-    'dapui_stacks',
-    'dapui_scopes',
-    'nvimgdb',
-    'NvimTree',
-    'vista',
-    'packer',
-    'lspsagaoutline',
-    'dashboard',
+    cyan = '#1b7c83',
+    bright_magenta = '#8a63d2',
+    error = '#cb2431',
+    warning = '#bf8803',
+    info = '#2188ff',
+    hint = '#1b7c83',
+    gitadd = '#22863a',
+    gitchange = '#e36209',
+    gitdelete = '#d73a49',
 } --}}}
 
 local mode_color = { --{{{
@@ -284,43 +305,18 @@ local mode_str = { --{{{
     ['!'] = 'SHELL',
 } --}}}
 
-local get_mode_color_alpha = function(mod, alpha) --{{{
-    return {
-        ['!'] = mod(colors.red, alpha),
-        [''] = mod(colors.orange, alpha),
-        [''] = mod(colors.yellow, alpha),
-        ['r?'] = mod(colors.red, alpha),
-        c = mod(colors.red, alpha),
-        ce = mod(colors.red, alpha),
-        cv = mod(colors.red, alpha),
-        i = mod(colors.green, alpha),
-        ic = mod(colors.green, alpha),
-        n = mod(colors.blue, alpha),
-        no = mod(colors.blue, alpha),
-        r = mod(colors.bright_magenta, alpha),
-        R = mod(colors.bright_magenta, alpha),
-        rm = mod(colors.bright_magenta, alpha),
-        Rv = mod(colors.bright_magenta, alpha),
-        s = mod(colors.yellow, alpha),
-        S = mod(colors.yellow, alpha),
-        t = mod(colors.orange, alpha),
-        v = mod(colors.orange, alpha),
-        V = mod(colors.orange, alpha),
-    }
-end --}}}
+local mode_color_alpha = get_mode_color_alpha(mode_color, lighten, 0.2)
+local mode_color_bg_alpha = get_mode_color_alpha(mode_color, lighten, 0.01, colors.bg2)
+local mode_color_fg_alpha = get_mode_color_alpha(mode_color, darken, 0.4, colors.fg)
 
-local mode_color_alpha = get_mode_color_alpha(lighten, 0.3)
-
-local set_hl = function(group, _fg, _bg)
-    vim.api.nvim_set_hl(0, 'Galaxy' .. group, { fg = _fg, bg = _bg })
-end
-
+-- set Background Highlights
 vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#b1b1b1', bg = colors.bg })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#928374', bg = colors.bg })
+
 gls.left[1] = {
     ViMode = {
         provider = function()
-            set_hl('ViMode', colors.bg, mode_color[vim.fn.mod()])
+            set_hl('ViMode', colors.bg, mode_color[vim.fn.mode()])
             return '  ' .. mode_str[vim.fn.mode()] .. ' '
         end,
     },
@@ -329,13 +325,10 @@ gls.left[1] = {
 gls.left[2] = {
     Separator0 = {
         provider = function()
-            local in_git = condition.check_git_workspace()
-            local color_bg = (in_git or has_diagnostic())
-                    and mode_color_mod(lighten, 0.3)[vim.fn.mode()]
+            local color_bg = (condition.check_git_workspace() or has_diagnostic())
+                    and mode_color_alpha[vim.fn.mode()]
                 or colors.bg
-            vim.api.nvim_command(
-                'hi GalaxySeparator0 guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. color_bg
-            )
+            set_hl('Separator0', mode_color[vim.fn.mode()], color_bg)
             return ' '
         end,
     },
@@ -345,16 +338,9 @@ gls.left[3] = {
     GitIcon = {
         condition = condition.check_git_workspace,
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyGitIcon guifg='
-                    .. colors.fg
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
+            set_hl('GitIcon', colors.fg, mode_color_alpha[vim.fn.mode()])
             return '  '
         end,
-        -- separator = ' ',
-        -- separator_highlight = { 'NONE', color.bg1 },
     },
 }
 
@@ -362,12 +348,7 @@ gls.left[4] = {
     GitBranch = {
         condition = condition.check_git_workspace,
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyGitBranch guifg='
-                    .. colors.fg
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
+            set_hl('GitBranch', colors.fg, mode_color_alpha[vim.fn.mode()])
             return vcs.get_git_branch() .. ' '
         end,
     },
@@ -377,21 +358,8 @@ gls.left[5] = {
     Separator1 = {
         condition = condition.hide_in_width,
         provider = function()
-            local diff_add = vcs.diff_add()
-            local diff_modified = vcs.diff_modified()
-            local diff_remove = vcs.diff_remove()
-            if diff_add or diff_modified or diff_remove then
-                vim.api.nvim_command(
-                    'hi GalaxySeparator1 guifg='
-                        .. colors.fg
-                        .. ' guibg='
-                        .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-                )
-                return ' '
-            else
-                -- return ''
-                return ''
-            end
+            set_hl('Separator1', colors.fg, mode_color_alpha[vim.fn.mode()])
+            return has_gitinfo() and ' ' or ''
         end,
     },
 }
@@ -401,12 +369,7 @@ gls.left[6] = {
         condition = condition.hide_in_width,
         icon = ' +',
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyDiffAdd guifg='
-                    .. colors.green
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
+            set_hl('DiffAdd', colors.gitadd, mode_color_alpha[vim.fn.mode()])
             return vcs.diff_add()
         end,
     },
@@ -417,12 +380,7 @@ gls.left[7] = {
         condition = condition.hide_in_width,
         icon = ' ~',
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyDiffModified guifg='
-                    .. colors.blue
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
+            set_hl('DiffModified', colors.gitchange, mode_color_alpha[vim.fn.mode()])
             return vcs.diff_modified()
         end,
     },
@@ -433,12 +391,7 @@ gls.left[8] = {
         condition = condition.hide_in_width,
         icon = ' -',
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyDiffRemove guifg='
-                    .. colors.red
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
+            set_hl('DiffRemove', colors.gitdelete, mode_color_alpha[vim.fn.mode()])
             return vcs.diff_remove()
         end,
     },
@@ -446,20 +399,9 @@ gls.left[8] = {
 
 gls.left[9] = {
     Separator2 = {
-        --         -- condition = condition.hide_in_width,
-        -- highlight = { color.fg, color.bg1 },
         provider = function()
-            if has_diagnostic() and condition.check_git_workspace() then
-                vim.api.nvim_command(
-                    'hi GalaxySeparator2 guifg='
-                        .. colors.fg
-                        .. ' guibg='
-                        .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-                )
-                return ' '
-            else
-                return ''
-            end
+            set_hl('Separator2', colors.fg, mode_color_alpha[vim.fn.mode()])
+            return (has_diagnostic() and condition.check_git_workspace()) and ' ' or ''
         end,
     },
 }
@@ -468,12 +410,7 @@ gls.left[10] = {
     DiagnosticError = {
         icon = '  ',
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyDiagnosticError guifg='
-                    .. colors.red
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
+            set_hl('DiagnosticError', colors.error, mode_color_alpha[vim.fn.mode()])
             return diagnostic.get_diagnostic_error()
         end,
     },
@@ -483,43 +420,27 @@ gls.left[11] = {
     DiagnosticWarn = {
         icon = '  ',
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyDiagnosticWarn guifg='
-                    .. colors.orange
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
+            set_hl('DiagnosticWarn', colors.warning, mode_color_alpha[vim.fn.mode()])
             return diagnostic.get_diagnostic_warn()
         end,
     },
 }
 
 gls.left[12] = {
-    DiagnosticHint = {
-        icon = '  ',
-        provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyDiagnosticHint guifg='
-                    .. colors.yellow
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
-            return diagnostic.get_diagnostic_hint()
-        end,
-    },
-}
-
-gls.left[13] = {
     DiagnosticInfo = {
         icon = '  ',
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyDiagnosticInfo guifg='
-                    .. colors.blue
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
-            return diagnostic.get_diagnostic_warn()
+            set_hl('DiagnosticInfo', colors.info, mode_color_alpha[vim.fn.mode()])
+            return diagnostic.get_diagnostic_info()
+        end,
+    },
+}
+gls.left[13] = {
+    DiagnosticHint = {
+        icon = '  ',
+        provider = function()
+            set_hl('DiagnosticHint', colors.hint, mode_color_alpha[vim.fn.mode()])
+            return diagnostic.get_diagnostic_hint()
         end,
     },
 }
@@ -527,18 +448,8 @@ gls.left[13] = {
 gls.left[14] = {
     Separator3 = {
         provider = function()
-            local in_git = condition.check_git_workspace()
-            if in_git or has_diagnostic() then
-                vim.api.nvim_command(
-                    'hi GalaxySeparator3 guifg='
-                        .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-                        .. ' guibg='
-                        .. colors.bg
-                )
-                return ' '
-            else
-                return ''
-            end
+            set_hl('Separator3', mode_color_alpha[vim.fn.mode()], colors.bg)
+            return (condition.check_git_workspace() or has_diagnostic()) and ' ' or ''
         end,
     },
 }
@@ -547,17 +458,13 @@ gls.left[15] = {
     FileName_Custom = {
         condition = condition.buffer_not_empty,
         highlight = { colors.fg, colors.bg },
-
-        -- provider = 'FileName',
         provider = function()
             local file = vim.fn.expand('%:t')
             return file_with_icons(file, '[+]', '[-]')
         end,
-        -- function M.get_current_file_name(modified_icon, readonly_icon)
-        --     return file_with_icons(file, modified_icon, readonly_icon)
-        -- end
     },
 }
+
 gls.right[1] = {
     FileEncode = {
         condition = condition.hide_in_width,
@@ -567,8 +474,6 @@ gls.right[1] = {
             return encode
             -- return ' ' .. encode:upper()
         end,
-        -- separator = '  ',
-        -- separator_highlight = { color.fg, color.bg0 },
     },
 }
 
@@ -610,19 +515,12 @@ gls.right[4] = {
         provider = function()
             return vim.bo.filetype .. ' '
         end,
-        -- separator = '',
-        -- separator_highlight = { 'NONE', color.bg0 },
     },
 }
 gls.right[5] = {
     Separator4 = {
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxySeparator4 guifg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-                    .. ' guibg='
-                    .. colors.bg
-            )
+            set_hl('Separator4', mode_color_alpha[vim.fn.mode()], colors.bg)
             return ''
         end,
     },
@@ -630,12 +528,7 @@ gls.right[5] = {
 gls.right[6] = {
     PerCent = {
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyPerCent guifg='
-                    .. colors.fg
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
+            set_hl('PerCent', colors.fg, mode_color_alpha[vim.fn.mode()])
             return ' ' .. fileinfo.current_line_percent()
         end,
     },
@@ -644,12 +537,7 @@ gls.right[6] = {
 gls.right[7] = {
     Separator5 = {
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxySeparator5 guifg='
-                    .. mode_color[vim.fn.mode()]
-                    .. ' guibg='
-                    .. mode_color_mod(lighten, 0.3)[vim.fn.mode()]
-            )
+            set_hl('Separator5', mode_color[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
             return ''
         end,
     },
@@ -657,9 +545,7 @@ gls.right[7] = {
 gls.right[8] = {
     LineInfo = {
         provider = function()
-            vim.api.nvim_command(
-                'hi GalaxyLineInfo guifg=' .. colors.bg .. ' guibg=' .. mode_color[vim.fn.mode()]
-            )
+            set_hl('LineInfo', colors.bg, mode_color[vim.fn.mode()])
             local line = vim.fn.line('.')
             local column = vim.fn.col('.')
             return string.format('  %3d:%-2d ', line, column)
@@ -683,24 +569,54 @@ gls.mid[1] = {
 }
 gls.short_line_left[1] = {
     BufferType = {
-        highlight = { colors.blue, colors.bg },
-        provider = 'FileTypeName',
-        separator = ' ',
-        separator_highlight = { 'NONE', colors.bg },
+        provider = function()
+            set_hl('BufferType', colors.bg, mode_color[vim.fn.mode()])
+            return '  ' .. vim.bo.filetype .. ' '
+        end,
     },
 }
 
 gls.short_line_left[2] = {
-    SFileName = {
-        condition = condition.buffer_not_empty,
-        highlight = { colors.fg, colors.bg },
-        provider = 'SFileName',
+    Separator6 = {
+        provider = function()
+            set_hl('Separator6', mode_color[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
+            -- local tt
+            return ' '
+        end,
     },
 }
 
--- gls.short_line_right[1] = {
---     BufferIcon = {
---         highlight = { color.fg, color.bg0 },
---         provider = 'BufferIcon',
+-- gls.short_line_left[3] = {
+--     SFileName = {
+--         condition = condition.buffer_not_empty,
+--         provider = function()
+--             set_hl('SFileName', colors.fg, mode_color_alpha[vim.fn.mode()])
+--             return fileinfo.filename_in_special_buffer()
+--         end,
 --     },
 -- }
+-- gls.short_line_left[4] = {
+--     Separator7 = {
+--         provider = function()
+--             set_hl('Separator7', mode_color_alpha[vim.fn.mode()], colors.bg)
+--             return ' '
+--         end,
+--     },
+-- }
+
+gls.short_line_right[1] = {
+    Separator7 = {
+        provider = function()
+            set_hl('Separator7', mode_color[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
+            return ''
+        end,
+    },
+}
+gls.short_line_right[2] = {
+    ShortPerCent = {
+        provider = function()
+            set_hl('ShortPerCent', colors.bg, mode_color[vim.fn.mode()])
+            return ' ' .. fileinfo.current_line_percent()
+        end,
+    },
+}

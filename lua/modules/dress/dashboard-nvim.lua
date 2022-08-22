@@ -16,8 +16,8 @@ return function()
         db.preview_file_width = 46
     end
     -- db.preview_command = 'cat | lolcat -F 0.3'
-    db.hide_statusline = false
-    db.hide_tabline = false
+    db.hide_statusline = true
+    db.hide_tabline = true
     db.header_pad = 1
     db.center_pad = 1
     db.footer_pad = 5

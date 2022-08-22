@@ -35,7 +35,7 @@ local lighten = function(hex, amount, fg) --{{{
 end --}}}
 
 ---@type gt.ColorPalette
-local github_color = {
+local github_color = { --{{{
     -- -- Background Colors
     bg0 = '#ffffff',
     bg1 = '#f6f8fa',
@@ -131,10 +131,10 @@ local github_color = {
         change = '#f9c513',
         delete = '#d73a49',
     },
-}
+} --}}}
 
 -- local colors = require('galaxyline.theme').default
-local colors = {
+local colors = { --{{{
 
     ---@type string
     bg = '#ffffff',
@@ -149,7 +149,8 @@ local colors = {
     green = '#22863a',
     orange = '#d18616',
     yellow = '#f9c513',
-}
+} --}}}
+
 local condition = require('galaxyline.condition')
 local fileinfo = require('galaxyline.provider_fileinfo')
 local vcs = require('galaxyline.provider_vcs')
@@ -260,7 +261,30 @@ local mode_color = { --{{{
     V = colors.orange,
 } --}}}
 
-local mode_color_mod = function(mod, alpha) --{{{
+local mode_str = { --{{{
+    n = 'NORMAL',
+    no = 'NORMAL',
+    i = 'INSERT',
+    ic = 'INSERT',
+    c = 'COMMAND',
+    ce = 'COMMAND',
+    cv = 'Ex',
+    V = 'V-LINE',
+    [''] = 'V-BLOCK',
+    v = 'VISUAL',
+    ['r?'] = ':CONFIRM',
+    rm = 'MORE',
+    R = 'REPLACE',
+    Rv = 'V-REPLACE',
+    s = 'SELECT',
+    S = 'S-LINE',
+    r = 'H-ENTER',
+    [''] = 'S-BLOCK',
+    t = 'TERMINAL',
+    ['!'] = 'SHELL',
+} --}}}
+
+local get_mode_color_alpha = function(mod, alpha) --{{{
     return {
         ['!'] = mod(colors.red, alpha),
         [''] = mod(colors.orange, alpha),
@@ -285,38 +309,18 @@ local mode_color_mod = function(mod, alpha) --{{{
     }
 end --}}}
 
-local mode_str = { --{{{
-    n = 'NORMAL',
-    no = 'NORMAL',
-    i = 'INSERT',
-    ic = 'INSERT',
-    c = 'COMMAND',
-    ce = 'COMMAND',
-    cv = 'Ex',
-    V = 'V-LINE',
-    [''] = 'V-BLOCK',
-    v = 'VISUAL',
-    ['r?'] = ':CONFIRM',
-    rm = 'MORE',
-    R = 'REPLACE',
-    Rv = 'V-REPLACE',
-    s = 'SELECT',
-    S = 'S-LINE',
-    r = 'H-ENTER',
-    [''] = 'S-BLOCK',
-    t = 'TERMINAL',
-    ['!'] = 'SHELL',
-} --}}}
+local mode_color_alpha = get_mode_color_alpha(lighten, 0.3)
+
+local set_hl = function(group, _fg, _bg)
+    vim.api.nvim_set_hl(0, 'Galaxy' .. group, { fg = _fg, bg = _bg })
+end
 
 vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#b1b1b1', bg = colors.bg })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#928374', bg = colors.bg })
 gls.left[1] = {
     ViMode = {
         provider = function()
-            -- auto change color according the vim mode
-            vim.api.nvim_command(
-                'hi GalaxyViMode guifg=' .. colors.bg .. ' guibg=' .. mode_color[vim.fn.mode()]
-            )
+            set_hl('ViMode', colors.bg, mode_color[vim.fn.mod()])
             return '  ' .. mode_str[vim.fn.mode()] .. ' '
         end,
     },

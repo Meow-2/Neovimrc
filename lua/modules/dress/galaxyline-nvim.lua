@@ -1,4 +1,4 @@
 return function()
     -- require('modules.dress.eviline')
-    require('modules.dress.tiline')
+    require('modules.dress.lualine')
 end

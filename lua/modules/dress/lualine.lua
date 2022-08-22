@@ -7,6 +7,8 @@ local condition = require('galaxyline.condition')
 local fileinfo = require('galaxyline.provider_fileinfo')
 local vcs = require('galaxyline.provider_vcs')
 local diagnostic = require('galaxyline.provider_diagnostic')
+local lspclient = require('galaxyline.provider_lsp')
+
 local gls = galaxyline.section
 
 -- utils{{{
@@ -241,7 +243,8 @@ local github_color = { --{{{
 
 local colors = { --{{{
     bg = '#ffffff',
-    bg2 = '#f6f8fa',
+    -- bg2 = '#f6f8fa',
+    bg2 = '#f4f7fa',
     fg = '#24292e',
     red = '#d73a49',
     blue = '#0366d6',
@@ -306,12 +309,12 @@ local mode_str = { --{{{
 } --}}}
 
 local mode_color_alpha = get_mode_color_alpha(mode_color, lighten, 0.2)
-local mode_color_bg_alpha = get_mode_color_alpha(mode_color, lighten, 0.01, colors.bg2)
+-- local mode_color_bg_alpha = get_mode_color_alpha(mode_color, lighten, 0.01, colors.bg2)
 local mode_color_fg_alpha = get_mode_color_alpha(mode_color, darken, 0.4, colors.fg)
 
 -- set Background Highlights
-vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#b1b1b1', bg = colors.bg })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#928374', bg = colors.bg })
+vim.api.nvim_set_hl(0, 'StatusLine', { fg = colors.bg2, bg = colors.bg2 })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = darken(colors.fg, 0.5), bg = colors.bg2 })
 
 gls.left[1] = {
     ViMode = {
@@ -327,7 +330,7 @@ gls.left[2] = {
         provider = function()
             local color_bg = (condition.check_git_workspace() or has_diagnostic())
                     and mode_color_alpha[vim.fn.mode()]
-                or colors.bg
+                or colors.bg2
             set_hl('Separator0', mode_color[vim.fn.mode()], color_bg)
             return ' '
         end,
@@ -338,7 +341,7 @@ gls.left[3] = {
     GitIcon = {
         condition = condition.check_git_workspace,
         provider = function()
-            set_hl('GitIcon', colors.fg, mode_color_alpha[vim.fn.mode()])
+            set_hl('GitIcon', mode_color_fg_alpha[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
             return '  '
         end,
     },
@@ -348,7 +351,7 @@ gls.left[4] = {
     GitBranch = {
         condition = condition.check_git_workspace,
         provider = function()
-            set_hl('GitBranch', colors.fg, mode_color_alpha[vim.fn.mode()])
+            set_hl('GitBranch', mode_color_fg_alpha[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
             return vcs.get_git_branch() .. ' '
         end,
     },
@@ -358,7 +361,11 @@ gls.left[5] = {
     Separator1 = {
         condition = condition.hide_in_width,
         provider = function()
-            set_hl('Separator1', colors.fg, mode_color_alpha[vim.fn.mode()])
+            set_hl(
+                'Separator1',
+                mode_color_fg_alpha[vim.fn.mode()],
+                mode_color_alpha[vim.fn.mode()]
+            )
             return has_gitinfo() and ' ' or ''
         end,
     },
@@ -400,7 +407,11 @@ gls.left[8] = {
 gls.left[9] = {
     Separator2 = {
         provider = function()
-            set_hl('Separator2', colors.fg, mode_color_alpha[vim.fn.mode()])
+            set_hl(
+                'Separator2',
+                mode_color_fg_alpha[vim.fn.mode()],
+                mode_color_alpha[vim.fn.mode()]
+            )
             return (has_diagnostic() and condition.check_git_workspace()) and ' ' or ''
         end,
     },
@@ -448,7 +459,7 @@ gls.left[13] = {
 gls.left[14] = {
     Separator3 = {
         provider = function()
-            set_hl('Separator3', mode_color_alpha[vim.fn.mode()], colors.bg)
+            set_hl('Separator3', mode_color_alpha[vim.fn.mode()], colors.bg2)
             return (condition.check_git_workspace() or has_diagnostic()) and ' ' or ''
         end,
     },
@@ -457,9 +468,9 @@ gls.left[14] = {
 gls.left[15] = {
     FileName_Custom = {
         condition = condition.buffer_not_empty,
-        highlight = { colors.fg, colors.bg },
         provider = function()
             local file = vim.fn.expand('%:t')
+            set_hl('FileName_Custom', mode_color_fg_alpha[vim.fn.mode()], colors.bg2)
             return file_with_icons(file, '[+]', '[-]')
         end,
     },
@@ -468,81 +479,95 @@ gls.left[15] = {
 gls.right[1] = {
     FileEncode = {
         condition = condition.hide_in_width,
-        highlight = { colors.fg, colors.bg },
         provider = function()
+            set_hl('FileEncode', mode_color_fg_alpha[vim.fn.mode()], colors.bg2)
             local encode = vim.bo.fenc ~= '' and vim.bo.fenc or vim.o.enc
-            return encode
-            -- return ' ' .. encode:upper()
+            return encode .. ' '
         end,
     },
 }
-
 gls.right[2] = {
-    FileFormat = {
+    Separator4 = {
         condition = condition.hide_in_width,
-        highlight = { colors.fg, colors.bg },
         provider = function()
-            local ff = vim.bo.fileformat
-            if ff == 'unix' then
-                return ''
-            elseif ff == 'dos' then
-                return ''
-            elseif ff == 'mac' then
-                return ''
-            end
+            set_hl('Separator4', mode_color_fg_alpha[vim.fn.mode()], colors.bg2)
+            return ' '
         end,
-        separator = '  ',
-        separator_highlight = { colors.fg, colors.bg },
     },
 }
 
 gls.right[3] = {
-    FileIcon = {
-        condition = condition.buffer_not_empty,
-        highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.bg },
+    FileFormat = {
+        condition = condition.hide_in_width,
         provider = function()
-            local icon = fileinfo.get_file_icon()
-            return icon ~= '' and icon or ''
-        end,
-        separator = '  ',
-        separator_highlight = { colors.fg, colors.bg },
-    },
-}
-gls.right[4] = {
-    FileType = {
-        condition = condition.buffer_not_empty,
-        highlight = { colors.fg, colors.bg },
-        provider = function()
-            return vim.bo.filetype .. ' '
-        end,
-    },
-}
-gls.right[5] = {
-    Separator4 = {
-        provider = function()
-            set_hl('Separator4', mode_color_alpha[vim.fn.mode()], colors.bg)
-            return ''
-        end,
-    },
-}
-gls.right[6] = {
-    PerCent = {
-        provider = function()
-            set_hl('PerCent', colors.fg, mode_color_alpha[vim.fn.mode()])
-            return ' ' .. fileinfo.current_line_percent()
+            set_hl('FileFormat', mode_color_fg_alpha[vim.fn.mode()], colors.bg2)
+            local ff = vim.bo.fileformat
+            if ff == 'unix' then
+                return ' '
+            elseif ff == 'dos' then
+                return ' '
+            elseif ff == 'mac' then
+                return ' '
+            end
         end,
     },
 }
 
-gls.right[7] = {
+gls.right[4] = {
     Separator5 = {
+        condition = condition.hide_in_width,
         provider = function()
-            set_hl('Separator5', mode_color[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
+            set_hl('Separator5', mode_color_fg_alpha[vim.fn.mode()], colors.bg2)
+            return ' '
+        end,
+    },
+}
+
+gls.right[5] = {
+    FileIcon = {
+        condition = condition.buffer_not_empty,
+        highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.bg2 },
+        provider = function()
+            local icon = fileinfo.get_file_icon()
+            return icon ~= '' and icon or ''
+        end,
+    },
+}
+gls.right[6] = {
+    FileType = {
+        condition = condition.buffer_not_empty,
+        provider = function()
+            set_hl('FileType', mode_color_fg_alpha[vim.fn.mode()], colors.bg2)
+            return vim.bo.filetype:gsub('^%l', string.upper) .. ' '
+        end,
+    },
+}
+gls.right[7] = {
+    Separator6 = {
+        provider = function()
+            set_hl('Separator6', mode_color_alpha[vim.fn.mode()], colors.bg2)
             return ''
         end,
     },
 }
 gls.right[8] = {
+    PerCent = {
+        provider = function()
+            set_hl('PerCent', mode_color_fg_alpha[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
+            return ' ' .. fileinfo.current_line_percent()
+        end,
+    },
+}
+
+gls.right[9] = {
+    Separator7 = {
+        provider = function()
+            set_hl('Separator7', mode_color[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
+            return ''
+        end,
+    },
+}
+gls.right[10] = {
     LineInfo = {
         provider = function()
             set_hl('LineInfo', colors.bg, mode_color[vim.fn.mode()])
@@ -562,52 +587,35 @@ gls.mid[1] = {
             end
             return true
         end,
-        highlight = { colors.fg, colors.bg },
         icon = ' LSP:',
-        provider = 'GetLspClient',
+        provider = function()
+            set_hl('ShowLspClient', mode_color_fg_alpha[vim.fn.mode()], colors.bg2)
+            return lspclient.get_lsp_client()
+        end,
     },
 }
 gls.short_line_left[1] = {
     BufferType = {
         provider = function()
             set_hl('BufferType', colors.bg, mode_color[vim.fn.mode()])
-            return '  ' .. vim.bo.filetype .. ' '
+            return '  ' .. vim.bo.filetype:gsub('^%l', string.upper) .. ' '
         end,
     },
 }
 
 gls.short_line_left[2] = {
-    Separator6 = {
+    Separator8 = {
         provider = function()
-            set_hl('Separator6', mode_color[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
-            -- local tt
+            set_hl('Separator8', mode_color[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
             return ' '
         end,
     },
 }
 
--- gls.short_line_left[3] = {
---     SFileName = {
---         condition = condition.buffer_not_empty,
---         provider = function()
---             set_hl('SFileName', colors.fg, mode_color_alpha[vim.fn.mode()])
---             return fileinfo.filename_in_special_buffer()
---         end,
---     },
--- }
--- gls.short_line_left[4] = {
---     Separator7 = {
---         provider = function()
---             set_hl('Separator7', mode_color_alpha[vim.fn.mode()], colors.bg)
---             return ' '
---         end,
---     },
--- }
-
 gls.short_line_right[1] = {
-    Separator7 = {
+    Separator9 = {
         provider = function()
-            set_hl('Separator7', mode_color[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
+            set_hl('Separator9', mode_color[vim.fn.mode()], mode_color_alpha[vim.fn.mode()])
             return ''
         end,
     },

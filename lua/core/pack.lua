@@ -42,13 +42,10 @@ function Packer:load_packer()
         packer = require('packer')
     end
     packer.init({
+        auto_clean = false,
         compile_path = packer_compiled,
         git = { clone_timeout = 120 },
-        disable_commands = false,
-        profile = {
-            enable = true,
-            threshold = 1, -- integer in milliseconds, plugins which load faster than this won't be shown in profile output
-        },
+        disable_commands = true,
     })
     packer.reset()
     local use = packer.use

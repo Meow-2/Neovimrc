@@ -1,7 +1,7 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.dress')
 
-local dark_light = function(mode)
+local dark_light = function(mode) --{{{
     local theme_plugin
     local conf_gg
     if mode == 'dark' then
@@ -44,9 +44,9 @@ local dark_light = function(mode)
             },
         },
     })
-end
+end --}}}
 
-dark_light('light')
+dark_light('dark')
 
 plugin({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim') })
 

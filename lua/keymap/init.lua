@@ -22,7 +22,7 @@ local function super_tab(cmp, luasnip) --{{{
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             return
         end
-        if is_words(col) and is_pairs(col + 1) then
+        if (is_words(col) or is_words(col - 1)) and is_pairs(col + 1) then
             vim.api.nvim_win_set_cursor(0, { line, col + 1 })
             return
         end

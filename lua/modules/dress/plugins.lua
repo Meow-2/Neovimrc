@@ -11,8 +11,8 @@ local dark_light = function(mode)
             require('github-galaxyline').setup({ style = 'dark' })
         end
     elseif mode == 'light' then
-        plugin({ 'Th3Whit3Wolf/one-nvim', config = conf('one-nvim') })
-        theme_plugin = 'one-nvim'
+        plugin({ 'projekt0n/github-nvim-theme', config = conf('github-nvim-theme') })
+        theme_plugin = 'github-nvim-theme'
         conf_gg = function()
             require('github-galaxyline').setup({ style = 'light' })
         end

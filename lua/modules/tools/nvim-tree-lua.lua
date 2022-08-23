@@ -68,7 +68,7 @@ return function()
                     },
                 },
             },
-            special_files = { 'README.md', 'readme.md' },
+            special_files = { 'README.md', 'readme.md', 'plugins.lua' },
         },
         actions = {
             open_file = {

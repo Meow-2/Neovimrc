@@ -46,7 +46,7 @@ local dark_light = function(mode) --{{{
     })
 end --}}}
 
-dark_light('dark')
+dark_light('light')
 
 plugin({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim') })
 

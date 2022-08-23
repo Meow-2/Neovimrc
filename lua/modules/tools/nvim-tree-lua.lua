@@ -97,6 +97,6 @@ return function()
             ignore_list = {},
         },
     })
-    vim.api.nvim_set_hl(0, 'NvimTreeGitIgnored', { fg = '#73797e' })
+    -- vim.api.nvim_set_hl(0, 'NvimTreeGitIgnored', { fg = '#73797e' })
     -- require('nvim-tree.events').on_file_created(function(file) vim.cmd("edit " .. file.fname) end)
 end

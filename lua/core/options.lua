@@ -103,8 +103,6 @@ vim.g.python_host_prog = '/usr/bin/python'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
 vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
--- vim.opt.guifont = [[Hack Nerd Font Mono:h15]]
--- vim.opt.guifont = [[JetBrainsMono Nerd Font:h15]]
 
 if vim.loop.os_uname().sysname == 'Darwin' then
     vim.g.clipboard = {

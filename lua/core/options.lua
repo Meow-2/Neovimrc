@@ -90,8 +90,8 @@ vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.number = true
 vim.opt.signcolumn = 'yes'
-vim.opt.conceallevel = 2
-vim.opt.concealcursor = 'niv'
+-- vim.opt.conceallevel = 2
+-- vim.opt.concealcursor = 'niv'
 
 vim.opt.foldenable = true
 vim.opt.foldmethod = 'marker'

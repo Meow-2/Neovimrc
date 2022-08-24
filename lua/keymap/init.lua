@@ -12,7 +12,7 @@ local is_words = function(col) --{{{
 end --}}}
 
 local is_pairs = function(col) --{{{
-    return vim.fn.getline('.'):sub(col, col):match('[\'">%])}]')
+    return vim.fn.getline('.'):sub(col, col):match('[\'">%])}`]')
 end --}}}
 
 local function super_tab(cmp, luasnip) --{{{

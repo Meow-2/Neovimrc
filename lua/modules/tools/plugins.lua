@@ -110,7 +110,7 @@ plugin({
 })
 
 plugin({
-    'askfiy/nvim-picgo',
+    'Meow-2/nvim-picgo',
     ft = { 'markdown' },
     config = conf('nvim-picgo'),
 })

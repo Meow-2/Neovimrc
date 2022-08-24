@@ -5,9 +5,9 @@ return function()
             return {
                 GitSignsChange = { fg = '#fac661' },
                 NvimTreeSpecialFile = { bold = true, underline = false },
-                DashboardHeader = { fg = '#22863a', bold = true },
-                DashboardCenter = { fg = '#0366d6', bold = true },
-                DashboardShortCut = { fg = '#d73a49', bold = true },
+                DashboardHeader = { fg = '#22863a' },
+                DashboardCenter = { fg = '#0366d6' },
+                DashboardShortCut = { fg = '#d73a49' },
                 DashboardFooter = { fg = '#959da5', bold = true },
             }
         end,

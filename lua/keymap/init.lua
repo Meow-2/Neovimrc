@@ -34,10 +34,10 @@ local function super_tab(cmp, luasnip) --{{{
     end
 end --}}}
 
-local function super_s_tab(cmp, luasnip, select_behavior) --{{{
+local function super_s_tab(cmp, luasnip) --{{{
     return function(fallback)
         if cmp.visible() then
-            cmp.select_prev_item(select_behavior)
+            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
         elseif luasnip.jumpable(-1) then
             luasnip.jump(-1)
         else

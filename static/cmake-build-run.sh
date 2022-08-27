@@ -23,6 +23,5 @@
 cmake -B build \
     -GNinja \
     -DCMAKE_BUILD_TYPE=Debug \
-    -DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=Enable \
     && cmake --build build -j16

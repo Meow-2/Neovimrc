@@ -29,6 +29,12 @@ plugin({
     config = conf('nvim-comment'),
 })
 
+plugin({
+    'beauwilliams/focus.nvim',
+    event = { 'BufNewFile', 'BufReadPost' },
+    config = conf('focus.nvim'),
+})
+
 plugin({ 'Meow-2/antovim', cmd = { 'Antovim' } })
 plugin({ 'godlygeek/tabular', cmd = { 'Tabularize' } })
 

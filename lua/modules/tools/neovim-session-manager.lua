@@ -18,9 +18,7 @@ return function()
         group = 'open_nvim_tree',
         pattern = { '*' },
         callback = function()
-            vim.cmd('FocusDisable')
             require('nvim-tree').toggle(false, true)
-            vim.cmd('FocusEnable')
         end,
     })
 end

@@ -8,7 +8,7 @@ local noremap, silent, expr = keymap.noremap, keymap.silent, keymap.expr
 local home = os.getenv('HOME')
 
 local is_words = function(col) --{{{
-    return not (col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')) --{{{}}}
+    return not (col == 0 or col == -1 or vim.fn.getline('.'):sub(col, col):match('%s')) --{{{}}}
 end --}}}
 
 local is_pairs = function(col) --{{{

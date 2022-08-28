@@ -20,9 +20,9 @@ plugin({
     requires = {
         { 'williamboman/mason.nvim', after = { 'nvim-lspconfig' }, config = conf('mason.nvim') },
         {
-            'williamboman/mason-lspconfig.nvim',
+            'WhoIsSethDaniel/mason-tool-installer.nvim',
             after = { 'nvim-lspconfig', 'mason.nvim' },
-            config = conf('mason-lspconfig.nvim'),
+            config = conf('mason-tool-installer.nvim'),
         },
         {
             'glepnir/lspsaga.nvim',

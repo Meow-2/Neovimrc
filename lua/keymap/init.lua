@@ -197,7 +197,7 @@ function WK_MAP()
         ['gD'] = { cmd('Lspsaga preview_definition'), 'Lsp Preview Define' },
         ['gs'] = { cmd('Antovim'), 'Antovim' },
         ['<C-k>'] = { cmd('Lspsaga hover_doc'), 'Lsp Hover Doc' },
-        ['<C-p>'] = { cmd('Lspsaga signature_help'), 'Lsp Signature Help' },
+        -- ['<C-p>'] = { cmd('Lspsaga signature_help'), 'Lsp Signature Help' },
         -- Lspsaga
         ['<Leader>o'] = { cmd('LSoutlineToggle'), 'Show OutLine' },
         -- ['<Leader>r'] = { name = 'Lspsaga Rename' },
@@ -301,13 +301,27 @@ function GS_MAP(bufnr)
     require('which-key').register(mappings, mappings_opt)
 end
 
--- vim-matchup
 nmap({
+    -- vim-matchup
     { ';', '<Plug>(matchup-%)' },
     { '[;', '<Plug>(matchup-[%)' },
     { '];', '<Plug>(matchup-]%)' },
     { 'g;', '<Plug>(matchup-z%)' },
     { 'z;', '<Plug>(matchup-z%)' },
+    {
+        '<C-u>',
+        function()
+            require('lspsaga.action').smart_scroll_with_saga(-1)
+        end,
+        opts(silent),
+    },
+    {
+        '<C-d>',
+        function()
+            require('lspsaga.action').smart_scroll_with_saga(1)
+        end,
+        opts(silent),
+    },
 })
 
 omap({

@@ -22,7 +22,6 @@
 # $(VIM_INIHOME)     # 当前任务的 ini 文件的目录（方便调用一些和配置文件位置相关的脚本）
 cmake -B build \
     -GNinja \
-    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
     -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=Enable \
     && cmake --build build -j16

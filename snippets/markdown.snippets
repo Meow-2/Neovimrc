@@ -28,11 +28,11 @@ snippet i "Italic *"
 snippet d "Code in Line"
 	`${1}`${2}
 
-snippet c "Code Block"
-	```${1}
-	${2}
-	```
-	${0}
+# snippet c "Code Block"
+# 	```${1}
+# 	${2}
+# 	```
+# 	${0}
 
 snippet a "Link"
 	[${1}](${2})${0}
@@ -150,16 +150,16 @@ snippet blockquote-link
 	${0:quote}
 	{% endblockquote %}
 
-snippet ```
-	```${1}
-	${0:${VISUAL}}
-	```
+# snippet ```
+# 	```${1}
+# 	${0:${VISUAL}}
+# 	```
 
 # Language.
-snippet ```l
-	```${1:language}
-	${2:code}
-	```
+# snippet ```l
+# 	```${1:language}
+# 	${2:code}
+# 	```
 
 snippet codeblock-short
 	{% codeblock %}

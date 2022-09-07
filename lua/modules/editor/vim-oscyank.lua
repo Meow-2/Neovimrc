@@ -1,6 +1,7 @@
 return function()
     if vim.g.remoteSession then
         vim.g.clipboard = {}
+        vim.g.oscyank_term = 'default'
     end
     vim.api.nvim_create_augroup('oscyank_post', { clear = true })
     vim.api.nvim_create_autocmd('TextYankPost', {

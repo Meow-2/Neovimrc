@@ -13,7 +13,6 @@ plugin({
 
 plugin({
     'ojroques/vim-oscyank',
-    event = { 'BufNewFile', 'BufReadPost' },
     config = conf('vim-oscyank'),
 })
 

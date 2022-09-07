@@ -92,6 +92,7 @@ vim.opt.number = true
 vim.opt.signcolumn = 'yes'
 -- vim.opt.conceallevel = 2
 -- vim.opt.concealcursor = 'niv'
+vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
 
 vim.opt.foldenable = true
 vim.opt.foldmethod = 'marker'
@@ -101,23 +102,8 @@ vim.opt.foldminlines = 1
 vim.g.remoteSession = os.getenv('SSH_TTY') and true or false
 vim.g.python_host_prog = '/usr/bin/python'
 vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.clipboard = 'unnamedplus'
 
-vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
-
-if vim.loop.os_uname().sysname == 'Darwin' then
-    vim.g.clipboard = {
-        name = 'macOS-clipboard',
-        copy = {
-            ['+'] = 'pbcopy',
-            ['*'] = 'pbcopy',
-        },
-        paste = {
-            ['+'] = 'pbpaste',
-            ['*'] = 'pbpaste',
-        },
-        cache_enabled = 0,
-    }
-    vim.g.python_host_prog = '/usr/bin/python'
-    vim.g.python3_host_prog = '/usr/bin/python3'
-    vim.g.barbaric_ime = 'fcitx5'
-end
+vim.g.python_host_prog = '/usr/bin/python'
+vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.barbaric_ime = 'fcitx5'

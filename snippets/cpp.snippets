@@ -21,6 +21,7 @@ snippet main
 	}
 
 snippet stlprint
+	#define P(x) cout << #x ": " << (x) << '\n'
 	template<class T>
 	ostream& operator<<(ostream& x, vector<T> const& y)
 	{

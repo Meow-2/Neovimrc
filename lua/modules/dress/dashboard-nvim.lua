@@ -6,9 +6,15 @@ return function()
 
     -- if vim.g.nvui or vim.g.remoteSession then
     db.preview_command = 'cat | lolcat -F 0.3'
-    db.preview_file_path = vim_conf_path .. '/static/neovim.cat'
-    db.preview_file_height = 13
-    db.preview_file_width = 69
+    if not vim.g.nvui then
+        db.preview_file_path = vim_conf_path .. '/static/neovim.cat'
+        db.preview_file_height = 13
+        db.preview_file_width = 69
+    else
+        db.preview_file_path = vim_conf_path .. '/static/neovim.cat_'
+        db.preview_file_height = 13
+        db.preview_file_width = 115
+    end
     -- else
     -- db.preview_command = 'ueberzug'
     -- db.preview_file_path = vim_conf_path .. '/static/logo.png'

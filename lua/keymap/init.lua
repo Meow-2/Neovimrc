@@ -306,7 +306,7 @@ nmap({
     { ';', '<Plug>(matchup-%)' },
     { '[;', '<Plug>(matchup-[%)' },
     { '];', '<Plug>(matchup-]%)' },
-    { 'g;', '<Plug>(matchup-z%)' },
+    -- { 'g;', '<Plug>(matchup-z%)' },
     { 'z;', '<Plug>(matchup-z%)' },
     {
         '<C-u>',
@@ -330,7 +330,7 @@ omap({
     { '];', '<Plug>(matchup-]%)' },
     { 'i;', '<Plug>(matchup-i%)' },
     { 'a;', '<Plug>(matchup-a%)' },
-    { 'g;', '<Plug>(matchup-z%)' },
+    -- { 'g;', '<Plug>(matchup-z%)' },
     { 'z;', '<Plug>(matchup-z%)' },
 })
 
@@ -340,7 +340,7 @@ xmap({
     { '];', '<Plug>(matchup-]%)' },
     { 'i;', '<Plug>(matchup-i%)' },
     { 'a;', '<Plug>(matchup-a%)' },
-    { 'g;', '<Plug>(matchup-z%)' },
+    -- { 'g;', '<Plug>(matchup-z%)' },
     { 'z;', '<Plug>(matchup-z%)' },
 })
 

@@ -93,7 +93,6 @@ vim.opt.signcolumn = 'yes'
 -- vim.opt.conceallevel = 2
 -- vim.opt.concealcursor = 'niv'
 vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
-vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.foldenable = true
 vim.opt.foldmethod = 'marker'

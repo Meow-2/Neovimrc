@@ -12,7 +12,6 @@ return function()
         sync_root_with_cwd = true,
         view = {
             width = 30,
-            height = 30,
             adaptive_size = false,
             side = 'left',
             number = false,

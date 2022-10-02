@@ -65,7 +65,6 @@ vim.opt.pumheight = 15
 vim.opt.helpheight = 12
 vim.opt.previewheight = 12
 vim.opt.showcmd = true
--- just for nightly
 vim.opt.cmdheight = 1
 vim.opt.cmdwinheight = 5
 vim.opt.equalalways = false

@@ -194,7 +194,7 @@ function WK_MAP()
         ['-'] = { cmd('Lspsaga diagnostic_jump_prev'), 'Prev Diagnostic' },
         ['g'] = { name = 'Lsp Jump' },
         ['gt'] = { cmd('Lspsaga lsp_finder'), 'Lsp Symbol Jump' },
-        ['gD'] = { cmd('Lspsaga preview_definition'), 'Lsp Preview Define' },
+        ['gp'] = { cmd('Lspsaga peek_definition'), 'Lsp Preview Define' },
         ['gs'] = { cmd('Antovim'), 'Antovim' },
         ['<C-k>'] = { cmd('Lspsaga hover_doc'), 'Lsp Hover Doc' },
         -- ['<C-p>'] = { cmd('Lspsaga signature_help'), 'Lsp Signature Help' },

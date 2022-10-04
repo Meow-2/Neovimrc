@@ -86,7 +86,6 @@ return function()
             { name = 'luasnip' },
             { name = 'path' },
             { name = 'buffer' },
-            { name = 'cmdline' },
         },
     })
     cmp.setup.cmdline(':', {

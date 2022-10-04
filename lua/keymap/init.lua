@@ -308,20 +308,6 @@ nmap({
     { '];', '<Plug>(matchup-]%)' },
     -- { 'g;', '<Plug>(matchup-z%)' },
     { 'z;', '<Plug>(matchup-z%)' },
-    {
-        '<C-u>',
-        function()
-            require('lspsaga.action').smart_scroll_with_saga(-1)
-        end,
-        opts(silent),
-    },
-    {
-        '<C-d>',
-        function()
-            require('lspsaga.action').smart_scroll_with_saga(1)
-        end,
-        opts(silent),
-    },
 })
 
 omap({
@@ -345,7 +331,7 @@ xmap({
 })
 
 imap({
-    { '<C-p>', cmd('Lspsaga signature_help'), opts(noremap, silent) },
+    -- { '<C-p>', cmd('Lspsaga signature_help'), opts(noremap, silent) },
     { '<C-u>', cmd([[lua require('nvim-picgo').upload_clipboard()]]), opts(noremap) },
     { '<C-y>', cmd([[lua require('dap.ext.autocompl').attach()]]), opts(noremap) },
 })

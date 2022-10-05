@@ -74,6 +74,7 @@ vim.opt.showbreak = '↳  '
 vim.opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
+vim.opt.fillchars = 'eob: '
 vim.opt.undofile = true
 vim.opt.synmaxcol = 2500
 vim.opt.formatoptions = '1jcroql'

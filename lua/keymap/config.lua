@@ -17,16 +17,31 @@ vim.g.mapleader = ' '
 local quitbuffer = function() --{{{
     local same_buffer_count = vim.fn.win_findbuf(vim.fn.bufnr('%'))
     if #same_buffer_count > 1 then
-        return vim.cmd('q!')
+        vim.cmd('q!')
+        if vim.bo.filetype == 'NvimTree' then
+            vim.cmd('q!')
+        end
+        return
     end
     local buffer_count = vim.fn.getbufinfo({ buflisted = true })
     if #buffer_count == 1 then
-        return vim.cmd('q!')
+        vim.cmd('q!')
+        if vim.bo.filetype == 'NvimTree' then
+            vim.cmd('q!')
+        end
+        return
     end
     if vim.bo.filetype == 'dashboard' then
-        return vim.cmd('q!')
+        vim.cmd('q!')
+        if vim.bo.filetype == 'NvimTree' then
+            vim.cmd('q!')
+        end
+        return
     end
     vim.cmd('bd!')
+    if vim.bo.filetype == 'NvimTree' then
+        vim.cmd('bd!')
+    end
 end --}}}
 
 nmap({

@@ -2,24 +2,29 @@ local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.dress')
 
 plugin({ 'Meow-2/zephyr-nvim', config = conf('zephyr-nvim') })
--- plugin({ 'ishan9299/nvim-solarized-lua', config = conf('nvim-solarized-lua') })
 -- plugin({ 'projekt0n/github-nvim-theme', config = conf('github-nvim-theme') })
--- plugin({ 'sainnhe/everforest', config = conf('everforest') })
 
+-- plugin({
+--     'Meow-2/github-galaxyline',
+--     event = 'BufReadPost',
+--     after = { 'galaxyline.nvim' },
+--     config = function()
+--         require('github-galaxyline').setup({ style = 'dark' })
+--     end,
+--     requires = {
+--         {
+--             'glepnir/galaxyline.nvim',
+--             branch = 'main',
+--             requires = 'kyazdani42/nvim-web-devicons',
+--         },
+--     },
+-- })
+--
 plugin({
-    'Meow-2/github-galaxyline',
-    event = 'BufReadPost',
-    after = { 'galaxyline.nvim' },
-    config = function()
-        require('github-galaxyline').setup({ style = 'dark' })
-    end,
-    requires = {
-        {
-            'glepnir/galaxyline.nvim',
-            branch = 'main',
-            requires = 'kyazdani42/nvim-web-devicons',
-        },
-    },
+    'glepnir/galaxyline.nvim',
+    config = conf('galaxyline.nvim'),
+    branch = 'main',
+    requires = 'kyazdani42/nvim-web-devicons',
 })
 
 plugin({

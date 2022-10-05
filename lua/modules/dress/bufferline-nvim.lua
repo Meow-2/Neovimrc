@@ -13,7 +13,7 @@ return function()
             },
             diagnostics = false,
             indicator = {
-                icon = '┃', -- this should be omitted if indicator style is not 'icon'
+                icon = '▊ ', -- this should be omitted if indicator style is not 'icon'
             },
             buffer_close_icon = '',
             separator_style = { ' ', ' ' },
@@ -39,6 +39,15 @@ return function()
             --         highlight = 'TabLineSel',
             --     },
             -- },
+            indicator_selected = {
+                fg = '#656a6c',
+            },
+            buffer_selected = {
+                fg = '#abadad',
+                -- bg = '<colour-value-here>',
+                -- bold = false,
+                -- italic = false,
+            },
         },
     })
     local pick = require('bufferline.pick')

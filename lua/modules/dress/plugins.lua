@@ -1,54 +1,35 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.dress')
 
-local dark_light = function(mode) --{{{
-    local theme_plugin
-    local conf_gg
-    if mode == 'dark' then
-        plugin({ 'Meow-2/zephyr-nvim', config = conf('zephyr-nvim') })
-        theme_plugin = 'zephyr-nvim'
-        conf_gg = function()
-            require('github-galaxyline').setup({ style = 'dark' })
-        end
-    elseif mode == 'light' then
-        plugin({ 'projekt0n/github-nvim-theme', config = conf('github-nvim-theme') })
-        theme_plugin = 'github-nvim-theme'
-        conf_gg = function()
-            require('github-galaxyline').setup({ style = 'light' })
-        end
-    elseif mode == 'warm' then
-        plugin({ 'sainnhe/everforest', config = conf('everforest') })
-        theme_plugin = 'everforest'
-        conf_gg = function()
-            require('github-galaxyline').setup({ style = 'warm' })
-        end
-    end
-    plugin({
-        'akinsho/bufferline.nvim',
-        event = 'BufReadPost',
-        after = theme_plugin,
-        config = conf('bufferline.nvim'),
-        requires = 'kyazdani42/nvim-web-devicons',
-    })
+plugin({ 'Meow-2/zephyr-nvim', config = conf('zephyr-nvim') })
+-- plugin({ 'ishan9299/nvim-solarized-lua', config = conf('nvim-solarized-lua') })
+-- plugin({ 'projekt0n/github-nvim-theme', config = conf('github-nvim-theme') })
+-- plugin({ 'sainnhe/everforest', config = conf('everforest') })
 
-    plugin({
-        'Meow-2/github-galaxyline',
-        event = 'BufReadPost',
-        after = { 'galaxyline.nvim', theme_plugin },
-        config = conf_gg,
-        requires = {
-            {
-                'glepnir/galaxyline.nvim',
-                branch = 'main',
-                requires = 'kyazdani42/nvim-web-devicons',
-            },
+plugin({
+    'Meow-2/github-galaxyline',
+    event = 'BufReadPost',
+    after = { 'galaxyline.nvim' },
+    config = function()
+        require('github-galaxyline').setup({ style = 'dark' })
+    end,
+    requires = {
+        {
+            'glepnir/galaxyline.nvim',
+            branch = 'main',
+            requires = 'kyazdani42/nvim-web-devicons',
         },
-    })
-end --}}}
+    },
+})
 
-dark_light('light')
+plugin({
+    'akinsho/bufferline.nvim',
+    event = 'BufReadPost',
+    config = conf('bufferline.nvim'),
+    requires = 'kyazdani42/nvim-web-devicons',
+})
 
-plugin({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim') })
+plugin({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim'), require = 'zephyr-nvim' })
 
 plugin({
     'NvChad/nvim-colorizer.lua',

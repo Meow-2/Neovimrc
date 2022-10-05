@@ -1,4 +1,6 @@
 return function()
+    local plugin = require('core.pack').register_plugin
+
     require('github-theme').setup({
         theme_style = 'light',
         overrides = function()
@@ -19,6 +21,21 @@ return function()
     vim.api.nvim_set_hl(0, 'LspDiagnosticsSignHint', { fg = '#36d0e0' })
     vim.api.nvim_set_hl(0, 'LspDiagnosticsSignWarning', { fg = '#fac661' })
     vim.api.nvim_set_hl(0, 'LspDiagnosticsSignInformation', { fg = '#0366d6' })
-    vim.g.terminal_color_7 = '#323c41'
-    vim.g.terminal_color_15 = '#323c41'
+    -- vim.g.terminal_color_7 = '#323c41'
+    -- vim.g.terminal_color_15 = '#323c41'
+    plugin({
+        'Meow-2/github-galaxyline',
+        event = 'BufReadPost',
+        after = { 'galaxyline.nvim' },
+        config = function()
+            require('github-galaxyline').setup({ style = 'light' })
+        end,
+        requires = {
+            {
+                'glepnir/galaxyline.nvim',
+                branch = 'main',
+                requires = 'kyazdani42/nvim-web-devicons',
+            },
+        },
+    })
 end

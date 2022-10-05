@@ -149,4 +149,5 @@ return function()
         -- server_filetype_map = {},
     }
     saga.init_lsp_saga(settings)
+    vim.api.nvim_set_hl(0, 'LspSagaWinbarFile', { fg = '#abadad', bg = 'NONE', italic = true })
 end

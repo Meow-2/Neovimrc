@@ -114,3 +114,9 @@ plugin({
     ft = { 'markdown' },
     config = conf('nvim-picgo'),
 })
+
+plugin({
+    'rcarriga/nvim-notify',
+    event = { 'BufNewFile', 'BufReadPost' },
+    config = conf('nvim-notify'),
+})

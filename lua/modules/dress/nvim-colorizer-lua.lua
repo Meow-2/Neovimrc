@@ -1,6 +1,7 @@
 return function()
     require('colorizer').setup({
         filetypes = {
+            '*',
             '!mason',
         },
     })

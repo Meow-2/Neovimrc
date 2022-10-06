@@ -23,9 +23,9 @@ plugin({
 })
 
 plugin({
-    'terrortylor/nvim-comment',
+    'numToStr/Comment.nvim',
+    config = conf('Comment.nvim'),
     event = { 'BufNewFile', 'BufReadPost' },
-    config = conf('nvim-comment'),
 })
 
 plugin({ 'Meow-2/antovim', cmd = { 'Antovim' } })

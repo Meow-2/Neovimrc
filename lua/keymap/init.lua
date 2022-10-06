@@ -181,10 +181,6 @@ function WK_MAP()
         ['tl'] = { cmd('BufferLineMoveNext'), 'Buffer Move Left' },
         ['th'] = { cmd('BufferLineMovePrev'), 'Buffer Move Right' },
         ['tq'] = { cmd('TodoQuickFix'), 'TODO QuickFix' },
-        -- nvim-comment
-        ['<C-_>'] = { cmd('CommentToggle'), 'Comment Code' },
-        -- for nvui
-        ['<C-/>'] = { cmd('CommentToggle'), 'Comment Code' },
         -- vim-floaterm
         ['<C-g>'] = { cmd('FloatermNew --cwd=<root> --name=lazygit lazygit'), 'Open Lazygit' },
         ['<C-t>'] = { cmd('FloatermToggle'), 'Terminal Toggle' },
@@ -346,9 +342,6 @@ vmap({
     { 'f', [[:Format<Cr><Esc>]], opts(noremap, silent) },
     -- lspsaga
     { '.', cmd('Lspsaga range_code_action'), opts(noremap, silent) },
-    -- nvim-comment
-    { '<C-_>', [[:CommentToggle<Cr>]], opts(noremap, silent) },
-    { '<C-/>', [[:CommentToggle<Cr>]], opts(noremap, silent) },
 })
 
 tmap({

@@ -33,20 +33,11 @@ return function()
                     highlight = 'DiffDelete',
                 },
             },
-            -- separator = {
-            --     fg = {
-            --         attribute = 'bg',
-            --         highlight = 'TabLineSel',
-            --     },
-            -- },
             indicator_selected = {
                 fg = '#656a6c',
             },
             buffer_selected = {
                 fg = '#abadad',
-                -- bg = '<colour-value-here>',
-                -- bold = false,
-                -- italic = false,
             },
         },
     })

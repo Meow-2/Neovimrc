@@ -204,7 +204,7 @@ return function()
             end,
             icon = ' Lsp:',
             -- highlight = { colors.fg, colors.bg, 'bold' },
-            highlight = { colors.fg, colors.bg },
+            highlight = { colors.light_grey, colors.bg },
         },
     }
 

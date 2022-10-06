@@ -129,3 +129,11 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'BufWinEnter' }, {
     pattern = '*',
     callback = disable_cursorword,
 })
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    group = MyGroup,
+    pattern = '*',
+    callback = function()
+        vim.opt.formatoptions = '1jql'
+    end,
+})

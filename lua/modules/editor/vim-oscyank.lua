@@ -1,4 +1,5 @@
 return function()
+    vim.g.oscyank_silent = true
     if vim.g.remoteSession then
         vim.g.clipboard = {}
         vim.g.oscyank_term = 'default'

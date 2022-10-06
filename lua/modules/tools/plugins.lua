@@ -116,7 +116,11 @@ plugin({
 })
 
 plugin({
-    'rcarriga/nvim-notify',
-    event = { 'BufNewFile', 'BufReadPost' },
-    config = conf('nvim-notify'),
+    'folke/noice.nvim',
+    event = 'VimEnter',
+    config = conf('noice.nvim'),
+    requires = {
+        'MunifTanjim/nui.nvim',
+        'rcarriga/nvim-notify',
+    },
 })

@@ -125,6 +125,7 @@ function WK_MAP()
         ['so'] = { cmd('Telescope oldfiles'), 'Search Open History' },
         ['sp'] = { cmd('Telescope help_tags'), 'Search Help Tags' },
         ['sm'] = { cmd('Telescope man_pages'), 'Search Man Pages' },
+        ['sn'] = { cmd('Telescope notify'), 'Search Keymap' },
         ['st'] = { cmd('TodoTelescope'), 'Search TODO Lists' },
         ['sc'] = { cmd('Telescope colorscheme'), 'Search ColorScheme' },
         ['sC'] = { cmd('Telescope commands'), 'Search Commands' },

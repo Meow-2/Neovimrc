@@ -31,7 +31,7 @@ plugin({
 plugin({ 'Meow-2/antovim', cmd = { 'Antovim' } })
 plugin({ 'godlygeek/tabular', cmd = { 'Tabularize' } })
 
-plugin({ 'lambdalisue/suda.vim', event = 'InsertEnter' })
+plugin({ 'lambdalisue/suda.vim', event = { 'TextChanged', 'TextChangedI' } })
 plugin({ 'lilydjwg/fcitx.vim', event = 'InsertEnter', config = conf('fcitx.vim') })
 plugin({ 'glepnir/mcc.nvim', event = 'InsertEnter', config = conf('mcc.nvim') })
 

@@ -15,7 +15,7 @@ return function()
             WARN = '',
         },
         level = 0,
-        max_width = 50,
+        max_width = 70,
         minimum_width = 20,
         render = 'minimal',
         stages = 'fade_in_slide_out',

@@ -298,35 +298,6 @@ function GS_MAP(bufnr)
     require('which-key').register(mappings, mappings_opt)
 end
 
-nmap({
-    -- vim-matchup
-    { ';', '<Plug>(matchup-%)' },
-    { '[;', '<Plug>(matchup-[%)' },
-    { '];', '<Plug>(matchup-]%)' },
-    -- { 'g;', '<Plug>(matchup-z%)' },
-    { 'z;', '<Plug>(matchup-z%)' },
-})
-
-omap({
-    { ';', '<Plug>(matchup-i%)' },
-    { '[;', '<Plug>(matchup-[%)' },
-    { '];', '<Plug>(matchup-]%)' },
-    { 'i;', '<Plug>(matchup-i%)' },
-    { 'a;', '<Plug>(matchup-a%)' },
-    -- { 'g;', '<Plug>(matchup-z%)' },
-    { 'z;', '<Plug>(matchup-z%)' },
-})
-
-xmap({
-    { ';', '<Plug>(matchup-i%)' },
-    { '[;', '<Plug>(matchup-[%)' },
-    { '];', '<Plug>(matchup-]%)' },
-    { 'i;', '<Plug>(matchup-i%)' },
-    { 'a;', '<Plug>(matchup-a%)' },
-    -- { 'g;', '<Plug>(matchup-z%)' },
-    { 'z;', '<Plug>(matchup-z%)' },
-})
-
 imap({
     -- { '<C-p>', cmd('Lspsaga signature_help'), opts(noremap, silent) },
     { '<C-u>', cmd([[lua require('nvim-picgo').upload_clipboard()]]), opts(noremap) },

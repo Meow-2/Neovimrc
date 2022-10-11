@@ -298,6 +298,11 @@ function GS_MAP(bufnr)
     require('which-key').register(mappings, mappings_opt)
 end
 
+nmap({
+    { 'x', '<Plug>Lightspeed_s', opts(silent) },
+    { 'X', '<Plug>Lightspeed_S', opts(silent) },
+})
+
 imap({
     -- { '<C-p>', cmd('Lspsaga signature_help'), opts(noremap, silent) },
     { '<C-u>', cmd([[lua require('nvim-picgo').upload_clipboard()]]), opts(noremap) },

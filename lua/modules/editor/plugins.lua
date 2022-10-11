@@ -6,6 +6,12 @@ plugin({ 'mg979/vim-visual-multi', config = conf('vim-visual-multi') })
 plugin({ 'wellle/targets.vim', event = { 'BufNewFile', 'BufReadPost' } })
 
 plugin({
+    'ggandor/lightspeed.nvim',
+    config = conf('lightspeed.nvim'),
+    event = { 'BufNewFile', 'BufReadPost' },
+})
+
+plugin({
     'andymass/vim-matchup',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('vim-matchup'),
@@ -46,6 +52,7 @@ plugin({
     ft = { 'markdown' },
     config = conf('vim-table-mode'),
 })
+
 plugin({
     'dkarter/bullets.vim',
     ft = { 'markdown' },

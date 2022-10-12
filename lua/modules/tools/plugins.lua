@@ -115,6 +115,7 @@ package({
 
 package({
     'folke/noice.nvim',
+    commit = '87f908da660c321439a0dd98a8e51cd85227f57b',
     event = 'VimEnter',
     config = conf('noice.nvim'),
     requires = {

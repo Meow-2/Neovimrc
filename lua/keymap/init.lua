@@ -299,8 +299,8 @@ function GS_MAP(bufnr)
 end
 
 nmap({
-    { 'x', '<Plug>Lightspeed_s', opts(silent) },
-    { 'X', '<Plug>Lightspeed_S', opts(silent) },
+    { 'm', '<Plug>Lightspeed_s', opts(silent) },
+    { 'M', '<Plug>Lightspeed_S', opts(silent) },
 })
 
 imap({

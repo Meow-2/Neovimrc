@@ -1,8 +1,6 @@
 local plugin = require('core.pack').register_plugin
 local conf = require('core.pack').conf_plugin('modules.tools')
 
-plugin({ 'dstein64/vim-startuptime' })
-
 plugin({
     'folke/which-key.nvim',
     keys = {

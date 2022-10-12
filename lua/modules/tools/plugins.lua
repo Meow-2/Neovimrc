@@ -119,8 +119,8 @@ package({
     event = 'VimEnter',
     config = conf('noice.nvim'),
     requires = {
-        'MunifTanjim/nui.nvim',
-        'rcarriga/nvim-notify',
+        { 'MunifTanjim/nui.nvim', opt = true },
+        { 'rcarriga/nvim-notify', opt = true },
     },
 })
 

@@ -121,7 +121,7 @@ nmap({
     { 'zi', 'zf%', opts(noremap, silent) },
     { 'zo', 'za', opts(noremap, silent) },
     -- mark
-    { '<Leader><Leader>', 'm', opts(noremap, silent) },
+    { '<Space><Space>', 'm', opts(noremap, silent) },
 })
 
 imap({

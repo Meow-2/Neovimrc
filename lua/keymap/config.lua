@@ -120,9 +120,8 @@ nmap({
     -- fold code
     { 'zi', 'zf%', opts(noremap, silent) },
     { 'zo', 'za', opts(noremap, silent) },
-    -- indent line
-    -- { '<Tab>', '>>',opts(noremap, silent)},
-    -- { '<S-Tab>', '<<',opts(noremap, silent)},
+    -- mark
+    { '<Leader><Leader>', 'm', opts(noremap, silent) },
 })
 
 imap({

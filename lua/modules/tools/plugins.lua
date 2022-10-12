@@ -124,3 +124,9 @@ plugin({
         'rcarriga/nvim-notify',
     },
 })
+
+plugin({
+    'chentoast/marks.nvim',
+    event = { 'BufNewFile', 'BufReadPost' },
+    config = conf('marks.nvim'),
+})

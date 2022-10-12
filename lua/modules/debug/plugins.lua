@@ -26,9 +26,9 @@ plugin({
     config = conf('nvim-gdb'),
 })
 
-plugin({
-    'michaelb/sniprun',
-    ft = { 'c', 'cpp', 'lua', 'go', 'python' },
-    run = 'bash ./install.sh',
-    config = conf('sniprun'),
-})
+-- plugin({
+--     'michaelb/sniprun',
+--     ft = { 'c', 'cpp', 'lua', 'go', 'python' },
+--     run = 'bash ./install.sh',
+--     config = conf('sniprun'),
+-- })

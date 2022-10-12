@@ -183,7 +183,7 @@ function WK_MAP()
         ['tq'] = { cmd('TodoQuickFix'), 'TODO QuickFix' },
         -- vim-floaterm
         ['<C-g>'] = { cmd('FloatermNew --cwd=<root> --name=lazygit lazygit'), 'Open Lazygit' },
-        ['<C-t>'] = { cmd('FloatermToggle'), 'Terminal Toggle' },
+        ['<C-t>'] = { ':FloatermToggle<Cr>', 'Terminal Toggle' },
         ['R'] = { cmd('FloatermNew ranger'), 'Open Ranger' },
 
         -- Lspsaga

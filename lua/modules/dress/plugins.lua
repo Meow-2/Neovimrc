@@ -1,7 +1,7 @@
-local plugin = require('core.pack').register_plugin
-local conf = require('core.pack').conf_plugin('modules.dress')
+local package = require('core.pack').package
+local conf = require('core.pack').conf_package('modules.dress')
 
-plugin({ 'Meow-2/zephyr-nvim', config = conf('zephyr-nvim') })
+package({ 'Meow-2/zephyr-nvim', config = conf('zephyr-nvim') })
 -- plugin({ 'projekt0n/github-nvim-theme', config = conf('github-nvim-theme') })
 
 -- plugin({
@@ -20,43 +20,43 @@ plugin({ 'Meow-2/zephyr-nvim', config = conf('zephyr-nvim') })
 --     },
 -- })
 --
-plugin({
+package({
     'glepnir/galaxyline.nvim',
     config = conf('galaxyline.nvim'),
     branch = 'main',
     requires = 'kyazdani42/nvim-web-devicons',
 })
 
-plugin({
+package({
     'akinsho/bufferline.nvim',
     event = 'BufReadPost',
     config = conf('bufferline.nvim'),
     requires = 'kyazdani42/nvim-web-devicons',
 })
 
-plugin({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim'), require = 'zephyr-nvim' })
+package({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim'), require = 'zephyr-nvim' })
 
-plugin({
+package({
     'NvChad/nvim-colorizer.lua',
     event = { 'BufRead', 'BufNewFile' },
     config = conf('nvim-colorizer.lua'),
 })
 
-plugin({
+package({
     'lewis6991/gitsigns.nvim',
     event = { 'BufRead', 'BufNewFile' },
     config = conf('gitsigns.nvim'),
     requires = { 'nvim-lua/plenary.nvim' },
 })
 
-plugin({
+package({
     'folke/todo-comments.nvim',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('todo-comments-nvim'),
     requires = 'plenary.nvim',
 })
 
-plugin({
+package({
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     event = { 'BufNewFile', 'BufReadPost' },
@@ -66,7 +66,7 @@ plugin({
     },
 })
 
-plugin({
+package({
     'lukas-reineke/indent-blankline.nvim',
     after = { 'nvim-treesitter' },
     config = conf('indent-blankline.nvim'),

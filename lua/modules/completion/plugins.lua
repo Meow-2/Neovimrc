@@ -1,5 +1,5 @@
-local plugin = require('core.pack').register_plugin
-local conf = require('core.pack').conf_plugin('modules.completion')
+local package = require('core.pack').package
+local conf = require('core.pack').conf_package('modules.completion')
 
 local enable_lsp_filetype = {
     'c',
@@ -13,7 +13,7 @@ local enable_lsp_filetype = {
     'sh',
 }
 
-plugin({
+package({
     'neovim/nvim-lspconfig',
     ft = enable_lsp_filetype,
     config = conf('nvim-lspconfig'),
@@ -38,13 +38,13 @@ plugin({
     },
 })
 
-plugin({
+package({
     'L3MON4D3/LuaSnip',
     event = { 'InsertEnter', 'CmdlineEnter' },
     config = conf('LuaSnip'),
 })
 
-plugin({
+package({
     'hrsh7th/nvim-cmp',
     after = { 'nvim-autopairs', 'LuaSnip' },
     config = conf('nvim-cmp'),

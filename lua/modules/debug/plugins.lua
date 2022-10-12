@@ -1,7 +1,7 @@
-local plugin = require('core.pack').register_plugin
-local conf = require('core.pack').conf_plugin('modules.debug')
+local package = require('core.pack').package
+local conf = require('core.pack').conf_package('modules.debug')
 
-plugin({
+package({
     'mfussenegger/nvim-dap',
     config = conf('nvim-dap'),
     ft = { 'c', 'cpp', 'go', 'python', 'lua' },
@@ -19,7 +19,7 @@ plugin({
     },
 })
 
-plugin({
+package({
     'sakhnik/nvim-gdb',
     ft = { 'c', 'cpp' },
     run = './install.sh',

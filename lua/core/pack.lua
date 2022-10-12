@@ -1,9 +1,7 @@
-local fn, uv, api = vim.fn, vim.loop, vim.api
--- User configuration directory. The init.lua is stored here.
-local vim_path = vim.fn.stdpath('config')
--- User data directory. The shada-file is stored here.
-local data_dir = string.format('%s/site/', vim.fn.stdpath('data'))
-
+local uv, api = vim.loop, vim.api
+local helper = require('core.helper')
+local vim_path = helper.get_config_path()
+local data_dir = string.format('%s/site/', helper.get_data_path())
 local modules_dir = vim_path .. '/lua/modules'
 local packer_compiled = data_dir .. 'lua/packer_compiled.lua'
 local packer = nil
@@ -11,16 +9,12 @@ local packer = nil
 local Packer = {}
 Packer.__index = Packer
 
--- require("modules/completion/plugins")
--- require("modules/lang/plugins")
--- require("modules/tools/plugins")
--- require("modules/ui/plugins")
 function Packer:load_plugins()
     self.repos = {}
-    -- list = {"modules/completion/plugins", "modules/lang/plugins", "modules/tools/plugins", "modules/ui/plugins"}
+
     local get_plugins_list = function()
         local list = {}
-        local tmp = vim.split(fn.globpath(modules_dir, '*/plugins.lua'), '\n')
+        local tmp = vim.split(vim.fn.globpath(modules_dir, '*/plugins.lua'), '\n')
         for _, f in ipairs(tmp) do
             list[#list + 1] = string.match(f, 'lua/(.+).lua$')
         end
@@ -33,19 +27,23 @@ function Packer:load_plugins()
     end
 end
 
--- load packer, must download packer.nvim before call this function
--- packer = require('packer')
--- load plugins
 function Packer:load_packer()
     if not packer then
         api.nvim_command('packadd packer.nvim')
         packer = require('packer')
     end
     packer.init({
-        auto_clean = false,
         compile_path = packer_compiled,
-        git = { clone_timeout = 120 },
         disable_commands = true,
+        display = {
+            open_fn = require('packer.util').float,
+            working_sym = 'ﰭ',
+            error_sym = '',
+            done_sym = '',
+            removed_sym = '',
+            moved_sym = 'ﰳ',
+        },
+        git = { clone_timeout = 120 },
     })
     packer.reset()
     local use = packer.use
@@ -56,7 +54,6 @@ function Packer:load_packer()
     end
 end
 
--- if don't have packer.nvim, download it, then load packer
 function Packer:init_ensure_plugins()
     local packer_dir = data_dir .. 'pack/packer/opt/packer.nvim'
     local state = uv.fs_stat(packer_dir)
@@ -64,16 +61,26 @@ function Packer:init_ensure_plugins()
         local cmd = '!git clone https://github.com/wbthomason/packer.nvim ' .. packer_dir
         api.nvim_command(cmd)
         uv.fs_mkdir(data_dir .. 'lua', 511, function()
-            assert('make compile path dir faield')
+            assert('make compile path dir failed')
         end)
         self:load_packer()
         packer.sync()
     end
 end
 
--- plugins[key] = packer[key]
+function Packer:cli_compile()
+    self:load_packer()
+    packer.compile()
+    vim.defer_fn(function()
+        vim.cmd('q')
+    end, 1000)
+end
+
 local plugins = setmetatable({}, {
     __index = function(_, key)
+        if key == 'Packer' then
+            return Packer
+        end
         if not packer then
             Packer:load_packer()
         end
@@ -85,32 +92,15 @@ function plugins.ensure_plugins()
     Packer:init_ensure_plugins()
 end
 
-function plugins.register_plugin(repo)
+function plugins.package(repo)
+    if not Packer.repos then
+        Packer.repos = {}
+    end
     table.insert(Packer.repos, repo)
 end
 
-function plugins.conf_plugin(modules_path)
-    return function(plugin)
-        plugin = plugin:gsub('%.', '-')
-        local plugin_conf_path = vim_path
-            .. '/lua/'
-            .. modules_path:gsub('%.', '/')
-            .. '/'
-            .. plugin
-            .. '.lua'
-        if #vim.fn.glob(plugin_conf_path) == 0 then
-            os.execute('echo "return function()\nend" > ' .. plugin_conf_path)
-        end
-        return require(modules_path .. '.' .. plugin)
-    end
-end
--- function plugins.compile_notify()
---   plugins.compile()
---   vim.notify('Compile Done!','info',{ title = 'Packer' })
--- end
-
 function plugins.auto_compile()
-    local file = vim.fn.expand('%:p')
+    local file = api.nvim_buf_get_name(0)
     if not file:match(vim_path) then
         return
     end
@@ -125,8 +115,6 @@ end
 function plugins.load_compile()
     if vim.fn.filereadable(packer_compiled) == 1 then
         require('packer_compiled')
-    else
-        vim.notify('Run PackerSync or PackerCompile', 'info', { title = 'Packer' })
     end
 
     local cmds = {
@@ -139,25 +127,45 @@ function plugins.load_compile()
     }
     for _, cmd in ipairs(cmds) do
         api.nvim_create_user_command('Packer' .. cmd, function()
-            require('core.pack')[fn.tolower(cmd)]()
+            require('core.pack')[string.lower(cmd)]()
         end, {})
     end
 
-    local PackerHooks = vim.api.nvim_create_augroup('PackerHooks', {})
+    local PackerHooks = vim.api.nvim_create_augroup('PackerHooks', { clear = true })
     vim.api.nvim_create_autocmd('User', {
+        group = PackerHooks,
         pattern = 'PackerCompileDone',
         callback = function()
             vim.notify('Compile Done!', vim.log.levels.INFO, { title = 'Packer' })
+            dofile(vim.env.MYVIMRC)
         end,
-        group = PackerHooks,
     })
 
-    -- vim.cmd [[command! PackerCompile lua require('core.pack').compile()]]
-    -- vim.cmd [[command! PackerInstall lua require('core.pack').install()]]
-    -- vim.cmd [[command! PackerUpdate lua require('core.pack').update()]]
-    -- vim.cmd [[command! PackerSync lua require('core.pack').sync()]]
-    -- vim.cmd [[command! PackerClean lua require('core.pack').clean()]]
-    -- vim.cmd [[command! PackerStatus  lua require('packer').status()]]
+    api.nvim_create_autocmd('VimLeave', {
+        pattern = '*.lua',
+        callback = function()
+            plugins.auto_compile()
+        end,
+        desc = 'Auto Compile the neovim config which write in lua',
+    })
+end
+
+function plugins.conf_package(modules_path)
+    return function(plugin)
+        plugin = plugin:gsub('%.', '-')
+        local plugin_conf_path = vim_path
+            .. '/lua/'
+            .. modules_path:gsub('%.', '/')
+            .. '/'
+            .. plugin
+            .. '.lua'
+        local f = io.open(plugin_conf_path)
+        if not f then
+            -- if #vim.fn.glob(plugin_conf_path) == 0 then
+            os.execute('echo "return function()\nend" > ' .. plugin_conf_path)
+        end
+        return require(modules_path .. '.' .. plugin)
+    end
 end
 
 return plugins

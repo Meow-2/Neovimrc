@@ -1,7 +1,7 @@
-local plugin = require('core.pack').register_plugin
-local conf = require('core.pack').conf_plugin('modules.tools')
+local package = require('core.pack').package
+local conf = require('core.pack').conf_package('modules.tools')
 
-plugin({
+package({
     'folke/which-key.nvim',
     keys = {
         's',
@@ -19,7 +19,7 @@ plugin({
     config = conf('which-key.nvim'),
 })
 
-plugin({
+package({
     'voldikss/vim-floaterm',
     cmd = {
         'FloatermNew',
@@ -28,7 +28,7 @@ plugin({
     config = conf('vim-floaterm'),
 })
 
-plugin({
+package({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.0',
     cmd = {
@@ -64,26 +64,26 @@ plugin({
     },
 })
 
-plugin({
+package({
     'kyazdani42/nvim-tree.lua',
     after = 'telescope.nvim',
     config = conf('nvim-tree.lua'),
     requires = 'kyazdani42/nvim-web-devicons',
 })
 
-plugin({
+package({
     'Shatur/neovim-session-manager',
     after = 'nvim-tree.lua',
     config = conf('neovim-session-manager'),
 })
 
-plugin({
+package({
     'mhartington/formatter.nvim',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('formatter.nvim'),
 })
 
-plugin({
+package({
     'skywind3000/asynctasks.vim',
     after = 'asyncrun.vim',
     config = conf('asynctasks.vim'),
@@ -91,13 +91,13 @@ plugin({
         { 'skywind3000/asyncrun.vim', event = { 'BufNewFile', 'BufReadPost' } },
     },
 })
-plugin({
+package({
     'kevinhwang91/nvim-bqf',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('nvim-bqf'),
 })
 
-plugin({
+package({
     'iamcco/markdown-preview.nvim',
     run = 'cd app && npm install',
     ft = { 'markdown' },
@@ -107,13 +107,13 @@ plugin({
     config = conf('markdown-preview.nvim'),
 })
 
-plugin({
+package({
     'Meow-2/nvim-picgo',
     ft = { 'markdown' },
     config = conf('nvim-picgo'),
 })
 
-plugin({
+package({
     'folke/noice.nvim',
     event = 'VimEnter',
     config = conf('noice.nvim'),
@@ -123,7 +123,7 @@ plugin({
     },
 })
 
-plugin({
+package({
     'chentoast/marks.nvim',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('marks.nvim'),

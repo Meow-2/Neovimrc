@@ -1,59 +1,59 @@
-local plugin = require('core.pack').register_plugin
-local conf = require('core.pack').conf_plugin('modules.editor')
+local package = require('core.pack').package
+local conf = require('core.pack').conf_package('modules.editor')
 
-plugin({ 'mg979/vim-visual-multi', config = conf('vim-visual-multi') })
+package({ 'mg979/vim-visual-multi', config = conf('vim-visual-multi') })
 
-plugin({ 'wellle/targets.vim', event = { 'BufNewFile', 'BufReadPost' } })
+package({ 'wellle/targets.vim', event = { 'BufNewFile', 'BufReadPost' } })
 
-plugin({
+package({
     'ggandor/lightspeed.nvim',
     config = conf('lightspeed.nvim'),
     event = { 'BufNewFile', 'BufReadPost' },
 })
 
-plugin({
+package({
     'andymass/vim-matchup',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('vim-matchup'),
 })
 
-plugin({
+package({
     'ojroques/vim-oscyank',
     config = conf('vim-oscyank'),
 })
 
-plugin({
+package({
     'kylechui/nvim-surround',
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('nvim-surround'),
 })
 
-plugin({
+package({
     'numToStr/Comment.nvim',
     config = conf('Comment.nvim'),
     event = { 'BufNewFile', 'BufReadPost' },
 })
 
-plugin({ 'Meow-2/antovim', cmd = { 'Antovim' } })
-plugin({ 'godlygeek/tabular', cmd = { 'Tabularize' } })
+package({ 'Meow-2/antovim', cmd = { 'Antovim' } })
+package({ 'godlygeek/tabular', cmd = { 'Tabularize' } })
 
-plugin({ 'lambdalisue/suda.vim', event = { 'TextChanged', 'TextChangedI' } })
-plugin({ 'lilydjwg/fcitx.vim', event = 'InsertEnter', config = conf('fcitx.vim') })
-plugin({ 'glepnir/mcc.nvim', event = 'InsertEnter', config = conf('mcc.nvim') })
+package({ 'lambdalisue/suda.vim', event = { 'TextChanged', 'TextChangedI' } })
+package({ 'lilydjwg/fcitx.vim', event = 'InsertEnter', config = conf('fcitx.vim') })
+package({ 'glepnir/mcc.nvim', event = 'InsertEnter', config = conf('mcc.nvim') })
 
-plugin({
+package({
     'windwp/nvim-autopairs',
     event = { 'InsertEnter', 'CmdlineEnter' },
     config = conf('nvim-autopairs'),
 })
 
-plugin({
+package({
     'dhruvasagar/vim-table-mode',
     ft = { 'markdown' },
     config = conf('vim-table-mode'),
 })
 
-plugin({
+package({
     'dkarter/bullets.vim',
     ft = { 'markdown' },
     config = conf('bullets.vim'),

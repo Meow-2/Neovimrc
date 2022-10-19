@@ -63,9 +63,9 @@ return function()
                 -- load lspkind icons
                 vim_item.menu = ({
                     buffer = ' [Buffer]',
+                    luasnip = ' [LuaSnip]',
                     nvim_lsp = ' [' .. meta_type .. ']',
                     path = ' [Path]',
-                    luasnip = ' [LuaSnip]',
                     cmdline = ' [Cmd]',
                 })[entry.source.name]
 
@@ -82,8 +82,8 @@ return function()
             end,
         },
         sources = {
-            { name = 'nvim_lsp' },
             { name = 'luasnip' },
+            { name = 'nvim_lsp' },
             { name = 'path' },
             { name = 'buffer' },
         },

@@ -11,6 +11,7 @@ local createdir = function()
         cache_dir .. 'swap',
         cache_dir .. 'tags',
         cache_dir .. 'undo',
+        cache_dir .. 'formatter',
     }
     -- Check cache dir and subs dir
     if vim.fn.isdirectory(cache_dir) == 0 then

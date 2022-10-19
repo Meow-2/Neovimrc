@@ -1,6 +1,7 @@
 return function()
     -- Utilities for creating configurations
     local util = require('formatter.util')
+
     -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
     require('formatter').setup({
         -- Enable or disable logging
@@ -11,7 +12,7 @@ return function()
         filetype = {
             sh = {
                 function()
-                    return vim.b.disable_format and {}
+                    return Is_Formatter_Disable() and {}
                         or {
                             exe = 'shfmt',
                             args = { '-i', 4, '-ci', '-bn' },
@@ -21,7 +22,7 @@ return function()
             },
             cpp = {
                 function()
-                    return vim.b.disable_format and {}
+                    return Is_Formatter_Disable() and {}
                         or {
                             exe = 'clang-format',
                             args = {
@@ -35,7 +36,7 @@ return function()
             },
             python = {
                 function()
-                    return vim.b.disable_format and {}
+                    return Is_Formatter_Disable() and {}
                         or {
                             exe = 'autopep8',
                             args = { '-' },
@@ -45,7 +46,7 @@ return function()
             },
             json = {
                 function()
-                    return vim.b.disable_format and {}
+                    return Is_Formatter_Disable() and {}
                         or {
                             exe = 'clang-format',
                             args = {
@@ -59,7 +60,7 @@ return function()
             },
             cmake = {
                 function()
-                    return vim.b.disable_format and {}
+                    return Is_Formatter_Disable() and {}
                         or {
                             exe = 'cmake-format',
                             args = { '-' },
@@ -69,7 +70,7 @@ return function()
             },
             go = {
                 function()
-                    return vim.b.disable_format and {}
+                    return Is_Formatter_Disable() and {}
                         or {
                             exe = 'gofmt',
                             stdin = true,
@@ -78,7 +79,7 @@ return function()
             },
             lua = {
                 function()
-                    return vim.b.disable_format and {}
+                    return Is_Formatter_Disable() and {}
                         or {
                             exe = 'stylua',
                             args = {
@@ -99,7 +100,7 @@ return function()
                 -- "formatter.filetypes.any" defines default configurations for any
                 -- filetype
                 function(parser)
-                    if vim.b.disable_format then
+                    if Is_Formatter_Disable() then
                         return {}
                     end
                     if not parser then
@@ -137,13 +138,19 @@ return function()
             vim.api.nvim_command('FormatWrite')
         end,
     })
+    function Is_Formatter_Disable()
+        local path_code = vim.fn.expand('%:p'):gsub('%/', '_')
+        local is_exist = io.open(vim.fn.stdpath('cache') .. '/formatter/' .. path_code)
+        return is_exist and true or false
+    end
     function Toggle_Format()
-        if vim.b.disable_format then
+        local path_code = vim.fn.expand('%:p'):gsub('%/', '_')
+        if Is_Formatter_Disable() then
             print('Formatter.nvim Enabled in Buffer!')
-            vim.b.disable_format = false
+            os.execute('rm ' .. vim.fn.stdpath('cache') .. '/formatter/' .. path_code)
             return
         end
         print('Formatter.nvim Disabled in Buffer!')
-        vim.b.disable_format = true
+        os.execute('touch ' .. vim.fn.stdpath('cache') .. '/formatter/' .. path_code)
     end
 end

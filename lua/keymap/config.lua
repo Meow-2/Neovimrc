@@ -145,6 +145,7 @@ imap({
     -- { '<S-Tab>', '<C-d>', noremap},
     -- for nvui
     { '<C-v>', '<C-r><C-p>+', opts(noremap, silent) },
+    { '<S-Tab>', '<Bs>', opts(noremap, silent) },
 })
 
 cmap({

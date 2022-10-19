@@ -183,9 +183,6 @@ vmap({
     -- fold code
     { 'zi', 'zf%', opts(noremap, silent) },
     { 'zo', 'za', opts(noremap, silent) },
-    -- indent code
-    { '<Left>', '<gv', opts(noremap, silent) },
-    { '<Right>', '>gv', opts(noremap, silent) },
 })
 
 tmap({
@@ -243,4 +240,7 @@ xmap({
     { '}', 'i}' },
     { [["]], [[i"]] },
     { [[']], [[i']] },
+    -- indent code
+    { '<Tab>', '>gv', opts(noremap, silent) },
+    { '<S-Tab>', '<gv', opts(noremap, silent) },
 })

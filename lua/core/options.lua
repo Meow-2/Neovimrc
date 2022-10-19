@@ -33,6 +33,7 @@ vim.opt.ttimeout = true
 vim.opt.timeoutlen = 500
 vim.opt.ttimeoutlen = 50
 vim.opt.updatetime = 100
+vim.opt.lazyredraw = false
 vim.opt.redrawtime = 1500
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

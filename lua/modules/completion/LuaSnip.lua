@@ -4,8 +4,8 @@ return function()
     ls.config.set_config({
         history = false,
         enable_autosnippets = true,
-        region_check_events = 'CursorMoved,CursorHold,InsertEnter',
-        update_events = 'TextChanged,TextChangedI,InsertLeave',
+        region_check_events = 'CursorMoved',
+        update_events = 'InsertLeave',
         ext_opts = {
             [types.choiceNode] = {
                 active = {

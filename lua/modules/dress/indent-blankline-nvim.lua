@@ -22,5 +22,4 @@ return function()
             'qf',
         },
     })
-    vim.cmd([[highlight IndentBlanklineContextChar guifg=#61afef gui=nocombine]])
 end

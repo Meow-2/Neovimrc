@@ -142,11 +142,9 @@ imap({
     { '<C-S-l>', '<C-Right>', opts(noremap, silent) },
     -- <Esc> behavior
     { '<Esc>', '<Esc>l' .. cmd('nohlsearch'), opts(noremap, silent) },
-    -- <S-Tab> behavior
-    -- { '<S-Tab>', '<C-d>', noremap},
-    -- for nvui
-    { '<C-v>', '<C-r><C-p>+', opts(noremap, silent) },
     { '<S-Tab>', '<Bs>', opts(noremap, silent) },
+    -- for nvui
+    -- { '<C-v>', '<C-r><C-p>+', opts(noremap, silent) },
 })
 
 cmap({

@@ -41,12 +41,19 @@ return function()
             },
         },
         messages = {
-            enabled = true,
+            -- NOTE: If you enable messages, then the cmdline is enabled automatically.
+            -- This is a current Neovim limitation.
+            enabled = true, -- enables the Noice messages UI
+            view = 'notify', -- default view for messages
+            view_error = 'notify', -- view for errors
+            view_warn = 'notify', -- view for warnings
+            view_history = 'split', -- view for :messages
+            view_search = 'virtualtext', -- view for search count messages. Set to `false` to disable
         },
         popupmenu = {
             enabled = false, -- disable if you use something like cmp-cmdline
             ---@type 'nui'|'cmp'
-            backend = 'nui', -- backend to use to show regular cmdline completions
+            backend = 'cmp', -- backend to use to show regular cmdline completions
             -- You can specify options for nui under `config.views.popupmenu`
         },
         history = {
@@ -55,9 +62,6 @@ return function()
             opts = { enter = true },
             filter = { event = 'msg_show', ['not'] = { kind = { 'search_count', 'echo' } } },
         },
-        hacks = {
-            skip_duplicate_messages = false,
-        },
         notify = {
             -- Noice can be used as `vim.notify` so you can route any notification like other messages
             -- Notification messages have their level and other properties set.
@@ -65,7 +69,7 @@ return function()
             -- The default routes will forward notifications to nvim-notify
             enabled = true,
         },
-        throttle = 200, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+        throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
         ---@type table<string, NoiceViewOptions>
         views = {}, -- @see the section on views below
         ---@type NoiceRouteConfig[]

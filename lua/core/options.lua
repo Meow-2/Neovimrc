@@ -94,7 +94,7 @@ vim.opt.number = true
 vim.opt.signcolumn = 'yes'
 -- vim.opt.conceallevel = 2
 -- vim.opt.concealcursor = 'niv'
-vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
+-- vim.opt.guifont = [[FiraCode Nerd Font Mono:h15]]
 
 vim.opt.foldenable = true
 vim.opt.foldmethod = 'marker'
@@ -105,6 +105,4 @@ vim.g.remoteSession = os.getenv('SSH_TTY') and true or false
 vim.g.python_host_prog = '/usr/bin/python'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
-vim.g.python_host_prog = '/usr/bin/python'
-vim.g.python3_host_prog = '/usr/bin/python3'
 vim.g.barbaric_ime = 'fcitx5'

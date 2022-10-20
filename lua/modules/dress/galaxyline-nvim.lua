@@ -208,6 +208,19 @@ return function()
         },
     }
 
+    gls.mid[2] = {
+        ModeMessage = {
+            provider = function()
+                local command_message = require('noice').api.statusline.command.get()
+                command_message = command_message and ('  ' .. command_message) or ''
+                local mode_message = require('noice').api.statusline.mode.get()
+                mode_message = mode_message and ('  ' .. mode_message) or ''
+                return mode_message .. command_message
+            end,
+            highlight = { colors.grey, colors.bg },
+        },
+    }
+
     gls.right[1] = {
         DiagnosticError = {
             provider = 'DiagnosticError',

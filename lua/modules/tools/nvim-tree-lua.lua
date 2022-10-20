@@ -11,9 +11,17 @@ return function()
         open_on_tab = false,
         sync_root_with_cwd = true,
         view = {
-            width = 30,
-            adaptive_size = false,
-            side = 'left',
+            adaptive_size = true,
+            float = {
+                enable = true,
+                open_win_config = {
+                    border = 'single',
+                    width = 30,
+                    height = 30,
+                    row = 0,
+                    col = 999,
+                },
+            },
             number = false,
             relativenumber = false,
             signcolumn = 'yes',
@@ -42,7 +50,10 @@ return function()
             },
         },
         renderer = {
+            indent_markers = { enable = true },
             icons = {
+                git_placement = 'after',
+                webdev_colors = true,
                 glyphs = {
                     default = '',
                     symlink = '',

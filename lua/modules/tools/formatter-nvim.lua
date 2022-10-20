@@ -146,11 +146,11 @@ return function()
     function Toggle_Format()
         local path_code = vim.fn.expand('%:p'):gsub('%/', '_')
         if Is_Formatter_Disable() then
-            print('Formatter.nvim Enabled in Buffer!')
+            vim.api.nvim_echo({ { 'Formatter.nvim Enabled in Buffer!' } }, false, {})
             os.execute('rm ' .. vim.fn.stdpath('cache') .. '/formatter/' .. path_code)
             return
         end
-        print('Formatter.nvim Disabled in Buffer!')
+        vim.api.nvim_echo({ { 'Formatter.nvim Disabled in Buffer!' } }, false, {})
         os.execute('touch ' .. vim.fn.stdpath('cache') .. '/formatter/' .. path_code)
     end
 end

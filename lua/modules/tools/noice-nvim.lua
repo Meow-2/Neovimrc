@@ -32,12 +32,18 @@ return function()
         cmdline = {
             enable = true,
             view = 'cmdline', -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-            view_search = 'cmdline', -- view for rendering the cmdline for search
+            -- view_search = 'cmdline', -- view for rendering the cmdline for search
             opts = { buf_options = { filetype = 'vim' } }, -- enable syntax highlighting in the cmdline
-            icons = {
-                ['/'] = { icon = '', hl_group = 'NoiceCmdlineIconSearch' },
-                ['?'] = { icon = '', hl_group = 'NoiceCmdlineIconSearch' },
-                [':'] = { icon = '', hl_group = 'NoiceCmdlineIcon', firstc = false },
+            format = {
+                -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
+                -- view: (default is cmdline view)
+                -- opts: any options passed to the view
+                -- icon_hl_group: optional hl_group for the icon
+                cmdline = { pattern = '^:', icon = '' },
+                search_down = { kind = 'search', pattern = '^/', icon = ' ', ft = 'regex' },
+                search_up = { kind = 'search', pattern = '^%?', icon = ' ', ft = 'regex' },
+                filter = { pattern = '^:%s*!', icon = '$', ft = 'sh' },
+                lua = { pattern = '^:%s*lua%s+', icon = '', ft = 'lua' },
             },
         },
         messages = {
@@ -62,14 +68,26 @@ return function()
             opts = { enter = true },
             filter = { event = 'msg_show', ['not'] = { kind = { 'search_count', 'echo' } } },
         },
+        lsp_progress = {
+            enabled = false,
+            -- Lsp Progress is formatted using the builtins for lsp_progress. See config.format.builtin
+            -- See the section on formatting for more details on how to customize.
+            --- @type NoiceFormat|string
+            format = 'lsp_progress',
+            --- @type NoiceFormat|string
+            format_done = 'lsp_progress_done',
+            throttle = 1000 / 30, -- frequency to update lsp progress message
+            view = 'mini',
+        },
         notify = {
             -- Noice can be used as `vim.notify` so you can route any notification like other messages
             -- Notification messages have their level and other properties set.
             -- event is always "notify" and kind can be any log level as a string
             -- The default routes will forward notifications to nvim-notify
             enabled = true,
+            view = 'notify',
         },
-        throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+        throttle = 1000 / 120, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
         ---@type table<string, NoiceViewOptions>
         views = {}, -- @see the section on views below
         ---@type NoiceRouteConfig[]

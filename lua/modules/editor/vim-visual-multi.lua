@@ -9,7 +9,7 @@ return function()
         ['Select l'] = '',
         ['Remove Last Region'] = '<C-h>',
         ['Remove Region'] = [[\]],
-        ['Add Cursor Down'] = '',
+        ['Add Cursor Down'] = '<C-n>',
         ['Add Cursor Up'] = '',
     }
 end

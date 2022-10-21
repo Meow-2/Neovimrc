@@ -55,7 +55,7 @@ nmap({
     -- { '<Leader>o'          , 'Ea'        , nore } ,
     -- visual select
     { '<C-j>', '<C-v>j', opts(noremap, silent) },
-    { '<C-k>', '<C-v>k', opts(noremap, silent) },
+    -- { '<C-k>', '<C-v>k', opts(noremap, silent) },
     { [[\v]], 'v$', opts(noremap, silent) },
     -- save and quit
     { '<C-s>', cmd('w!'), opts(noremap) },

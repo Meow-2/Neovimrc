@@ -182,9 +182,12 @@ function WK_MAP()
         ['th'] = { cmd('BufferLineMovePrev'), 'Buffer Move Right' },
         ['tq'] = { cmd('TodoQuickFix'), 'TODO QuickFix' },
         -- vim-floaterm
-        ['<C-g>'] = { cmd('FloatermNew --cwd=<root> --name=lazygit lazygit'), 'Open Lazygit' },
+        ['<C-g>'] = {
+            cmd('FloatermNew --cwd=<root> --name=lazygit LANG=zh_CN.UTF-8 lazygit'),
+            'Open Lazygit',
+        },
         ['<C-t>'] = { ':FloatermToggle<Cr>', 'Terminal Toggle' },
-        ['R'] = { cmd('FloatermNew LANG=en_US.UTF-8 ~/.config/lf/lfub'), 'Open Lf' },
+        ['R'] = { cmd('FloatermNew ranger'), 'Open Ranger' },
         -- ['R'] = { cmd('FloatermNew ranger'), 'Open Ranger' },
 
         -- Lspsaga

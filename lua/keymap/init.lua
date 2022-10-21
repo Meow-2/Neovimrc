@@ -184,7 +184,8 @@ function WK_MAP()
         -- vim-floaterm
         ['<C-g>'] = { cmd('FloatermNew --cwd=<root> --name=lazygit lazygit'), 'Open Lazygit' },
         ['<C-t>'] = { ':FloatermToggle<Cr>', 'Terminal Toggle' },
-        ['R'] = { cmd('FloatermNew ranger'), 'Open Ranger' },
+        ['R'] = { cmd('FloatermNew LANG=en_US.UTF-8 ~/.config/lf/lfub'), 'Open Lf' },
+        -- ['R'] = { cmd('FloatermNew ranger'), 'Open Ranger' },
 
         -- Lspsaga
         ['='] = { cmd('Lspsaga diagnostic_jump_next'), 'Next Diagnostic' },

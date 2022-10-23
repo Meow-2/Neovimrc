@@ -187,7 +187,7 @@ function WK_MAP()
             'Open Lazygit',
         },
         ['<C-t>'] = { ':FloatermToggle<Cr>', 'Terminal Toggle' },
-        ['R'] = { cmd('FloatermNew ranger'), 'Open Ranger' },
+        ['R'] = { cmd('FloatermNew lf'), 'Open Lf' },
         -- ['R'] = { cmd('FloatermNew ranger'), 'Open Ranger' },
 
         -- Lspsaga

@@ -12,6 +12,8 @@ return function()
             'json',
             'cmake',
             'markdown',
+            'vim',
+            'regex',
         },
         -- ignore_install = { 'phpdoc' },
         highlight = {

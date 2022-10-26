@@ -33,17 +33,19 @@ return function()
             enable = true,
             view = 'cmdline', -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
             -- view_search = 'cmdline', -- view for rendering the cmdline for search
-            opts = { lang = 'vim' }, -- enable syntax highlighting in the cmdline
+            opts = {}, -- enable syntax highlighting in the cmdline
             format = {
                 -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
                 -- view: (default is cmdline view)
                 -- opts: any options passed to the view
                 -- icon_hl_group: optional hl_group for the icon
-                cmdline = { pattern = '^:', icon = '' },
+                cmdline = { pattern = '^:', icon = '', lang = 'vim' },
                 search_down = { kind = 'search', pattern = '^/', icon = ' ', lang = 'regex' },
                 search_up = { kind = 'search', pattern = '^%?', icon = ' ', lang = 'regex' },
                 filter = { pattern = '^:%s*!', icon = '$', ft = 'sh' },
                 lua = { pattern = '^:%s*lua%s+', icon = '', ft = 'lua' },
+                help = { pattern = '^:%s*h%s+', icon = '' },
+                input = {}, -- Used by input()
             },
         },
         messages = {

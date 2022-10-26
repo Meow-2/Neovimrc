@@ -89,6 +89,9 @@ return function()
             enabled = true,
             view = 'notify',
         },
+        health = {
+            checker = false, -- Disable if you don't want health checks to run
+        },
         throttle = 1000 / 120, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
         ---@type table<string, NoiceViewOptions>
         views = {}, -- @see the section on views below

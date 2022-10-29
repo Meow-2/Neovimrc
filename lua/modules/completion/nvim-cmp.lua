@@ -15,6 +15,7 @@ return function()
         col_offset = 0,
         side_padding = 1,
     }
+    ---@diagnostic disable-next-line: redundant-parameter
     cmp.setup({
         preselect = cmp.PreselectMode.Item,
         -- confirm_opts = {
@@ -86,6 +87,7 @@ return function()
             { name = 'nvim_lsp' },
             { name = 'path' },
             { name = 'buffer' },
+            -- { name = 'nvim_lsp_signature_help' },
         },
     })
     cmp.setup.cmdline(':', {

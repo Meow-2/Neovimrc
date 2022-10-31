@@ -62,6 +62,7 @@ nmap({
     { '<C-q>', cmd('qa!'), opts(noremap, silent) },
     -- close buffer/tab/dashboard
     { 'q', quitbuffer, opts(noremap, silent) },
+    { 'Q', cmd('e #'), opts(noremap, silent) },
     -- split windows
     { 's', '<Nop>', opts(noremap, silent) },
     {
@@ -115,7 +116,7 @@ nmap({
     { 'yy', [["+yy]], opts(noremap, silent) },
     { 'Y', [["+y$]], opts(noremap, silent) },
     -- marco
-    { 'Q', 'q1', opts(noremap) },
+    { '!', 'q1', opts(noremap) },
     { '@', '@1', opts(noremap) },
     -- fold code
     { 'zi', 'zf%', opts(noremap, silent) },

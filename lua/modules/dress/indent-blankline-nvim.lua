@@ -12,6 +12,7 @@ return function()
             'lspsagaoutline',
             'lspsagafinder',
             'packer',
+            'Outline',
             'startuptime',
             'dap-repl',
             'dapui_breakpoints',

@@ -131,6 +131,7 @@ return function()
         },
         -- show outline
         show_outline = {
+            enable = false,
             win_position = 'right',
             --set special filetype win that outline window split.like NvimTree neotree
             -- defx, db_ui

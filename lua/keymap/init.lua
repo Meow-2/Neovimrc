@@ -200,7 +200,7 @@ function WK_MAP()
         ['<C-k>'] = { cmd('Lspsaga hover_doc'), 'Lsp Hover Doc' },
         -- ['<C-p>'] = { cmd('Lspsaga signature_help'), 'Lsp Signature Help' },
         -- Lspsaga
-        ['<Leader>o'] = { cmd('LSoutlineToggle'), 'Show OutLine' },
+        ['<Leader>o'] = { cmd('SymbolsOutline'), 'Show OutLine' },
         -- ['<Leader>r'] = { name = 'Lspsaga Rename' },
         ['<Leader>r'] = { cmd('Lspsaga rename'), 'Lsp Rename' },
         -- nvim-lspconfig

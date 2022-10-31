@@ -72,6 +72,14 @@ package({
 })
 
 package({
+    'simrat39/symbols-outline.nvim',
+    cmd = {
+        'SymbolsOutline',
+    },
+    config = conf('symbols-outline.nvim'),
+})
+
+package({
     'Shatur/neovim-session-manager',
     after = 'nvim-tree.lua',
     config = conf('neovim-session-manager'),

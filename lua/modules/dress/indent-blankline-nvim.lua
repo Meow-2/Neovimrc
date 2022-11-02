@@ -19,6 +19,7 @@ return function()
             'dapui_watches',
             'dapui_stacks',
             'dapui_scopes',
+            'noice',
             'nvimgdb',
             'qf',
         },

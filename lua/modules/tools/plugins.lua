@@ -15,7 +15,7 @@ package({
         '<C-g>',
         '<Leader>',
     },
-    module = { 'gitsigns', 'cmp', 'lspconfig', 'nvim-tree' },
+    module = { 'gitsigns', 'cmp', 'lspconfig' },
     config = conf('which-key.nvim'),
 })
 
@@ -36,7 +36,6 @@ package({
         'TelescopeLiveGrep',
         'TodoTelescope',
         'SessionManager',
-        'NvimTreeToggle',
         'DapContinue',
     },
     module = 'dap',
@@ -66,7 +65,9 @@ package({
 
 package({
     'kyazdani42/nvim-tree.lua',
-    after = 'telescope.nvim',
+    cmd = {
+        'NvimTreeToggle',
+    },
     config = conf('nvim-tree.lua'),
     requires = 'kyazdani42/nvim-web-devicons',
 })
@@ -81,7 +82,7 @@ package({
 
 package({
     'Shatur/neovim-session-manager',
-    after = 'nvim-tree.lua',
+    after = 'telescope.nvim',
     config = conf('neovim-session-manager'),
 })
 

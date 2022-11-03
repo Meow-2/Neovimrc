@@ -2,7 +2,6 @@ local package = require('core.pack').package
 local conf = require('core.pack').conf_package('modules.dress')
 
 package({ 'Meow-2/zephyr-nvim', config = conf('zephyr-nvim') })
--- package({ 'Meow-2/solarized', config = conf('solarized') })
 -- plugin({ 'projekt0n/github-nvim-theme', config = conf('github-nvim-theme') })
 
 -- plugin({

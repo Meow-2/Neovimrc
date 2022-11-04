@@ -50,7 +50,7 @@ return function()
             },
         },
         renderer = {
-            indent_markers = { enable = true },
+            indent_markers = { enable = false },
             icons = {
                 git_placement = 'after',
                 webdev_colors = true,
@@ -58,8 +58,6 @@ return function()
                     default = '',
                     symlink = '',
                     folder = {
-                        arrow_closed = '',
-                        arrow_open = '',
                         default = '',
                         empty = '',
                         empty_open = '',

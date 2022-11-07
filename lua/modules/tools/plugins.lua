@@ -81,10 +81,17 @@ package({
 })
 
 package({
-    'Shatur/neovim-session-manager',
+    'olimorris/persisted.nvim',
+    -- module = 'persisted', -- For lazy loading
     after = 'telescope.nvim',
-    config = conf('neovim-session-manager'),
+    config = conf('persisted.nvim'),
 })
+
+-- package({
+--     'Shatur/neovim-session-manager',
+--     after = 'telescope.nvim',
+--     config = conf('neovim-session-manager'),
+-- })
 
 package({
     'mhartington/formatter.nvim',

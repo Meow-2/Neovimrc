@@ -36,7 +36,6 @@ package({
         'TelescopeLiveGrep',
         'TodoTelescope',
         'SessionManager',
-        'SessionStart',
         'DapContinue',
     },
     module = 'dap',
@@ -81,12 +80,12 @@ package({
     config = conf('symbols-outline.nvim'),
 })
 
-package({
-    'olimorris/persisted.nvim',
-    -- module = 'persisted', -- For lazy loading
-    after = 'telescope.nvim',
-    config = conf('persisted.nvim'),
-})
+-- package({
+--     'olimorris/persisted.nvim',
+--     -- module = 'persisted', -- For lazy loading
+--     after = 'telescope.nvim',
+--     config = conf('persisted.nvim'),
+-- })
 
 package({
     'Meow-2/neovim-session-manager',

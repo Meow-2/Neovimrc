@@ -11,7 +11,7 @@ vim.opt.magic = true
 vim.opt.virtualedit = 'block'
 vim.opt.encoding = 'utf-8'
 -- vim.opt.viewoptions = 'folds,cursor,curdir,slash,unix'
-vim.opt.sessionoptions = 'buffers,curdir,help,tabpages,winsize,help'
+vim.o.sessionoptions = 'buffers,curdir,folds,winpos,winsize'
 vim.opt.wildignorecase = true
 vim.opt.wildignore =
     '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'

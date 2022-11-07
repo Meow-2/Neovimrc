@@ -35,7 +35,7 @@ package({
         'Telescope',
         'TelescopeLiveGrep',
         'TodoTelescope',
-        -- 'SessionManager',
+        'SessionManager',
         'SessionStart',
         'DapContinue',
     },
@@ -88,11 +88,11 @@ package({
     config = conf('persisted.nvim'),
 })
 
--- package({
---     'Shatur/neovim-session-manager',
---     after = 'telescope.nvim',
---     config = conf('neovim-session-manager'),
--- })
+package({
+    'Meow-2/neovim-session-manager',
+    after = 'telescope.nvim',
+    config = conf('neovim-session-manager'),
+})
 
 package({
     'mhartington/formatter.nvim',

@@ -166,11 +166,11 @@ function WK_MAP()
         ['<Leader>m'] = { cmd('Mason'), 'Install Lsp and Dap' },
         -- neovim-session-manager
         ['<Leader>s'] = { name = 'sessions' },
-        -- ['<Leader>ss'] = { cmd('SessionManager! save_current_session'), 'Save Session' },
-        -- ['<Leader>sl'] = { cmd('SessionManager! load_session'), 'Load Session' },
-        -- ['<Leader>sd'] = { cmd('SessionManager! delete_session'), 'Delete Session' },
-        ['<Leader>ss'] = { cmd('SessionStart'), 'Save Session' },
-        ['<Leader>sl'] = { cmd('Telescope persisted'), 'Load Session' },
+        ['<Leader>ss'] = { cmd('SessionManager! save_current_session'), 'Save Session' },
+        ['<Leader>sl'] = { cmd('SessionManager! load_session'), 'Load Session' },
+        ['<Leader>sd'] = { cmd('SessionManager! delete_session'), 'Delete Session' },
+        -- ['<Leader>ss'] = { cmd('SessionStart'), 'Save Session' },
+        -- ['<Leader>sl'] = { cmd('Telescope persisted'), 'Load Session' },
         -- ['<Leader>sd'] = { cmd('SessionDelete'), 'Delete Session' },
         ['t'] = { name = 'Buffer' },
         -- nvim-tree

@@ -1,11 +1,12 @@
 return function()
+    local home = os.getenv('HOME')
     require('telescope').load_extension('persisted') -- To load the telescope extension
     require('persisted').setup({
         save_dir = vim.fn.expand(os.getenv('HOME') .. '/.cache/nvim/sessions/'), -- directory where session files are saved
         command = 'VimLeavePre', -- the autocommand for which the session is saved
         silent = false, -- silent nvim message when sourcing session file
         use_git_branch = true, -- create session files based on the branch of the git enabled repository
-        autosave = true, -- automatically save session files when exiting Neovim
+        autosave = false, -- automatically save session files when exiting Neovim
         autoload = false, -- automatically load the session for the cwd on Neovim startup
         on_autoload_no_session = nil, -- function to run when `autoload = true` but there is no session to load
         follow_cwd = true, -- change session file name to match current working directory if it changes

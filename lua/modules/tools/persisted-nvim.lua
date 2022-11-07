@@ -10,7 +10,7 @@ return function()
         on_autoload_no_session = nil, -- function to run when `autoload = true` but there is no session to load
         follow_cwd = true, -- change session file name to match current working directory if it changes
         allowed_dirs = nil, -- table of dirs that the plugin will auto-save and auto-load from
-        ignored_dirs = { os.getenv('HOME') }, -- table of dirs that are ignored when auto-saving and auto-loading
+        ignored_dirs = nil, -- table of dirs that are ignored when auto-saving and auto-loading
         before_save = nil, -- function to run before the session is saved to disk
         after_save = nil, -- function to run after the session is saved to disk
         after_source = nil, -- function to run after the session is sourced
@@ -18,6 +18,7 @@ return function()
             -- jump between session smoothly
             before_source = function()
                 -- vim.api.nvim_command('FloatermKill!')
+                vim.api.nvim_command('SessionSave')
                 vim.api.nvim_command('%bd!')
             end,
             -- after_source = function(param) end,

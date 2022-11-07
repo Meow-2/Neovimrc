@@ -171,7 +171,7 @@ function WK_MAP()
         -- ['<Leader>sd'] = { cmd('SessionManager! delete_session'), 'Delete Session' },
         ['<Leader>ss'] = { cmd('SessionStart'), 'Save Session' },
         ['<Leader>sl'] = { cmd('Telescope persisted'), 'Load Session' },
-        ['<Leader>sd'] = { cmd('SessionDelete'), 'Delete Session' },
+        -- ['<Leader>sd'] = { cmd('SessionDelete'), 'Delete Session' },
         ['t'] = { name = 'Buffer' },
         -- nvim-tree
         ['tt'] = { cmd('NvimTreeToggle'), 'NvimTree Toggle' },

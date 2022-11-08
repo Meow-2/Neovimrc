@@ -49,9 +49,9 @@ end --}}}
 function Super_F1() --{{{
     local cur_path = vim.api.nvim_buf_get_name(0)
     local config_path = vim.fn.stdpath('config')
-    if vim.bo.filetype == 'markdown' then
-        vim.api.nvim_command('MarkdownPreview')
-    elseif cur_path:find(config_path) or vim.bo.filetype == 'dashboard' then
+    -- if vim.bo.filetype == 'markdown' then
+    --     vim.api.nvim_command('MarkdownPreview')
+    if cur_path:find(config_path) or vim.bo.filetype == 'dashboard' then
         require('core.pack').compile()
         vim.cmd('luafile ' .. vim.fn.stdpath('config') .. '/init.lua')
         -- local base_package = {

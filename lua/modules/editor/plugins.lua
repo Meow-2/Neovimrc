@@ -47,14 +47,14 @@ package({
     config = conf('nvim-autopairs'),
 })
 
-package({
-    'dhruvasagar/vim-table-mode',
-    ft = { 'markdown' },
-    config = conf('vim-table-mode'),
-})
-
-package({
-    'dkarter/bullets.vim',
-    ft = { 'markdown' },
-    config = conf('bullets.vim'),
-})
+-- package({
+--     'dhruvasagar/vim-table-mode',
+--     ft = { 'markdown' },
+--     config = conf('vim-table-mode'),
+-- })
+--
+-- package({
+--     'dkarter/bullets.vim',
+--     ft = { 'markdown' },
+--     config = conf('bullets.vim'),
+-- })

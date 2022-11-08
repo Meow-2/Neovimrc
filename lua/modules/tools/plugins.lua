@@ -113,21 +113,21 @@ package({
     config = conf('nvim-bqf'),
 })
 
-package({
-    'iamcco/markdown-preview.nvim',
-    run = 'cd app && npm install',
-    ft = { 'markdown' },
-    setup = function()
-        vim.g.mkdp_filetypes = { 'markdown' }
-    end,
-    config = conf('markdown-preview.nvim'),
-})
+-- package({
+--     'iamcco/markdown-preview.nvim',
+--     run = 'cd app && npm install',
+--     ft = { 'markdown' },
+--     setup = function()
+--         vim.g.mkdp_filetypes = { 'markdown' }
+--     end,
+--     config = conf('markdown-preview.nvim'),
+-- })
 
-package({
-    'Meow-2/nvim-picgo',
-    ft = { 'markdown' },
-    config = conf('nvim-picgo'),
-})
+-- package({
+--     'Meow-2/nvim-picgo',
+--     ft = { 'markdown' },
+--     config = conf('nvim-picgo'),
+-- })
 
 package({
     'folke/noice.nvim',

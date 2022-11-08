@@ -53,6 +53,7 @@ package({
         { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+        { 'rcarriga/cmp-dap', after = { 'nvim-cmp', 'nvim-dap' } },
         { 'saadparwaiz1/cmp_luasnip', after = { 'nvim-cmp', 'LuaSnip' } },
         -- { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
     },

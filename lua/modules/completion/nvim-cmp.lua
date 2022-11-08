@@ -15,8 +15,23 @@ return function()
         col_offset = 0,
         side_padding = 1,
     }
+    local function is_dap_buffer(bufnr)
+        local filetype = vim.api.nvim_buf_get_option(bufnr or 0, 'filetype')
+        if vim.startswith(filetype, 'dapui_') then
+            return true
+        end
+        if filetype == 'dap-repl' then
+            return true
+        end
+
+        return false
+    end
+
     ---@diagnostic disable-next-line: redundant-parameter
     cmp.setup({
+        enabled = function()
+            return vim.api.nvim_buf_get_option(0, 'buftype') ~= 'prompt' or is_dap_buffer()
+        end,
         preselect = cmp.PreselectMode.Item,
         -- confirm_opts = {
         --
@@ -102,4 +117,9 @@ return function()
         '?',
         { mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'buffer' } } }
     )
+    cmp.setup.filetype({ 'dap-repl', 'dapui_watches', 'dapui_hover' }, {
+        sources = {
+            { name = 'dap' },
+        },
+    })
 end

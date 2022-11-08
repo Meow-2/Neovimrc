@@ -59,9 +59,9 @@ return function()
             view_search = 'virtualtext', -- view for search count messages. Set to `false` to disable
         },
         popupmenu = {
-            enabled = false, -- disable if you use something like cmp-cmdline
+            enabled = true, -- disable if you use something like cmp-cmdline
             ---@type 'nui'|'cmp'
-            backend = 'cmp', -- backend to use to show regular cmdline completions
+            backend = 'nui', -- backend to use to show regular cmdline completions
             -- You can specify options for nui under `config.views.popupmenu`
         },
         history = {

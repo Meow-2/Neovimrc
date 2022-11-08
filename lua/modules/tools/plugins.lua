@@ -20,7 +20,7 @@ package({
 })
 
 package({
-    'voldikss/vim-floaterm',
+    'Meow-2/vim-floaterm',
     cmd = {
         'FloatermNew',
         'FloatermToggle',
@@ -135,7 +135,7 @@ package({
     config = conf('noice.nvim'),
     requires = {
         { 'MunifTanjim/nui.nvim' },
-        { 'rcarriga/nvim-notify' },
+        { 'Meow-2/nvim-notify' },
     },
 })
 

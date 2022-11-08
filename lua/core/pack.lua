@@ -1,7 +1,8 @@
-local uv, api = vim.loop, vim.api
-local helper = require('core.helper')
-local vim_path = helper.get_config_path()
-local data_dir = string.format('%s/site/', helper.get_data_path())
+local fn, uv, api = vim.fn, vim.loop, vim.api
+-- User configuration directory. The init.lua is stored here.
+local vim_path = vim.fn.stdpath('config')
+-- User data directory. The shada-file is stored here.
+local data_dir = string.format('%s/site/', vim.fn.stdpath('data'))
 local modules_dir = vim_path .. '/lua/modules'
 local packer_compiled = data_dir .. 'lua/packer_compiled.lua'
 local packer = nil
@@ -14,7 +15,7 @@ function Packer:load_plugins()
 
     local get_plugins_list = function()
         local list = {}
-        local tmp = vim.split(vim.fn.globpath(modules_dir, '*/plugins.lua'), '\n')
+        local tmp = vim.split(fn.globpath(modules_dir, '*/plugins.lua'), '\n')
         for _, f in ipairs(tmp) do
             list[#list + 1] = string.match(f, 'lua/(.+).lua$')
         end
@@ -66,14 +67,6 @@ function Packer:init_ensure_plugins()
         self:load_packer()
         packer.sync()
     end
-end
-
-function Packer:cli_compile()
-    self:load_packer()
-    packer.compile()
-    vim.defer_fn(function()
-        vim.cmd('q')
-    end, 1000)
 end
 
 local plugins = setmetatable({}, {

@@ -144,3 +144,7 @@ package({
     event = { 'BufNewFile', 'BufReadPost' },
     config = conf('marks.nvim'),
 })
+
+package({
+    'dstein64/vim-startuptime',
+})

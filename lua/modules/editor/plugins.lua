@@ -17,10 +17,10 @@ package({
     config = conf('vim-matchup'),
 })
 
-package({
-    'ojroques/vim-oscyank',
-    config = conf('vim-oscyank'),
-})
+-- package({
+--     'ojroques/vim-oscyank',
+--     config = conf('vim-oscyank'),
+-- })
 
 package({
     'kylechui/nvim-surround',

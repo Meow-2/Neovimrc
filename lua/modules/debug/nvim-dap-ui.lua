@@ -63,7 +63,9 @@ return function()
         dap.repl.close()
         dapui.close({})
         vim.api.nvim_command('DapVirtualTextDisable')
-        vim.api.nvim_command('bdelete! term') -- close debug temrinal
+        if vim.fn.bufwinnr('term') ~= -1 then
+            vim.api.nvim_command('bdelete! term') -- close debug temrinal
+        end
         nmap({ '<C-k>', cmd('Lspsaga hover_doc'), nore_silent })
     end
 

@@ -2,8 +2,7 @@ local dap = require('dap')
 
 dap.adapters.python = {
     type = 'executable',
-    command = 'python',
-    args = { '-m', 'debugpy.adapter' },
+    command = 'debugpy-adapter',
 }
 
 dap.configurations.python = {
@@ -18,11 +17,10 @@ dap.configurations.python = {
             return require('modules.debug.dap-utils').str2argtable(input)
         end,
         pythonPath = function()
-            local venv_path = os.getenv('VIRTUAL_ENV')
-            if venv_path then
-                return venv_path .. '/bin/python'
-            end
-            return '/usr/bin/python'
+            local venv_path = vim.fn.system('which python')
+            -- remove '\n'
+            venv_path = string.sub(venv_path, 1, -2)
+            return venv_path
         end,
     },
 }

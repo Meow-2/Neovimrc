@@ -39,7 +39,8 @@ package({ 'godlygeek/tabular', cmd = { 'Tabularize' } })
 
 package({ 'lambdalisue/suda.vim', event = { 'TextChanged', 'TextChangedI' } })
 package({ 'lilydjwg/fcitx.vim', event = 'InsertEnter', config = conf('fcitx.vim') })
-package({ 'glepnir/mcc.nvim', event = 'InsertEnter', config = conf('mcc.nvim') })
+-- package({ 'glepnir/mcc.nvim', event = 'InsertEnter', config = conf('mcc.nvim') })
+package({ 'glepnir/mutchar.nvim', event = 'InsertEnter', config = conf('mutchar.nvim') })
 
 package({
     'windwp/nvim-autopairs',

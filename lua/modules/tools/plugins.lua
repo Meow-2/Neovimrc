@@ -72,14 +72,6 @@ package({
     requires = 'kyazdani42/nvim-web-devicons',
 })
 
-package({
-    'simrat39/symbols-outline.nvim',
-    cmd = {
-        'SymbolsOutline',
-    },
-    config = conf('symbols-outline.nvim'),
-})
-
 -- package({
 --     'olimorris/persisted.nvim',
 --     -- module = 'persisted', -- For lazy loading

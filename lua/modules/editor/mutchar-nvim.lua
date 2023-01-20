@@ -5,6 +5,9 @@ return function()
         --     rules = { '-', '->' },
         --     filter = filters.non_space_before,
         -- },
+        ['markdown'] = {
+            rules = { ',', ', ' },
+        },
         ['cpp'] = {
             rules = {
                 { '-', '->' },
@@ -32,14 +35,16 @@ return function()
         -- },
         ['go'] = {
             rules = {
-                { ';', ' :=' },
-                { ',', ' <-' },
+                { ':', ': ', ' :=' },
+                { ',', ', ' },
+                -- { ',', ' <-' },
             },
-            filter = {
-                filters.find_diagnostic_msg({ 'initial', 'undeclare' }),
-                filters.go_arrow_symbol,
-            },
-            one_to_one = true,
         },
+        -- -- filter = {
+        --     filters.find_diagnostic_msg({ 'initial', 'undeclare' }),
+        --     filters.go_arrow_symbol,
+        -- },
+        -- one_to_one = true,
+        -- },
     })
 end

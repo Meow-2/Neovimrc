@@ -1,7 +1,11 @@
 return function()
     local dapui = require('dapui')
     dapui.setup({
-        icons = { expanded = '▾', collapsed = '▸' },
+        icons = {
+            current_frame = '▸',
+            expanded = '▾',
+            collapsed = '▸',
+        },
         mappings = {
             -- Use a table to apply multiple mappings
             expand = { 'o', '<2-LeftMouse>', '<CR>' },

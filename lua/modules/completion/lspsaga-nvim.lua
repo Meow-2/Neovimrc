@@ -101,7 +101,7 @@ return function()
             show_file = true,
             folder_level = 2,
             respect_root = false,
-            color_mode = false,
+            color_mode = true,
         },
         outline = {
             win_position = 'right',
@@ -114,7 +114,7 @@ return function()
             custom_sort = nil,
             keys = {
                 jump = '<Cr>',
-                expand_collapse = 'u',
+                expand_collapse = 'o',
                 quit = 'q',
             },
         },

@@ -34,7 +34,12 @@ package({
     requires = 'kyazdani42/nvim-web-devicons',
 })
 
-package({ 'glepnir/dashboard-nvim', config = conf('dashboard-nvim') })
+package({
+    'glepnir/dashboard-nvim',
+    commit = 'f7d623457d6621b25a1292b24e366fae40cb79ab',
+    event = 'VimEnter',
+    config = conf('dashboard-nvim'),
+})
 
 package({
     'NvChad/nvim-colorizer.lua',

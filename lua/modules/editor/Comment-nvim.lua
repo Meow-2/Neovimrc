@@ -44,4 +44,20 @@ return function()
         ---Function to call after (un)comment
         post_hook = nil,
     })
+    vim.keymap.set(
+        'n',
+        '<C-_>',
+        '<Plug>(comment_toggle_linewise)',
+        { desc = 'Comment toggle linewise' }
+    )
+    vim.keymap.set('n', '<C-_>', function()
+        return vim.api.nvim_get_vvar('count') == 0 and '<Plug>(comment_toggle_linewise_current)'
+            or '<Plug>(comment_toggle_linewise_count)'
+    end, { expr = true, desc = 'Comment toggle current line' })
+    vim.keymap.set(
+        'x',
+        '<C-_>',
+        '<Plug>(comment_toggle_linewise_visual)',
+        { desc = 'Comment toggle linewise (visual)' }
+    )
 end

@@ -184,6 +184,8 @@ vmap({
     -- fold code
     { 'zi', 'zf%', opts(noremap, silent) },
     { 'zo', 'za', opts(noremap, silent) },
+    -- comment
+    { '^_', '<C-/>', opts(silent) },
 })
 
 tmap({

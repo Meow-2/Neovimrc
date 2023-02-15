@@ -124,6 +124,8 @@ nmap({
     -- mark
     { 'dm', cmd('execute("delmarks ").nr2char(getchar())'), opts(noremap, silent) },
     { '<Space><Space>', 'm', opts(noremap, silent) },
+    -- comment
+    { '^_', 'g@$', opts(silent) },
 })
 
 imap({
@@ -185,7 +187,7 @@ vmap({
     { 'zi', 'zf%', opts(noremap, silent) },
     { 'zo', 'za', opts(noremap, silent) },
     -- comment
-    { '^_', '<C-/>', opts(silent) },
+    { '^_', 'g@$', opts(silent) },
 })
 
 tmap({

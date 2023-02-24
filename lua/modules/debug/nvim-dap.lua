@@ -9,6 +9,7 @@ return function()
     for _, i in ipairs(dap_list) do
         require('modules.debug.dap.' .. i)
     end
+    require('dap').defaults.python.switchbuf = 'uselast'
     require('modules.debug.dap-utils').load_breakpoints()
     vim.api.nvim_create_user_command('DapContinue', require('dap').continue, {})
 end

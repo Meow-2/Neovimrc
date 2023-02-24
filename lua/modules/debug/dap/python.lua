@@ -4,7 +4,6 @@ dap.adapters.python = {
     type = 'executable',
     command = 'debugpy-adapter',
 }
-
 dap.configurations.python = {
     -- launch exe
     {
@@ -12,6 +11,7 @@ dap.configurations.python = {
         request = 'launch',
         name = 'Launch file',
         program = '${file}', -- This configuration will launch the current file if used.
+        justMyCode = false,
         args = function()
             local input = vim.fn.input('Input args: ')
             return require('modules.debug.dap-utils').str2argtable(input)

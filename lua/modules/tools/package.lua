@@ -1,5 +1,5 @@
 local package = require('core.pack').package
-local conf = require('core.pack').conf_package('modules.tools')
+local conf = require('core.pack'):config('modules.tools')
 
 package({
     'folke/which-key.nvim',
@@ -15,7 +15,7 @@ package({
         '<C-g>',
         '<Leader>',
     },
-    module = { 'gitsigns', 'cmp', 'lspconfig' },
+    -- lazy = true,
     config = conf('which-key.nvim'),
 })
 
@@ -36,30 +36,17 @@ package({
         'TelescopeLiveGrep',
         'TodoTelescope',
         'SessionManager',
-        'DapContinue',
-    },
-    module = 'dap',
-    after = {
-        'telescope-ui-select.nvim',
-        'telescope-fzf-native.nvim',
-        'telescope-file-browser.nvim',
-        'telescope-live-grep-args.nvim',
+        -- 'DapContinue',
     },
     config = conf('telescope.nvim'),
-    requires = {
+    dependencies = {
         { 'nvim-lua/popup.nvim' },
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-telescope/telescope-ui-select.nvim' },
-        { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         { 'nvim-telescope/telescope-file-browser.nvim' },
         { 'nvim-telescope/telescope-live-grep-args.nvim' },
-        {
-            'nvim-telescope/telescope-dap.nvim',
-            after = { 'nvim-dap', 'telescope.nvim' },
-            config = function()
-                require('telescope').load_extension('dap')
-            end,
-        },
+        { 'Meow-2/neovim-session-manager', config = conf('neovim-session-manager') },
     },
 })
 
@@ -69,39 +56,42 @@ package({
         'NvimTreeToggle',
     },
     config = conf('nvim-tree.lua'),
-    requires = 'kyazdani42/nvim-web-devicons',
+    dependencies = 'kyazdani42/nvim-web-devicons',
 })
 
 -- package({
 --     'olimorris/persisted.nvim',
 --     -- module = 'persisted', -- For lazy loading
---     after = 'telescope.nvim',
+--     dependencies = 'telescope.nvim',
 --     config = conf('persisted.nvim'),
 -- })
 
-package({
-    'Meow-2/neovim-session-manager',
-    after = 'telescope.nvim',
-    config = conf('neovim-session-manager'),
-})
+-- package({
+--     'Meow-2/neovim-session-manager',
+--     dependencies = 'telescope.nvim',
+--     config = conf('neovim-session-manager'),
+-- })
 
 package({
     'mhartington/formatter.nvim',
-    event = { 'BufNewFile', 'BufReadPost' },
+    -- event = { 'BufNewFile', 'BufRead' },
+    event = { 'VeryLazy' },
     config = conf('formatter.nvim'),
 })
 
 package({
     'skywind3000/asynctasks.vim',
-    after = 'asyncrun.vim',
+    -- event = { 'BufNewFile', 'BufRead' },
+    event = { 'VeryLazy' },
     config = conf('asynctasks.vim'),
-    requires = {
-        { 'skywind3000/asyncrun.vim', event = { 'BufNewFile', 'BufReadPost' } },
+    dependencies = {
+        { 'skywind3000/asyncrun.vim' },
     },
 })
 package({
     'kevinhwang91/nvim-bqf',
-    event = { 'BufNewFile', 'BufReadPost' },
+    -- event = { 'BufNewFile', 'BufRead' },
+    event = { 'VeryLazy' },
     config = conf('nvim-bqf'),
 })
 
@@ -123,9 +113,10 @@ package({
 
 package({
     'folke/noice.nvim',
-    event = 'VimEnter',
+    event = { 'VeryLazy' },
+    -- event = 'VimEnter',
     config = conf('noice.nvim'),
-    requires = {
+    dependencies = {
         { 'MunifTanjim/nui.nvim' },
         { 'Meow-2/nvim-notify' },
     },
@@ -133,10 +124,6 @@ package({
 
 package({
     'chentoast/marks.nvim',
-    event = { 'BufNewFile', 'BufReadPost' },
+    event = { 'VeryLazy' },
     config = conf('marks.nvim'),
-})
-
-package({
-    'dstein64/vim-startuptime',
 })

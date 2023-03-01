@@ -1,4 +1,4 @@
-require('keymap.config')
+require('keymap.remap')
 local keymap = require('core.keymap')
 local nmap, vmap, imap, tmap, omap, xmap =
     keymap.nmap, keymap.vmap, keymap.imap, keymap.tmap, keymap.omap, keymap.xmap
@@ -157,9 +157,11 @@ function WK_MAP()
         -- ['sk'] = { desc = 'Split Up' },
         -- ['sl'] = { desc = 'Split Right' },
         -- Packer
-        ['<Leader>u'] = { cmd('PackerUpdate'), 'Plugins Update' },
-        ['<Leader>i'] = { cmd('PackerInstall'), 'Plugins Install' },
-        ['<Leader>c'] = { cmd('PackerCompile'), 'Plugins Config Compile' },
+        -- ['<Leader>u'] = { cmd('PackerUpdate'), 'Plugins Update' },
+        -- ['<Leader>i'] = { cmd('PackerInstall'), 'Plugins Install' },
+        -- ['<Leader>c'] = { cmd('PackerCompile'), 'Plugins Config Compile' },
+        -- Lazy.nvim
+        ['<Leader>l'] = { cmd('Lazy'), 'Lazy Package Manager' },
         -- Dashboard
         ['<Leader>n'] = { cmd('DashboardNewFile'), 'New File' },
         -- Mason

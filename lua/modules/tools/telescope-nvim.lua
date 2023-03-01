@@ -178,6 +178,7 @@ return function()
     require('telescope').load_extension('live_grep_args')
     require('telescope').load_extension('file_browser')
     require('telescope').load_extension('notify')
+    require('telescope').load_extension('dap')
     vim.api.nvim_create_user_command(
         'TelescopeLiveGrep',
         require('telescope').extensions.live_grep_args.live_grep_args,

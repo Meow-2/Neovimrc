@@ -1,20 +1,24 @@
 local package = require('core.pack').package
-local conf = require('core.pack').conf_package('modules.debug')
+local conf = require('core.pack'):config('modules.debug')
 
 package({
     'mfussenegger/nvim-dap',
     config = conf('nvim-dap'),
-    ft = { 'c', 'cpp', 'go', 'python', 'lua' },
-    requires = {
+    ft = { 'c', 'cpp', 'go', 'python' },
+    dependencies = {
         {
             'theHamsta/nvim-dap-virtual-text',
             config = conf('nvim-dap-virtual-text'),
-            after = { 'nvim-dap' },
         },
         {
             'rcarriga/nvim-dap-ui',
             config = conf('nvim-dap-ui'),
-            after = { 'nvim-dap' },
+        },
+        {
+            'nvim-telescope/telescope-dap.nvim',
+            config = function()
+                require('telescope').load_extension('dap')
+            end,
         },
     },
 })
@@ -22,13 +26,13 @@ package({
 package({
     'sakhnik/nvim-gdb',
     ft = { 'c', 'cpp' },
-    run = './install.sh',
+    build = './install.sh',
     config = conf('nvim-gdb'),
 })
 
--- plugin({
+-- package({
 --     'michaelb/sniprun',
 --     ft = { 'c', 'cpp', 'lua', 'go', 'python' },
---     run = 'bash ./install.sh',
+--     build = 'bash ./install.sh',
 --     config = conf('sniprun'),
 -- })

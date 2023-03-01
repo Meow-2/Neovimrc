@@ -1,19 +1,25 @@
 local package = require('core.pack').package
-local conf = require('core.pack').conf_package('modules.editor')
+local conf = require('core.pack'):config('modules.editor')
 
-package({ 'mg979/vim-visual-multi', config = conf('vim-visual-multi') })
+package({ 'mg979/vim-visual-multi', init = conf('vim-visual-multi') })
 
-package({ 'wellle/targets.vim', event = { 'BufNewFile', 'BufReadPost' } })
+package({
+    'wellle/targets.vim',
+    -- event = { 'BufNewFile', 'BufRead' }
+    event = { 'VeryLazy' },
+})
 
 package({
     'ggandor/lightspeed.nvim',
     config = conf('lightspeed.nvim'),
-    event = { 'BufNewFile', 'BufReadPost' },
+    -- event = { 'BufNewFile', 'BufRead' },
+    event = { 'VeryLazy' },
 })
 
 package({
     'andymass/vim-matchup',
-    event = { 'BufNewFile', 'BufReadPost' },
+    -- event = { 'BufNewFile', 'BufRead' },
+    event = { 'VeryLazy' },
     config = conf('vim-matchup'),
 })
 
@@ -24,14 +30,16 @@ package({
 
 package({
     'kylechui/nvim-surround',
-    event = { 'BufNewFile', 'BufReadPost' },
+    -- event = { 'BufNewFile', 'BufRead' },
+    event = { 'VeryLazy' },
     config = conf('nvim-surround'),
 })
 
 package({
     'numToStr/Comment.nvim',
+    -- event = { 'BufNewFile', 'BufRead' },
+    event = { 'VeryLazy' },
     config = conf('Comment.nvim'),
-    event = { 'BufNewFile', 'BufReadPost' },
 })
 
 package({ 'Meow-2/antovim', cmd = { 'Antovim' } })

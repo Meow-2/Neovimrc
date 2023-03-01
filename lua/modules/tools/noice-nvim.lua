@@ -1,10 +1,10 @@
 return function()
-    if packer_plugins['nui.nvim'] and not packer_plugins['nui.nvim'].loaded then
-        vim.cmd([[packadd nui.nvim]])
-    end
-    if packer_plugins['nvim-notify'] and not packer_plugins['nvim-notify'].loaded then
-        vim.cmd([[packadd nvim-notify]])
-    end
+    -- if packer_plugins['nui.nvim'] and not packer_plugins['nui.nvim'].loaded then
+    --     vim.cmd([[packadd nui.nvim]])
+    -- end
+    -- if packer_plugins['nvim-notify'] and not packer_plugins['nvim-notify'].loaded then
+    --     vim.cmd([[packadd nvim-notify]])
+    -- end
     require('notify').setup({
         on_open = function(win)
             vim.api.nvim_win_set_config(win, {

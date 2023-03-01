@@ -31,9 +31,9 @@ return function()
     -- nvim-lspconfig : capabilities
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-    if not packer_plugins['cmp-nvim-lsp'].loaded then
-        vim.cmd([[packadd cmp-nvim-lsp]])
-    end
+    -- if not packer_plugins['cmp-nvim-lsp'].loaded then
+    --     vim.cmd([[packadd cmp-nvim-lsp]])
+    -- end
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     -- nvim-lspconfig : on_attach

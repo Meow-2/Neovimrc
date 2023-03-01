@@ -6,6 +6,7 @@ return function()
         show_current_context = true,
         buftype_exclude = { 'terminal' },
         filetype_exclude = {
+            'lazy',
             'dashboard',
             'NvimTree',
             'mason',

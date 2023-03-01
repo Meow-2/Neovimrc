@@ -1,9 +1,9 @@
 return function()
     local home = os.getenv('HOME')
-    local vim_conf_path = vim.fn.stdpath('config')
     local db = require('dashboard')
     db.setup({
         theme = 'hyper',
+        shortcut_type = 'number',
         config = {
             week_header = {
                 enable = true,

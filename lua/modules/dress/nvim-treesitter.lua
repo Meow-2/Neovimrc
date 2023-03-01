@@ -12,6 +12,7 @@ return function()
             'json',
             'cmake',
             'markdown',
+            'markdown_inline',
             'vim',
             'regex',
         },

@@ -180,12 +180,12 @@ function WK_MAP()
         -- bufferline
         ['e'] = { cmd('BufferLineCyclePrev'), 'Buffer Prev' },
         ['r'] = { cmd('BufferLineCycleNext'), 'Buffer Next' },
-        ['to'] = { cmd('BufferLinePick'), 'Buffer Open' },
-        ['tp'] = { cmd('BufferLinePickVsplit'), 'Buffer Pick Vsplit' },
-        ['tc'] = { cmd('BufferLinePickClose'), 'Buffer Pick Close' },
-        ['tl'] = { cmd('BufferLineMoveNext'), 'Buffer Move Left' },
-        ['th'] = { cmd('BufferLineMovePrev'), 'Buffer Move Right' },
-        ['tq'] = { cmd('TodoQuickFix'), 'TODO QuickFix' },
+        ['bo'] = { cmd('BufferLinePick'), 'Buffer Open' },
+        ['bp'] = { cmd('BufferLinePickVsplit'), 'Buffer Pick Vsplit' },
+        ['bc'] = { cmd('BufferLinePickClose'), 'Buffer Pick Close' },
+        ['bl'] = { cmd('BufferLineMoveNext'), 'Buffer Move Left' },
+        ['bh'] = { cmd('BufferLineMovePrev'), 'Buffer Move Right' },
+        ['bq'] = { cmd('TodoQuickFix'), 'Better TODO QuickFix' },
         -- vim-floaterm
         ['<C-g>'] = {
             cmd('FloatermNew --cwd=<root> --name=lazygit LANG=zh_CN.UTF-8 lazygit'),

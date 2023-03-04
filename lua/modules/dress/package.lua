@@ -54,6 +54,8 @@ package({
     config = conf('nvim-treesitter'),
     dependencies = {
         { 'nvim-treesitter/nvim-treesitter-textobjects' },
+        { 'HiPhish/nvim-ts-rainbow2' },
+        { 'nvim-treesitter/nvim-treesitter-context', config = conf('nvim-treesitter-context') },
     },
 })
 

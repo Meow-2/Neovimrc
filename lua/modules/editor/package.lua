@@ -3,11 +3,11 @@ local conf = require('core.pack'):config('modules.editor')
 
 package({ 'mg979/vim-visual-multi', init = conf('vim-visual-multi') })
 
-package({
-    'wellle/targets.vim',
-    -- event = { 'BufNewFile', 'BufRead' }
-    event = { 'VeryLazy' },
-})
+-- package({
+--     'wellle/targets.vim',
+--     -- event = { 'BufNewFile', 'BufRead' }
+--     event = { 'VeryLazy' },
+-- })
 
 package({
     'ggandor/lightspeed.nvim',

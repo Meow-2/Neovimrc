@@ -1,5 +1,5 @@
 return function()
-    local filters = require('mutchar.filters')
+    -- local filters = require('mutchar.filters')
     require('mutchar').setup({
         -- ['c'] = {
         --     rules = { '-', '->' },
@@ -10,11 +10,8 @@ return function()
         },
         ['cpp'] = {
             rules = {
-                { '-', '->' },
                 { ',', ', ' },
             },
-            filter = filters.has_space_before,
-            -- one_to_one = true,
         },
         -- ['rust'] = {
         --     rules = {

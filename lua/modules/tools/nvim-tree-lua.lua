@@ -76,7 +76,13 @@ return function()
                     },
                 },
             },
-            special_files = { 'README.md', 'readme.md', 'plugins.lua' },
+            special_files = {
+                'README.md',
+                'readme.md',
+                'package.lua',
+                'init.lua',
+                'CMakeLists.txt',
+            },
         },
         actions = {
             open_file = {

@@ -1,8 +1,17 @@
 local package = require('core.pack').package
 local conf = require('core.pack'):config('modules.editor')
 
-package({ 'mg979/vim-visual-multi', init = conf('vim-visual-multi') })
+package({
+    'mg979/vim-visual-multi',
+    keys = { '<C-l>', '<C-S-a>' },
+    init = conf('vim-visual-multi'),
+})
 
+package({
+    'AndrewRadev/switch.vim',
+    cmd = { 'Switch' },
+    config = conf('switch.vim'),
+})
 -- package({
 --     'wellle/targets.vim',
 --     -- event = { 'BufNewFile', 'BufRead' }
@@ -42,7 +51,7 @@ package({
     config = conf('Comment.nvim'),
 })
 
-package({ 'Meow-2/antovim', cmd = { 'Antovim' } })
+-- package({ 'Meow-2/antovim', cmd = { 'Antovim' } })
 package({ 'godlygeek/tabular', cmd = { 'Tabularize' } })
 
 package({ 'lambdalisue/suda.vim', event = { 'TextChanged', 'TextChangedI' } })

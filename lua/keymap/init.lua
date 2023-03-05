@@ -201,7 +201,11 @@ function WK_MAP()
         ['g'] = { name = 'Lsp Jump' },
         ['gt'] = { cmd('Lspsaga lsp_finder'), 'Lsp Symbol Jump' },
         ['gp'] = { cmd('Lspsaga peek_definition'), 'Lsp Preview Define' },
-        ['gs'] = { cmd('Antovim'), 'Antovim' },
+        ['gs'] = { cmd('Switch'), 'Switch Word' },
+        -- ['gS'] = {
+        --     cmd("call switch#Switch({'definitions': g:variable_style_switch_definitions})"),
+        --     'Switch Variable',
+        -- },
         ['<C-k>'] = { cmd('Lspsaga hover_doc'), 'Lsp Hover Doc' },
         -- ['<C-p>'] = { cmd('Lspsaga signature_help'), 'Lsp Signature Help' },
         -- Lspsaga

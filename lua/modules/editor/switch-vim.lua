@@ -1,5 +1,7 @@
 return function()
     vim.g.switch_custom_definitions = {
+        { '.', '->' },
+        { '==', '!=' },
         {
             ['\\<[a-z0-9]\\+_\\k\\+\\>'] = {
                 ['_\\(.\\)'] = '\\U\\1',

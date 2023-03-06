@@ -25,12 +25,12 @@ package({
     event = { 'VeryLazy' },
 })
 
--- package({
---     'andymass/vim-matchup',
---     -- event = { 'BufNewFile', 'BufRead' },
---     event = { 'VeryLazy' },
---     config = conf('vim-matchup'),
--- })
+package({
+    'andymass/vim-matchup',
+    -- event = { 'BufNewFile', 'BufRead' },
+    event = { 'VeryLazy' },
+    config = conf('vim-matchup'),
+})
 
 -- package({
 --     'ojroques/vim-oscyank',

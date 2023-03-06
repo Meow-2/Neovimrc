@@ -73,10 +73,10 @@ return function()
             swap = {
                 enable = true,
                 swap_next = {
-                    ['<leader>n'] = '@parameter.inner',
+                    ['<leader>l'] = '@parameter.inner',
                 },
                 swap_previous = {
-                    ['<leader>p'] = '@parameter.inner',
+                    ['<leader>h'] = '@parameter.inner',
                 },
             },
             include_surrounding_whitespace = false,

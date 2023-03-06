@@ -161,7 +161,7 @@ function WK_MAP()
         -- ['<Leader>i'] = { cmd('PackerInstall'), 'Plugins Install' },
         -- ['<Leader>c'] = { cmd('PackerCompile'), 'Plugins Config Compile' },
         -- Lazy.nvim
-        ['<Leader>l'] = { cmd('Lazy'), 'Lazy Package Manager' },
+        ['<Leader>u'] = { cmd('Lazy'), 'Lazy Package Manager' },
         -- Dashboard
         ['<Leader>n'] = { cmd('DashboardNewFile'), 'New File' },
         -- Mason

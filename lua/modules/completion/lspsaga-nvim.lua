@@ -72,12 +72,11 @@ return function()
             quit = { 'q', '<ESC>' },
         },
         definition = {
-            edit = '<C-c>o',
-            vsplit = '<C-c>v',
-            split = '<C-c>s',
-            tabe = '<C-c>t',
+            edit = '<C-x>o',
+            vsplit = '<C-x>l',
+            split = '<C-x>h',
+            tabe = '<C-x>t',
             quit = 'q',
-            close = '<Esc>',
         },
         code_action = {
             num_shortcut = true,

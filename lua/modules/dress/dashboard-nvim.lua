@@ -14,7 +14,7 @@ return function()
                     icon_hl = '@variable',
                     desc = 'Update',
                     group = '@property',
-                    action = 'PackerUpdate',
+                    action = 'Lazy',
                     key = 'u',
                 },
                 {

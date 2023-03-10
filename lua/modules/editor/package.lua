@@ -19,11 +19,17 @@ package({
 -- })
 
 package({
-    'ggandor/lightspeed.nvim',
-    config = conf('lightspeed.nvim'),
-    -- event = { 'BufNewFile', 'BufRead' },
-    event = { 'VeryLazy' },
+    'phaazon/hop.nvim',
+    branch = 'v2',
+    config = conf('hop.nvim'),
 })
+
+-- package({
+--     'ggandor/lightspeed.nvim',
+--     config = conf('lightspeed.nvim'),
+--     -- event = { 'BufNewFile', 'BufRead' },
+--     event = { 'VeryLazy' },
+-- })
 
 package({
     'andymass/vim-matchup',

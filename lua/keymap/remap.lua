@@ -123,7 +123,7 @@ nmap({
     { 'zo', 'za', opts(noremap, silent) },
     -- mark
     { 'dm', cmd('execute("delmarks ").nr2char(getchar())'), opts(noremap, silent) },
-    { '<Space><Space>', 'm', opts(noremap, silent) },
+    -- { '<Space><Space>', 'm', opts(noremap, silent) },
     -- comment
 })
 

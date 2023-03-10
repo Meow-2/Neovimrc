@@ -174,9 +174,9 @@ function WK_MAP()
         -- ['<Leader>ss'] = { cmd('SessionStart'), 'Save Session' },
         -- ['<Leader>sl'] = { cmd('Telescope persisted'), 'Load Session' },
         -- ['<Leader>sd'] = { cmd('SessionDelete'), 'Delete Session' },
-        ['t'] = { name = 'Buffer' },
+        -- ['t'] = { name = 'Buffer' },
         -- nvim-tree
-        ['tt'] = { cmd('NvimTreeToggle'), 'NvimTree Toggle' },
+        ['<Leader>t'] = { cmd('NvimTreeToggle'), 'NvimTree Toggle' },
         -- bufferline
         ['e'] = { cmd('BufferLineCyclePrev'), 'Buffer Prev' },
         ['r'] = { cmd('BufferLineCycleNext'), 'Buffer Next' },
@@ -220,8 +220,8 @@ function WK_MAP()
         ['<F2>'] = { cmd('AsyncTask project-buildrun'), 'Project Build' },
         ['<F3>'] = { cmd('call asyncrun#quickfix_toggle(12)'), 'Quickfix Close' },
         -- vim-table-mode
-        ['<Leader>t'] = { name = 'Table Mode' },
-        ['<Leader>tm'] = { cmd('TableModeToggle'), 'Table Mode Toggle' },
+        -- ['<Leader>t'] = { name = 'Table Mode' },
+        -- ['<Leader>tm'] = { cmd('TableModeToggle'), 'Table Mode Toggle' },
         -- nvim-dap
         ['<F5>'] = { cmd('DapContinue'), 'Debug Continue' },
         ['<F6>'] = {
@@ -311,10 +311,10 @@ function GS_MAP(bufnr)
     require('which-key').register(mappings, mappings_opt)
 end
 
-nmap({
-    { 'm', '<Plug>Lightspeed_s', opts(silent) },
-    { 'M', '<Plug>Lightspeed_S', opts(silent) },
-})
+-- nmap({
+--     { 'm', '<Plug>Lightspeed_s', opts(silent) },
+--     { 'M', '<Plug>Lightspeed_S', opts(silent) },
+-- })
 
 imap({
     -- { '<C-p>', cmd('Lspsaga signature_help'), opts(noremap, silent) },

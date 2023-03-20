@@ -32,10 +32,17 @@ package({
 -- })
 
 package({
-    'andymass/vim-matchup',
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
     -- event = { 'BufNewFile', 'BufRead' },
     event = { 'VeryLazy' },
-    config = conf('vim-matchup'),
+    config = conf('nvim-treesitter'),
+    dependencies = {
+        { 'andymass/vim-matchup', config = conf('vim-matchup') },
+        { 'nvim-treesitter/nvim-treesitter-textobjects' },
+        { 'HiPhish/nvim-ts-rainbow2' },
+        { 'nvim-treesitter/nvim-treesitter-context', config = conf('nvim-treesitter-context') },
+    },
 })
 
 -- package({

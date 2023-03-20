@@ -47,19 +47,6 @@ package({
 })
 
 package({
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    -- event = { 'BufNewFile', 'BufRead' },
-    event = { 'VeryLazy' },
-    config = conf('nvim-treesitter'),
-    dependencies = {
-        { 'nvim-treesitter/nvim-treesitter-textobjects' },
-        { 'HiPhish/nvim-ts-rainbow2' },
-        { 'nvim-treesitter/nvim-treesitter-context', config = conf('nvim-treesitter-context') },
-    },
-})
-
-package({
     'lukas-reineke/indent-blankline.nvim',
     -- event = { 'BufNewFile', 'BufRead' },
     event = { 'VeryLazy' },

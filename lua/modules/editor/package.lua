@@ -3,7 +3,12 @@ local conf = require('core.pack'):config('modules.editor')
 
 package({
     'mg979/vim-visual-multi',
-    keys = { '<C-l>', '<C-S-a>' },
+    keys = {
+        { '<C-l>', mode = 'n' },
+        { '<C-l>', mode = 'v' },
+        { '<C-S-a>', mode = 'n' },
+        { '<C-S-a>', mode = 'v' },
+    },
     init = conf('vim-visual-multi'),
 })
 

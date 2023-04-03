@@ -176,7 +176,7 @@ function WK_MAP()
         -- ['<Leader>sd'] = { cmd('SessionDelete'), 'Delete Session' },
         -- ['t'] = { name = 'Buffer' },
         -- nvim-tree
-        ['<Leader>t'] = { cmd('NvimTreeToggle'), 'NvimTree Toggle' },
+        ['tt'] = { cmd('NvimTreeToggle'), 'NvimTree Toggle' },
         -- bufferline
         ['e'] = { cmd('BufferLineCyclePrev'), 'Buffer Prev' },
         ['r'] = { cmd('BufferLineCycleNext'), 'Buffer Next' },

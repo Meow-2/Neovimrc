@@ -167,7 +167,9 @@ return function()
                 white = '#d1d4cf',
                 black = '#1c1c19',
             },
-            kind = {},
+            kind = {
+                ['Folder'] = { ' ', '@parameter' },
+            },
         },
     }
     require('lspsaga').setup(settings)

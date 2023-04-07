@@ -6,6 +6,8 @@ package({
     keys = {
         { '<C-l>', mode = 'n' },
         { '<C-l>', mode = 'v' },
+        { '<C-n>', mode = 'n' },
+        { '<C-n>', mode = 'v' },
         { '<C-S-a>', mode = 'n' },
         { '<C-S-a>', mode = 'v' },
     },

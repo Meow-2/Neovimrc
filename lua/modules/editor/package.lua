@@ -47,6 +47,7 @@ package({
     dependencies = {
         { 'andymass/vim-matchup', config = conf('vim-matchup') },
         { 'nvim-treesitter/nvim-treesitter-textobjects' },
+        { 'windwp/nvim-ts-autotag' },
         { 'HiPhish/nvim-ts-rainbow2' },
         { 'nvim-treesitter/nvim-treesitter-context', config = conf('nvim-treesitter-context') },
     },

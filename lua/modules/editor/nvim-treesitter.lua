@@ -21,6 +21,9 @@ return function()
             'typescript',
         },
         -- ignore_install = { 'phpdoc' },
+        autotag = {
+            enable = true,
+        },
         highlight = {
             enable = true,
         },

@@ -15,11 +15,11 @@ opt.encoding = 'utf-8'
 vim.o.sessionoptions = 'buffers,curdir,folds,winpos,winsize'
 opt.wildignorecase = true
 opt.wildignore =
-  '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'
+    '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'
 opt.backup = false
 opt.writebackup = false
 opt.swapfile = false
-opt.directory = cache_dir .. 'swag/'
+opt.directory = cache_dir .. 'swap/'
 opt.undodir = cache_dir .. 'undo/'
 opt.backupdir = cache_dir .. 'backup/'
 opt.viewdir = cache_dir .. 'view/'

@@ -1,16 +1,17 @@
 local g, fn = vim.g, vim.fn
 local helper = require('core.helper')
 -- remove check is windows because I only use mac or linux
-local cache_dir = helper.path_join(vim.fn.stdpath('cache'), 'nvim')
+local cache_dir = helper.path_join(vim.fn.stdpath('cache'))
 
 -- Create cache dir and subs dir
 local createdir = function()
     local data_dir = {
-        cache_dir .. 'backup',
-        cache_dir .. 'session',
-        cache_dir .. 'swap',
-        cache_dir .. 'tags',
-        cache_dir .. 'undo',
+        cache_dir .. '/backup',
+        cache_dir .. '/sessions',
+        cache_dir .. '/swap',
+        cache_dir .. '/tags',
+        cache_dir .. '/undo',
+        cache_dir .. '/formatter',
     }
     -- There only check once that If cache_dir exists
     -- Then I don't want to check subs dir exists

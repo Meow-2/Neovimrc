@@ -15,6 +15,10 @@ return function()
             'markdown_inline',
             'vim',
             'regex',
+            'html',
+            'css',
+            'javascript',
+            'typescript',
         },
         -- ignore_install = { 'phpdoc' },
         highlight = {

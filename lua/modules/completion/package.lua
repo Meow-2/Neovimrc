@@ -11,6 +11,10 @@ local enable_lsp_filetype = {
     'markdown',
     'python',
     'sh',
+    'html',
+    'css',
+    'javascript',
+    'typescript',
 }
 
 package({

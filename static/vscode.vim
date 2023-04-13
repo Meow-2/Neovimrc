@@ -181,17 +181,21 @@ noremap <silent> <esc> <esc>:nohlsearch<cr>
 "----------------------------------------------------------------------
 "                      yank to system clipboard
 "----------------------------------------------------------------------
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point [2]
-if executable(s:clip)
-    set clipboard=unnamedplus " default
-    au TextYankPost * if v:event.operator is 'y' | call system(s:clip, @0) | endif
-else
-    noremap y "+y
-    nnoremap yy "+yy
-    nnoremap Y "+y$
-    vnoremap y "+y`]
-endif
+" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point [2]
+" if executable(s:clip)
+"     set clipboard=unnamedplus " default
+"     au TextYankPost * if v:event.operator is 'y' | call system(s:clip, @0) | endif
+" else
+"     noremap y "+y
+"     nnoremap yy "+yy
+"     nnoremap Y "+y$
+"     vnoremap y "+y`]
+" endif
 
+noremap y "+y
+nnoremap yy "+yy
+nnoremap Y "+y$
+vnoremap y "+y`]
 nnoremap \v v$h
 
 "----------------------------------------------------------------------

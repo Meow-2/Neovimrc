@@ -1,6 +1,13 @@
 local keymap = require('core.keymap')
-local nmap, imap, cmap, vmap, tmap, omap, xmap =
-    keymap.nmap, keymap.imap, keymap.cmap, keymap.vmap, keymap.tmap, keymap.omap, keymap.xmap
+local nmap, imap, cmap, vmap, tmap, omap, xmap, smap =
+    keymap.nmap,
+    keymap.imap,
+    keymap.cmap,
+    keymap.vmap,
+    keymap.tmap,
+    keymap.omap,
+    keymap.xmap,
+    keymap.smap
 local opts = keymap.new_opts
 local cmd = keymap.cmd
 local noremap, silent, expr = keymap.noremap, keymap.silent, keymap.expr
@@ -125,6 +132,8 @@ nmap({
     { 'dm', cmd('execute("delmarks ").nr2char(getchar())'), opts(noremap, silent) },
     -- { '<Space><Space>', 'm', opts(noremap, silent) },
     -- comment
+    -- mouse
+    { '<LeftMouse>', '<LeftMouse>i', opts(noremap, silent) },
 })
 
 imap({
@@ -245,4 +254,9 @@ xmap({
     -- indent code
     { '<Tab>', '>gv', opts(noremap, silent) },
     { '<S-Tab>', '<gv', opts(noremap, silent) },
+})
+
+smap({
+    { '<Esc>', [[<C-\><C-g>]], opts(silent) },
+    { '<RightMouse>', [[<C-\><C-g>gv]] .. cmd('popup! PopUp'), opts(noremap, silent) },
 })

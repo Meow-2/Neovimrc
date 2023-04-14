@@ -2,7 +2,7 @@ local opt = vim.opt
 local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
 
 opt.termguicolors = true
-opt.mouse = 'nv'
+opt.mouse = 'a'
 opt.selectmode = 'mouse'
 opt.mousemoveevent = true
 opt.errorbells = true

@@ -125,10 +125,6 @@ nmap({
     { 'dm', cmd('execute("delmarks ").nr2char(getchar())'), opts(noremap, silent) },
     -- { '<Space><Space>', 'm', opts(noremap, silent) },
     -- comment
-    -- double click
-    -- { '<2-LeftMouse>', '<2-LeftMouse>"+y<2-LeftMouse><C-g>', opts(noremap, silent) },
-    { '<2-LeftMouse>', '<2-LeftMouse><C-g>', opts(noremap, silent) },
-    { '<RightMouse>', '<LeftMouse>a', opts(noremap, silent) },
 })
 
 imap({

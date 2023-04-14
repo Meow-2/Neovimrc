@@ -3,6 +3,7 @@ local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
 
 opt.termguicolors = true
 opt.mouse = 'nv'
+opt.selectmode = 'mouse'
 opt.mousemoveevent = true
 opt.errorbells = true
 opt.visualbell = true

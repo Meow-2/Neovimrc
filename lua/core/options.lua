@@ -94,6 +94,7 @@ opt.wrap = false
 opt.linebreak = true
 opt.number = true
 opt.signcolumn = 'yes'
+opt.cursorlineopt = 'number'
 -- opt.conceallevel = 2
 -- opt.concealcursor = 'niv'
 -- opt.guifont = [[FiraCode Nerd Font Mono:h15]]

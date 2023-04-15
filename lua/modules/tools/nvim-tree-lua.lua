@@ -5,12 +5,9 @@ return function()
         auto_reload_on_write = true,
         hijack_cursor = false,
         hijack_unnamed_buffer_when_opening = false,
-        ignore_buffer_on_setup = false,
-        open_on_setup = false,
-        open_on_setup_file = false,
-        open_on_tab = false,
         sync_root_with_cwd = true,
         view = {
+            cursorline = true,
             adaptive_size = true,
             float = {
                 enable = true,
@@ -113,4 +110,21 @@ return function()
     })
     -- vim.api.nvim_set_hl(0, 'NvimTreeGitIgnored', { fg = '#73797e' })
     -- require('nvim-tree.events').on_file_created(function(file) vim.cmd("edit " .. file.fname) end)
+    -- vim.api.nvim_create_autocmd({ 'WinEnter', 'BufWinEnter' }, {
+    --     pattern = 'NvimTree*',
+    --     callback = function()
+    --         local def = vim.api.nvim_get_hl_by_name('Cursor', true)
+    --         vim.api.nvim_set_hl(0, 'Cursor', vim.tbl_extend('force', def, { blend = 100 }))
+    --         vim.opt.guicursor:append('a:Cursor/lCursor')
+    --     end,
+    -- })
+    --
+    -- vim.api.nvim_create_autocmd({ 'BufLeave', 'WinClosed' }, {
+    --     pattern = 'NvimTree*',
+    --     callback = function()
+    --         local def = vim.api.nvim_get_hl_by_name('Cursor', true)
+    --         vim.api.nvim_set_hl(0, 'Cursor', vim.tbl_extend('force', def, { blend = 0 }))
+    --         vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
+    --     end,
+    -- })
 end

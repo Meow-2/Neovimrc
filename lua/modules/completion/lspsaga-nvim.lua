@@ -112,8 +112,8 @@ return function()
             auto_close = true,
             custom_sort = nil,
             keys = {
-                jump = '<Cr>',
-                expand_collapse = 'o',
+                expand_or_jump = '<Cr>',
+                -- expand_collapse = 'o',
                 quit = 'q',
             },
         },

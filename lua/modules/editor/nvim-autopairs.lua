@@ -15,7 +15,7 @@ return function()
         fast_wrap = {
             map = '<c-f>',
             chars = { '{', '[', '(', '"', "'" },
-            pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+            pattern = [=[[%'%"%>%]%)%}%,]]=],
             end_key = 'l',
             keys = 'qwertyuiopzxcvbnmasdfghjk$',
             check_comma = true,

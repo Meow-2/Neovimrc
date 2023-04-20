@@ -133,7 +133,7 @@ nmap({
     -- { '<Space><Space>', 'm', opts(noremap, silent) },
     -- comment
     -- mouse
-    { '<LeftMouse>', '<LeftMouse>i', opts(noremap, silent) },
+    -- { '<LeftMouse>', '<LeftMouse>i', opts(noremap, silent) },
 })
 
 imap({

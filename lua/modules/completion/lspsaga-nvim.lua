@@ -145,11 +145,11 @@ return function()
             expand = '',
             collapse = '',
             preview = ' ',
-            code_action = '',
-            diagnostic = '',
+            code_action = '󰌶',
+            diagnostic = '󰃤',
             -- diagnostic_header = { '', '', '', '' },
-            incoming = ' ',
-            outgoing = ' ',
+            incoming = '󰏷',
+            outgoing = '󰏻',
             colors = {
                 --float window normal bakcground color
                 -- normal_bg = '#1d1536',

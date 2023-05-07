@@ -224,7 +224,7 @@ return function()
     gls.right[1] = {
         DiagnosticError = {
             provider = 'DiagnosticError',
-            icon = '  ',
+            icon = ' 󰅚 ',
             highlight = { colors.red, colors.bg },
         },
     }
@@ -232,7 +232,7 @@ return function()
     gls.right[2] = {
         DiagnosticWarn = {
             provider = 'DiagnosticWarn',
-            icon = '  ',
+            icon = ' 󰀪 ',
             highlight = { colors.yellow, colors.bg },
         },
     }
@@ -240,7 +240,7 @@ return function()
     gls.right[3] = {
         DiagnosticHint = {
             provider = 'DiagnosticHint',
-            icon = '  ',
+            icon = ' 󰋽 ',
             highlight = { colors.cyan, colors.bg },
         },
     }

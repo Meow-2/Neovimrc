@@ -92,23 +92,23 @@ return function()
     -- config dap_breakpoint style
     local dap_breakpoint = {
         error = {
-            text = ' ',
+            text = ' ',
             texthl = 'LspDiagnosticsSignError',
         },
         condition = {
-            text = ' ',
+            text = '󰯳 ',
             texthl = 'LspDiagnosticsSignHint',
         },
         log = {
-            text = ' ',
+            text = '󰰎 ',
             texthl = 'LspDiagnosticsSignInformation',
         },
         rejected = {
-            text = ' ',
+            text = '󰰠 ',
             texthl = 'LspDiagnosticsSignHint',
         },
         stopped = {
-            text = ' ',
+            text = '󰁕 ',
             texthl = 'LspDiagnosticsSignInformation',
         },
     }

@@ -168,6 +168,7 @@ return function()
                 black = '#1c1c19',
             },
             kind = {
+                ['Function'] = { '󰊕 ', 'Function' },
                 ['Folder'] = { ' ', '@parameter' },
             },
         },

@@ -103,17 +103,19 @@ return function()
         sync_root_with_cwd = true,
         view = {
             cursorline = true,
-            adaptive_size = true,
-            float = {
-                enable = true,
-                open_win_config = {
-                    border = 'single',
-                    width = 30,
-                    height = 30,
-                    row = 0,
-                    col = 999,
-                },
-            },
+            adaptive_size = false,
+            side = 'left',
+            width = 30,
+            -- float = {
+            --     enable = true,
+            --     open_win_config = {
+            --         border = 'single',
+            --         width = 30,
+            --         height = 30,
+            --         row = 0,
+            --         col = 999,
+            --     },
+            -- },
             number = false,
             relativenumber = false,
             signcolumn = 'yes',

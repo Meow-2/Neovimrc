@@ -93,6 +93,7 @@ return function()
         vim.keymap.set('n', 'cw', api.fs.rename, opts('Rename'))
         vim.keymap.set('n', 'f', api.tree.search_node, opts('Search'))
     end
+
     require('nvim-tree').setup({
         on_attach = on_attach,
         disable_netrw = true,
@@ -124,6 +125,7 @@ return function()
         },
         renderer = {
             indent_markers = { enable = false },
+            highlight_git = true,
             icons = {
                 git_placement = 'after',
                 webdev_colors = true,

@@ -43,7 +43,7 @@ package({
     -- event = { 'BufNewFile', 'BufRead' },
     event = { 'VeryLazy' },
     config = conf('todo-comments-nvim'),
-    dependencies = 'plenary.nvim',
+    dependencies = { 'plenary.nvim', 'nvim-telescope/telescope.nvim' },
 })
 
 package({

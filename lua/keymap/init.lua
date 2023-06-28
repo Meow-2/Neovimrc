@@ -166,6 +166,8 @@ function WK_MAP()
         ['<Leader>n'] = { cmd('DashboardNewFile'), 'New File' },
         -- Mason
         ['<Leader>m'] = { cmd('Mason'), 'Install Lsp and Dap' },
+        -- todo-comments
+        ['<Leader>t'] = { cmd('TodoLocList'), 'Todo Local List' },
         -- neovim-session-manager
         ['<Leader>s'] = { name = 'sessions' },
         ['<Leader>ss'] = { cmd('SessionManager! save_current_session'), 'Save Session' },

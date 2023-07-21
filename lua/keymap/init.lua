@@ -92,9 +92,9 @@ function LSP_MAP(bufnr)
     local mappings_opt =
         { mode = 'n', buffer = bufnr, silent = true, noremap = true, nowait = true }
     local mappings = {
-        ['gd'] = { cmd('lua vim.lsp.buf.definition()'), 'Lsp Go Definition' },
-        ['gi'] = { cmd('lua vim.lsp.buf.implementation()'), 'Lsp Go Implement' },
-        ['gr'] = { cmd('lua vim.lsp.buf.references()'), 'Lsp Go Ref' },
+        -- ['gd'] = { cmd('lua vim.lsp.buf.definition()'), 'Lsp Go Definition' },
+        -- ['gi'] = { cmd('lua vim.lsp.buf.implementation()'), 'Lsp Go Implement' },
+        -- ['gr'] = { cmd('lua vim.lsp.buf.references()'), 'Lsp Go Ref' },
         ['<Leader>.'] = { cmd('lua vim.lsp.buf.code_action()'), 'Code Action' },
         ['<Leader>T'] = { cmd('lua vim.lsp.buf.type_definition()'), 'Lsp Go Type Definition' },
         ['<Leader>D'] = { cmd('lua vim.lsp.buf.declaration()'), 'Lsp Go Declaration' },
@@ -201,8 +201,12 @@ function WK_MAP()
         ['='] = { cmd('Lspsaga diagnostic_jump_next'), 'Next Diagnostic' },
         ['-'] = { cmd('Lspsaga diagnostic_jump_prev'), 'Prev Diagnostic' },
         ['g'] = { name = 'Lsp Jump' },
-        ['gt'] = { cmd('Lspsaga lsp_finder'), 'Lsp Symbol Jump' },
-        ['gp'] = { cmd('Lspsaga peek_definition'), 'Lsp Preview Define' },
+
+        ['gr'] = { cmd('Lspsaga finder'), 'Lsp Symbol Jump' },
+        ['gi'] = { cmd('Lspsaga finder imp'), 'Lsp Search Implement' },
+        ['gd'] = { cmd('Lspsaga peek_definition'), 'Lsp Preview Define' },
+        ['gD'] = { cmd('Lspsaga goto_definition'), 'Lsp Goto Define' },
+        ['gt'] = { cmd('Lspsaga goto_type_definition'), 'Lsp Goto Type Define' },
         ['gs'] = { cmd('Switch'), 'Switch Word' },
         -- ['gS'] = {
         --     cmd("call switch#Switch({'definitions': g:variable_style_switch_definitions})"),

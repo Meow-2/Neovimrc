@@ -204,8 +204,9 @@ function WK_MAP()
 
         ['gr'] = { cmd('Lspsaga finder'), 'Lsp Symbol Jump' },
         ['gi'] = { cmd('Lspsaga finder imp'), 'Lsp Search Implement' },
-        ['gd'] = { cmd('Lspsaga peek_definition'), 'Lsp Preview Define' },
-        ['gD'] = { cmd('Lspsaga goto_definition'), 'Lsp Goto Define' },
+        ['gD'] = { cmd('Lspsaga peek_definition'), 'Lsp Preview Define' },
+        ['gd'] = { cmd('lua vim.lsp.buf.definition()'), 'Lsp Go Definition' },
+        -- ['gd'] = { cmd('Lspsaga goto_definition'), 'Lsp Goto Define' },
         ['gt'] = { cmd('Lspsaga goto_type_definition'), 'Lsp Goto Type Define' },
         ['gs'] = { cmd('Switch'), 'Switch Word' },
         -- ['gS'] = {

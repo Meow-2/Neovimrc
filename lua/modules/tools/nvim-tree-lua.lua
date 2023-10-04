@@ -120,12 +120,12 @@ return function()
             number = false,
             relativenumber = false,
             signcolumn = 'yes',
-            hide_root_folder = false,
             preserve_window_proportions = false,
         },
         renderer = {
             indent_markers = { enable = false },
             highlight_git = true,
+            root_folder_label = false,
             icons = {
                 git_placement = 'after',
                 webdev_colors = true,

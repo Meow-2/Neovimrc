@@ -30,7 +30,6 @@ package({
     branch = 'v2',
     config = conf('hop.nvim'),
 })
-
 -- package({
 --     'ggandor/lightspeed.nvim',
 --     config = conf('lightspeed.nvim'),
@@ -48,9 +47,14 @@ package({
         { 'andymass/vim-matchup', config = conf('vim-matchup') },
         { 'nvim-treesitter/nvim-treesitter-textobjects' },
         { 'windwp/nvim-ts-autotag' },
-        { 'HiPhish/nvim-ts-rainbow2' },
         { 'nvim-treesitter/nvim-treesitter-context', config = conf('nvim-treesitter-context') },
     },
+})
+
+package({
+    'HiPhish/rainbow-delimiters.nvim',
+    event = { 'VeryLazy' },
+    config = conf('rainbow-delimiters.nvim'),
 })
 
 -- package({

@@ -50,7 +50,7 @@ package({
     'lukas-reineke/indent-blankline.nvim',
     -- event = { 'BufNewFile', 'BufRead' },
     event = { 'VeryLazy' },
-    main = "ibl",
+    main = 'ibl',
     dependencies = { 'nvim-treesitter' },
     config = conf('indent-blankline.nvim'),
 })

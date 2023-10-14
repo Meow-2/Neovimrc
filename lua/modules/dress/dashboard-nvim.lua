@@ -10,7 +10,7 @@ return function()
             },
             shortcut = {
                 {
-                    icon = ' ',
+                    icon = '󰊳 ',
                     icon_hl = '@variable',
                     desc = 'Update',
                     group = '@property',

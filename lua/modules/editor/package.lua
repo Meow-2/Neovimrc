@@ -66,6 +66,14 @@ package({
 })
 
 package({
+    'luckasRanarison/tree-sitter-hypr',
+    config = conf('tree-sitter-hypr'),
+    dependencies = {
+        { 'nvim-treesitter/nvim-treesitter' },
+    },
+})
+
+package({
     'HiPhish/rainbow-delimiters.nvim',
     event = { 'VeryLazy' },
     config = conf('rainbow-delimiters.nvim'),

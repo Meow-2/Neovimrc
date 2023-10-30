@@ -54,12 +54,13 @@ package({
     event = { 'VeryLazy' },
     config = conf('nvim-treesitter'),
     dependencies = {
-        { 'andymass/vim-matchup', config = conf('vim-matchup') },
         { 'nvim-treesitter/nvim-treesitter-textobjects' },
         { 'windwp/nvim-ts-autotag' },
-        { 'nvim-treesitter/nvim-treesitter-context', config = conf('nvim-treesitter-context') },
+        -- { 'nvim-treesitter/nvim-treesitter-context', config = conf('nvim-treesitter-context') },
     },
 })
+
+package({ 'andymass/vim-matchup', config = conf('vim-matchup') })
 
 package({
     'luckasRanarison/tree-sitter-hypr',

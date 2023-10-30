@@ -89,10 +89,6 @@ return function()
             },
             include_surrounding_whitespace = false,
         },
-        matchup = {
-            enable = true,
-            disable = {},
-        },
         incremental_selection = {
             enable = true,
             keymaps = {

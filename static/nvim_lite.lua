@@ -1,6 +1,4 @@
-local g, fn = vim.g, vim.fn
 local helper = require('core.helper')
--- remove check is windows because I only use mac or linux
 local cache_dir = helper.path_join(vim.fn.stdpath('cache'))
 
 -- Create cache dir and subs dir
@@ -25,135 +23,273 @@ local createdir = function()
     end
 end
 
-createdir()
-
---disable_distribution_plugins
-g.loaded_gzip = 1
-g.loaded_tar = 1
-g.loaded_tarPlugin = 1
-g.loaded_zip = 1
-g.loaded_zipPlugin = 1
-g.loaded_getscript = 1
-g.loaded_getscriptPlugin = 1
-g.loaded_vimball = 1
-g.loaded_vimballPlugin = 1
-g.loaded_matchit = 1
-g.loaded_matchparen = 1
-g.loaded_2html_plugin = 1
-g.loaded_logiPat = 1
-g.loaded_rrhelper = 1
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-g.loaded_netrwSettings = 1
-g.loaded_netrwFileHandlers = 1
-
 local opt = vim.opt
--- opt.termguicolors = true
-opt.mouse = 'a'
-opt.selectmode = 'mouse'
-opt.mousemoveevent = true
-opt.errorbells = true
-opt.visualbell = true
-opt.hidden = true
-opt.fileformats = 'unix,mac,dos'
-opt.magic = true
-opt.virtualedit = 'block'
-opt.encoding = 'utf-8'
--- opt.viewoptions = 'folds,cursor,curdir,slash,unix'
-vim.o.sessionoptions = 'buffers,curdir,folds,winpos,winsize'
-opt.wildignorecase = true
-opt.wildignore =
-    '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'
-opt.backup = false
-opt.writebackup = false
-opt.swapfile = false
 opt.directory = cache_dir .. 'swap/'
 opt.undodir = cache_dir .. 'undo/'
 opt.backupdir = cache_dir .. 'backup/'
 opt.viewdir = cache_dir .. 'view/'
 opt.spellfile = cache_dir .. 'spell/en.uft-8.add'
-opt.history = 2000
-opt.shada = "!,'300,<50,@100,s10,h"
-opt.backupskip = '/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim'
-opt.smarttab = true
-opt.shiftround = true
-opt.timeout = true
-opt.ttimeout = true
-opt.timeoutlen = 500
-opt.ttimeoutlen = 50
-opt.updatetime = 100
-opt.lazyredraw = false
-opt.redrawtime = 2000
-opt.ignorecase = true
-opt.smartcase = true
-opt.infercase = true
-opt.incsearch = true
-opt.wrapscan = true
-opt.complete = '.,w,b,k'
-opt.inccommand = 'nosplit'
-opt.grepformat = '%f:%l:%c:%m'
-opt.grepprg = 'rg --hidden --vimgrep --smart-case --'
-opt.breakat = [[\ \	;:,!?]]
-opt.startofline = false
-opt.whichwrap = '<,>,[,],~'
-opt.splitbelow = true
-opt.splitright = true
-opt.switchbuf = 'useopen'
-opt.backspace = 'indent,eol,start'
-opt.diffopt = 'filler,iwhite,internal,algorithm:patience'
-opt.completeopt = 'menu,menuone,noselect'
-opt.jumpoptions = 'stack'
-opt.showmode = false
-opt.shortmess = 'aoOTIcF'
-opt.scrolloff = 2
-opt.sidescrolloff = 5
-opt.ruler = false
-opt.list = true
--- opt.showtabline = 2
-opt.winwidth = 30
-opt.winminwidth = 10
-opt.pumheight = 15
-opt.helpheight = 12
-opt.previewheight = 12
-opt.showcmd = true
--- opt.cmdheight = 0
-opt.cmdwinheight = 5
-opt.equalalways = false
-opt.laststatus = 3
-opt.display = 'lastline'
-opt.showbreak = '↳  '
-opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
-opt.fillchars = 'eob: '
-opt.pumblend = 0
-opt.winblend = 0
 opt.undofile = true
-opt.synmaxcol = 2500
-opt.formatoptions = '1jql'
-opt.textwidth = 80
-opt.expandtab = true
-opt.autoindent = true
-opt.smartindent = true
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = -1
-opt.breakindentopt = 'shift:4,min:20'
-opt.wrap = false
--- opt.linebreak = true
-opt.number = true
--- opt.signcolumn = 'yes'
-opt.cursorlineopt = 'number'
-opt.foldenable = true
-opt.foldmethod = 'marker'
-opt.foldmarker = '{{{,}}}'
-opt.foldminlines = 1
 
-vim.g.remoteSession = os.getenv('SSH_TTY') and true or false
-vim.g.python_host_prog = '/usr/bin/python'
-vim.g.python3_host_prog = '/usr/bin/python3'
+local keymap = require('core.keymap')
+local nmap, imap, cmap, vmap, tmap, omap, xmap, smap =
+    keymap.nmap,
+    keymap.imap,
+    keymap.cmap,
+    keymap.vmap,
+    keymap.tmap,
+    keymap.omap,
+    keymap.xmap,
+    keymap.smap
+local opts = keymap.new_opts
+local cmd = keymap.cmd
+local noremap, silent, expr = keymap.noremap, keymap.silent, keymap.expr
+-- local nore = opts(noremap)
+-- local opts(noremap, silent) = opts(noremap, silent)
+-- local opts(noremap, silent, expr) = opts(noremap, silent, expr)
 
-vim.g.barbaric_ime = 'fcitx5'
-vim.cmd('hi CursorLineNr term=bold cterm=bold ctermfg=none gui=bold')
--- vim.opt.termguicolors = false
-require('keymap')
--- require('core.pack'):boot_strap()
-require('core.event')
+-- Use space as leader key
+vim.g.mapleader = ' '
+-- leaderkey
+-- nmap({ ' ', '', noremap })
+-- xmap({ ' ', '', noremap })
+
+local quitbuffer = function() --{{{
+    local same_buffer_count = vim.fn.win_findbuf(vim.fn.bufnr('%'))
+    if #same_buffer_count > 1 then
+        vim.cmd('q!')
+        -- if vim.bo.filetype == 'NvimTree' then
+        --     vim.cmd('q!')
+        -- end
+        return
+    end
+    local buffer_count = vim.fn.getbufinfo({ buflisted = true })
+    if #buffer_count == 1 then
+        vim.cmd('q!')
+        -- if vim.bo.filetype == 'NvimTree' then
+        --     vim.cmd('q!')
+        -- end
+        return
+    end
+    if vim.bo.filetype == 'dashboard' then
+        vim.cmd('q!')
+        -- if vim.bo.filetype == 'NvimTree' then
+        --     vim.cmd('q!')
+        -- end
+        return
+    end
+    vim.cmd('bd!')
+    -- if vim.bo.filetype == 'NvimTree' then
+    --     vim.cmd('bd!')
+    -- end
+end --}}}
+
+nmap({
+    -- noremal remap
+    -- cursor move
+    { 'H', 'b', opts(noremap, silent) },
+    { 'J', '5j', opts(noremap, silent) },
+    { 'K', '5k', opts(noremap, silent) },
+    { 'L', 'e', opts(noremap, silent) },
+    -- { '<Leader>i'          , 'Bi'        , nore } ,
+    -- { '<Leader>o'          , 'Ea'        , nore } ,
+    -- visual select
+    { '<C-j>', '<C-v>j', opts(noremap, silent) },
+    -- { '<C-k>', '<C-v>k', opts(noremap, silent) },
+    { [[\v]], 'v$h', opts(noremap, silent) },
+    -- save and quit
+    { '<C-s>', cmd('w!'), opts(noremap) },
+    { '<C-q>', cmd('qa!'), opts(noremap, silent) },
+    -- close buffer/tab/dashboard
+    { 'q', quitbuffer, opts(noremap, silent) },
+    { 'Q', cmd('e #'), opts(noremap, silent) },
+    -- split windows
+    { 's', '<Nop>', opts(noremap, silent) },
+    {
+        'sh',
+        cmd('set nosplitright') .. cmd('vsplit') .. cmd('set splitright'),
+        opts(noremap, silent, 'Split Left'),
+    },
+    { 'sj', cmd('set splitbelow') .. cmd('split'), opts(noremap, silent, 'Split Up') },
+    {
+        'sk',
+        cmd('set nosplitbelow') .. cmd('split') .. cmd('set splitbelow'),
+        opts(noremap, silent, 'Split Down'),
+    },
+    { 'sl', cmd('set splitright') .. cmd('vsplit'), opts(noremap, silent, 'Split Right') },
+
+    {
+        '<S-Left>',
+        cmd('set nosplitright') .. cmd('vsplit') .. cmd('set splitright'),
+        opts(noremap, silent),
+    },
+    { '<S-Down>', cmd('set splitbelow') .. cmd('split'), opts(noremap, silent) },
+    {
+        '<S-Up>',
+        cmd('set nosplitbelow') .. cmd('split') .. cmd('set splitbelow'),
+        opts(noremap, silent),
+    },
+    { '<S-Right>', cmd('set splitright') .. cmd('vsplit'), opts(noremap, silent) },
+
+    -- move around split windows
+    { '<C-S-h>', '<C-w>h', opts(noremap, silent) },
+    { '<C-S-j>', '<C-w>j', opts(noremap, silent) },
+    { '<C-S-k>', '<C-w>k', opts(noremap, silent) },
+    { '<C-S-l>', '<C-w>l', opts(noremap, silent) },
+
+    { '<Left>', '<C-w>h', opts(noremap, silent) },
+    { '<Down>', '<C-w>j', opts(noremap, silent) },
+    { '<Up>', '<C-w>k', opts(noremap, silent) },
+    { '<Right>', '<C-w>l', opts(noremap, silent) },
+    -- adjust the size of split windows
+    { '<C-Left>', cmd('vertical resize+2'), opts(noremap, silent) },
+    { '<C-Down>', cmd('resize-2'), opts(noremap, silent) },
+    { '<C-Up>', cmd('resize+2'), opts(noremap, silent) },
+    { '<C-Right>', cmd('vertical resize-2'), opts(noremap, silent) },
+    -- { '<Leader>=', '<C-w>=', opts(noremap, silent)},
+    -- search behavior
+    { 'n', 'nzz', opts(noremap, silent) },
+    { 'N', 'Nzz', opts(noremap, silent) },
+    { '<Esc>', '<Esc>' .. cmd('nohlsearch'), opts(noremap, silent) },
+    -- yank to system clipboard
+    { 'y', [["+y]], opts(noremap, silent) },
+    { 'yy', [["+yy]], opts(noremap, silent) },
+    { 'Y', [["+y$]], opts(noremap, silent) },
+    -- marco
+    { '!', 'q1', opts(noremap) },
+    { '@', '@1', opts(noremap) },
+    -- fold code
+    { 'zi', 'zf%', opts(noremap, silent) },
+    { 'zo', 'za', opts(noremap, silent) },
+    -- mark
+    { 'dm', cmd('execute("delmarks ").nr2char(getchar())'), opts(noremap, silent) },
+    -- { '<Space><Space>', 'm', opts(noremap, silent) },
+    -- comment
+    -- mouse
+    -- { '<LeftMouse>', '<LeftMouse>i', opts(noremap, silent) },
+})
+
+imap({
+    -- insert mode
+    -- emacs keymap
+    { '<C-h>', '<Bs>', opts(noremap, silent) },
+    { '<C-j>', '<Down>', opts(noremap, silent) },
+    { '<C-k>', '<Up>', opts(noremap, silent) },
+    { '<C-l>', '<Right>', opts(noremap, silent) },
+
+    { '<C-e>', '<End>', opts(noremap, silent) },
+    { '<C-a>', '<Esc>^i', opts(noremap, silent) },
+    { '<C-d>', '<Del>', opts(noremap, silent) },
+    { '<C-b>', '<Left>', opts(noremap, silent) },
+    -- word jump
+    { '<C-S-h>', '<C-Left>', opts(noremap, silent) },
+    { '<C-S-l>', '<C-Right>', opts(noremap, silent) },
+    -- <Esc> behavior
+    { '<Esc>', '<Esc>l' .. cmd('nohlsearch'), opts(noremap, silent) },
+    { '<S-Tab>', '<Bs>', opts(noremap, silent) },
+    -- for nvui
+    -- { '<C-v>', '<C-r><C-p>+', opts(noremap, silent) },
+})
+
+cmap({
+    -- commandline remap
+    -- emacs keymap
+    { '<C-h>', '<Bs>', opts(noremap) },
+    { '<C-j>', '<Down>', opts(noremap) },
+    { '<C-k>', '<Up>', opts(noremap) },
+    { '<C-l>', '<Right>', opts(noremap) },
+
+    { '<C-e>', '<End>', opts(noremap) },
+    { '<C-a>', '<Home>', opts(noremap) },
+    { '<C-d>', '<Del>', opts(noremap) },
+    { '<C-b>', '<Left>', opts(noremap) },
+
+    -- word jump
+    { '<C-S-h>', '<C-Left>', opts(noremap) },
+    { '<C-S-l>', '<C-Right>', opts(noremap) },
+    -- for nvui
+    { '<C-v>', '<C-r>+', opts(noremap) },
+})
+
+vmap({
+    -- visual remap
+    -- cursor move
+    { 'H', 'b', opts(noremap, silent) },
+    { 'J', '5j', opts(noremap, silent) },
+    { 'K', '5k', opts(noremap, silent) },
+    { 'L', 'e', opts(noremap, silent) },
+    { '<c-j>', 'j', opts(noremap, silent) },
+    { '<c-k>', 'k', opts(noremap, silent) },
+    -- <Esc> behavior
+    { '<Esc>', '<Esc>' .. cmd('nohlsearch'), opts(noremap, silent) },
+    -- yank to system clipboard
+    { 'y', '"+y`]', opts(noremap, silent) },
+    -- fold code
+    { 'zi', 'zf%', opts(noremap, silent) },
+    { 'zo', 'za', opts(noremap, silent) },
+})
+
+tmap({
+    {
+        '<C-S-h>',
+        function()
+            if vim.bo.filetype == 'floaterm' then
+                return '\x1b[72;6u'
+            else
+                return [[<C-\><C-n><C-w>h]]
+            end
+        end,
+        opts(noremap, silent, expr),
+    },
+    { '<C-S-j>', [[<C-\><C-n><C-w>j]], opts(noremap, silent) },
+    { '<C-S-k>', [[<C-\><C-n><C-w>k]], opts(noremap, silent) },
+    {
+        '<C-S-l>',
+        function()
+            if vim.bo.filetype == 'floaterm' then
+                return '\x1b[76;6u'
+            else
+                return [[<C-\><C-n><C-w>l]]
+            end
+        end,
+        opts(noremap, silent, expr),
+    },
+})
+
+-- { '/', 'i/' },
+-- { '<', 'i<' },
+-- { '>', 'i>' },
+-- { '[', 'i[' },
+-- { ']', 'i]' },
+
+omap({
+    { 'w', 'iw' },
+    { '`', 'i`' },
+    { '_', 'i_' },
+    { '(', 'i(' },
+    { ')', 'i)' },
+    { '{', 'i{' },
+    { '}', 'i}' },
+    { [["]], [[i"]] },
+    { [[']], [[i']] },
+})
+
+xmap({
+    { 'w', 'iw' },
+    { '`', 'i`' },
+    { '_', 'i_' },
+    { '(', 'i(' },
+    { ')', 'i)' },
+    { '{', 'i{' },
+    { '}', 'i}' },
+    { [["]], [[i"]] },
+    { [[']], [[i']] },
+    -- indent code
+    { '<Tab>', '>gv', opts(noremap, silent) },
+    { '<S-Tab>', '<gv', opts(noremap, silent) },
+})
+
+smap({
+    { '<Esc>', [[<C-\><C-g>]], opts(silent) },
+    { '<RightMouse>', [[<C-\><C-g>gv]] .. cmd('popup! PopUp'), opts(noremap, silent) },
+})

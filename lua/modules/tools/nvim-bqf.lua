@@ -52,6 +52,7 @@ return function()
             delay_syntax = 50,
             win_height = 15,
             win_vheight = 15,
+            winblend = 0,
             wrap = false,
         },
     })

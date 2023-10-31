@@ -20,7 +20,7 @@ package({
 })
 
 package({
-    'Meow-2/vim-floaterm',
+    'voldikss/vim-floaterm',
     cmd = {
         'FloatermNew',
         'FloatermToggle',

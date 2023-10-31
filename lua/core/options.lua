@@ -1,5 +1,7 @@
 local opt = vim.opt
-local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
+local helper = require('core.helper')
+-- remove check is windows because I only use mac or linux
+local cache_dir = helper.path_join(vim.fn.stdpath('cache'))
 
 opt.termguicolors = true
 opt.mouse = 'a'

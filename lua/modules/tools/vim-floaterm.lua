@@ -14,7 +14,8 @@ return function()
         for opener, key in pairs(mappings) do
             vim.keymap.set('t', key, function()
                 vim.b.floaterm_opener = opener
-                vim.api.nvim_feedkeys('l', 'i', 'false')
+                local termcodes = vim.api.nvim_replace_termcodes('<C-l>', true, false, true)
+                vim.api.nvim_feedkeys(termcodes, 'n', true)
             end, { noremap = true, buffer = true })
         end
     end

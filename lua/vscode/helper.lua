@@ -17,4 +17,8 @@ function helper.cache_path()
     return vim.fn.stdpath('cache')
 end
 
+function helper.cmd(str)
+    return '<cmd>' .. str .. '<CR>'
+end
+
 return helper

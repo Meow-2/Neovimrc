@@ -1,7 +1,7 @@
 local opt = vim.opt
 local helper = require('core.helper')
 -- remove check is windows because I only use mac or linux
-local cache_dir = helper.path_join(vim.fn.stdpath('cache'))
+local cache_dir = helper.cache_path()
 
 opt.termguicolors = true
 opt.mouse = 'a'

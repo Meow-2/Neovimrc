@@ -137,3 +137,11 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         vim.opt.formatoptions = '1jql'
     end,
 })
+
+vim.api.nvim_create_autocmd({ 'User' }, {
+    group = MyGroup,
+    pattern = 'visual_multi_exit',
+    callback = function()
+        vim.api.nvim_set_hl(0, 'Search', { fg = '#000000', bg = '#FF8700' })
+    end,
+})

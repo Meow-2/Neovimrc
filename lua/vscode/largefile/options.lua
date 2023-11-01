@@ -1,5 +1,8 @@
 local g, opt = vim.g, vim.opt
 
+local helper = require('vscode.helper')
+local cache_dir = helper.path_join(vim.fn.stdpath('cache'))
+
 --disable_distribution_plugins
 g.loaded_gzip = 1
 g.loaded_tar = 1
@@ -10,8 +13,6 @@ g.loaded_getscript = 1
 g.loaded_getscriptPlugin = 1
 g.loaded_vimball = 1
 g.loaded_vimballPlugin = 1
-g.loaded_matchit = 1
-g.loaded_matchparen = 1
 g.loaded_2html_plugin = 1
 g.loaded_logiPat = 1
 g.loaded_rrhelper = 1
@@ -34,3 +35,9 @@ opt.ttimeoutlen = 50
 opt.updatetime = 100
 opt.virtualedit = 'block'
 opt.showcmd = true
+opt.directory = cache_dir .. 'swap/'
+opt.undodir = cache_dir .. 'undo/'
+opt.backupdir = cache_dir .. 'backup/'
+opt.viewdir = cache_dir .. 'view/'
+opt.spellfile = cache_dir .. 'spell/en.uft-8.add'
+opt.undofile = true

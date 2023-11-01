@@ -1,4 +1,4 @@
-local g, fn = vim.g, vim.fn
+local fn = vim.fn
 local helper = require('vscode.helper')
 -- remove check is windows because I only use mac or linux
 local cache_dir = helper.path_join(vim.fn.stdpath('cache'))
@@ -27,28 +27,14 @@ end
 
 createdir()
 
---disable_distribution_plugins
-g.loaded_gzip = 1
-g.loaded_tar = 1
-g.loaded_tarPlugin = 1
-g.loaded_zip = 1
-g.loaded_zipPlugin = 1
-g.loaded_getscript = 1
-g.loaded_getscriptPlugin = 1
-g.loaded_vimball = 1
-g.loaded_vimballPlugin = 1
-g.loaded_matchit = 1
-g.loaded_matchparen = 1
-g.loaded_2html_plugin = 1
-g.loaded_logiPat = 1
-g.loaded_rrhelper = 1
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-g.loaded_netrwSettings = 1
-g.loaded_netrwFileHandlers = 1
-
-require('vscode.options')
-require('vscode.keymap')
-require('vscode.pack'):boot_strap()
--- require('vscode.packages')
-require('vscode.event')
+local filesize = vim.fn.getfsize(vim.fn.expand('%'))
+if filesize > 750000 then
+    require('vscode.largefile.options')
+    require('vscode.largefile.keymap')
+    require('vscode.pack'):boot_strap()
+else
+    require('vscode.options')
+    require('vscode.keymap')
+    require('vscode.pack'):boot_strap()
+    require('vscode.event')
+end

@@ -4,7 +4,7 @@ local pack = {}
 pack.__index = pack
 
 function pack:load_modules_packages()
-    local modules_dir = self.helper.path_join(self.config_path, 'lua', 'vscode', 'modules')
+    local modules_dir = self.helper.path_join(self.config_path, 'lua', 'lite', 'modules')
     self.repos = {}
 
     local list = vim.fs.find('package.lua', { path = modules_dir, type = 'file', limit = 10 })
@@ -22,13 +22,13 @@ function pack:load_modules_packages()
         local _, pos = f:find(modules_dir)
         f = f:sub(pos - 6, #f - 4)
         if not vim.tbl_contains(disable_modules, f) then
-            require('vscode.' .. f)
+            require('lite.' .. f)
         end
     end
 end
 
 function pack:boot_strap()
-    self.helper = require('vscode.helper')
+    self.helper = require('lite.helper')
     self.data_path = self.helper.data_path()
     self.config_path = self.helper.config_path()
     local lazy_path = self.helper.path_join(self.data_path, 'lazy', 'lazy.nvim')
@@ -71,7 +71,7 @@ function pack:config(modules_path)
         local package_config_path = self.helper.path_join(
             self.config_path,
             'lua',
-            'vscode',
+            'lite',
             modules_path:gsub('%.', '/'),
             package .. '.lua'
         )
@@ -80,7 +80,7 @@ function pack:config(modules_path)
             -- if #vim.fn.glob(package_config_path) == 0 then
             os.execute('echo "return function()\nend" > ' .. package_config_path)
         end
-        return require('vscode.' .. modules_path .. '.' .. package)
+        return require('lite.' .. modules_path .. '.' .. package)
     end
 end
 

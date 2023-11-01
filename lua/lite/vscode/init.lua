@@ -1,5 +1,5 @@
 local fn = vim.fn
-local helper = require('vscode.helper')
+local helper = require('lite.helper')
 -- remove check is windows because I only use mac or linux
 local cache_dir = helper.path_join(vim.fn.stdpath('cache'))
 
@@ -27,14 +27,7 @@ end
 
 createdir()
 
-local filesize = vim.fn.getfsize(vim.fn.expand('%'))
-if filesize > 750000 then
-    require('vscode.largefile.options')
-    require('vscode.largefile.keymap')
-    require('vscode.pack'):boot_strap()
-else
-    require('vscode.options')
-    require('vscode.keymap')
-    require('vscode.pack'):boot_strap()
-    require('vscode.event')
-end
+require('lite.vscode.options')
+require('lite.vscode.keymap')
+require('lite.pack'):boot_strap()
+require('lite.vscode.event')

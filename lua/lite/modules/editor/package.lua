@@ -1,6 +1,6 @@
-local package = require('vscode.pack').package
-local conf = require('vscode.pack'):config('modules.editor')
-local cmd = require('vscode.helper').cmd
+local package = require('lite.pack').package
+local conf = require('lite.pack'):config('modules.editor')
+local cmd = require('lite.helper').cmd
 
 package({
     'mg979/vim-visual-multi',

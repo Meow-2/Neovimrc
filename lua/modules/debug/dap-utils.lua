@@ -2,7 +2,9 @@ local M = {}
 
 -- support passing args
 M.find_next_start = function(str, cur_idx)
-    while cur_idx <= #str and str:sub(cur_idx, cur_idx) == ' ' do
+    while
+        cur_idx <= #str and (str:sub(cur_idx, cur_idx) == ' ' or str:sub(cur_idx, cur_idx) == '\n')
+    do
         cur_idx = cur_idx + 1
     end
     return cur_idx
@@ -34,7 +36,7 @@ M.str2argtable = function(str)
                 i = start
             end
         -- find next start
-        elseif c == ' ' then
+        elseif c == ' ' or c == '\n' then
             arg_list[#arg_list + 1] = str:sub(start, i - 1)
             start = M.find_next_start(str, i + 1)
             i = start

@@ -13,7 +13,15 @@ dap.configurations.python = {
         program = '${file}', -- This configuration will launch the current file if used.
         justMyCode = false,
         args = function()
-            local input = vim.fn.input('Input args: ')
+            local cmdargs_path = vim.fn.getcwd() .. '/cmdargs'
+            local cmdargs_file = io.open(cmdargs_path, 'r')
+            local input
+            if cmdargs_file then
+                input = cmdargs_file:read('*a')
+            else
+                input = vim.fn.input('Input args: ')
+            end
+            io.close(cmdargs_file)
             return require('modules.debug.dap-utils').str2argtable(input)
         end,
         pythonPath = function()

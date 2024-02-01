@@ -19,7 +19,7 @@ return function()
             'css',
             'javascript',
             'typescript',
-            'hypr',
+            'hyprlang',
         },
         -- ignore_install = { 'phpdoc' },
         autotag = {

@@ -63,8 +63,8 @@ package({
 package({ 'andymass/vim-matchup', config = conf('vim-matchup') })
 
 package({
-    'luckasRanarison/tree-sitter-hypr',
-    config = conf('tree-sitter-hypr'),
+    'luckasRanarison/tree-sitter-hyprlang',
+    -- config = conf('tree-sitter-hyprlang'),
     dependencies = {
         { 'nvim-treesitter/nvim-treesitter' },
     },

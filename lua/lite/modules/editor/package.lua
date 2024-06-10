@@ -48,6 +48,14 @@ package({
 })
 
 package({
+    'luckasRanarison/tree-sitter-hyprlang',
+    -- config = conf('tree-sitter-hyprlang'),
+    dependencies = {
+        { 'nvim-treesitter/nvim-treesitter' },
+    },
+})
+
+package({
     'kylechui/nvim-surround',
     -- event = { 'BufNewFile', 'BufRead' },
     event = { 'VeryLazy' },

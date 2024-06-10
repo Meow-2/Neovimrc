@@ -20,6 +20,7 @@ package({
                 require('telescope').load_extension('dap')
             end,
         },
+        { 'nvim-neotest/nvim-nio' },
     },
 })
 

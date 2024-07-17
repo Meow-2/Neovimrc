@@ -25,6 +25,7 @@ return function()
             'html-lsp',
             'eslint-lsp',
             'css-lsp',
+            'nil',
         },
 
         -- if set to true this will check each tool for updates. If updates

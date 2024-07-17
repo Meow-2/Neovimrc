@@ -118,7 +118,7 @@ package({
     config = conf('noice.nvim'),
     dependencies = {
         { 'MunifTanjim/nui.nvim' },
-        { 'Meow-2/nvim-notify' },
+        { 'rcarriga/nvim-notify' },
     },
 })
 

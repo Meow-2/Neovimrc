@@ -22,7 +22,7 @@ return function()
                 windows = false, -- default bindings on <c-w>
                 nav = false, -- misc bindings to work with windows
                 z = true, -- bindings for folds, spelling and others prefixed with z
-                g = false, -- bindings for prefixed with g
+                g = true, -- bindings for prefixed with g
             },
         },
         -- add operators that will trigger motion and text object completion
@@ -80,8 +80,12 @@ return function()
         -- },
         show_keys = true, -- enable this to hide mappings for which you didn't specify a label
         show_help = true, -- show help message on the command line when the popup is visible
-        triggers = 'auto', -- automatically setup triggers
-        -- triggers = {"<leader>"}, -- or specify a list manually
+        -- triggers = auto, -- automatically setup triggers
+        triggers = {
+            { '<auto>', mode = 'nxsot' },
+            { 's', mode = 'nxsot' },
+        },
+        -- triggers = { 's' }, -- or specify a list manually
         disable = {
             -- list of mode / prefixes that should never be hooked by WhichKey
             -- this is mostly relevant for key maps that start with a native binding

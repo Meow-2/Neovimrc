@@ -259,4 +259,5 @@ xmap({
 smap({
     { '<Esc>', [[<C-\><C-g>]], opts(silent) },
     { '<RightMouse>', [[<C-\><C-g>gv]] .. cmd('popup! PopUp'), opts(noremap, silent) },
+    { '<c-c>', [[<C-\><C-g>gv"+y]], opts(noremap, silent) },
 })

@@ -80,7 +80,8 @@ function _CMP_MAP(cmp, luasnip)
     rawset(
         insert_map,
         '<CR>',
-        cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+        -- cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+        cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
     )
     rawset(insert_map, '<Tab>', cmp.mapping(super_tab(cmp, luasnip), { 'i', 's' }))
     rawset(insert_map, '<S-Tab>', cmp.mapping(super_s_tab(cmp, luasnip), { 'i', 's' }))

@@ -84,6 +84,7 @@ return function()
         triggers = {
             { '<auto>', mode = 'nxsot' },
             { 's', mode = 'nxsot' },
+            { 'b', mode = 'nxsot' },
         },
         -- triggers = { 's' }, -- or specify a list manually
         disable = {

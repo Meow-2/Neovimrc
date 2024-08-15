@@ -26,6 +26,7 @@ return function()
             'eslint-lsp',
             'css-lsp',
             'nil',
+            'nixpkgs-fmt',
         },
 
         -- if set to true this will check each tool for updates. If updates

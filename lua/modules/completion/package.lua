@@ -15,6 +15,7 @@ local enable_lsp_filetype = {
     'css',
     'javascript',
     'typescript',
+    'nix',
 }
 
 package({

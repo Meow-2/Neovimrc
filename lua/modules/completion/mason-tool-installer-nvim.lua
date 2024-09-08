@@ -6,6 +6,8 @@ return function()
         ensure_installed = {
             'autopep8',
             'bash-language-server',
+            'bash-debug-adapter',
+            'shellcheck',
             'clang-format',
             'clangd',
             'cmake-language-server',

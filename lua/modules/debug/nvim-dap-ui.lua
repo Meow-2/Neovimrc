@@ -76,6 +76,8 @@ return function()
     -- config debug behavior
     dap.listeners.after.event_initialized['dapui_config'] = function()
         debug_open()
+        -- vim.cmd('colorscheme ' .. vim.g.colors_name)
+        require('zephyr')
     end
     dap.listeners.before.event_terminated['dapui_config'] = function()
         debug_close()

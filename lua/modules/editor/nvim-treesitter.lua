@@ -20,6 +20,7 @@ return function()
             'javascript',
             'typescript',
             'hyprlang',
+            'nix',
         },
         -- ignore_install = { 'phpdoc' },
         autotag = {
@@ -94,7 +95,7 @@ return function()
             keymaps = {
                 init_selection = '<Cr>',
                 node_incremental = '<Cr>',
-                node_decremental = '<Bs>',
+                node_decremental = '<S-Cr>',
                 -- scope_incremental = "grc",
             },
         },

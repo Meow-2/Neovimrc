@@ -16,7 +16,6 @@ local enable_lsp_filetype = {
     'javascript',
     'typescript',
     'nix',
-    'vue',
 }
 
 package({
